@@ -1,18 +1,53 @@
 {
-    "private": true,
+    "name": "@jlbelanger/magnolia",
+    "version": "1.0.0",
+    "description": "Recipes.",
+    "license": "GPL-3.0-only",
+    "author": {
+        "name": "Jenny Belanger",
+        "email": "mail@jennybelanger.com",
+        "url": "https://www.jennybelanger.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jlbelanger/magnolia.git"
+    },
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "build": "yarn build:css && yarn build:js",
+        "build:css": "node_modules/.bin/gulp css",
+        "build:js": "node_modules/.bin/gulp js",
+        "lint": "yarn lint:css && yarn lint:js",
+        "lint:css": "node_modules/.bin/stylelint 'resources/scss/**/*.scss'",
+        "lint:js": "node_modules/.bin/eslint resources/js/* --ext .js",
+        "lint:php": "./vendor/bin/phpcs",
+        "test:php": "./vendor/bin/phpunit",
+        "watch": "gulp"
+    },
+    "dependencies": {
+        "normalize.css": "^8.0.1"
     },
     "devDependencies": {
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "autoprefixer": "^10.4.0",
+        "cssnano": "^5.0.14",
+        "eslint": "^8.5.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.25.3",
+        "gulp": "^4.0.2",
+        "gulp-cli": "^2.3.0",
+        "gulp-concat": "^2.6.1",
+        "gulp-foreach": "^0.1.0",
+        "gulp-livereload": "^4.0.2",
+        "gulp-postcss": "^9.0.1",
+        "gulp-rename": "^2.0.0",
+        "gulp-sass": "^5.0.0",
+        "gulp-terser": "^2.1.0",
+        "gulp-twig": "^1.2.0",
+        "merge-stream": "^2.0.0",
+        "node-sass": "^7.0.0",
+        "sass-lint": "^1.13.1",
+        "stylelint": "^14.2.0",
+        "stylelint-config-standard-scss": "^3.0.0",
+        "stylelint-order": "^5.0.0",
+        "stylelint-scss": "^4.1.0"
     }
 }

@@ -1,9 +1,16 @@
 {
-    "name": "laravel/laravel",
+    "name": "jlbelanger/magnolia",
+    "description": "Recipes.",
+    "version": "1.0.0",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "Jenny Belanger",
+            "email": "mail@jennybelanger.com",
+            "homepage": "https://www.jennybelanger.com/"
+        }
+    ],
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -18,7 +25,8 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+		"squizlabs/php_codesniffer": "^3.6.2"
     },
     "autoload": {
         "psr-4": {
@@ -31,6 +39,13 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     },
     "scripts": {
         "post-autoload-dump": [
@@ -51,12 +66,5 @@
         "laravel": {
             "dont-discover": []
         }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }

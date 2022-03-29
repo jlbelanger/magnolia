@@ -1,0 +1,8 @@
+rules:
+  indentation:
+    - 2
+    -
+      size: 'tab'
+  no-ids: 0
+files:
+  include: 'resources/scss/**/*.scss'
