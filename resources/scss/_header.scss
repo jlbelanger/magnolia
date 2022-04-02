@@ -1,0 +1,66 @@
+#side {
+	background: $light-blue;
+
+	@media (min-width: #{$breakpoint}) {
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: $sidebar-width;
+	}
+}
+
+#header {
+	align-items: center;
+	background: $dark-blue;
+	display: flex;
+	height: $header-height;
+	justify-content: center;
+	padding: $padding;
+	position: relative;
+	text-align: center;
+}
+
+#title {
+	background-image: url('/assets/img/title.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	font-size: 0;
+	height: 47px;
+	position: relative;
+	width: 140px;
+	z-index: 1;
+}
+
+#img {
+	display: block;
+	height: $image-height;
+	left: 50%;
+	margin-left: #{$image-height / -2};
+	opacity: .5;
+	position: absolute;
+	top: $padding;
+}
+
+#menu-button {
+	background-color: transparent;
+	background-image: url('/assets/img/menu.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: $icon-size;
+	border: 0;
+	font-size: 0;
+	height: $button-size;
+	margin-top: #{$button-size / -2};
+	padding: 0;
+	position: absolute;
+	right: $padding;
+	top: 50%;
+	width: $button-size;
+
+	@media (min-width: #{$breakpoint}) {
+		display: none;
+	}
+}

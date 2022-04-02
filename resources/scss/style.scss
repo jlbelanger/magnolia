@@ -1,1 +1,124 @@
 @import '../../node_modules/normalize.css/normalize';
+@import 'utilities/variables';
+@import 'header';
+@import 'nav';
+@import 'checkbox';
+@import 'timer';
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: $blue;
+	font-family: sans-serif;
+	font-size: 18px;
+}
+
+h1 {
+	font-size: 24px;
+	margin: 0;
+}
+
+a {
+	color: blue;
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+p {
+	line-height: $line-height;
+}
+
+:focus {
+	box-shadow: 0 0 0 4px $focus-color;
+	outline: none !important;
+}
+
+button,
+label {
+	cursor: pointer;
+}
+
+#article {
+	margin: 0 auto;
+	padding: $padding;
+	width: 100%;
+
+	input {
+		margin: 0 8px 0 0;
+	}
+
+	label {
+		font-size: $font-size;
+		line-height: $line-height;
+		padding: 8px 0;
+	}
+
+	li {
+		padding: $list-padding 0;
+		padding-left: #{$checkbox-size + $checkbox-margin-right};
+		padding-top: #{$list-padding + (($checkbox-size - ($font-size * $line-height)) / 2)};
+		position: relative;
+
+		& > input {
+			left: 0;
+			position: absolute;
+			top: $list-padding;
+		}
+
+		li {
+			padding-bottom: $sublist-padding;
+			padding-top: #{$sublist-padding + (($checkbox-size - ($font-size * $line-height)) / 2)};
+
+			& > input {
+				top: $sublist-padding;
+			}
+		}
+	}
+
+	ol,
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		ol,
+		ul {
+			margin-left: #{($checkbox-size / -2) - $checkbox-margin-right};
+			margin-top: $sublist-padding;
+		}
+	}
+
+	& > ol {
+		& > li {
+			border-top: 1px solid $gray;
+			counter-increment: step;
+			min-height: #{$checkbox-size + ($list-padding * 2)};
+
+			&:first-of-type {
+				border-top: 0;
+				padding-top: 0;
+
+				& > input {
+					top: #{$list-padding / -2};
+				}
+			}
+
+			& > label {
+				&::before {
+					content: counter(step) '. ';
+				}
+			}
+		}
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		margin-left: $sidebar-width;
+		max-width: $content-width;
+	}
+}

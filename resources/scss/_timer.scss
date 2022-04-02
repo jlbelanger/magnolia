@@ -1,0 +1,40 @@
+.timer-link {
+	appearance: none;
+	background: transparent;
+	border-color: blue;
+	border-radius: 0;
+	border-style: solid;
+	border-width: 0 0 4px;
+	color: blue;
+	padding: 0;
+}
+
+#timer-container {
+	bottom: 0;
+	position: fixed;
+	right: 0;
+}
+
+.timer__text,
+.timer__stop {
+	background: $white;
+	border: 0;
+	border-radius: 100px;
+	box-shadow: 4px 4px 8px rgba($black, .2);
+	font-size: 32px;
+	line-height: 1;
+	margin: 20px;
+	padding: 20px 20px 16px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 130px;
+
+	@media (min-width: #{$breakpoint}) {
+		font-size: 44px;
+		width: 160px;
+	}
+}
+
+audio {
+	display: none;
+}

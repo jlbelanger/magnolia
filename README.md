@@ -87,3 +87,7 @@ Note: The deploy script included in this repo depends on other scripts that only
 ``` bash
 ./deploy.sh
 ```
+
+## Credits
+
+- "Magnolia Simms" midi: http://themonkees.com/soundfiles.htm
