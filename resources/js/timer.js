@@ -114,6 +114,51 @@ function Timer($button) {
 		window.DRAG_ELEMENT.style.right = 'auto';
 	};
 
+	const simulateEvent = (e) => {
+		const touch = e.changedTouches[0];
+		const simulatedEvent = document.createEvent('MouseEvent');
+		simulatedEvent.initMouseEvent(
+			{
+				touchstart: 'mousedown',
+				touchmove: 'mousemove',
+				touchend: 'mouseup',
+			}[e.type],
+			true,
+			true,
+			window,
+			1,
+			touch.screenX,
+			touch.screenY,
+			touch.clientX,
+			touch.clientY,
+			false,
+			false,
+			false,
+			false,
+			0,
+			null,
+		);
+		return simulatedEvent;
+	};
+
+	// https://stackoverflow.com/a/6362527
+	const touchHandler = (e) => {
+		if (e.target.className !== 'timer__text') {
+			return;
+		}
+		const touch = e.changedTouches[0];
+		touch.target.dispatchEvent(simulateEvent(e));
+		e.preventDefault();
+	};
+
+	const onTouchMove = (e) => {
+		if (window.DRAG_ELEMENT === null) {
+			return;
+		}
+		onMouseMove(simulateEvent(e));
+		e.preventDefault();
+	};
+
 	const onClickStart = () => {
 		const date = new Date();
 		const seconds = parseInt($button.getAttribute('data-timer'), 10);
@@ -145,6 +190,10 @@ function Timer($button) {
 		window.DRAG_START_Y = 0;
 		document.addEventListener('mousemove', onMouseMove);
 		document.addEventListener('keydown', onKeyDown);
+		document.addEventListener('touchstart', touchHandler, true);
+		document.addEventListener('touchend', touchHandler, true);
+		document.addEventListener('touchcancel', touchHandler, true);
+		document.addEventListener('touchmove', onTouchMove, { passive: false });
 	};
 
 	const init = () => {
