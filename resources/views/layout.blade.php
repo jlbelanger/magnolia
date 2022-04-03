@@ -21,7 +21,7 @@
 						<a href="/" id="site-title">Magnolia</a>
 						<img alt="" id="img" src="/favicon.svg">
 						@if (!Request::is('/'))
-							<button id="menu-button" type="button">Menu</button>
+							<button data-toggleable="#nav" id="menu-button" type="button">Menu</button>
 						@endif
 					</header>
 					<nav class="{{ Request::is('/') ? 'show' : '' }}" id="nav">
@@ -38,6 +38,9 @@
 						</div>
 						@if ($recipes->isNotEmpty())
 							<input autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
+						@endif
+						<p id="no-results" style="{{ $recipes->isNotEmpty() ? 'display:none' : '' }}">No recipes found.</p>
+						@if ($recipes->isNotEmpty())
 							<ul id="nav-list" data-filterable-list>
 								@foreach ($recipes as $recipe)
 									<li data-filterable-item class="nav-list__item">
@@ -52,7 +55,6 @@
 								@endforeach
 							</ul>
 						@endif
-						<p id="no-results" style="{{ $recipes->isNotEmpty() ? 'display:none' : '' }}">No recipes found.</p>
 					</nav>
 				</div>
 			@endif

@@ -1,0 +1,43 @@
+#add-note-button {
+	background: $darkest-blue;
+	border-color: $darkest-blue;
+	border-radius: 100px;
+	box-shadow: 4px 4px 8px rgba($black, .2);
+	height: $button-size;
+	position: sticky;
+	right: 8px;
+	top: 8px;
+	width: $button-size;
+	z-index: 998;
+
+	&:focus {
+		box-shadow: 0 0 0 $focus-width $focus-color, 4px 4px 8px rgba($black, .2);
+	}
+}
+
+#note-form {
+	background: $light-blue;
+	border-color: $darkish-blue;
+	border-style: solid;
+	border-width: 1px 0 0;
+	bottom: 0;
+	box-shadow: 4px 4px 8px rgba($black, .2);
+	display: none;
+	left: 0;
+	padding: 8px;
+	position: fixed;
+	right: 0;
+	z-index: 998;
+
+	button {
+		width: 100px;
+	}
+
+	&.show {
+		display: flex;
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		left: $sidebar-width;
+	}
+}

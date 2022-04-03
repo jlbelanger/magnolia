@@ -35,6 +35,9 @@ class RecipeController extends Controller
 		$input = $request->input();
 		$input['is_private'] = $request->has('is_private');
 		$row = Recipe::create($input);
+		if ($request->wantsJson()) {
+			return response()->json(['message' => 'Recipe added successfully.']);
+		}
 		return redirect($row->url())
 			->with('message', 'Recipe added successfully.')
 			->with('status', 'success');
@@ -79,15 +82,18 @@ class RecipeController extends Controller
 	 *
 	 * @param  Request $request
 	 * @param  string  $id
-	 * @return RedirectResponse
+	 * @return JsonResponse|RedirectResponse
 	 */
-	public function update(Request $request, string $id) : RedirectResponse
+	public function update(Request $request, string $id)
 	{
 		$row = Recipe::findOrFail($id);
 		$request->validate(Recipe::rules($id));
 		$input = $request->input();
 		$input['is_private'] = $request->has('is_private');
 		$row->update($input);
+		if ($request->wantsJson()) {
+			return response()->json(['message' => 'Recipe updated successfully.']);
+		}
 		return back()
 			->with('message', 'Recipe updated successfully.')
 			->with('status', 'success');
@@ -103,6 +109,9 @@ class RecipeController extends Controller
 	{
 		$row = Recipe::findOrFail($id);
 		$row->delete();
+		if ($request->wantsJson()) {
+			return response()->json(['message' => 'Recipe deleted successfully.']);
+		}
 		return redirect(RouteServiceProvider::HOME)
 			->with('message', 'Recipe deleted successfully.')
 			->with('status', 'success');

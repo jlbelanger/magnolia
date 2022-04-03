@@ -74,7 +74,7 @@
 	margin-top: 0;
 	padding: $padding;
 
-	#nav-list + & {
+	#search + & {
 		padding-top: #{$padding / 2};
 	}
 }

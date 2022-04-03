@@ -57,10 +57,11 @@ class Recipe extends Model
 	public function rules(string $id = '') : array
 	{
 		$unique = $id ? ',' . $id : '';
+		$required = $id ? 'filled' : 'required';
 		return [
-			'title' => ['required', 'max:255', 'unique:recipes,title' . $unique],
-			'slug' => ['required', 'max:255', 'alpha_dash', 'unique:recipes,slug' . $unique],
-			'content' => ['required'],
+			'title' => [$required, 'max:255', 'unique:recipes,title' . $unique],
+			'slug' => [$required, 'max:255', 'alpha_dash', 'unique:recipes,slug' . $unique],
+			'content' => [$required],
 			'is_private' => ['boolean'],
 		];
 	}
