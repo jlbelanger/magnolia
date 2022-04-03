@@ -16,7 +16,7 @@
 		<a class="button" href="#article" id="skip">Skip to content</a>
 		<main id="main">
 			@if (!empty($recipes))
-				<div id="side">
+				<div class="{{ Request::is('/') ? 'show' : '' }}" id="side">
 					<header id="header">
 						<a href="/" id="site-title">Magnolia</a>
 						<img alt="" id="img" src="/favicon.svg">

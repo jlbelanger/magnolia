@@ -1,0 +1,112 @@
+// stylelint-disable declaration-no-important
+@import 'utilities/variables';
+
+@media print {
+	body,
+	#header {
+		background: transparent;
+	}
+
+	#side {
+		background: transparent;
+		border: 0;
+		width: 100%;
+
+		&:not(.show) {
+			display: none;
+		}
+	}
+
+	#header {
+		height: auto;
+	}
+
+	#img,
+	#auth,
+	#search,
+	.admin,
+	.checkbox {
+		display: none;
+	}
+
+	#site-title {
+		background: transparent;
+		color: $black;
+		font-size: 32px;
+		height: auto;
+		text-decoration: none;
+		width: auto;
+	}
+
+	.nav-list__link {
+		border: 0;
+		color: $black;
+	}
+
+	button,
+	.button {
+		background: transparent !important;
+		border-color: $black !important;
+		color: $black !important;
+	}
+
+	input,
+	textarea {
+		border-color: $black !important;
+	}
+
+	.checkbox {
+		&:checked {
+			opacity: 1;
+
+			& + label {
+				opacity: 1;
+				text-decoration: none;
+
+				.timer-link {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	input[type='checkbox']:checked::after {
+		background-image: none;
+	}
+
+	.article--recipe {
+		max-width: none;
+		padding: 0;
+
+		#side + & {
+			margin-left: 0;
+		}
+
+		label {
+			padding: 0;
+		}
+
+		li {
+			min-height: 0 !important;
+			padding: 0 !important;
+		}
+
+		ol,
+		ul {
+			ol,
+			ul {
+				margin-left: 32px;
+				margin-top: 0;
+			}
+		}
+
+		& > ol > li {
+			border: 0;
+		}
+	}
+
+	.timer-link {
+		border: 0;
+		color: $black;
+	}
+}
