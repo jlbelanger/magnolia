@@ -9,21 +9,20 @@
 	padding: 0;
 }
 
-#timer-container {
-	bottom: 0;
+.timer {
+	bottom: 20px;
 	position: fixed;
-	right: 0;
+	right: 20px;
+	user-select: none;
 }
 
-.timer__text,
-.timer__stop {
+.timer__text {
 	background: $white;
 	border: 1px solid $gray;
 	border-radius: 100px;
 	box-shadow: 4px 4px 8px rgba($black, .2);
 	color: $black;
 	font-size: 32px;
-	margin: 20px;
 	padding: 20px 20px 16px;
 	text-align: center;
 	text-transform: uppercase;

@@ -44,14 +44,11 @@ function Timer($button) {
 			const seconds = secondsUntil(Date.parse($timer.getAttribute('data-until')));
 			if (seconds === '') {
 				$timer.classList.remove('timer--on');
-				$timer.querySelector('.timer__text').remove();
+				$timer.classList.add('timer--off');
 
-				const $stopButton = document.createElement('button');
-				$stopButton.setAttribute('class', 'timer__stop');
-				$stopButton.setAttribute('type', 'button');
-				$stopButton.addEventListener('click', onClickStop);
-				$stopButton.innerText = 'Stop';
-				$timer.appendChild($stopButton);
+				const $text = $timer.querySelector('.timer__text');
+				$text.addEventListener('click', onClickStop);
+				$text.innerText = 'Stop';
 
 				const $audio = document.createElement('audio');
 				$audio.setAttribute('loop', true);
@@ -70,6 +67,53 @@ function Timer($button) {
 		});
 	};
 
+	const onKeyDown = (e) => {
+		if (e.key === 'Escape') {
+			window.DRAG_ELEMENT = null;
+		}
+	};
+
+	const onMouseDown = (e) => {
+		window.DRAG_ELEMENT = e.target.closest('.timer');
+
+		// Calculate and save the starting position.
+		const left = parseFloat(window.DRAG_ELEMENT.style.left) || window.DRAG_ELEMENT.offsetLeft;
+		const top = parseFloat(window.DRAG_ELEMENT.style.top) || window.DRAG_ELEMENT.offsetTop;
+		const x = e.clientX ? e.clientX : e.x;
+		const y = e.clientY ? e.clientY : e.y;
+		window.DRAG_START_X = left ? x - left : x;
+		window.DRAG_START_Y = top ? y - top : y;
+
+		e.preventDefault();
+		return false;
+	};
+
+	const onMouseUp = () => {
+		window.DRAG_ELEMENT = null;
+	};
+
+	const onMouseMove = (e) => {
+		// Check if dragging is on.
+		if (window.DRAG_ELEMENT === null) {
+			return;
+		}
+
+		// Calculate the new position.
+		const $timerButton = window.DRAG_ELEMENT.querySelector('.timer__text');
+		let left = e.clientX - window.DRAG_START_X;
+		left = Math.max(0, left);
+		left = Math.min(left, window.innerWidth - $timerButton.clientWidth);
+		let top = e.clientY - window.DRAG_START_Y;
+		top = Math.max(0, top);
+		top = Math.min(top, window.innerHeight - $timerButton.clientHeight);
+
+		// Set the new position.
+		window.DRAG_ELEMENT.style.left = `${left}px`;
+		window.DRAG_ELEMENT.style.top = `${top}px`;
+		window.DRAG_ELEMENT.style.bottom = 'auto';
+		window.DRAG_ELEMENT.style.right = 'auto';
+	};
+
 	const onClickStart = () => {
 		const date = new Date();
 		const seconds = parseInt($button.getAttribute('data-timer'), 10);
@@ -82,9 +126,12 @@ function Timer($button) {
 		$timer.setAttribute('data-until', date);
 		$container.appendChild($timer);
 
-		const $text = document.createElement('div');
+		const $text = document.createElement('button');
 		$text.setAttribute('class', 'timer__text');
+		$text.setAttribute('type', 'button');
 		$text.innerText = secondsUntil(date);
+		$text.addEventListener('mousedown', onMouseDown);
+		$text.addEventListener('mouseup', onMouseUp);
 		$timer.appendChild($text);
 
 		if (window.TICK_INTERVAL) {
@@ -92,6 +139,12 @@ function Timer($button) {
 		}
 
 		window.TICK_INTERVAL = setInterval(tick, 500);
+
+		window.DRAG_ELEMENT = null;
+		window.DRAG_START_X = 0;
+		window.DRAG_START_Y = 0;
+		document.addEventListener('mousemove', onMouseMove);
+		document.addEventListener('keydown', onKeyDown);
 	};
 
 	const init = () => {
