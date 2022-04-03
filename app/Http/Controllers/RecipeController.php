@@ -16,9 +16,9 @@ class RecipeController extends Controller
 	public function show(Request $request, string $slug) : View // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClassBeforeLastUsed
 	{
 		$row = Recipe::where('slug', '=', $slug)->firstOrFail();
-		$recipes = Recipe::all();
+		$recipes = Recipe::orderBy('slug')->get();
 		return view('recipes/show')
-			->with('metaTitle', $row->title)
+			->with('metaTitle', $row->title . ' Recipe')
 			->with('recipes', $recipes)
 			->with('row', $row);
 	}

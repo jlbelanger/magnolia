@@ -1,0 +1,21 @@
+#article--auth {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 400px;
+	min-height: 100vh;
+	padding: 0 $padding;
+
+	#header {
+		height: auto;
+	}
+
+	h1 {
+		margin-top: 20px;
+	}
+
+	input:not([type='checkbox']) {
+		width: 100%;
+	}
+}

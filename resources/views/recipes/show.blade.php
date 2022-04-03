@@ -1,9 +1,11 @@
 @extends('layout')
 
 @section('content')
-	<h1>{{ $row->title }}</h1>
+	<h1>{{ $row->title }} Recipe</h1>
 
-	<p>{{ $row->summary }}</p>
+	@if ($row->summary)
+		{!! $row->summary() !!}
+	@endif
 
 	{!! $row->content() !!}
 @stop

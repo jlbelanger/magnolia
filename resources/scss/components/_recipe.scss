@@ -1,0 +1,90 @@
+$li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-height)) / 2);
+
+#article--recipe {
+	margin: 0 auto;
+	padding: $padding;
+	width: 100%;
+
+	input {
+		margin: 0 8px 0 0;
+	}
+
+	label {
+		font-size: $font-size;
+		line-height: $line-height;
+		padding: 8px 0;
+	}
+
+	li {
+		padding: $list-padding 0;
+		padding-left: #{$checkbox-size + $checkbox-margin-right};
+		padding-top: #{$list-padding + (($checkbox-size - ($font-size * $line-height)) / 2)};
+		position: relative;
+
+		& > input {
+			left: 0;
+			position: absolute;
+			top: $list-padding;
+		}
+
+		li {
+			padding-bottom: $sublist-padding;
+			padding-top: $li-padding-top;
+
+			& > input {
+				top: $sublist-padding;
+			}
+		}
+	}
+
+	ol,
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		ol,
+		ul {
+			margin-left: #{($checkbox-size / -2) - $checkbox-margin-right};
+			margin-top: $sublist-padding;
+		}
+	}
+
+	& > ol {
+		margin-top: #{$margin - $li-padding-top};
+
+		& > li {
+			border-top: 1px solid $gray;
+			counter-increment: step;
+			min-height: #{$checkbox-size + ($list-padding * 2)};
+
+			&:first-of-type {
+				border-top: 0;
+			}
+
+			& > label {
+				&::before {
+					content: counter(step) '. ';
+				}
+			}
+		}
+
+		ol > li {
+			counter-increment: substep;
+
+			& > label {
+				&::before {
+					content: counter(substep) '. ';
+				}
+			}
+		}
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		max-width: $content-width;
+
+		#side + & {
+			margin-left: $sidebar-width;
+		}
+	}
+}

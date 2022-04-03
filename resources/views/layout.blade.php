@@ -14,32 +14,44 @@
 	</head>
 	<body>
 		<main id="main">
-			<div id="side">
-				<header id="header">
-					<a href="/" id="title">Magnolia</a>
-					<img alt="" id="img" src="/favicon.svg">
-					@if (!empty($row))
-						<button id="menu-button" type="button">Menu</button>
-					@endif
-				</header>
-				<nav class="{{ empty($row) ? 'show' : '' }}" id="nav">
-					<input autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
-					<ul id="nav-list" data-filterable-list>
-						@foreach ($recipes as $recipe)
-							<li data-filterable-item class="nav-list__item">
-								<a
-									class="nav-list__link{{ !empty($row->slug) && $row->slug === $recipe->slug ? ' nav-list__link--active' : '' }}"
-									data-key="name"
-									href="/recipes/{{ $recipe->slug }}"
-								>
-									{{ $recipe->title }}
-								</a>
-							</li>
-						@endforeach
-					</ul>
-				</nav>
-			</div>
-			<article id="article">
+			@if (!empty($recipes))
+				<div id="side">
+					<header id="header">
+						<a href="/" id="title">Magnolia</a>
+						<img alt="" id="img" src="/favicon.svg">
+						@if (!empty($row))
+							<button id="menu-button" type="button">Menu</button>
+						@endif
+					</header>
+					<nav class="{{ empty($row) ? 'show' : '' }}" id="nav">
+						<div id="auth">
+							@if (Auth::user())
+								<form action="/logout" method="post">
+									@csrf
+									<button type="submit">Log out</button>
+								</form>
+							@else
+								<a class="link" href="/login">Login</a>
+							@endif
+						</div>
+						<input autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
+						<ul id="nav-list" data-filterable-list>
+							@foreach ($recipes as $recipe)
+								<li data-filterable-item class="nav-list__item">
+									<a
+										class="nav-list__link{{ !empty($row->slug) && $row->slug === $recipe->slug ? ' nav-list__link--active' : '' }}"
+										data-key="name"
+										href="/recipes/{{ $recipe->slug }}"
+									>
+										{{ $recipe->title }}
+									</a>
+								</li>
+							@endforeach
+						</ul>
+					</nav>
+				</div>
+			@endif
+			<article id="{{ !empty($recipes) ? 'article--recipe' : 'article--auth' }}">
 				@yield('content')
 			</article>
 		</main>

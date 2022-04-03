@@ -1,0 +1,33 @@
+input {
+	border: $input-border-width solid $gray;
+	border-radius: 0;
+	font-size: $font-size;
+	line-height: $input-line-height;
+	padding: $input-padding;
+
+	&[type='checkbox'] {
+		appearance: none;
+		background: $white;
+		border: 1px solid $gray;
+		border-radius: 0;
+		cursor: pointer;
+		height: $checkbox-size;
+		vertical-align: middle;
+		width: $checkbox-size;
+
+		&:checked {
+			&::after {
+				background-image: url('/assets/img/check.svg');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: $icon-size;
+				content: '';
+				display: block;
+				height: $checkbox-size;
+				line-height: $checkbox-size;
+				text-align: center;
+				width: $checkbox-size;
+			}
+		}
+	}
+}

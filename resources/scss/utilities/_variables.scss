@@ -1,13 +1,20 @@
 $dark-blue: #7b9db3;
 $blue: #c9eaff;
 $light-blue: #e3f4ff;
-$gray: #ccc;
+$darker-blue: scale-color($dark-blue, $lightness: -15%);
+$darkest-blue: scale-color($dark-blue, $lightness: -50%);
+$lighter-blue: scale-color($light-blue, $lightness: 50%);
+$darkish-blue: scale-color($blue, $lightness: -8%, $saturation: -50%);
+$gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
+
 $black: #000;
 $white: #fff;
+
 $focus-color: plum;
 
 $font-size: 18px;
 $padding: 12px;
+$margin: 20px;
 
 $button-size: 44px;
 
@@ -22,7 +29,7 @@ $image-height: 80px;
 
 $input-border-width: 1px;
 $input-line-height: 1;
-$input-padding: 8px;
+$input-padding: 12px;
 
 $line-height: 1.3;
 
@@ -34,5 +41,6 @@ $sublist-padding: 8px;
 
 $header-height: $image-height + ($padding * 2);
 $search-height: (($padding + $input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
+$button-height: (($input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
 
 $breakpoint: $content-width + $sidebar-width;

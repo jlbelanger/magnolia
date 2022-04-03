@@ -1,0 +1,16 @@
+.checkbox {
+	&:checked {
+		opacity: .6;
+
+		& + label {
+			opacity: .6;
+			text-decoration: line-through;
+
+			.timer-link {
+				border-color: transparent;
+				color: inherit;
+				text-decoration: line-through;
+			}
+		}
+	}
+}

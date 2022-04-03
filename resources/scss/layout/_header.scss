@@ -2,6 +2,9 @@
 	background: $light-blue;
 
 	@media (min-width: #{$breakpoint}) {
+		border-color: $darkish-blue;
+		border-style: solid;
+		border-width: 0 1px 0 0;
 		bottom: 0;
 		left: 0;
 		position: fixed;
@@ -14,11 +17,16 @@
 	align-items: center;
 	background: $dark-blue;
 	display: flex;
+	flex-direction: column;
 	height: $header-height;
 	justify-content: center;
 	padding: $padding;
 	position: relative;
 	text-align: center;
+
+	#auth & {
+		height: auto;
+	}
 }
 
 #title {
@@ -44,13 +52,43 @@
 	top: $padding;
 }
 
+#auth {
+	background: $darker-blue;
+	text-align: center;
+
+	a {
+		color: $white;
+	}
+
+	button {
+		background: transparent;
+		border-color: transparent;
+		text-decoration: underline;
+
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+
+	a,
+	button {
+		&:hover,
+		&:active,
+		&:focus {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
+
 #menu-button {
 	background-color: transparent;
 	background-image: url('/assets/img/menu.svg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: $icon-size;
-	border: 0;
 	font-size: 0;
 	height: $button-size;
 	margin-top: #{$button-size / -2};

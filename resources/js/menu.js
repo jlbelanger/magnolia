@@ -1,5 +1,7 @@
 const menuButton = document.getElementById('menu-button');
 
-menuButton.addEventListener('click', () => {
-	document.getElementById('nav').classList.toggle('show');
-});
+if (menuButton) {
+	menuButton.addEventListener('click', () => {
+		document.getElementById('nav').classList.toggle('show');
+	});
+}

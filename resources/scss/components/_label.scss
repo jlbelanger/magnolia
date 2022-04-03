@@ -1,0 +1,7 @@
+label {
+	cursor: pointer;
+}
+
+.required::after {
+	content: ' *';
+}

@@ -18,20 +18,20 @@
 .timer__text,
 .timer__stop {
 	background: $white;
-	border: 0;
+	border: 1px solid $gray;
 	border-radius: 100px;
 	box-shadow: 4px 4px 8px rgba($black, .2);
+	color: $black;
 	font-size: 32px;
-	line-height: 1;
 	margin: 20px;
 	padding: 20px 20px 16px;
 	text-align: center;
 	text-transform: uppercase;
-	width: 130px;
+	width: 150px;
 
 	@media (min-width: #{$breakpoint}) {
-		font-size: 44px;
-		width: 160px;
+		font-size: 40px;
+		width: 180px;
 	}
 }
 

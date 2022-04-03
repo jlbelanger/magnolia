@@ -27,7 +27,7 @@ class Recipe extends Model
 		foreach ($matches[0] as $i => $m) {
 			$step = $i + 1;
 			$pos = strpos($content, $m);
-			$text = '<li><input id="step-' . $step . '" type="checkbox"><label for="step-' . $step . '">' . $matches[1][$i] . '</label>';
+			$text = '<li><input class="checkbox" id="step-' . $step . '" type="checkbox"><label for="step-' . $step . '">' . $matches[1][$i] . '</label>';
 			$content = substr_replace($content, $text, $pos, strlen($m));
 		}
 
@@ -48,5 +48,11 @@ class Recipe extends Model
 		}
 
 		return $content;
+	}
+
+
+	public function summary() : string
+	{
+		return (new Parsedown())->setBreaksEnabled(true)->text($this->summary);
 	}
 }
