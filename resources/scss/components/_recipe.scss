@@ -12,10 +12,6 @@ $edit-button-width: 60px;
 		width: calc(100% - #{$edit-button-width + $button-size + 10px});
 	}
 
-	.button {
-		width: $edit-button-width;
-	}
-
 	input[type='checkbox'] {
 		margin: 0 8px 0 0;
 	}
@@ -113,4 +109,8 @@ $edit-button-width: 60px;
 	button {
 		margin-left: 8px;
 	}
+}
+
+#edit-button {
+	width: $edit-button-width;
 }

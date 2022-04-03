@@ -4,7 +4,7 @@
 	<h1>{{ $row->title }} Recipe</h1>
 
 	@if (Auth::user())
-		<a class="button admin" href="/recipes/{{ $row->id }}/edit">Edit</a>
+		<a class="button admin" href="/recipes/{{ $row->id }}/edit" id="edit-button">Edit</a>
 		<button aria-label="Add Note" class="admin" data-toggleable="#note-form" id="add-note-button" type="button">+</button>
 		<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
 			@csrf

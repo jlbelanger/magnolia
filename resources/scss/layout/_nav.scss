@@ -6,6 +6,10 @@
 	margin: $padding;
 	padding: $input-padding #{($input-padding * 2) + $icon-size} $input-padding $input-padding;
 	width: calc(100% - #{$padding * 2});
+
+	.no-js & {
+		display: none;
+	}
 }
 
 #nav {
@@ -28,6 +32,10 @@
 	@media (min-width: #{$breakpoint}) {
 		height: calc(100vh - #{$header-height + $button-height + $search-height});
 		overflow: auto;
+
+		.no-js & {
+			height: calc(100vh - #{$header-height + $button-height});
+		}
 	}
 }
 

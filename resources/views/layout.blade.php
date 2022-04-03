@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,8 @@
 		<meta property="og:description" content="Recipes.">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="icon" href="/favicon.svg">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220330">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20220331">
+		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
 	<body>
 		<a class="button" href="#article" id="skip">Skip to content</a>
@@ -62,6 +63,6 @@
 				@yield('content')
 			</article>
 		</main>
-		<script src="/assets/js/functions.min.js?20220330"></script>
+		<script src="/assets/js/functions.min.js?20220331"></script>
 	</body>
 </html>

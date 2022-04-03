@@ -16,7 +16,7 @@ function Timer($button) {
 			// xx:xx:xx
 			start = 11;
 		}
-		return date.toISOString().substr(start).replace(/\.\d+Z$/, '');
+		return date.toISOString().substring(start).replace(/\.\d+Z$/, '');
 	};
 
 	const secondsUntil = (date) => {
@@ -37,6 +37,17 @@ function Timer($button) {
 		if ($timers.length <= 0) {
 			clearInterval(window.TICK_INTERVAL);
 			window.TICK_INTERVAL = null;
+
+			window.DRAG_ELEMENT = null;
+			window.DRAG_START_X = 0;
+			window.DRAG_START_Y = 0;
+
+			document.removeEventListener('mousemove', onMouseMove);
+			document.removeEventListener('keydown', onKeyDown);
+			document.removeEventListener('touchstart', touchHandler, true);
+			document.removeEventListener('touchend', touchHandler, true);
+			document.removeEventListener('touchcancel', touchHandler, true);
+			document.removeEventListener('touchmove', onTouchMove, { passive: false });
 			return;
 		}
 
@@ -44,9 +55,10 @@ function Timer($button) {
 			const seconds = secondsUntil(Date.parse($timer.getAttribute('data-until')));
 			if (seconds === '') {
 				$timer.classList.remove('timer--on');
-				$timer.classList.add('timer--off');
 
 				const $text = $timer.querySelector('.timer__text');
+				$text.removeEventListener('mousedown', onMouseDown);
+				$text.removeEventListener('mouseup', onMouseUp);
 				$text.addEventListener('click', onClickStop);
 				$text.innerText = 'Stop';
 
