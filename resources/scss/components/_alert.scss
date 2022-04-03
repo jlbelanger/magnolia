@@ -1,6 +1,15 @@
 .alert {
 	background: $light-blue;
-	margin-left: #{$padding * -1};
-	margin-right: #{$padding * -1};
+	margin: $margin #{$padding * -1} 0;
 	padding: $padding;
+}
+
+.alert--danger {
+	background: $red;
+	color: $white;
+}
+
+.alert--success {
+	background: $green;
+	color: $white;
 }

@@ -5,7 +5,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	padding: $padding;
 	width: 100%;
 
-	input {
+	input[type='checkbox'] {
 		margin: 0 8px 0 0;
 	}
 

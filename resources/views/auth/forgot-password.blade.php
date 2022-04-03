@@ -2,20 +2,12 @@
 
 @section('content')
 	<header id="header">
-		<a href="/" id="title">Magnolia</a>
+		<a href="/" id="site-title">Magnolia</a>
 	</header>
 
 	<h1>Forgot your password?</h1>
 
-	@if (session('status'))
-		<p class="alert">{{ session('status') }}</p>
-	@endif
-
-	@if ($errors->any())
-		@foreach ($errors->all() as $error)
-			<p class="alert">{{ $error }}</p>
-		@endforeach
-	@endif
+	@include('shared.errors', ['errors' => $errors])
 
 	<form action="/forgot-password" method="post">
 		@csrf

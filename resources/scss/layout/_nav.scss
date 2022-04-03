@@ -70,12 +70,11 @@
 	}
 }
 
-[data-filter-hide^='('] {
-	display: none;
-}
+#no-results {
+	margin-top: 0;
+	padding: $padding;
 
-.no-results::after {
-	content: 'No results.';
-	display: block;
-	padding: #{$padding / 2} $padding $padding;
+	#nav-list + & {
+		padding-top: #{$padding / 2};
+	}
 }

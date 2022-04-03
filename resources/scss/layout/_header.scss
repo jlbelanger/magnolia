@@ -29,7 +29,7 @@
 	}
 }
 
-#title {
+#site-title {
 	background-image: url('/assets/img/title.svg');
 	background-position: center;
 	background-repeat: no-repeat;
@@ -80,6 +80,10 @@
 			position: relative;
 			z-index: 1;
 		}
+	}
+
+	form {
+		display: inline-block;
 	}
 }
 

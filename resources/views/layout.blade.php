@@ -17,37 +17,41 @@
 			@if (!empty($recipes))
 				<div id="side">
 					<header id="header">
-						<a href="/" id="title">Magnolia</a>
+						<a href="/" id="site-title">Magnolia</a>
 						<img alt="" id="img" src="/favicon.svg">
-						@if (!empty($row))
+						@if (!Request::is('/'))
 							<button id="menu-button" type="button">Menu</button>
 						@endif
 					</header>
-					<nav class="{{ empty($row) ? 'show' : '' }}" id="nav">
+					<nav class="{{ Request::is('/') ? 'show' : '' }}" id="nav">
 						<div id="auth">
 							@if (Auth::user())
 								<form action="/logout" method="post">
 									@csrf
-									<button type="submit">Log out</button>
+									<button type="submit">Logout</button>
 								</form>
+								<a class="link" href="/recipes/create">Add Recipe</a>
 							@else
 								<a class="link" href="/login">Login</a>
 							@endif
 						</div>
-						<input autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
-						<ul id="nav-list" data-filterable-list>
-							@foreach ($recipes as $recipe)
-								<li data-filterable-item class="nav-list__item">
-									<a
-										class="nav-list__link{{ !empty($row->slug) && $row->slug === $recipe->slug ? ' nav-list__link--active' : '' }}"
-										data-key="name"
-										href="/recipes/{{ $recipe->slug }}"
-									>
-										{{ $recipe->title }}
-									</a>
-								</li>
-							@endforeach
-						</ul>
+						@if ($recipes->isNotEmpty())
+							<input autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
+							<ul id="nav-list" data-filterable-list>
+								@foreach ($recipes as $recipe)
+									<li data-filterable-item class="nav-list__item">
+										<a
+											class="nav-list__link{{ !empty($row->slug) && $row->slug === $recipe->slug ? ' nav-list__link--active' : '' }}"
+											data-key="name"
+											href="{{ $recipe->url() }}"
+										>
+											{{ $recipe->title }}
+										</a>
+									</li>
+								@endforeach
+							</ul>
+						@endif
+						<p id="no-results" style="{{ $recipes->isNotEmpty() ? 'display:none' : '' }}">No recipes found.</p>
 					</nav>
 				</div>
 			@endif

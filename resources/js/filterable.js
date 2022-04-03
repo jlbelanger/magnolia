@@ -1,13 +1,14 @@
 function Filterable($list) {
 	const $inputs = document.querySelectorAll('[data-filterable-input]');
 	const $items = $list.querySelectorAll('[data-filterable-item]');
+	const $noResults = document.getElementById('no-results');
 
 	const afterFilter = () => {
 		const hasVisible = Array.from($items).some(($item) => ($item.style.display !== 'none'));
 		if (hasVisible) {
-			$list.classList.remove('no-results');
+			$noResults.style.display = 'none';
 		} else {
-			$list.classList.add('no-results');
+			$noResults.style.display = '';
 		}
 	};
 

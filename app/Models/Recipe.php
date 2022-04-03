@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Parsedown;
 
 class Recipe extends Model
@@ -14,8 +16,10 @@ class Recipe extends Model
 	protected $fillable = [
 		'title',
 		'slug',
+		'summary',
 		'content',
 		'notes',
+		'is_private',
 	];
 
 	public function content() : string
@@ -50,9 +54,36 @@ class Recipe extends Model
 		return $content;
 	}
 
+	public function rules(string $id = '') : array
+	{
+		$unique = $id ? ',' . $id : '';
+		return [
+			'title' => ['required', 'max:255', 'unique:recipes,title' . $unique],
+			'slug' => ['required', 'max:255', 'alpha_dash', 'unique:recipes,slug' . $unique],
+			'content' => ['required'],
+			'is_private' => ['boolean'],
+		];
+	}
 
 	public function summary() : string
 	{
+		if (!$this->summary) {
+			return '';
+		}
 		return (new Parsedown())->setBreaksEnabled(true)->text($this->summary);
+	}
+
+	public function url() : string
+	{
+		return '/recipes/' . $this->slug;
+	}
+
+	public static function visible() : Collection
+	{
+		$rows = self::orderBy('slug');
+		if (!Auth::user()) {
+			$rows = $rows->where('is_private', '=', '0');
+		}
+		return $rows->get();
 	}
 }

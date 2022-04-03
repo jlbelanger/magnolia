@@ -1,9 +1,18 @@
-button {
+button,
+.button {
 	background: $dark-blue;
 	border: 1px solid $dark-blue;
 	color: $white;
 	cursor: pointer;
+	display: inline-block;
 	font-size: $font-size;
 	line-height: $input-line-height;
 	padding: $input-padding;
+	text-decoration: none;
+}
+
+.button--danger {
+	background: $red;
+	border-color: $red;
+	color: $white;
 }

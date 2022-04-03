@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Http\Kernel;
+use App\Models\Recipe;
+use App\Observers\RecipeObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
 		if ($this->app->environment() !== 'local') {
 			$kernel->appendMiddlewareToGroup('api', \Illuminate\Routing\Middleware\ThrottleRequests::class);
 		}
+
+		Recipe::observe(RecipeObserver::class);
 	}
 }
