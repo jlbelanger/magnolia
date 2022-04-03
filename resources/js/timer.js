@@ -50,16 +50,7 @@ function Timer($button) {
 				$text.addEventListener('click', onClickStop);
 				$text.innerText = 'Stop';
 
-				const $audio = document.createElement('audio');
-				$audio.setAttribute('loop', true);
-				$timer.appendChild($audio);
-
-				const $source = document.createElement('source');
-				$source.setAttribute('src', '/assets/sounds/magnolia-simms.mp3');
-				$source.setAttribute('type', 'audio/mpeg');
-				$audio.appendChild($source);
-
-				$audio.play();
+				$timer.querySelector('audio').play();
 
 				return;
 			}
@@ -178,6 +169,15 @@ function Timer($button) {
 		$text.addEventListener('mousedown', onMouseDown);
 		$text.addEventListener('mouseup', onMouseUp);
 		$timer.appendChild($text);
+
+		const $audio = document.createElement('audio');
+		$audio.setAttribute('loop', true);
+		$timer.appendChild($audio);
+
+		const $source = document.createElement('source');
+		$source.setAttribute('src', '/assets/sounds/magnolia-simms.mp3');
+		$source.setAttribute('type', 'audio/mpeg');
+		$audio.appendChild($source);
 
 		if (window.TICK_INTERVAL) {
 			return;
