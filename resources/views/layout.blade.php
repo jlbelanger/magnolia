@@ -10,7 +10,7 @@
 		<meta property="og:description" content="Recipes.">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="icon" href="/favicon.svg">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220329">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20220330">
 	</head>
 	<body>
 		<a class="button" href="#article" id="skip">Skip to content</a>
@@ -62,6 +62,6 @@
 				@yield('content')
 			</article>
 		</main>
-		<script src="/assets/js/functions.min.js?20220329"></script>
+		<script src="/assets/js/functions.min.js?20220330"></script>
 	</body>
 </html>
