@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="{{ url('/assets/css/style.min.css?20220329') }}">
 	</head>
 	<body>
+		<a class="button" href="#article" id="skip">Skip to content</a>
 		<main id="main">
 			@if (!empty($recipes))
 				<div id="side">
@@ -55,7 +56,7 @@
 					</nav>
 				</div>
 			@endif
-			<article id="{{ !empty($recipes) ? 'article--recipe' : 'article--auth' }}">
+			<article class="{{ !empty($recipes) ? 'article--recipe' : 'article--auth' }}" id="article">
 				@yield('content')
 			</article>
 		</main>
