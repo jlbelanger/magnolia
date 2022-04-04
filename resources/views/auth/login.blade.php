@@ -14,12 +14,15 @@
 
 		<p>
 			<label class="required" for="username">Username</label>
-			<input autofocus id="username" name="username" required type="text" value="{{ old('username') }}" />
+			<input autocapitalize="none" autocomplete="username" autofocus id="username" name="username" required type="text" value="{{ old('username') }}" />
 		</p>
 
 		<p>
 			<label class="required" for="password">Password</label>
-			<input id="password" name="password" required type="password" />
+			<span class="password-container">
+				<input autocomplete="current-password" class="password-input" id="password" name="password" required type="password" />
+				<button class="password-button" data-toggle-password type="button">Show</button>
+			</span>
 		</p>
 
 		<p>

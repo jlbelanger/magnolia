@@ -14,7 +14,7 @@
 
 		<p>
 			<label class="required" for="email">Email</label>
-			<input autofocus id="email" name="email" required type="email" value="{{ old('email') }}" />
+			<input autocomplete="email" autofocus id="email" name="email" required type="email" value="{{ old('email') }}" />
 		</p>
 
 		<p>

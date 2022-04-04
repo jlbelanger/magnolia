@@ -2,6 +2,7 @@ input,
 textarea {
 	border: $input-border-width solid $gray;
 	border-radius: 0;
+	box-shadow: none;
 	font-size: $font-size;
 	line-height: $input-line-height;
 	padding: $input-padding;
@@ -36,4 +37,24 @@ input[type='checkbox'] {
 
 .textarea--large {
 	height: 50vh;
+}
+
+.password-container {
+	display: flex;
+}
+
+input.password-input {
+	border-right-color: transparent;
+
+	.article--auth & {
+		width: calc(100% - 70px);
+	}
+}
+
+.password-button {
+	width: 70px;
+
+	.no-js & {
+		display: none;
+	}
 }

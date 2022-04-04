@@ -6,10 +6,10 @@ $edit-button-width: 60px;
 	padding: $padding;
 	width: 100%;
 
-	h1 {
+	.shrink {
 		display: inline-block;
 		vertical-align: middle;
-		width: calc(100% - #{$edit-button-width + $button-size + 10px});
+		width: calc(100% - #{$edit-button-width + $button-size + 16px});
 	}
 
 	input[type='checkbox'] {

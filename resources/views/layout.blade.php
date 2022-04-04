@@ -10,7 +10,7 @@
 		<meta property="og:description" content="Recipes.">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="icon" href="/favicon.svg">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220331">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20220401">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
 	<body>
@@ -59,10 +59,12 @@
 					</nav>
 				</div>
 			@endif
-			<article class="{{ !empty($recipes) ? 'article--recipe' : 'article--auth' }}" id="article">
-				@yield('content')
-			</article>
+			@if (!Request::is('/'))
+				<article class="{{ !empty($recipes) ? 'article--recipe' : 'article--auth' }}" id="article">
+					@yield('content')
+				</article>
+			@endif
 		</main>
-		<script src="/assets/js/functions.min.js?20220331"></script>
+		<script src="/assets/js/functions.min.js?20220401"></script>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	<h1>{{ $row->title }} Recipe</h1>
+	<h1 class="{{ Auth::user() ? 'shrink' : '' }}">{{ $row->title }} Recipe</h1>
 
 	@if (Auth::user())
 		<a class="button admin" href="/recipes/{{ $row->id }}/edit" id="edit-button">Edit</a>
