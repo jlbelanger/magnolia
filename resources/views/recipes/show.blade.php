@@ -4,9 +4,20 @@
 	<h1 class="{{ Auth::user() ? 'shrink' : '' }}">{{ $row->title }} Recipe</h1>
 
 	@if (Auth::user())
-		<a class="button admin" href="/recipes/{{ $row->id }}/edit" id="edit-button">Edit</a>
-		<button aria-label="Add Note" class="admin" data-toggleable="#note-form" data-toggleable-body-class="show-note" id="add-note-button" type="button">+</button>
-		<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
+		<a class="button admin" href="/recipes/{{ $row->id }}/edit" id="edit-button">
+			Edit
+		</a><button
+			aria-label="Add Note"
+			class="admin"
+			data-sticky
+			data-sticky-top="8"
+			data-toggleable="#note-form"
+			data-toggleable-body-class="show-note"
+			id="add-note-button"
+			type="button"
+		>
+			+
+		</button><form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
 			@csrf
 			@method('PUT')
 			<textarea id="notes" name="notes" rows="5">{{ $row->notes }}</textarea>
