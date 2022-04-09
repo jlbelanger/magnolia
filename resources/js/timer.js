@@ -28,6 +28,15 @@ function Timer($button) {
 		return prettyTime(seconds);
 	};
 
+	const secondsSince = (date) => {
+		const now = new Date();
+		const seconds = now.getTime() - date;
+		if (seconds <= 0) {
+			return '';
+		}
+		return prettyTime(seconds);
+	};
+
 	const onClickStop = (e) => {
 		e.target.parentNode.remove();
 	};
@@ -52,6 +61,13 @@ function Timer($button) {
 		}
 
 		$timers.forEach(($timer) => {
+			const dateSince = $timer.getAttribute('data-since');
+			if (dateSince) {
+				const seconds = secondsSince(Date.parse(dateSince));
+				$timer.querySelector('.timer__text').innerText = seconds;
+				return;
+			}
+
 			const seconds = secondsUntil(Date.parse($timer.getAttribute('data-until')));
 			if (seconds === '') {
 				$timer.classList.remove('timer--on');
@@ -165,31 +181,46 @@ function Timer($button) {
 	const onClickStart = () => {
 		const date = new Date();
 		const seconds = parseInt($button.getAttribute('data-timer'), 10);
+		const isStopwatch = seconds === 0;
 		date.setSeconds(date.getSeconds() + seconds);
 
 		const $container = document.getElementById('timer-container');
 
 		const $timer = document.createElement('div');
 		$timer.setAttribute('class', 'timer timer--on');
-		$timer.setAttribute('data-until', date);
+		if (isStopwatch) {
+			$timer.setAttribute('data-since', date);
+		} else {
+			$timer.setAttribute('data-until', date);
+		}
 		$container.appendChild($timer);
 
 		const $text = document.createElement('button');
 		$text.setAttribute('class', 'timer__text');
 		$text.setAttribute('type', 'button');
-		$text.innerText = secondsUntil(date);
+		$text.innerText = isStopwatch ? '0:00' : secondsUntil(date);
 		$text.addEventListener('mousedown', onMouseDown);
 		$text.addEventListener('mouseup', onMouseUp);
 		$timer.appendChild($text);
 
-		const $audio = document.createElement('audio');
-		$audio.setAttribute('loop', true);
-		$timer.appendChild($audio);
+		if (!isStopwatch) {
+			const $audio = document.createElement('audio');
+			$audio.setAttribute('loop', true);
+			$timer.appendChild($audio);
 
-		const $source = document.createElement('source');
-		$source.setAttribute('src', '/assets/sounds/magnolia-simms.mp3');
-		$source.setAttribute('type', 'audio/mpeg');
-		$audio.appendChild($source);
+			const $source = document.createElement('source');
+			$source.setAttribute('src', '/assets/sounds/magnolia-simms.mp3');
+			$source.setAttribute('type', 'audio/mpeg');
+			$audio.appendChild($source);
+		}
+
+		const $removeButton = document.createElement('button');
+		$removeButton.setAttribute('aria-label', 'Stop');
+		$removeButton.setAttribute('class', 'timer__stop');
+		$removeButton.setAttribute('type', 'button');
+		$removeButton.innerText = '×';
+		$removeButton.addEventListener('click', onClickStop);
+		$timer.appendChild($removeButton);
 
 		if (window.TICK_INTERVAL) {
 			return;

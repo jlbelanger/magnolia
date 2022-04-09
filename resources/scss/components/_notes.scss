@@ -1,12 +1,23 @@
-#add-note-button {
+.sticky-container {
+	display: inline-block;
+	white-space: nowrap;
+	width: #{($button-size * 2) + $button-margin};
+}
+
+.sticky {
+	display: inline-block;
+	top: $padding;
+	z-index: 998;
+}
+
+.floating-button {
 	background: $darkest-blue;
 	border-color: $darkest-blue;
 	border-radius: 100px;
 	box-shadow: 4px 4px 8px rgba($black, .2);
 	height: $button-size;
-	top: 8px;
+	margin-right: $button-margin;
 	width: $button-size;
-	z-index: 998;
 
 	&:focus {
 		box-shadow: 0 0 0 $focus-width $focus-color, 4px 4px 8px rgba($black, .2);
@@ -15,6 +26,10 @@
 	.no-js & {
 		display: none;
 	}
+}
+
+#add-note-button {
+	margin-right: 0;
 }
 
 #note-form {

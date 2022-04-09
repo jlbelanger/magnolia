@@ -10,7 +10,7 @@
 		<meta property="og:description" content="Recipes.">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="icon" href="/favicon.svg">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220402">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20220403">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
 	<body>
@@ -65,6 +65,6 @@
 				</article>
 			@endif
 		</main>
-		<script src="/assets/js/functions.min.js?20220402"></script>
+		<script src="/assets/js/functions.min.js?20220403"></script>
 	</body>
 </html>
