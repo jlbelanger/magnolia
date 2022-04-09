@@ -25,6 +25,13 @@ class Recipe extends Model
 	public function content() : string
 	{
 		$content = $this->content;
+
+		if (!Auth::user()) {
+			$content = str_replace("\r\n", "\n", $content);
+			$content = preg_replace("/\n\s*\*[^\*]+\*\n/", "\n", $content);
+			$content = preg_replace('/\s?\*[^\*]+\*/', '', $content);
+		}
+
 		$content = (new Parsedown())->setBreaksEnabled(true)->text($content);
 
 		preg_match_all('/<li>(.+)/', $content, $matches);
