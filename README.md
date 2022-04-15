@@ -34,6 +34,9 @@ php artisan migrate
 
 # Set permissions
 chown -R www-data:www-data storage
+
+# Create account with username "test" and password "test" (or reset existing account password to "test")
+php artisan reset-auth
 ```
 
 ### Run
