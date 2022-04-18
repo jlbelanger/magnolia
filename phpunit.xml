@@ -15,12 +15,16 @@
 		</include>
 	</coverage>
 	<testsuites>
+		<!-- <testsuite name="Unit">
+			<directory suffix="Test.php">./tests/Unit</directory>
+		</testsuite> -->
 		<testsuite name="Feature">
 			<directory suffix="Test.php">./tests/Feature</directory>
 		</testsuite>
 	</testsuites>
 	<php>
 		<server name="APP_ENV" value="testing"/>
+		<server name="APP_URL" value="http://localhost"/>
 		<server name="BCRYPT_ROUNDS" value="4"/>
 		<server name="CACHE_DRIVER" value="array"/>
 		<server name="DB_CONNECTION" value="sqlite"/>

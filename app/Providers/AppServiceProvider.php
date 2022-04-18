@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
 	/**
-	 * Register any application services.
+	 * Registers any application services.
 	 *
 	 * @return void
 	 */
@@ -20,19 +20,21 @@ class AppServiceProvider extends ServiceProvider
 	}
 
 	/**
-	 * Bootstrap any application services.
+	 * Bootstraps any application services.
 	 *
 	 * @param  Kernel $kernel
 	 * @return void
 	 */
-	public function boot(Kernel $kernel)
+	public function boot(Kernel $kernel) // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
 	{
 		if (env('DISABLE_DEBUGBAR') === '1') {
 			\Debugbar::disable();
 		}
 
-		if ($this->app->environment() !== 'local') {
-			$kernel->appendMiddlewareToGroup('api', \Illuminate\Routing\Middleware\ThrottleRequests::class);
+		if (env('LOG_DATABASE_QUERIES') === '1') {
+			DB::listen(function ($query) {
+				Log::info($query->sql, $query->bindings, $query->time);
+			});
 		}
 
 		Recipe::observe(RecipeObserver::class);
