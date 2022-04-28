@@ -11,7 +11,7 @@
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-		<link rel="icon" href="/favicon.ico">
+		<link rel="icon" href="/favicon.png">
 		<link rel="stylesheet" href="/assets/css/style.min.css?20220403">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
