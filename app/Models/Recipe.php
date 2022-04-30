@@ -42,19 +42,26 @@ class Recipe extends Model
 			$content = substr_replace($content, $text, $pos, strlen($m));
 		}
 
-		preg_match_all('/([0-9\.]+) (second|minute|hour)s?/', $content, $matches);
+		preg_match_all('/( [0-9\.]+-| )([0-9\.]+) (second|minute|hour)s?/', $content, $matches);
 		$done = [];
 		foreach ($matches[0] as $i => $m) {
 			if (in_array($m, $done)) {
 				continue;
 			}
-			$num = $matches[1][$i];
-			if ($matches[2][$i] === 'minute') {
+			$num = $matches[2][$i];
+			if (!empty(trim($matches[1][$i]))) {
+				$num = trim($matches[1][$i], '- ');
+			}
+			if ($matches[3][$i] === 'minute') {
 				$num *= 60;
-			} elseif ($matches[2][$i] === 'hour') {
+			} elseif ($matches[3][$i] === 'hour') {
 				$num *= 60 * 60;
 			}
-			$content = str_replace($m, '<button class="timer-link" data-timer="' . $num . '" type="button">' . $m . '</button>', $content);
+			$content = str_replace(
+				$m,
+				' <button class="timer-link" data-timer="' . $num . '" type="button">' . trim($m) . '</button>',
+				$content
+			);
 			$done[] = $m;
 		}
 
