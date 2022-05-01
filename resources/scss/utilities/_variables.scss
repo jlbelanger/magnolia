@@ -39,9 +39,27 @@ $input-padding: 12px;
 
 $list-padding: 12px;
 
+$note-form-height: 133px;
+
 $sidebar-width: 300px;
 
 $sublist-padding: 8px;
+
+$toast-background-color: $darker-blue !default;
+$toast-close-font-size: 18px !default;
+$toast-close-icon: '\00d7' !default; // &times;
+$toast-close-margin-left: 8px !default;
+$toast-close-size: 32px !default;
+$toast-margin: 16px !default;
+$toast-padding: 16px !default;
+$toast-text-color: $white !default;
+$toast-zindex: 999 !default;
+
+$toast-error-background-color: $red !default;
+$toast-error-text-color: $white !default;
+
+$toast-success-background-color: $green !default;
+$toast-success-text-color: $white !default;
 
 $button-height: (($input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
 $header-height: $image-height + ($padding * 2);

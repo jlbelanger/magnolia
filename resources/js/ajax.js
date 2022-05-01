@@ -15,13 +15,13 @@ function Ajax($form) {
 		fetch($form.getAttribute('action'), options)
 			.then((response) => {
 				if (response.status === 200) {
-					document.getElementById('add-note-button').click();
+					Toast.show('Saved successfully.', { class: 'toast--success' });
 				} else {
 					throw response;
 				}
 			})
 			.catch(() => {
-				window.alert('There was an error saving your notes.'); // eslint-disable-line no-alert
+				Toast.show('There was an error saving your notes.', { class: 'toast--error' });
 			});
 	});
 }
