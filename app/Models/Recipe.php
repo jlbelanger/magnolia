@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Parsedown;
 
 class Recipe extends Model
@@ -30,6 +31,7 @@ class Recipe extends Model
 		$content = $this->addCheckboxes($content);
 		$content = $this->addTimers($content);
 		$content = $this->addLinkTarget($content);
+		$content = $this->addHeadingAnchors($content);
 		return $content;
 	}
 
@@ -58,6 +60,33 @@ class Recipe extends Model
 	protected function addLinkTarget(string $content) : string
 	{
 		$content = str_replace('<a href', '<a target="_blank" href', $content);
+		return $content;
+	}
+
+	protected function addHeadingAnchors(string $content) : string
+	{
+		preg_match_all('/<h([1-6])>([^\n]+)<\/h[1-6]>/', $content, $matches);
+		$headings = [];
+
+		foreach ($matches[0] as $i => $line) {
+			$j = $matches[1][$i];
+			$subtitle = $matches[2][$i];
+			$slug = Str::slug(preg_replace('/&[A-Za-z0-9]+;/', '', strip_tags($subtitle)));
+			$slugSuffix = '';
+			if (!empty($headings[$slug])) {
+				$slugSuffix = '-' . ($headings[$slug] + 1);
+			}
+
+			$newLine = '<h' . $j . ' id="' . $slug . $slugSuffix . '">' . $subtitle . '</h' . $j . '>';
+			$oldLine = str_replace('/', '\/', preg_quote($line));
+			$content = preg_replace('/' . $oldLine . '/', $newLine, $content, 1);
+
+			if (empty($headings[$slug])) {
+				$headings[$slug] = 0;
+			}
+			$headings[$slug]++;
+		}
+
 		return $content;
 	}
 
