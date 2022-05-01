@@ -52,7 +52,7 @@
 											data-key="name"
 											href="{{ $recipe->url() }}"
 										>
-											{{ $recipe->title }}
+											{{ $recipe->title . ($recipe->is_private ? ' *' : '') }}
 										</a>
 									</li>
 								@endforeach
