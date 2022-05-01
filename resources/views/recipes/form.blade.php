@@ -10,7 +10,7 @@
 
 <p>
 	<label class="required" for="slug">Slug</label>
-	<input id="slug" name="slug" required type="text" value="{{ old('slug', !empty($row) ? $row->slug : '') }}" />
+	<input data-slug="title" id="slug" name="slug" required type="text" value="{{ old('slug', !empty($row) ? $row->slug : '') }}" />
 	@error('slug')
 		<span class="error">{{ $message }}</span>
 	@enderror
