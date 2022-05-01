@@ -29,6 +29,7 @@ class Recipe extends Model
 		$content = (new Parsedown())->setBreaksEnabled(true)->text($content);
 		$content = $this->addCheckboxes($content);
 		$content = $this->addTimers($content);
+		$content = $this->addLinkTarget($content);
 		return $content;
 	}
 
@@ -51,6 +52,12 @@ class Recipe extends Model
 			$text = '<li><input class="checkbox" id="step-' . $step . '" type="checkbox"><label for="step-' . $step . '">' . $matches[1][$i] . '</label>';
 			$content = substr_replace($content, $text, $pos, strlen($m));
 		}
+		return $content;
+	}
+
+	protected function addLinkTarget(string $content) : string
+	{
+		$content = str_replace('<a href', '<a target="_blank" href', $content);
 		return $content;
 	}
 
@@ -98,7 +105,9 @@ class Recipe extends Model
 		if (!$this->summary) {
 			return '';
 		}
-		return (new Parsedown())->setBreaksEnabled(true)->text($this->summary);
+		$summary = (new Parsedown())->setBreaksEnabled(true)->text($this->summary);
+		$summary = $this->addLinkTarget($summary);
+		return $summary;
 	}
 
 	public function url() : string
