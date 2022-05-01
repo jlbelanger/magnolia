@@ -25,15 +25,25 @@ class Recipe extends Model
 	public function content() : string
 	{
 		$content = $this->content;
+		$content = $this->hideNotes($content);
+		$content = (new Parsedown())->setBreaksEnabled(true)->text($content);
+		$content = $this->addCheckboxes($content);
+		$content = $this->addTimers($content);
+		return $content;
+	}
 
+	protected function hideNotes(string $content) : string
+	{
 		if (!Auth::user()) {
 			$content = str_replace("\r\n", "\n", $content);
 			$content = preg_replace("/\n\s*\*[^\*]+\*\n/", "\n", $content);
 			$content = preg_replace('/\s?\*[^\*]+\*/', '', $content);
 		}
+		return $content;
+	}
 
-		$content = (new Parsedown())->setBreaksEnabled(true)->text($content);
-
+	protected function addCheckboxes(string $content) : string
+	{
 		preg_match_all('/<li>(.+)/', $content, $matches);
 		foreach ($matches[0] as $i => $m) {
 			$step = $i + 1;
@@ -41,7 +51,11 @@ class Recipe extends Model
 			$text = '<li><input class="checkbox" id="step-' . $step . '" type="checkbox"><label for="step-' . $step . '">' . $matches[1][$i] . '</label>';
 			$content = substr_replace($content, $text, $pos, strlen($m));
 		}
+		return $content;
+	}
 
+	protected function addTimers(string $content) : string
+	{
 		preg_match_all('/( [0-9\.]+-| )([0-9\.]+) (second|minute|hour)s?/', $content, $matches);
 		$done = [];
 		foreach ($matches[0] as $i => $m) {
@@ -64,7 +78,6 @@ class Recipe extends Model
 			);
 			$done[] = $m;
 		}
-
 		return $content;
 	}
 
