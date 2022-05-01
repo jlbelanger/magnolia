@@ -12,8 +12,11 @@ function Ajax($form) {
 			},
 		};
 
+		const $spinner = Spinner.show();
+
 		fetch($form.getAttribute('action'), options)
 			.then((response) => {
+				Spinner.hide($spinner);
 				if (response.status === 200) {
 					Toast.show('Saved successfully.', { class: 'toast--success' });
 				} else {
@@ -21,6 +24,7 @@ function Ajax($form) {
 				}
 			})
 			.catch(() => {
+				Spinner.hide($spinner);
 				Toast.show('There was an error saving your notes.', { class: 'toast--error' });
 			});
 	});
