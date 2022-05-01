@@ -4,7 +4,6 @@
 	justify-content: center;
 	margin: 0 auto;
 	max-width: 400px;
-	min-height: 100vh;
 	padding: 0 $padding;
 
 	#header {
@@ -17,5 +16,9 @@
 
 	input:not([type='checkbox']) {
 		width: 100%;
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		min-height: 100vh;
 	}
 }

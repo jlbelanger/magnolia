@@ -24,8 +24,9 @@
 	position: relative;
 	text-align: center;
 
-	#auth & {
+	.article--auth & {
 		height: auto;
+		margin-top: $padding;
 	}
 }
 
@@ -36,7 +37,7 @@
 	background-size: contain;
 	display: block;
 	font-size: 0;
-	height: 47px;
+	height: 40px;
 	position: relative;
 	width: 140px;
 	z-index: 1;
