@@ -13,6 +13,7 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 		<link rel="icon" href="/favicon.png">
 		<link rel="stylesheet" href="/assets/css/style.min.css?20220501">
+		<link rel="manifest" href="/manifest.json">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
 	<body>

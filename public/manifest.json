@@ -1,0 +1,17 @@
+{
+	"name": "Magnolia",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "32x32 16x16",
+			"type": "image/x-icon"
+		},
+		{
+			"src": "apple-touch-icon.png",
+			"type": "image/png",
+			"sizes": "180x180"
+		}
+	],
+	"start_url": "/",
+	"display": "standalone"
+}
