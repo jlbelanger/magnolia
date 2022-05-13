@@ -16,7 +16,7 @@ function Filterable($list) {
 		s.toLowerCase()
 			.replace(/ & /g, '-and-')
 			.replace(/<[^>]+>/g, '')
-			.replace(/['’]/g, '')
+			.replace(/['’.]/g, '')
 			.replace(/[^a-z0-9-]+/g, '-')
 			.replace(/^-+/, '')
 			.replace(/-+$/, '')

@@ -68,6 +68,6 @@
 				</article>
 			@endif
 		</main>
-		<script src="/assets/js/functions.min.js?20220501"></script>
+		<script src="/assets/js/functions.min.js?20220512"></script>
 	</body>
 </html>
