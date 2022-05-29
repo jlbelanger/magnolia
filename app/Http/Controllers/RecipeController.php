@@ -90,10 +90,27 @@ class RecipeController extends Controller
 		$request->validate(Recipe::rules($id));
 		$input = $request->input();
 		$input['is_private'] = $request->has('is_private');
+
+		if ($request->hasFile('filename')) {
+			$file = $request->file('filename');
+			$oldPath = $file->getClientOriginalName();
+			$filename = !empty($input['slug']) ? $input['slug'] : $row->slug;
+			$pathInfo = pathinfo($oldPath);
+			$newFilename = $filename . '.' . $pathInfo['extension'];
+			$file->move(public_path('uploads'), $newFilename);
+			$input['filename'] = $newFilename;
+		} elseif ($request->has('remove_filename')) {
+			$path = public_path('uploads/' . $row->filename);
+			if (unlink($path)) {
+				$input['filename'] = '';
+			}
+		}
+
 		$row->update($input);
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Recipe updated successfully.']);
 		}
+
 		return back()
 			->with('message', 'Recipe updated successfully.')
 			->with('status', 'success');

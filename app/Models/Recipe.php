@@ -17,6 +17,7 @@ class Recipe extends Model
 	protected $fillable = [
 		'title',
 		'slug',
+		'filename',
 		'summary',
 		'content',
 		'notes',

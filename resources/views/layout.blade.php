@@ -7,12 +7,15 @@
 		<meta name="description" content="Recipes.">
 		<meta name="keywords" content="recipes, baking, cookies, cake">
 		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia">
+		@if (!empty($row->filename))
+			<meta property="og:image" content="{{ url('/uploads/' . $row->filename) }}">
+		@endif
 		<meta property="og:description" content="Recipes.">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 		<link rel="icon" href="/favicon.png">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220501">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20220529">
 		<link rel="manifest" href="/manifest.json">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>

@@ -90,6 +90,11 @@ $edit-button-width: 60px;
 	}
 }
 
+#recipe-image {
+	height: auto;
+	max-width: 100%;
+}
+
 #recipe-header {
 	.admin {
 		text-align: right;
@@ -109,4 +114,11 @@ $edit-button-width: 60px;
 #edit-button {
 	margin-right: $button-margin;
 	width: $edit-button-width;
+}
+
+#filename-preview {
+	height: 225px;
+	margin-top: 8px;
+	vertical-align: bottom;
+	width: 400px;
 }

@@ -17,6 +17,27 @@
 </p>
 
 <p>
+	<label for="filename">Image</label>
+	<input accept="image/*" id="filename" name="filename" type="file" />
+	@error('filename')
+		<span class="error">{{ $message }}</span>
+	@enderror
+	@if (!empty($row) && $row->filename)
+		<br />
+		<img alt="" id="filename-preview" src="/uploads/{{ $row->filename }}" />
+		<label>
+			<input
+				id="remove_filename"
+				name="remove_filename"
+				type="checkbox"
+				value="1"
+			/>
+			Remove image?
+		</label>
+	@endif
+</p>
+
+<p>
 	<label for="summary">Summary</label>
 	<textarea id="summary" name="summary" rows="3">{{ old('summary', !empty($row) ? $row->summary : '') }}</textarea>
 	@error('summary')

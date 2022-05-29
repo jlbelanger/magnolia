@@ -9,6 +9,11 @@ textarea {
 	width: 100%;
 }
 
+input[type='file'] {
+	background: $white;
+	cursor: pointer;
+}
+
 input[type='checkbox'] {
 	appearance: none;
 	background: $white;
