@@ -33,6 +33,15 @@
 					@csrf
 					@method('PUT')
 					<textarea id="notes" name="notes" rows="5">{{ $row->notes }}</textarea>
+					@if (!empty($row->is_private))
+						<input
+							checked
+							id="is_private"
+							name="is_private"
+							type="hidden"
+							value="1"
+						/>
+					@endif
 					<button type="submit">Save</button>
 				</form>
 			</div>
