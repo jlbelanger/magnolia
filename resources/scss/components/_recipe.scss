@@ -2,10 +2,6 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 $edit-button-width: 60px;
 
 .article--recipe {
-	margin: 0 auto;
-	padding: $padding;
-	width: 100%;
-
 	input[type='checkbox'] {
 		margin: 0 8px 0 0;
 	}
@@ -80,18 +76,11 @@ $edit-button-width: 60px;
 			}
 		}
 	}
-
-	@media (min-width: #{$breakpoint}) {
-		max-width: $content-width;
-
-		#side + & {
-			margin-left: $sidebar-width;
-		}
-	}
 }
 
 #recipe-image {
 	height: auto;
+	margin-bottom: 12px;
 	max-width: 100%;
 }
 
@@ -117,8 +106,8 @@ $edit-button-width: 60px;
 }
 
 #filename-preview {
-	height: 225px;
+	height: 180px;
 	margin-top: 8px;
 	vertical-align: bottom;
-	width: 400px;
+	width: 320px;
 }

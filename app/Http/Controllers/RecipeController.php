@@ -99,10 +99,19 @@ class RecipeController extends Controller
 			$newFilename = $filename . '.' . $pathInfo['extension'];
 			$file->move(public_path('uploads'), $newFilename);
 			$input['filename'] = $newFilename;
+			$row->createThumbnail($newFilename);
 		} elseif ($request->has('remove_filename')) {
 			$path = public_path('uploads/' . $row->filename);
 			if (unlink($path)) {
 				$input['filename'] = '';
+
+				$path = public_path('uploads/thumbnails/' . $row->filename);
+				unlink($path);
+			}
+		} elseif ($row->filename) {
+			$path = public_path('uploads/thumbnails/' . $row->filename);
+			if (!file_exists($path)) {
+				$row->createThumbnail(basename($row->filename));
 			}
 		}
 

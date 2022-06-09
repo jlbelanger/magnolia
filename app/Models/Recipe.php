@@ -118,6 +118,28 @@ class Recipe extends Model
 		return $content;
 	}
 
+	/**
+	 * @param  string $filename
+	 * @return void
+	 */
+	public function createThumbnail(string $filename) : void
+	{
+		$lgPath = public_path('uploads/' . $filename);
+		$smPath = public_path('uploads/thumbnails/' . $filename);
+
+		$lgWidth = 1600;
+		$lgHeight = 900;
+		$smWidth = 640;
+		$smHeight = 360;
+
+		$src = imagecreatefromjpeg($lgPath);
+		$dst = imagecreatetruecolor($smWidth, $smHeight);
+		imagecopyresampled($dst, $src, 0, 0, 0, 0, $smWidth, $smHeight, $lgWidth, $lgHeight);
+		imagejpeg($dst, $smPath);
+		imagedestroy($src);
+		imagedestroy($dst);
+	}
+
 	public function rules(string $id = '') : array
 	{
 		$unique = $id ? ',' . $id : '';

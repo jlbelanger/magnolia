@@ -1,0 +1,24 @@
+#img-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.img-list__item {
+	margin: 8px;
+}
+
+.img-list__link {
+	background: $white;
+	display: block;
+	padding: 6px;
+	text-align: center;
+}
+
+.img-list__img {
+	display: block;
+	margin-bottom: 6px;
+}

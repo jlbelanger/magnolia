@@ -1,5 +1,7 @@
 @extends('layout')
 
+@php ($articleClass = 'article--auth')
+
 @section('content')
 	<header id="header">
 		<a href="/" id="site-title">Magnolia</a>

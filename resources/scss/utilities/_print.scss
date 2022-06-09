@@ -74,14 +74,16 @@
 		background-image: none;
 	}
 
-	.article--recipe {
+	#article {
 		max-width: none;
 		padding: 0;
 
 		#side + & {
 			margin-left: 0;
 		}
+	}
 
+	.article--recipe {
 		label {
 			padding: 0;
 		}

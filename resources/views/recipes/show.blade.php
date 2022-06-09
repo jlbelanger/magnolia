@@ -1,8 +1,10 @@
 @extends('layout')
 
+@php ($articleClass = 'article--recipe')
+
 @section('content')
 	@if ($row->filename)
-		<img alt="" height="900" id="recipe-image" src="/uploads/{{ $row->filename }}" width="1600" />
+		<img alt="" height="405" id="recipe-image" src="/uploads/{{ $row->filename }}" width="720" />
 	@endif
 
 	<div id="recipe-header">

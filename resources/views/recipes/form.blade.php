@@ -17,14 +17,14 @@
 </p>
 
 <p>
-	<label for="filename">Image</label>
+	<label for="filename">Image</label> <small>(1600px &times; 900px)</small>
 	<input accept="image/*" id="filename" name="filename" type="file" />
 	@error('filename')
 		<span class="error">{{ $message }}</span>
 	@enderror
 	@if (!empty($row) && $row->filename)
 		<br />
-		<img alt="" id="filename-preview" src="/uploads/{{ $row->filename }}" />
+		<img alt="" id="filename-preview" src="/uploads/thumbnails/{{ $row->filename }}" />
 		<label>
 			<input
 				id="remove_filename"
@@ -39,7 +39,7 @@
 
 <p>
 	<label for="summary">Summary</label>
-	<textarea id="summary" name="summary" rows="3">{{ old('summary', !empty($row) ? $row->summary : '') }}</textarea>
+	<textarea id="summary" name="summary" rows="5">{{ old('summary', !empty($row) ? $row->summary : '') }}</textarea>
 	@error('summary')
 		<span class="error">{{ $message }}</span>
 	@enderror
@@ -54,7 +54,7 @@
 </p>
 
 <p>
-	<label for="notes">Notes</label>
+	<label for="notes">Notes</label> <small>(private)</small>
 	<textarea id="notes" name="notes" rows="5">{{ old('notes', !empty($row) ? $row->notes : '') }}</textarea>
 	@error('notes')
 		<span class="error">{{ $message }}</span>
