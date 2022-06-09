@@ -15,7 +15,7 @@
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 		<link rel="icon" href="/favicon.png">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220608">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20220609">
 		<link rel="manifest" href="/manifest.json">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
