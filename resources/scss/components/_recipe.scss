@@ -47,7 +47,7 @@ $edit-button-width: 60px;
 		}
 	}
 
-	& > ol {
+	#article-inner > ol {
 		margin-top: #{$margin - $li-padding-top};
 
 		& > li {
