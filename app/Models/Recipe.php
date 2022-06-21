@@ -157,7 +157,9 @@ class Recipe extends Model
 		if (!$this->summary) {
 			return '';
 		}
-		$summary = (new Parsedown())->setBreaksEnabled(true)->text($this->summary);
+		$summary = $this->summary;
+		$summary = $this->hideNotes($summary);
+		$summary = (new Parsedown())->setBreaksEnabled(true)->text($summary);
 		$summary = $this->addLinkTarget($summary);
 		return $summary;
 	}
