@@ -15,6 +15,12 @@ Route::get('/sitemap.xml', function () {
 	return view('sitemap')->with('recipes', Recipe::visible());
 });
 
+Route::get('/feed.xml', function () {
+	return response()
+		->view('feed', ['recipes' => Recipe::public()])
+		->header('Content-Type', 'text/xml');
+});
+
 Route::middleware('guest')->group(function () {
 	Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 	Route::post('login', [AuthenticatedSessionController::class, 'store']);

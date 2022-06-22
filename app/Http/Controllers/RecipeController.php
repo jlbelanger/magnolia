@@ -34,6 +34,9 @@ class RecipeController extends Controller
 		$request->validate(Recipe::rules());
 		$input = $request->input();
 		$input['is_private'] = $request->has('is_private');
+		if (empty($input['is_private'])) {
+			$input['published_at'] = date('Y-m-d H:i:s');
+		}
 		$row = Recipe::create($input);
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Recipe added successfully.']);
@@ -89,7 +92,11 @@ class RecipeController extends Controller
 		$row = Recipe::findOrFail($id);
 		$request->validate(Recipe::rules($id));
 		$input = $request->input();
+
 		$input['is_private'] = $request->has('is_private');
+		if (empty($input['published_at']) && empty($input['is_private'])) {
+			$input['published_at'] = date('Y-m-d H:i:s');
+		}
 
 		if ($request->hasFile('filename')) {
 			$file = $request->file('filename');

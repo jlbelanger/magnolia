@@ -22,6 +22,7 @@ class Recipe extends Model
 		'content',
 		'notes',
 		'is_private',
+		'published_at',
 	];
 
 	public function content() : string
@@ -118,10 +119,6 @@ class Recipe extends Model
 		return $content;
 	}
 
-	/**
-	 * @param  string $filename
-	 * @return void
-	 */
 	public function createThumbnail(string $filename) : void
 	{
 		$lgPath = public_path('uploads/' . $filename);
@@ -138,6 +135,15 @@ class Recipe extends Model
 		imagejpeg($dst, $smPath);
 		imagedestroy($src);
 		imagedestroy($dst);
+	}
+
+	public static function public() : Collection
+	{
+		return self::where('is_private', '=', '0')
+			->whereNotNull('published_at')
+			->orderBy('published_at', 'desc')
+			->take(10)
+			->get();
 	}
 
 	public function rules(string $id = '') : array

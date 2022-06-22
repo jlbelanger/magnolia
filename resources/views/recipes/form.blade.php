@@ -17,6 +17,14 @@
 </p>
 
 <p>
+	<label for="published_at">Published</label> <small>(YYYY-MM-DD HH:MM:SS)</small>
+	<input id="published_at" name="published_at" type="text" value="{{ old('published_at', !empty($row) ? $row->published_at : '') }}" />
+	@error('published_at')
+		<span class="error">{{ $message }}</span>
+	@enderror
+</p>
+
+<p>
 	<label for="filename">Image</label> <small>(1600px &times; 900px)</small>
 	<input accept="image/*" id="filename" name="filename" type="file" />
 	@error('filename')

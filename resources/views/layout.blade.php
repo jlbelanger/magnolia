@@ -17,6 +17,7 @@
 		<link rel="icon" href="/favicon.png">
 		<link rel="stylesheet" href="/assets/css/style.min.css?20220612">
 		<link rel="manifest" href="/manifest.json">
+		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
 	<body>
