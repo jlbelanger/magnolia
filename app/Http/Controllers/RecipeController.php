@@ -128,10 +128,11 @@ class RecipeController extends Controller
 	/**
 	 * Removes the specified resource from storage.
 	 *
-	 * @param  string $id
+	 * @param  Request $request
+	 * @param  string  $id
 	 * @return View
 	 */
-	public function destroy(string $id) : RedirectResponse
+	public function destroy(Request $request, string $id) : RedirectResponse
 	{
 		$row = Recipe::findOrFail($id);
 		$row->delete();
