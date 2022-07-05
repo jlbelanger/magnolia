@@ -94,7 +94,7 @@ class RecipeController extends Controller
 		$input = $request->input();
 
 		$input['is_private'] = $request->has('is_private');
-		if (empty($input['published_at']) && empty($input['is_private'])) {
+		if (empty($row->published_at) && empty($input['published_at']) && empty($input['is_private'])) {
 			$input['published_at'] = date('Y-m-d H:i:s');
 		}
 
