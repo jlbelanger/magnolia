@@ -53,6 +53,7 @@ body {
 	@media (min-width: #{$breakpoint}) {
 		margin: 0 auto;
 		max-width: $content-width;
+		width: 100%;
 
 		.article--home & {
 			max-width: none;
