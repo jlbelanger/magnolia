@@ -20,7 +20,7 @@
 		</p>
 
 		<p>
-			<button type="submit">Send reset link</button>
+			<button type="submit">Send link</button>
 			<a class="link" href="/login">Back to login</a>
 		</p>
 	</form>

@@ -52,12 +52,16 @@ input.password-input {
 	border-right-color: transparent;
 
 	.article--auth & {
-		width: calc(100% - 70px);
+		width: calc(100% - #{$password-button-width});
+
+		.no-js & {
+			width: 100%;
+		}
 	}
 }
 
 .password-button {
-	width: 70px;
+	width: $password-button-width;
 
 	.no-js & {
 		display: none;

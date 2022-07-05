@@ -46,7 +46,7 @@
 </p>
 
 <p>
-	<label for="summary">Summary</label>
+	<label for="summary">Summary</label> <small>(supports Markdown)</small>
 	<textarea id="summary" name="summary" rows="5">{{ old('summary', !empty($row) ? $row->summary : '') }}</textarea>
 	@error('summary')
 		<span class="error">{{ $message }}</span>
@@ -54,7 +54,7 @@
 </p>
 
 <p>
-	<label class="required" for="content">Content</label>
+	<label class="required" for="content">Content</label> <small>(supports Markdown)</small>
 	<textarea class="textarea--large" id="content" name="content" required>{{ old('content', !empty($row) ? $row->content : '') }}</textarea>
 	@error('content')
 		<span class="error">{{ $message }}</span>

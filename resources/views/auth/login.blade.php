@@ -22,7 +22,7 @@
 		<p>
 			<label class="required" for="password">Password</label>
 			<span class="password-container">
-				<input autocomplete="current-password" class="password-input" id="password" name="password" required type="password" />
+				<input autocomplete="current-password" autocorrect="off" class="password-input" id="password" name="password" required type="password" />
 				<button class="password-button" data-toggle-password type="button">Show</button>
 			</span>
 		</p>
@@ -36,7 +36,7 @@
 
 		<p>
 			<button type="submit">Login</button>
-			<a class="link" href="/forgot-password">Forgot your password?</a>
+			<a class="link" href="/forgot-password">Forgot password?</a>
 		</p>
 	</form>
 @stop
