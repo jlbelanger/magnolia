@@ -12,7 +12,9 @@ Route::get('/', function () {
 });
 
 Route::get('/sitemap.xml', function () {
-	return view('sitemap')->with('recipes', Recipe::visible());
+	return response()
+		->view('sitemap', ['recipes' => Recipe::public()])
+		->header('Content-Type', 'text/xml');
 });
 
 Route::get('/feed.xml', function () {
