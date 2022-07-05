@@ -15,7 +15,7 @@
 
 	@include('shared.errors', ['errors' => $errors])
 
-	<form action="/recipes/{{ $row->id }}" enctype="multipart/form-data" method="post">
+	<form action="/recipes/{{ $row->id }}" enctype="multipart/form-data" id="form" method="post">
 		@method('PUT')
 		@include('recipes.form', ['row' => $row])
 	</form>

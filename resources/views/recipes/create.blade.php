@@ -5,7 +5,7 @@
 
 	@include('shared.errors', ['errors' => $errors])
 
-	<form action="/recipes" enctype="multipart/form-data" method="post">
+	<form action="/recipes" enctype="multipart/form-data" id="form" method="post">
 		@include('recipes.form')
 	</form>
 @stop
