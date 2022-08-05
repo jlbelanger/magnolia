@@ -11,7 +11,7 @@ use Illuminate\View\View;
 class PasswordResetLinkController extends Controller
 {
 	/**
-	 * Display the password reset link request view.
+	 * Displays the password reset link request view.
 	 *
 	 * @return View
 	 */
@@ -22,7 +22,7 @@ class PasswordResetLinkController extends Controller
 	}
 
 	/**
-	 * Handle an incoming password reset link request.
+	 * Handles an incoming password reset link request.
 	 *
 	 * @param  Request $request
 	 * @return RedirectResponse

@@ -15,7 +15,7 @@ use Illuminate\View\View;
 class NewPasswordController extends Controller
 {
 	/**
-	 * Display the password reset view.
+	 * Displays the password reset view.
 	 *
 	 * @param  Request $request
 	 * @return View
@@ -27,7 +27,7 @@ class NewPasswordController extends Controller
 	}
 
 	/**
-	 * Handle an incoming new password request.
+	 * Handles an incoming new password request.
 	 *
 	 * @param  Request $request
 	 * @return RedirectResponse

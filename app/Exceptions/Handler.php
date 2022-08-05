@@ -28,7 +28,7 @@ class Handler extends ExceptionHandler
 	];
 
 	/**
-	 * Register the exception handling callbacks for the application.
+	 * Registers the exception handling callbacks for the application.
 	 *
 	 * @return void
 	 */
