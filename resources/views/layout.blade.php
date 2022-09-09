@@ -42,6 +42,7 @@
 								<a class="link" href="/recipes/create">Add Recipe</a>
 							@else
 								<a class="link" href="/login">Login</a>
+								<a class="link" href="https://github.com/jlbelanger/magnolia/">GitHub</a>
 							@endif
 						</div>
 						@if ($recipes->isNotEmpty())
