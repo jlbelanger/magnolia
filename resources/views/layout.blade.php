@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="description" content="Recipes.">
 		<meta name="keywords" content="recipes, baking, cookies, cake">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia">
 		@if (!empty($row->filename))
 			<meta property="og:image" content="{{ url('/uploads/' . $row->filename) }}">
@@ -46,7 +46,7 @@
 							@endif
 						</div>
 						@if ($recipes->isNotEmpty())
-							<input autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
+							<input aria-label="Search recipes" autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
 						@endif
 						<p id="no-results" style="{{ $recipes->isNotEmpty() ? 'display:none' : '' }}">No recipes found.</p>
 						@if ($recipes->isNotEmpty())
