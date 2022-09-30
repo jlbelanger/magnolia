@@ -1,15 +1,17 @@
 {
+	"id": "/",
 	"name": "Magnolia",
+	"description": "Recipes.",
 	"icons": [
 		{
 			"src": "favicon.ico",
-			"sizes": "32x32 16x16",
+			"sizes": "32x32",
 			"type": "image/x-icon"
 		},
 		{
 			"src": "apple-touch-icon.png",
-			"type": "image/png",
-			"sizes": "180x180"
+			"sizes": "180x180",
+			"type": "image/png"
 		}
 	],
 	"start_url": "/",
