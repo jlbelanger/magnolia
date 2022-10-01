@@ -5,12 +5,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="Recipes.">
 		<meta name="keywords" content="recipes, baking, cookies, cake">
-		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia">
 		@if (!empty($row->filename))
 			<meta property="og:image" content="{{ url('/uploads/' . $row->filename) }}">
 		@endif
 		<meta property="og:description" content="Recipes.">
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
