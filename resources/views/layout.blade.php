@@ -6,10 +6,8 @@
 		<meta name="description" content="Recipes.">
 		<meta name="keywords" content="recipes, baking, cookies, cake">
 		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia">
-		@if (!empty($row->filename))
-			<meta property="og:image" content="{{ url('/uploads/' . $row->filename) }}">
-		@endif
 		<meta property="og:description" content="Recipes.">
+		<meta property="og:image" content="{{ !empty($row->filename) ? url('/uploads/' . $row->filename) : url('/uploads/cinnamon-rolls.jpg') }}">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
