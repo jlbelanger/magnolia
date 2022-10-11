@@ -58,6 +58,12 @@ yarn lint
 ./vendor/bin/phpunit
 ```
 
+### Generate splash screens
+
+``` bash
+npx pwa-asset-generator public/icon.png ./public/assets/img/splash --background "#7b9db3" --splash-only --type png --portrait-only --padding "20%"
+```
+
 ## Deployment
 
 Essentially, to set up the repo on the server:

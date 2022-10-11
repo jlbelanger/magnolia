@@ -4,16 +4,13 @@
 	"description": "Recipes.",
 	"icons": [
 		{
-			"src": "favicon.ico",
-			"sizes": "32x32",
-			"type": "image/x-icon"
-		},
-		{
-			"src": "apple-touch-icon.png",
-			"sizes": "180x180",
+			"src": "icon.png",
+			"sizes": "512x512",
 			"type": "image/png"
 		}
 	],
 	"start_url": "/",
-	"display": "standalone"
+	"display": "standalone",
+	"theme_color": "#7b9db3",
+	"background_color": "#c9eaff"
 }
