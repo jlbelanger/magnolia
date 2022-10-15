@@ -42,7 +42,7 @@ function css() {
 				.pipe(postcss([autoprefixer(), cssnano()]))
 				.pipe(gulp.dest(obj.dest))
 				.pipe(livereload())
-		)),
+		))
 	);
 }
 
@@ -54,7 +54,7 @@ function js() {
 				.pipe(terser())
 				.pipe(gulp.dest(obj.dest_folder))
 				.pipe(livereload())
-		)),
+		))
 	);
 }
 

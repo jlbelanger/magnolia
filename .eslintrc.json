@@ -1,31 +1,23 @@
 {
+	"extends": "airbnb-base",
 	"env": {
-		"browser": true,
-		"jquery": true
-	},
-	"extends": [
-		"airbnb-base"
-	],
-	"globals": {
-		"angular": "readonly",
-		"Foundation": "readonly"
+		"browser": true
 	},
 	"rules": {
-		"func-names": 0,
+		"comma-dangle": ["error", {
+			"arrays": "always-multiline",
+			"objects": "always-multiline",
+			"imports": "always-multiline",
+			"exports": "always-multiline",
+			"functions": "never"
+		}],
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
-		"max-len": 0,
+		"max-len": ["error", { "code": 150 }],
 		"no-param-reassign": 0,
-		"no-plusplus": 0,
 		"no-tabs": 0,
 		"no-undef": 0,
 		"no-use-before-define": 0,
-		"no-var": 0,
 		"object-curly-newline": ["error", { "multiline": true, "consistent": true }],
-		"object-shorthand": 0,
-		"prefer-arrow-callback": 0,
-		"prefer-destructuring": 0,
-		"prefer-rest-params": 0,
-		"prefer-template": 0,
-		"vars-on-top": 0
+		"prefer-destructuring": 0
 	}
 }

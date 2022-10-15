@@ -155,7 +155,7 @@ function Timer($button) {
 			false,
 			false,
 			0,
-			null,
+			null
 		);
 		return simulatedEvent;
 	};

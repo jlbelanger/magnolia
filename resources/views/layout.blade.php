@@ -28,7 +28,7 @@
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 		<link rel="icon" href="/favicon.png">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20220704">
+		<link rel="stylesheet" href="/assets/css/style.min.css?20221015">
 		<link rel="manifest" href="/manifest.json">
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
 		<script>document.documentElement.classList.remove('no-js');</script>
@@ -86,6 +86,6 @@
 				</div>
 			</article>
 		</main>
-		<script src="/assets/js/functions.min.js?20220704"></script>
+		<script src="/assets/js/functions.min.js?20221015"></script>
 	</body>
 </html>
