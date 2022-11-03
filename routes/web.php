@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,9 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+	Route::get('profile', [ProfileController::class, 'show']);
+	Route::put('profile', [ProfileController::class, 'update']);
+
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 	Route::resource('recipes', RecipeController::class)->except(['index', 'show']);
 });

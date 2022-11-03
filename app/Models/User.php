@@ -31,4 +31,13 @@ class User extends Authenticatable
 		'password',
 		'remember_token',
 	];
+
+	public function rules() : array
+	{
+		return [
+			'username' => ['required', 'max:255', 'unique:users,username,' . $this->id],
+			'email' => ['required', 'max:255', 'unique:users,email,' . $this->id],
+			'password' => ['required', 'current_password'],
+		];
+	}
 }
