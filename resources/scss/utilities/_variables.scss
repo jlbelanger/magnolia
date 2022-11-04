@@ -6,6 +6,7 @@ $darkest-blue: scale-color($dark-blue, $lightness: -50%);
 $lighter-blue: scale-color($light-blue, $lightness: 50%);
 $darkish-blue: scale-color($blue, $lightness: -8%, $saturation: -50%);
 $gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
+$dark-gray: scale-color($gray, $lightness: -50%, $saturation: -30%);
 
 $black: #000;
 $white: #fff;

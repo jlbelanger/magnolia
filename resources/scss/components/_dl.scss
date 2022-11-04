@@ -1,0 +1,16 @@
+dl {
+	margin: 0;
+}
+
+dt {
+	display: inline-block;
+	font-weight: bold;
+	margin-top: #{$margin / 2};
+}
+
+dd {
+	display: inline-block;
+	margin-left: 4px;
+	margin-right: 16px;
+	margin-top: #{$margin / 2};
+}

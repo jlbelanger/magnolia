@@ -6,6 +6,10 @@ textarea {
 	font-size: $font-size;
 	line-height: $input-line-height;
 	padding: $input-padding;
+}
+
+input:not([size]),
+textarea {
 	width: 100%;
 }
 
