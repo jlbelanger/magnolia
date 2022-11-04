@@ -14,6 +14,7 @@ class AddNutritionsFactsToRecipesTable extends Migration
 	public function up()
 	{
 		Schema::table('recipes', function (Blueprint $table) {
+			$table->string('serving_size')->nullable();
 			$table->smallInteger('calories')->unsigned()->nullable();
 			$table->double('fat', 8, 3)->unsigned()->nullable();
 			$table->double('saturated_fat', 8, 3)->unsigned()->nullable();
@@ -65,6 +66,7 @@ class AddNutritionsFactsToRecipesTable extends Migration
 	public function down()
 	{
 		Schema::table('recipes', function (Blueprint $table) {
+			$table->dropColumn('serving_size');
 			$table->dropColumn('calories');
 			$table->dropColumn('fat');
 			$table->dropColumn('saturated_fat');

@@ -58,130 +58,130 @@
 		{!! $row->summary() !!}
 	@endif
 
-	@if ($row->calories)
+	@if ($row->serving_size)
 		<details>
-			<summary>Nutrition facts</summary>
+			<summary>Nutrition facts <small>({{ $row->serving_size }})</small></summary>
 
 			<dl>
 				@if ($row->calories)
-					<dt class="nutrition__label">Calories:</dt><dd>{{ $row->calories }}</dd>
+					<div><dt>Calories:</dt><dd>{{ $row->calories }}</dd></div>
 				@endif
 				@if ($row->fat)
-					<dt class="nutrition__label">Fat:</dt><dd>{{ $row->fat }} <span>g</span></dd>
+					<div><dt>Fat:</dt><dd>{{ $row->fat }} <span>g</span></dd></div>
 				@endif
 				@if ($row->saturated_fat)
-					<dt class="nutrition__label">Saturated:</dt><dd>{{ $row->saturated_fat }} <span>g</span></dd>
+					<div><dt>Saturated:</dt><dd>{{ $row->saturated_fat }} <span>g</span></dd></div>
 				@endif
 				@if ($row->trans_fat)
-					<dt class="nutrition__label">+ Trans:</dt><dd>{{ $row->trans_fat }} <span>g</span></dd>
+					<div><dt>+ Trans:</dt><dd>{{ $row->trans_fat }} <span>g</span></dd></div>
 				@endif
 				@if ($row->polyunsaturated_fat)
-					<dt class="nutrition__label">Polyunsaturated:</dt><dd>{{ $row->polyunsaturated_fat }} <span>g</span></dd>
+					<div><dt>Polyunsaturated:</dt><dd>{{ $row->polyunsaturated_fat }} <span>g</span></dd></div>
 				@endif
 				@if ($row->omega_6)
-					<dt class="nutrition__label">Omega-6:</dt><dd>{{ $row->omega_6 }} <span>g</span></dd>
+					<div><dt>Omega-6:</dt><dd>{{ $row->omega_6 }} <span>g</span></dd></div>
 				@endif
 				@if ($row->omega_3)
-					<dt class="nutrition__label">Omega-3:</dt><dd>{{ $row->omega_3 }} <span>g</span></dd>
+					<div><dt>Omega-3:</dt><dd>{{ $row->omega_3 }} <span>g</span></dd></div>
 				@endif
 				@if ($row->monounsaturated_fat)
-					<dt class="nutrition__label">Monounsaturated:</dt><dd>{{ $row->monounsaturated_fat }} <span>g</span></dd>
+					<div><dt>Monounsaturated:</dt><dd>{{ $row->monounsaturated_fat }} <span>g</span></dd></div>
 				@endif
 				@if ($row->cholesterol)
-					<dt class="nutrition__label">Cholesterol:</dt><dd>{{ $row->cholesterol }} <span>mg</span></dd>
+					<div><dt>Cholesterol:</dt><dd>{{ $row->cholesterol }} <span>mg</span></dd></div>
 				@endif
 				@if ($row->sodium)
-					<dt class="nutrition__label">Sodium:</dt><dd>{{ $row->sodium }} <span>mg</span></dd>
+					<div><dt>Sodium:</dt><dd>{{ $row->sodium }} <span>mg</span></dd></div>
 				@endif
 				@if ($row->potassium)
-					<dt class="nutrition__label">Potassium:</dt><dd>{{ $row->potassium }} <span>mg</span></dd>
+					<div><dt>Potassium:</dt><dd>{{ $row->potassium }} <span>mg</span></dd></div>
 				@endif
 				@if ($row->carbohydrate)
-					<dt class="nutrition__label">Carbohydrate:</dt><dd>{{ $row->carbohydrate }} <span>g</span></dd>
+					<div><dt>Carbohydrate:</dt><dd>{{ $row->carbohydrate }} <span>g</span></dd></div>
 				@endif
 				@if ($row->fibre)
-					<dt class="nutrition__label">Fibre:</dt><dd>{{ $row->fibre }} <span>g</span></dd>
+					<div><dt>Fibre:</dt><dd>{{ $row->fibre }} <span>g</span></dd></div>
 				@endif
 				@if ($row->sugars)
-					<dt class="nutrition__label">Sugars:</dt><dd>{{ $row->sugars }} <span>g</span></dd>
+					<div><dt>Sugars:</dt><dd>{{ $row->sugars }} <span>g</span></dd></div>
 				@endif
 				@if ($row->protein)
-					<dt class="nutrition__label">Protein:</dt><dd>{{ $row->protein }} <span>g</span></dd>
+					<div><dt>Protein:</dt><dd>{{ $row->protein }} <span>g</span></dd></div>
 				@endif
 				@if ($row->vitamin_a)
-					<dt class="nutrition__label">Vitamin A:</dt><dd>{{ $row->vitamin_a }}<span>% DV</span></dd>
+					<div><dt>Vitamin A:</dt><dd>{{ $row->vitamin_a }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->vitamin_c)
-					<dt class="nutrition__label">Vitamin C:</dt><dd>{{ $row->vitamin_c }}<span>% DV</span></dd>
+					<div><dt>Vitamin C:</dt><dd>{{ $row->vitamin_c }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->calcium)
-					<dt class="nutrition__label">Calcium:</dt><dd>{{ $row->calcium }}<span>% DV</span></dd>
+					<div><dt>Calcium:</dt><dd>{{ $row->calcium }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->iron)
-					<dt class="nutrition__label">Iron:</dt><dd>{{ $row->iron }}<span>% DV</span></dd>
+					<div><dt>Iron:</dt><dd>{{ $row->iron }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->vitamin_d)
-					<dt class="nutrition__label">Vitamin D:</dt><dd>{{ $row->vitamin_d }}<span>% DV</span></dd>
+					<div><dt>Vitamin D:</dt><dd>{{ $row->vitamin_d }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->vitamin_e)
-					<dt class="nutrition__label">Vitamin E:</dt><dd>{{ $row->vitamin_e }}<span>% DV</span></dd>
+					<div><dt>Vitamin E:</dt><dd>{{ $row->vitamin_e }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->vitamin_k)
-					<dt class="nutrition__label">Vitamin K:</dt><dd>{{ $row->vitamin_k }}<span>% DV</span></dd>
+					<div><dt>Vitamin K:</dt><dd>{{ $row->vitamin_k }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->thiamin)
-					<dt class="nutrition__label">Thiamin:</dt><dd>{{ $row->thiamin }}<span>% DV</span></dd>
+					<div><dt>Thiamin:</dt><dd>{{ $row->thiamin }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->riboflavin)
-					<dt class="nutrition__label">Riboflavin:</dt><dd>{{ $row->riboflavin }}<span>% DV</span></dd>
+					<div><dt>Riboflavin:</dt><dd>{{ $row->riboflavin }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->niacin)
-					<dt class="nutrition__label">Niacin:</dt><dd>{{ $row->niacin }}<span>% DV</span></dd>
+					<div><dt>Niacin:</dt><dd>{{ $row->niacin }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->vitamin_b6)
-					<dt class="nutrition__label">Vitamin B6:</dt><dd>{{ $row->vitamin_b6 }}<span>% DV</span></dd>
+					<div><dt>Vitamin B6:</dt><dd>{{ $row->vitamin_b6 }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->folate)
-					<dt class="nutrition__label">Folate:</dt><dd>{{ $row->folate }}<span>% DV</span></dd>
+					<div><dt>Folate:</dt><dd>{{ $row->folate }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->vitamin_b12)
-					<dt class="nutrition__label">Vitamin B12:</dt><dd>{{ $row->vitamin_b12 }}<span>% DV</span></dd>
+					<div><dt>Vitamin B12:</dt><dd>{{ $row->vitamin_b12 }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->biotin)
-					<dt class="nutrition__label">Biotin:</dt><dd>{{ $row->biotin }}<span>% DV</span></dd>
+					<div><dt>Biotin:</dt><dd>{{ $row->biotin }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->pantothenate)
-					<dt class="nutrition__label">Pantothenate:</dt><dd>{{ $row->pantothenate }}<span>% DV</span></dd>
+					<div><dt>Pantothenate:</dt><dd>{{ $row->pantothenate }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->phosphorus)
-					<dt class="nutrition__label">Phosphorus:</dt><dd>{{ $row->phosphorus }}<span>% DV</span></dd>
+					<div><dt>Phosphorus:</dt><dd>{{ $row->phosphorus }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->iodine)
-					<dt class="nutrition__label">Iodine:</dt><dd>{{ $row->iodine }}<span>% DV</span></dd>
+					<div><dt>Iodine:</dt><dd>{{ $row->iodine }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->magnesium)
-					<dt class="nutrition__label">Magnesium:</dt><dd>{{ $row->magnesium }}<span>% DV</span></dd>
+					<div><dt>Magnesium:</dt><dd>{{ $row->magnesium }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->zinc)
-					<dt class="nutrition__label">Zinc:</dt><dd>{{ $row->zinc }}<span>% DV</span></dd>
+					<div><dt>Zinc:</dt><dd>{{ $row->zinc }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->selenium)
-					<dt class="nutrition__label">Selenium:</dt><dd>{{ $row->selenium }}<span>% DV</span></dd>
+					<div><dt>Selenium:</dt><dd>{{ $row->selenium }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->copper)
-					<dt class="nutrition__label">Copper:</dt><dd>{{ $row->copper }}<span>% DV</span></dd>
+					<div><dt>Copper:</dt><dd>{{ $row->copper }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->manganese)
-					<dt class="nutrition__label">Manganese:</dt><dd>{{ $row->manganese }}<span>% DV</span></dd>
+					<div><dt>Manganese:</dt><dd>{{ $row->manganese }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->chromium)
-					<dt class="nutrition__label">Chromium:</dt><dd>{{ $row->chromium }}<span>% DV</span></dd>
+					<div><dt>Chromium:</dt><dd>{{ $row->chromium }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->molybdenum)
-					<dt class="nutrition__label">Molybdenum:</dt><dd>{{ $row->molybdenum }}<span>% DV</span></dd>
+					<div><dt>Molybdenum:</dt><dd>{{ $row->molybdenum }}<span>% DV</span></dd></div>
 				@endif
 				@if ($row->chloride)
-					<dt class="nutrition__label">Chloride:</dt><dd>{{ $row->chloride }}<span>% DV</span></dd>
+					<div><dt>Chloride:</dt><dd>{{ $row->chloride }}<span>% DV</span></dd></div>
 				@endif
 			</dl>
 		</details>

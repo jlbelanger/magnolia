@@ -90,6 +90,14 @@
 
 	<div id="nutrition-facts">
 		<p>
+			<label for="serving_size">Serving Size</label>
+			<input id="serving_size" name="serving_size" type="text" value="{{ old('serving_size', !empty($row) ? $row->serving_size : '') }}">
+			@error('serving_size')
+				<span class="error">{{ $message }}</span>
+			@enderror
+		</p>
+
+		<p>
 			<label for="calories">Calories</label>
 			<input id="calories" name="calories" inputmode="numeric" pattern="[0-9.]*" size="4" type="text" value="{{ old('calories', !empty($row) ? $row->calories : '') }}">
 			@error('calories')
