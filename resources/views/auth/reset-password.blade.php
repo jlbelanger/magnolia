@@ -28,7 +28,7 @@
 			<label class="required" for="password">New password</label>
 			<span class="password-container">
 				<input autocomplete="new-password" autocorrect="off" autofocus class="password-input" id="password" name="password" required type="password" />
-				<button class="password-button" data-toggle-password type="button">Show</button>
+				<button class="button--secondary password-button" data-toggle-password type="button">Show</button>
 			</span>
 			@error('password')
 				<span class="error">{{ $message }}</span>
@@ -39,7 +39,7 @@
 			<label class="required" for="password_confirmation">Confirm new password</label>
 			<span class="password-container">
 				<input autocomplete="new-password" autocorrect="off" class="password-input" id="password_confirmation" name="password_confirmation" required type="password" />
-				<button class="password-button" data-toggle-password type="button">Show</button>
+				<button class="button--secondary password-button" data-toggle-password type="button">Show</button>
 			</span>
 			@error('password_confirmation')
 				<span class="error">{{ $message }}</span>

@@ -18,7 +18,7 @@
 					<span class="sticky" data-sticky data-sticky-top="12">
 						<button
 							aria-label="Stopwatch"
-							class="floating-button"
+							class="floating-button button--secondary"
 							data-timer="0"
 							id="stopwatch-button"
 							type="button"
@@ -26,7 +26,7 @@
 							⏱
 						</button><button
 							aria-label="Add Note"
-							class="floating-button"
+							class="floating-button button--secondary"
 							data-toggleable="#note-form"
 							data-toggleable-body-class="show-note"
 							id="add-note-button"
@@ -38,7 +38,7 @@
 				</span><form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
 					@csrf
 					@method('PUT')
-					<textarea id="notes" name="notes" rows="5">{{ $row->notes }}</textarea>
+					<textarea aria-label="Notes" id="notes" name="notes" rows="5">{{ $row->notes }}</textarea>
 					@if (!empty($row->is_private))
 						<input
 							checked

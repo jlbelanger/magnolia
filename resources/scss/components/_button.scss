@@ -1,7 +1,7 @@
 button,
 .button {
-	background: $dark-blue;
-	border: 1px solid $dark-blue;
+	background: $darkest-blue;
+	border: 1px solid $darkest-blue;
 	color: $white;
 	cursor: pointer;
 	display: inline-block;
@@ -15,4 +15,9 @@ button,
 	background: $red;
 	border-color: $red;
 	color: $white;
+}
+
+.button--secondary {
+	background: $darker-blue;
+	border-color: $darker-blue;
 }

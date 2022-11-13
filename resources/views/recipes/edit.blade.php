@@ -4,7 +4,7 @@
 	<div id="recipe-header">
 		<h1>Edit {{ $row->title }} Recipe</h1>
 
-		<a class="button admin" href="{{ $row->url() }}">View</a>
+		<a class="button button--secondary admin" href="{{ $row->url() }}">View</a>
 
 		<form action="/recipes/{{ $row->id }}" class="admin" data-confirmable="Are you sure you want to delete this recipe?" id="delete-form" method="post">
 			@csrf

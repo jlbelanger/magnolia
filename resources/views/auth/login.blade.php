@@ -23,7 +23,7 @@
 			<label class="required" for="password">Password</label>
 			<span class="password-container">
 				<input autocomplete="current-password" autocorrect="off" class="password-input" id="password" name="password" required type="password" />
-				<button class="password-button" data-toggle-password type="button">Show</button>
+				<button class="button--secondary password-button" data-toggle-password type="button">Show</button>
 			</span>
 		</p>
 

@@ -1,7 +1,7 @@
 $dark-blue: #7b9db3;
 $blue: #c9eaff;
 $light-blue: #e3f4ff;
-$darker-blue: scale-color($dark-blue, $lightness: -15%);
+$darker-blue: scale-color($dark-blue, $lightness: -25%);
 $darkest-blue: scale-color($dark-blue, $lightness: -50%);
 $lighter-blue: scale-color($light-blue, $lightness: 50%);
 $darkish-blue: scale-color($blue, $lightness: -8%, $saturation: -50%);

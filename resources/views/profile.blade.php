@@ -55,7 +55,7 @@
 					required
 					type="password"
 				/>
-				<button class="password-button" data-toggle-password type="button">Show</button>
+				<button class="button--secondary password-button" data-toggle-password type="button">Show</button>
 			</span>
 			@error('password')
 				<span class="error">{{ $message }}</span>
