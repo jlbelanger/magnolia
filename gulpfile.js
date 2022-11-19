@@ -5,7 +5,7 @@ const cssnano = require('cssnano');
 const livereload = require('gulp-livereload');
 const mergeStream = require('merge-stream');
 const postcss = require('gulp-postcss');
-const sass = require('gulp-sass')(require('node-sass'));
+const sass = require('gulp-sass')(require('sass'));
 const rename = require('gulp-rename');
 const terser = require('gulp-terser');
 

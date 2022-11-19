@@ -48,7 +48,7 @@
 	display: block;
 	height: $image-height;
 	left: 50%;
-	margin-left: #{$image-height / -2};
+	margin-left: #{$image-height * -.5};
 	opacity: .5;
 	position: absolute;
 	top: $padding;
@@ -98,7 +98,7 @@
 	border: 0;
 	font-size: 0;
 	height: $button-size;
-	margin-top: #{$button-size / -2};
+	margin-top: #{$button-size * -.5};
 	padding: 0;
 	position: absolute;
 	right: $padding;

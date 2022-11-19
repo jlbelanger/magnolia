@@ -1,4 +1,4 @@
-$li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-height)) / 2);
+$li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-height)) * .5);
 $edit-button-width: 60px;
 
 .article--recipe {
@@ -15,7 +15,7 @@ $edit-button-width: 60px;
 	li {
 		padding: $list-padding 0;
 		padding-left: #{$checkbox-size + $checkbox-margin-right};
-		padding-top: #{$list-padding + (($checkbox-size - ($font-size * $line-height)) / 2)};
+		padding-top: #{$list-padding + (($checkbox-size - ($font-size * $line-height)) * .5)};
 		position: relative;
 
 		& > input {
@@ -42,7 +42,7 @@ $edit-button-width: 60px;
 
 		ol,
 		ul {
-			margin-left: #{($checkbox-size / -2) - $checkbox-margin-right};
+			margin-left: #{($checkbox-size * -.5) - $checkbox-margin-right};
 			margin-top: $sublist-padding;
 		}
 	}
