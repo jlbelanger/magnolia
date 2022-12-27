@@ -44,6 +44,7 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"config": {
+		"discard-changes" : true,
 		"optimize-autoloader": true,
 		"preferred-install": "dist",
 		"sort-packages": true
