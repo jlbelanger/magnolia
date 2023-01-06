@@ -50,6 +50,11 @@
 		color: $black !important;
 	}
 
+	a {
+		color: $black !important;
+	}
+
+	details,
 	input,
 	textarea {
 		border-color: $black !important;
@@ -83,6 +88,22 @@
 		}
 	}
 
+	#recipe-image {
+		float: right;
+		max-width: 40vw;
+	}
+
+	details {
+		border-width: 1px 0;
+		clear: both;
+		font-size: 16px;
+		padding: 8px 0;
+	}
+
+	summary {
+		display: block;
+	}
+
 	.article--recipe {
 		label {
 			padding: 0;
@@ -91,6 +112,7 @@
 		li {
 			min-height: 0 !important;
 			padding: 0 !important;
+			page-break-inside: avoid;
 		}
 
 		ol,
@@ -104,7 +126,18 @@
 
 		& > ol > li {
 			border: 0;
+			padding: 8px 0 !important;
 		}
+	}
+
+	.article--recipe #article-inner > ol > li {
+		border-color: $black !important;
+		padding: 8px 0 !important;
+	}
+
+	h2,
+	h3 {
+		page-break-after: avoid;
 	}
 
 	.timer-link {
