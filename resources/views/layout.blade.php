@@ -7,7 +7,9 @@
 		<meta name="keywords" content="recipes, baking, cookies, cake">
 		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia">
 		<meta property="og:description" content="Recipes.">
-		<meta property="og:image" content="{{ !empty($row->filename) ? url('/uploads/' . $row->filename) : url('/uploads/cinnamon-rolls.jpg') }}">
+		@if (!empty($ogImage))
+			<meta property="og:image" content="{{ $ogImage }}">
+		@endif
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<link rel="apple-touch-startup-image" href="{{ url('/assets/img/splash/apple-splash-2048-2732.png') }}" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
 		<link rel="apple-touch-startup-image" href="{{ url('/assets/img/splash/apple-splash-1668-2388.png') }}" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">

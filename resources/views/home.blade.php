@@ -1,6 +1,7 @@
 @extends('layout')
 
 @php ($articleClass = 'article--home')
+@php ($ogImage = url('/uploads/cinnamon-rolls.jpg'))
 
 @section('content')
 	@if ($recipes->isNotEmpty())

@@ -1,6 +1,7 @@
 @extends('layout')
 
 @php ($articleClass = 'article--recipe')
+@php ($ogImage = !empty($row->filename) ? url('/uploads/' . $row->filename) : '')
 
 @section('content')
 	@if ($row->filename)
