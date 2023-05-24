@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Http\Kernel;
 use App\Models\Recipe;
 use App\Observers\RecipeObserver;
+use DB;
 use Illuminate\Support\ServiceProvider;
+use Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,14 +29,16 @@ class AppServiceProvider extends ServiceProvider
 	 */
 	public function boot(Kernel $kernel) // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
 	{
-		if (env('DISABLE_DEBUGBAR') === '1') {
-			\Debugbar::disable();
-		}
+		if (config('app.debug')) {
+			if (!config('app.debugbar')) {
+				\Debugbar::disable();
+			}
 
-		if (env('LOG_DATABASE_QUERIES') === '1') {
-			DB::listen(function ($query) {
-				Log::info($query->sql, $query->bindings, $query->time);
-			});
+			if (config('logging.database')) {
+				DB::listen(function ($query) {
+					Log::info($query->sql, $query->bindings, $query->time);
+				});
+			}
 		}
 
 		Recipe::observe(RecipeObserver::class);

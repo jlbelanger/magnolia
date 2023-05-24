@@ -230,4 +230,6 @@ return [
 
 	],
 
+	'debugbar' => env('ENABLE_DEBUGBAR', true),
+
 ];
