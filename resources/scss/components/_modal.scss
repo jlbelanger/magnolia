@@ -1,0 +1,18 @@
+.modal {
+	border: 0;
+	padding: 24px;
+}
+
+.modal::backdrop {
+	background: rgba($black, .5);
+}
+
+.modal__box {
+	& > :first-child {
+		margin-top: 0;
+	}
+}
+
+.modal__options {
+	text-align: right;
+}

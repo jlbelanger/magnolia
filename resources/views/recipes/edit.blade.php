@@ -6,10 +6,10 @@
 
 		<a class="button button--secondary admin" href="{{ $row->url() }}">View</a>
 
-		<form action="/recipes/{{ $row->id }}" class="admin" data-confirmable="Are you sure you want to delete this recipe?" id="delete-form" method="post">
+		<form action="/recipes/{{ $row->id }}" class="admin" id="delete-form" method="post">
 			@csrf
 			@method('DELETE')
-			<button class="button--danger" type="submit">Delete</button>
+			<button class="button--danger" data-confirmable="Are you sure you want to delete this recipe?" type="button">Delete</button>
 		</form>
 	</div>
 
