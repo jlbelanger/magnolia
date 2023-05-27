@@ -118,6 +118,7 @@ class Recipe extends Model
 		$content = $this->addTimers($content);
 		$content = $this->addLinkTarget($content);
 		$content = $this->addHeadingAnchors($content);
+		$content = $this->addMeasurements($content);
 		return $content;
 	}
 
@@ -146,6 +147,38 @@ class Recipe extends Model
 	protected function addLinkTarget(string $content) : string
 	{
 		$content = str_replace('<a href', '<a target="_blank" href', $content);
+		return $content;
+	}
+
+	protected function highlightAmount(string $summary) : string
+	{
+		return preg_replace('/\[(\d+)\]/', '<span data-amount="$1">$1</span>', $summary);
+	}
+
+	protected function addMeasurements(string $content) : string
+	{
+		$hasMatches = preg_match_all('/\[((?:\d+ )?[0-9\.\/-]+) ?([^\]]+)\]/', $content, $matches);
+		if (!$hasMatches) {
+			return $content;
+		}
+
+		$replaced = [];
+		foreach ($matches[0] as $i => $m) {
+			if (in_array($m, $replaced)) {
+				continue;
+			}
+
+			$replaced[] = $m;
+			$num = $matches[1][$i];
+			$unit = $matches[2][$i];
+			$value = self::fractionToDecimal($num);
+			$plural = in_array($unit, ['tsp', 'tbsp', 'oz', 'ml', 'g']) ? $unit : Str::plural($unit);
+			$text = $num . ' ' . ($value === '1' ? $unit : $plural);
+
+			$new = '<span data-num="' . $value . '" data-unit="' . $unit . '" data-unit-plural="' . $plural . '">' . $text . '</span>';
+			$content = str_replace($m, $new, $content);
+		}
+
 		return $content;
 	}
 
@@ -221,6 +254,24 @@ class Recipe extends Model
 		imagedestroy($dst);
 	}
 
+	protected static function fractionToDecimal(string $value) : string
+	{
+		if (strpos($value, '/') === false) {
+			return $value;
+		}
+
+		$whole = 0;
+		if (strpos($value, ' ') !== false) {
+			list($whole, $value) = explode(' ', $value);
+		}
+
+		list($n, $d) = explode('/', $value);
+		if ($n !== '0') {
+			return (string) ($whole + ($n / $d));
+		}
+		return '';
+	}
+
 	public static function public() : Collection
 	{
 		return self::where('is_private', '=', '0')
@@ -292,6 +343,7 @@ class Recipe extends Model
 		$summary = $this->hideNotes($summary);
 		$summary = (new Parsedown())->setBreaksEnabled(true)->text($summary);
 		$summary = $this->addLinkTarget($summary);
+		$summary = $this->highlightAmount($summary);
 		return $summary;
 	}
 

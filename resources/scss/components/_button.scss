@@ -9,6 +9,13 @@ button,
 	line-height: $input-line-height;
 	padding: $input-padding;
 	text-decoration: none;
+
+	&[disabled] {
+		background: $light-blue;
+		border-color: $light-blue;
+		color: $dark-gray;
+		cursor: default;
+	}
 }
 
 .button--danger {

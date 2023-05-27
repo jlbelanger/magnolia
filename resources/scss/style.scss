@@ -64,3 +64,20 @@ body {
 		}
 	}
 }
+
+fieldset {
+	border-color: $darker-blue;
+	border-style: solid;
+	border-width: 1px;
+	display: inline-block;
+	padding: 0;
+	white-space: nowrap;
+
+	button + button {
+		margin-left: 1px;
+	}
+
+	button:focus {
+		position: relative;
+	}
+}

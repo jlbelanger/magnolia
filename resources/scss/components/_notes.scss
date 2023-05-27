@@ -1,7 +1,8 @@
 .sticky-container {
-	display: inline-block;
+	height: $button-size;
+	margin-bottom: 12px;
+	text-align: right;
 	white-space: nowrap;
-	width: #{($button-size * 2) + $button-margin};
 }
 
 .sticky {

@@ -85,10 +85,6 @@ $edit-button-width: 60px;
 }
 
 #recipe-header {
-	.admin {
-		text-align: right;
-	}
-
 	@media (min-width: #{$breakpoint}) {
 		align-items: center;
 		display: flex;
