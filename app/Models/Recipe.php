@@ -226,9 +226,9 @@ class Recipe extends Model
 			} elseif ($matches[3][$i] === 'hour') {
 				$num *= 60 * 60;
 			}
-			$content = str_replace(
-				$m,
-				' <button class="timer-link" data-timer="' . $num . '" type="button">' . trim($m) . '</button>',
+			$content = preg_replace(
+				'/' . $m . '(\b)/',
+				' <button class="timer-link" data-timer="' . $num . '" type="button">' . trim($m) . '</button>$1',
 				$content
 			);
 			$done[] = $m;
