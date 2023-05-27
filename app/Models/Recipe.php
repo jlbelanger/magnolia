@@ -118,6 +118,7 @@ class Recipe extends Model
 		$content = $this->addTimers($content);
 		$content = $this->addLinkTarget($content);
 		$content = $this->addHeadingAnchors($content);
+		$content = $this->highlightAmounts($content);
 		$content = $this->addMeasurements($content);
 		return $content;
 	}
@@ -150,7 +151,7 @@ class Recipe extends Model
 		return $content;
 	}
 
-	protected function highlightAmount(string $summary) : string
+	protected function highlightAmounts(string $summary) : string
 	{
 		return preg_replace('/\[(\d+)\]/', '<span data-amount="$1">$1</span>', $summary);
 	}
@@ -343,7 +344,8 @@ class Recipe extends Model
 		$summary = $this->hideNotes($summary);
 		$summary = (new Parsedown())->setBreaksEnabled(true)->text($summary);
 		$summary = $this->addLinkTarget($summary);
-		$summary = $this->highlightAmount($summary);
+		$summary = $this->highlightAmounts($summary);
+		$summary = $this->addMeasurements($summary);
 		return $summary;
 	}
 
