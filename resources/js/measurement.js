@@ -4,59 +4,219 @@ function initMeasurement() {
 		return;
 	}
 
-	const $amount = document.querySelector('[data-amount]');
+	const $amounts = document.querySelectorAll('[data-amount]');
 
-	const decimalToFraction = (d) => {
-		d = d.toString();
-		const fractions = [
-			{ value: /\.5$/, fraction: '1/2' },
-			{ value: /\.25$/, fraction: '1/4' },
-			{ value: /\.125$/, fraction: '1/8' },
-			{ value: /\.3+4?$/, fraction: '1/3' },
-			{ value: /\.6+7?$/, fraction: '2/3' },
-			{ value: /\.75$/, fraction: '3/4' },
-			{ value: /\.0625$/, fraction: '1/16' },
-			{ value: /\.83+$/, fraction: '1/2 + 1/3' },
-			{ value: /\.625$/, fraction: '1/2 + 1/8' },
-			{ value: /\.5625$/, fraction: '1/2 + 1/16' },
-			{ value: /\.583+$/, fraction: '1/3 + 1/4' },
-			{ value: /\.4583+$/, fraction: '1/3 + 1/8' },
-			{ value: /\.39583+$/, fraction: '1/3 + 1/16' },
-			{ value: /\.375$/, fraction: '1/4 + 1/8' },
-			{ value: /\.3125$/, fraction: '1/4 + 1/16' },
-			{ value: /\.1875$/, fraction: '1/8 + 1/16' },
-		];
-		const num = fractions.length;
-		let i;
-		for (i = 0; i < num; i += 1) {
-			if (d.match(fractions[i].value)) {
-				return d.replace(/(^0)?\..+$/, ` ${fractions[i].fraction}`).trim();
-			}
+	const tsp = 1 / 48;
+	const tools = [
+		{ value: 1, name: '1 cup' },
+		{ value: 0.75, name: '3/4 cups' },
+		{ value: 2 / 3, name: '2/3 cups' },
+		{ value: 0.5, name: '1/2 cup' },
+		{ value: 1 / 3, name: '1/3 cup' },
+		{ value: 0.25, name: '1/4 cup' },
+		{ value: 0.125, name: '1/8 cup' },
+		{ value: 0.0625, name: '1 tbsp' },
+		{ value: 0.03125, name: '1/2 tbsp' },
+		{ value: tsp * 2, name: '2 tsp' },
+		{ value: tsp, name: '1 tsp' },
+		{ value: tsp * 0.75, name: '3/4 tsp' },
+		{ value: tsp / 2, name: '1/2 tsp' },
+		{ value: tsp / 4, name: '1/4 tsp' },
+		{ value: tsp / 8, name: '1/8 tsp' },
+		{ value: tsp / 16, name: '1/16 tsp' },
+	];
+
+	const pluralize = (singular) => {
+		if (['g', 'oz', 'ml', 'tsp', 'tbsp'].includes(singular)) {
+			return singular;
 		}
-		return d;
+		const lastLetter = singular[singular.length - 1];
+		if (['h', 'o'].includes(lastLetter)) {
+			return singular.replace(/(.)$/, '$1es');
+		}
+		if (['y'].includes(lastLetter)) {
+			return singular.replace(/y$/, 'ies');
+		}
+		return `${singular}s`;
+	};
+
+	const maybePluralize = (unit, num) => {
+		const singularValues = ['1', '1/2', '1/3', '1/4', '1/8', '1/16'];
+		return singularValues.includes(num) ? unit : pluralize(unit);
 	};
 
 	const ouncesToGrams = (n) => (Math.round(n * 28.34952));
 
 	const gramsToOunces = (n) => (parseFloat((n / 28.34952).toFixed(1)));
 
-	const getMeasurement = (num, unit, plural, multiplier, units) => {
-		num = parseFloat(num);
-		let value = num * multiplier;
+	function findBestSolution(target, availableTools) {
+		if (Math.abs(target) <= 0.00000000000001) {
+			return [];
+		}
+		if (target < 0 || availableTools.length === 0) {
+			return null;
+		}
 
-		if (!['oz', 'g', 'ml'].includes(unit)) {
-			value = decimalToFraction(value);
-		} else if (unit === 'oz' && units === 'g') {
+		let currentTool = availableTools[0];
+		const currentValue = currentTool.value;
+
+		// Recursive call without using the current value.
+		const resultWithoutCurrent = findBestSolution(target, availableTools.slice(1));
+
+		// Recursive call using the current value.
+		let resultWithCurrent;
+		if (currentTool.name.match(/^\d+ cups?$/)) {
+			resultWithCurrent = findBestSolution(target - currentValue, availableTools);
+			if (resultWithCurrent) {
+				const numCups = resultWithCurrent.filter((t) => (t.name.match(/^\d+ cups?$/))).map((t) => t.value).reduce((sum, a) => (sum + a), 0);
+				if (numCups > 0) {
+					resultWithCurrent = resultWithCurrent.filter((t) => (!t.name.match(/^\d+ cups?$/)));
+					currentTool = { value: numCups + currentTool.value, name: `${numCups + currentTool.value} cups` };
+				}
+			}
+		} else {
+			resultWithCurrent = findBestSolution(target - currentValue, availableTools.slice(1));
+		}
+
+		// Determine the shortest result.
+		if (resultWithoutCurrent === null && resultWithCurrent === null) {
+			// Neither option is valid, sum not possible.
+			return null;
+		}
+		if (resultWithoutCurrent === null) {
+			// Include the current value.
+			return [currentTool, ...resultWithCurrent];
+		}
+		if (resultWithCurrent === null) {
+			// Exclude the current value.
+			return resultWithoutCurrent;
+		}
+
+		// Return the solution with the fewest measurements.
+		const withoutLength = resultWithoutCurrent.length;
+		const withLength = resultWithCurrent.length + 1;
+		if (withoutLength < withLength) {
+			return resultWithoutCurrent;
+		}
+		if (withoutLength === withLength) {
+			// If the number of measurements are the same, prefer the solution that doesn't use 2 tsp.
+			if (resultWithCurrent.map((t) => (t.name)).includes('2 tsp')) {
+				return resultWithoutCurrent;
+			}
+		}
+		return [currentTool, ...resultWithCurrent];
+	}
+
+	const measuringCups = (target, unit) => {
+		if (unit === 'tbsp') {
+			target /= 16;
+		} else if (unit === 'tsp') {
+			target /= 48;
+		}
+
+		const tool = tools.find((t) => Math.abs(target - t.value) <= 0.00000000000001);
+		if (tool) {
+			// This is a normal measurement.
+			return tool.name;
+		}
+
+		// Eliminate all tools that are too large.
+		const availableTools = tools.filter((t) => (t.value <= target));
+		if (availableTools.length <= 0) {
+			return 'pinch';
+		}
+
+		const solution = findBestSolution(target, availableTools);
+		if (solution) {
+			const numTools = solution.length;
+			if (numTools === 2 && solution[0].name.match(/^\d+ cups?$/) && solution[1].name.includes('cup')) {
+				return `${solution[0].value} ${solution[1].name.replace(/ cups?$/, '')} ${maybePluralize('cup', solution[1].value)}`;
+			}
+			if (numTools > 0) {
+				return solution.map((t) => t.name).join(' + ');
+			}
+		}
+
+		return `${target.toFixed(2).replace(/(\.[^0])0$/, '$1')} ${maybePluralize(unit, target)}`;
+	};
+
+	const decimalToFraction = (d, unit) => {
+		let s = d.toString();
+		if (!s.includes('.')) {
+			// This is a whole number.
+			return `${s} ${maybePluralize(unit, s)}`;
+		}
+
+		if (['cup', 'tbsp', 'tsp'].includes(unit)) {
+			return measuringCups(d, unit);
+		}
+
+		const fractions = [
+			{ value: 0.75, fraction: '3/4' },
+			{ value: 0.66667, fraction: '2/3' },
+			{ value: 0.5, fraction: '1/2' },
+			{ value: 0.33333, fraction: '1/3' },
+			{ value: 0.25, fraction: '1/4' },
+			{ value: 0.125, fraction: '1/8' },
+			{ value: 0.0625, fraction: '1/16' },
+		];
+		const num = fractions.length;
+		let i;
+		const parts = s.split('.');
+		const whole = parts[0] === '0' ? '' : parts[0];
+		const fraction = parseFloat(`.${parseFloat(parts[1]).toFixed(5)}`);
+
+		for (i = 0; i < num; i += 1) {
+			if (fraction === fractions[i].value) {
+				s = `${whole} ${fractions[i].fraction}`.trim();
+				return `${s} ${maybePluralize(unit, s)}`;
+			}
+		}
+
+		return `${s} ${maybePluralize(unit, s)}`;
+	};
+
+	const fractionToDecimal = (num) => {
+		let whole = 0;
+		if (num.includes(' ')) {
+			num = num.split(' ');
+			whole = parseInt(num[0], 10);
+			num = num[1];
+		}
+		if (num.includes('/')) {
+			const fraction = num.split('/');
+			num = whole + (parseInt(fraction[0], 10) / parseInt(fraction[1], 10));
+		}
+		return parseFloat(num);
+	};
+
+	const getMeasurement = (num, unit, multiplier, units) => {
+		num = num.toString();
+		const defaultValue = `${num} ${maybePluralize(unit, num)}`;
+		if (multiplier === 1 && unit === units) {
+			return defaultValue;
+		}
+
+		const useFractions = !['oz', 'g', 'ml'].includes(unit);
+		if (multiplier === 1 && useFractions && !num.includes('.')) {
+			return defaultValue;
+		}
+
+		let value = fractionToDecimal(num.toString()) * multiplier;
+
+		if (useFractions) {
+			return decimalToFraction(value, unit);
+		}
+
+		if (unit === 'oz' && units === 'g') {
 			value = ouncesToGrams(value);
 			unit = units;
-			plural = units;
 		} else if (unit === 'g' && units === 'oz') {
 			value = gramsToOunces(value);
 			unit = units;
-			plural = units;
 		}
 
-		return `${value} ${['1', '1/2', '1/3', '1/4', '1/8'].includes(value) ? unit : plural}`;
+		return `${value} ${maybePluralize(unit, num.toString())}`;
 	};
 
 	const updateMeasurements = ({ multiplier, units }) => {
@@ -75,18 +235,12 @@ function initMeasurement() {
 		}
 
 		$elements.forEach(($span) => {
-			$span.innerText = getMeasurement(
-				$span.getAttribute('data-num'),
-				$span.getAttribute('data-unit'),
-				$span.getAttribute('data-unit-plural'),
-				multiplier,
-				units
-			);
+			$span.innerText = getMeasurement($span.getAttribute('data-num'), $span.getAttribute('data-unit'), multiplier, units);
 		});
 
-		if ($amount) {
-			$amount.innerText = parseFloat($amount.getAttribute('data-amount')) * multiplier;
-		}
+		$amounts.forEach(($span) => {
+			$span.innerText = parseFloat($span.getAttribute('data-amount')) * multiplier;
+		});
 	};
 
 	const selectButton = ($button, selector) => {

@@ -164,6 +164,8 @@ class Recipe extends Model
 		}
 
 		$replaced = [];
+		$singularValues = ['1', '1/2', '1/3', '1/4', '1/8', '1/16'];
+
 		foreach ($matches[0] as $i => $m) {
 			if (in_array($m, $replaced)) {
 				continue;
@@ -172,11 +174,10 @@ class Recipe extends Model
 			$replaced[] = $m;
 			$num = $matches[1][$i];
 			$unit = $matches[2][$i];
-			$value = self::fractionToDecimal($num);
 			$plural = in_array($unit, ['tsp', 'tbsp', 'oz', 'ml', 'g']) ? $unit : Str::plural($unit);
-			$text = $num . ' ' . ($value === '1' ? $unit : $plural);
+			$text = $num . ' ' . (in_array($num, $singularValues) ? $unit : $plural);
 
-			$new = '<span data-num="' . $value . '" data-unit="' . $unit . '" data-unit-plural="' . $plural . '">' . $text . '</span>';
+			$new = '<span data-num="' . $num . '" data-unit="' . $unit . '">' . $text . '</span>';
 			$content = str_replace($m, $new, $content);
 		}
 
@@ -253,24 +254,6 @@ class Recipe extends Model
 		imagejpeg($dst, $smPath);
 		imagedestroy($src);
 		imagedestroy($dst);
-	}
-
-	protected static function fractionToDecimal(string $value) : string
-	{
-		if (strpos($value, '/') === false) {
-			return $value;
-		}
-
-		$whole = 0;
-		if (strpos($value, ' ') !== false) {
-			list($whole, $value) = explode(' ', $value);
-		}
-
-		list($n, $d) = explode('/', $value);
-		if ($n !== '0') {
-			return (string) ($whole + ($n / $d));
-		}
-		return '';
 	}
 
 	public static function public() : Collection
