@@ -1,30 +1,62 @@
 button,
 .button {
-	background: $darkest-blue;
+	background-color: $darkest-blue;
 	border: 1px solid $darkest-blue;
+	border-radius: $border-radius;
+	box-shadow: inset 1px 1px 0 $dark-blue, inset -1px -1px 0 $darker-blue;
 	color: $white;
 	cursor: pointer;
 	display: inline-block;
 	font-size: $font-size;
 	line-height: $input-line-height;
-	padding: $input-padding;
+	padding: #{$input-padding + 1px} $input-padding #{$input-padding - 1px};
 	text-decoration: none;
 
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: scale-color($darkest-blue, $lightness: 5%);
+		text-decoration: underline;
+	}
+
 	&[disabled] {
-		background: $light-blue;
+		background-color: $light-blue;
 		border-color: $light-blue;
-		color: $dark-gray;
+		box-shadow: inset 1px 1px 0 $blue, inset -1px -1px 0 $blue;
+		color: $dark-blue;
 		cursor: default;
+		pointer-events: none;
 	}
 }
 
 .button--danger {
-	background: $red;
+	background-color: $red;
 	border-color: $red;
 	color: $white;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: scale-color($red, $lightness: 5%);
+	}
 }
 
 .button--secondary {
-	background: $darker-blue;
-	border-color: $darker-blue;
+	background-color: $dark-blue;
+	border-color: $dark-blue;
+	box-shadow: inset 1px 1px 0 $darkish-blue, inset -1px -1px 0 $darker-blue;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: scale-color($dark-blue, $lightness: 5%);
+	}
+}
+
+.button--icon {
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
 }

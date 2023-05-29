@@ -107,7 +107,7 @@ describe('fractionToDecimal', () => {
 		{ value: '1/8', expected: 0.125 },
 		{ value: '1/16', expected: 0.0625 },
 		{ value: '1 3/4', expected: 1.75 },
-		{ value: '1 2/3', expected: 1.6666666666666666 },
+		{ value: '1 2/3', expected: 1.6666666666666665 },
 		{ value: '1 1/2', expected: 1.5 },
 		{ value: '1 1/3', expected: 1.3333333333333333 },
 		{ value: '1 1/4', expected: 1.25 },

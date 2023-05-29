@@ -1,0 +1,21 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: $darker-blue;
+	font-family: sans-serif;
+	font-size: $font-size;
+}
+
+#main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.contain {
+	margin: 0 auto;
+	max-width: $max-width;
+	width: 100%;
+}

@@ -1,12 +1,25 @@
 .timer-link {
 	appearance: none;
-	background: transparent;
-	border-color: blue;
+	background-color: transparent;
+	border-color: $link-color;
 	border-radius: 0;
 	border-style: solid;
 	border-width: 0 0 4px;
-	color: blue;
-	padding: 0;
+	box-shadow: none;
+	color: $link-color;
+	margin: -4px 0;
+	padding: 4px 0;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: inherit;
+		text-decoration: none;
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 $focus-width $focus-color;
+	}
 }
 
 .timer {
@@ -19,10 +32,10 @@
 }
 
 .timer__text {
-	background: $white;
+	background-color: $white;
 	border: 1px solid $gray;
 	border-radius: 100px;
-	box-shadow: 4px 4px 8px rgba($black, .2);
+	box-shadow: $shadow;
 	color: $black;
 	font-size: 24px;
 	min-width: 100px;
@@ -30,10 +43,23 @@
 	text-align: center;
 	text-transform: uppercase;
 
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: $white;
+		text-decoration: none;
+	}
+
 	[data-since] & {
-		background: $darkest-blue;
+		background-color: $darkest-blue;
 		border-color: transparent;
 		color: $white;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: $darkest-blue;
+		}
 	}
 
 	@media (min-width: #{$breakpoint}) {
@@ -44,10 +70,16 @@
 
 .timer__stop {
 	border-radius: 100px;
-	box-shadow: 4px 4px 8px rgba($black, .2);
+	box-shadow: $shadow;
 	height: $button-size;
 	margin-left: $button-margin;
 	width: $button-size;
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
 }
 
 audio {

@@ -1,11 +1,24 @@
+h1,
+h2,
+h3,
+h4 {
+	color: $darkest-blue;
+	font-family: georgia, sans-serif;
+	font-weight: normal;
+}
+
 h1 {
-	font-size: 24px;
+	font-size: 36px;
 	margin: 0;
 }
 
 h2 {
-	font-size: 20px;
+	font-size: 32px;
 	margin: $margin 0 0;
+
+	#article > &:first-child {
+		margin-top: 0;
+	}
 }
 
 h3 {

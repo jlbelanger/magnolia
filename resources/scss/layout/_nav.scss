@@ -1,19 +1,7 @@
-#search {
-	background-image: url('/assets/img/search.svg');
-	background-position: calc(100% - #{$input-padding}) center;
-	background-repeat: no-repeat;
-	background-size: $icon-size;
-	margin: $padding;
-	padding: $input-padding #{($input-padding * 2) + $icon-size} $input-padding $input-padding;
-	width: calc(100% - #{$padding * 2});
-
-	.no-js & {
-		display: none;
-	}
-}
-
 #nav {
 	display: none;
+	font-family: georgia, sans-serif;
+	font-size: 22px;
 
 	&.show {
 		display: block;
@@ -25,64 +13,26 @@
 }
 
 #nav-list {
+	display: flex;
 	list-style: none;
 	margin: 0;
-	padding: 1px 0 0;
-
-	@media (min-width: #{$breakpoint}) {
-		height: calc(100vh - #{$header-height + $button-height + $search-height});
-		overflow: auto;
-
-		.no-js & {
-			height: calc(100vh - #{$header-height + $button-height});
-		}
-	}
+	padding: 0;
 }
 
 .nav-list__item {
-	margin-top: -1px;
+	border-color: $darkish-blue;
+	border-style: solid;
+	border-width: 0;
 }
 
 .nav-list__link {
-	border-color: $darkish-blue;
-	border-style: solid;
-	border-width: 1px 0;
-	color: $darkest-blue;
+	color: $light-blue;
 	display: block;
 	line-height: 1;
 	padding: $padding;
-
-	&:focus {
-		box-shadow: inset 0 0 0 4px $focus-color;
-	}
 }
 
 .nav-list__link--active {
-	background: $darkish-blue;
-	color: $darkest-blue;
+	color: $darkish-blue;
 	text-decoration: none;
-
-	@media (min-width: #{$breakpoint}) {
-		position: relative;
-
-		&::after {
-			background: $dark-blue;
-			bottom: 0;
-			content: '';
-			display: block;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 6px;
-		}
-	}
-}
-
-#no-results {
-	margin-top: 0;
-	padding: $padding;
-
-	#search + & {
-		padding-top: #{$padding * .5};
-	}
 }

@@ -2,20 +2,24 @@
 	background: $focus-color;
 	border: 0;
 	border-radius: 0;
+	color: $off-black;
+	height: $button-size;
 	left: 50%;
-	line-height: 1;
+	line-height: $button-size;
 	margin-left: -75px;
 	opacity: 0;
+	padding: 0;
 	position: absolute;
 	text-align: center;
 	text-decoration: none;
-	top: #{-1 * (16px + $font-size)};
+	top: -$button-size;
 	width: 150px;
 	z-index: 999;
 
 	&:active,
 	&:focus {
+		box-shadow: 0 4px 32px rgba($black, .3);
 		opacity: 1;
-		top: $focus-width;
+		top: 0;
 	}
 }

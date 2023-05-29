@@ -1,4 +1,4 @@
-# Magnolia
+# Magnolia Recipes
 
 View the app at https://magnolia.jennybelanger.com/
 

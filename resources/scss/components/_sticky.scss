@@ -1,0 +1,25 @@
+.sticky {
+	position: sticky;
+	top: $padding;
+	z-index: 998;
+}
+
+.floating-button {
+	border-radius: 100px;
+	box-shadow: $shadow;
+	height: $button-size;
+	margin-right: $button-margin;
+	width: $button-size;
+
+	&:focus {
+		box-shadow: 0 0 0 $focus-width $focus-color, $shadow;
+	}
+
+	.no-js & {
+		display: none;
+	}
+}
+
+#add-note-button {
+	margin-right: 0;
+}

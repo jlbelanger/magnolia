@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="Recipes.">
 		<meta name="keywords" content="recipes, baking, cookies, cake">
-		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia">
+		<meta property="og:title" content="{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}{{ config('app.name') }} Recipes">
 		<meta property="og:description" content="Recipes.">
 		@if (!empty($ogImage))
 			<meta property="og:image" content="{{ $ogImage }}">
@@ -26,10 +26,10 @@
 		<link rel="apple-touch-startup-image" href="{{ url('/assets/img/splash/apple-splash-1242-2208.png') }}" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)">
 		<link rel="apple-touch-startup-image" href="{{ url('/assets/img/splash/apple-splash-750-1334.png') }}" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
 		<link rel="apple-touch-startup-image" href="{{ url('/assets/img/splash/apple-splash-640-1136.png') }}" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
-		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}Magnolia</title>
+		<title>{{ !empty($metaTitle) ? $metaTitle . ' | ' : '' }}{{ config('app.name') }} Recipes</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-		<link rel="icon" href="/favicon.png">
+		<link rel="icon" href="/favicon.svg">
 		<link rel="stylesheet" href="/assets/css/style.min.css?20230526">
 		<link rel="manifest" href="/manifest.json">
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
@@ -38,57 +38,100 @@
 	<body>
 		<a class="button" href="#article" id="skip">Skip to content</a>
 		<main id="main">
-			@if (!empty($recipes))
-				<div class="{{ Request::is('/') ? 'show' : '' }}" id="side">
-					<header id="header">
-						<a href="/" id="site-title">Magnolia</a>
-						<img alt="" id="img" src="/favicon.svg">
-						@if (!Request::is('/'))
-							<button data-toggleable="#nav" id="menu-button" type="button">Menu</button>
-						@endif
-					</header>
-					<nav class="{{ Request::is('/') ? 'show' : '' }}" id="nav">
-						<div id="auth">
-							@if (Auth::user())
-								<form action="/logout" method="post">
-									@csrf
-									<button type="submit">Logout</button>
-								</form>
-								<a class="link" href="/profile">Profile</a>
-								<a class="link" href="/recipes/create">Add Recipe</a>
-							@else
-								<a class="link" href="/login">Login</a>
-								<a class="link" href="https://github.com/jlbelanger/magnolia/">GitHub</a>
-							@endif
-						</div>
-						@if ($recipes->isNotEmpty())
-							<input aria-label="Search recipes" autocomplete="off" data-filterable-input data-filterable-key="name" id="search" type="text">
-						@endif
-						<p id="no-results" style="{{ $recipes->isNotEmpty() ? 'display:none' : '' }}">No recipes found.</p>
-						@if ($recipes->isNotEmpty())
-							<ul id="nav-list" data-filterable-list>
-								@foreach ($recipes as $recipe)
-									<li data-filterable-item class="nav-list__item">
-										<a
-											class="nav-list__link{{ !empty($row->slug) && $row->slug === $recipe->slug ? ' nav-list__link--active' : '' }}"
-											data-key="name"
-											href="{{ $recipe->url() }}"
-										>
-											{{ $recipe->title . ($recipe->is_private ? ' *' : '') }}
-										</a>
-									</li>
-								@endforeach
-							</ul>
-						@endif
+			<header id="header">
+				<div class="contain" id="header-inner">
+					<a href="/" id="site-title">{{ config('app.name') }} Recipes</a>
+					<nav id="nav">
+						<ul id="nav-list">
+							<li class="nav-list__item">
+								<a
+									class="nav-list__link{{ Request::is('categories/cakes') ? ' nav-list__link--active' : '' }}"
+									href="/categories/cakes"
+								>
+									Cakes
+								</a>
+							</li>
+							<li class="nav-list__item">
+								<a
+									class="nav-list__link{{ Request::is('categories/cookies') ? ' nav-list__link--active' : '' }}"
+									href="/categories/cookies"
+								>
+									Cookies
+								</a>
+							</li>
+							<li class="nav-list__item">
+								<a
+									class="nav-list__link{{ Request::is('categories/desserts') ? ' nav-list__link--active' : '' }}"
+									href="/categories/desserts"
+								>
+									Desserts
+								</a>
+							</li>
+							<li class="nav-list__item">
+								<a
+									class="nav-list__link{{ Request::is('categories/toppings') ? ' nav-list__link--active' : '' }}"
+									href="/categories/toppings"
+								>
+									Toppings
+								</a>
+							</li>
+							<li class="nav-list__item">
+								<a
+									class="nav-list__link{{ Request::is('categories/other') ? ' nav-list__link--active' : '' }}"
+									href="/categories/other"
+								>
+									Other
+								</a>
+							</li>
+						</ul>
 					</nav>
+					<form action="/search" id="search" method="get">
+						<input aria-label="Search recipes" autocomplete="off" class="prefix" id="search-input" name="q" type="text" value="{{ request()->query('q') }}">
+						<button class="postfix" id="search-submit" type="submit">Search</button>
+					</form>
+					<button data-toggleable="#nav" id="menu-button" type="button">Menu</button>
 				</div>
-			@endif
-			<article class="{{ !empty($articleClass) ? $articleClass : '' }}" id="article">
-				<div id="article-inner">
+				@if (Auth::user())
+					<section class="contain" id="admin">
+						<a class="button" href="/recipes/create">Add Recipe</a>
+						<a class="button" href="/categories/create">Add Category</a>
+						@if (!empty($row) && (Request::is('recipes/*') || Request::is('categories/*')))
+							@if (Request::is('*/edit'))
+								<a class="button" href="{{ $row->url() }}">
+									View {{ $row->type() }}
+								</a>
+							@else
+								<a class="button" href="{{ $row->editUrl() }}">
+									Edit {{ $row->type() }}
+								</a>
+							@endif
+						@endif
+						<div class="flex-grow"></div>
+						<a class="button" href="/profile">Profile</a>
+						<form action="/logout" method="post">
+							@csrf
+							<button data-confirmable="Are you sure you want to log out?" type="button">Logout</button>
+						</form>
+					</section>
+				@endif
+			</header>
+			<article class="{{ !empty($articleClass) ? $articleClass : '' }}" id="article-outer">
+				<div class="contain" id="article">
 					@yield('content')
 				</div>
 			</article>
+			<footer class="{{ Request::is('/') ? 'show' : '' }}" id="footer">
+				<div class="contain" id="footer-inner">
+					@if (!Auth::user())
+						<a class="link" href="/login">Login</a>
+					@endif
+					<a class="link" href="https://github.com/jlbelanger/magnolia/">GitHub</a>
+				</div>
+			</footer>
 		</main>
 		<script src="/assets/js/functions.min.js?20230526"></script>
+		@if (Auth::user())
+			<script src="/assets/js/admin.min.js?20230526"></script>
+		@endif
 	</body>
 </html>

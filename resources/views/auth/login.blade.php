@@ -3,10 +3,6 @@
 @php ($articleClass = 'article--auth')
 
 @section('content')
-	<header id="header">
-		<a href="/" id="site-title">Magnolia</a>
-	</header>
-
 	<h1>Login</h1>
 
 	@include('shared.errors', ['errors' => $errors])
@@ -16,14 +12,14 @@
 
 		<p>
 			<label class="required" for="username">Username</label>
-			<input autocapitalize="none" autocomplete="username" autofocus id="username" name="username" required type="text" value="{{ old('username') }}" />
+			<input autocapitalize="none" autocomplete="username" id="username" name="username" required type="text" value="{{ old('username') }}" />
 		</p>
 
 		<p>
 			<label class="required" for="password">Password</label>
 			<span class="password-container">
-				<input autocomplete="current-password" autocorrect="off" class="password-input" id="password" name="password" required type="password" />
-				<button class="button--secondary password-button" data-toggle-password type="button">Show</button>
+				<input autocomplete="current-password" autocorrect="off" class="password-input prefix" id="password" name="password" required type="password" />
+				<button class="button--secondary password-button postfix" data-toggle-password type="button">Show</button>
 			</span>
 		</p>
 

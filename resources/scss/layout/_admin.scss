@@ -1,0 +1,15 @@
+#admin {
+	background: $darker-blue;
+	display: flex;
+
+	button,
+	.button {
+		border-bottom-width: 0;
+		border-radius: $border-radius $border-radius 0 0;
+		margin: 0 2px;
+	}
+}
+
+.flex-grow {
+	flex: 1 1 auto;
+}

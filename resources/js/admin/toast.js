@@ -3,7 +3,7 @@ class Toast { // eslint-disable-line no-unused-vars
 		args.class = args.class || '';
 		args.closeButtonClass = args.closeButtonText || '';
 		args.closeButtonText = args.closeButtonText || 'Close';
-		args.duration = args.duration || 3000;
+		args.duration = args.duration || 5000;
 
 		let $container = document.getElementById('toast-container');
 		if (!$container) {

@@ -3,13 +3,29 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\SearchController;
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-	return view('home')->with('recipes', Recipe::visible());
+	$latestRecipes = Recipe::whereNotNull('filename')
+		->orderByDesc('published_at')
+		->take(9)
+		->get();
+	$draftRecipes = collect([]);
+	if (Auth::user()) {
+		$draftRecipes = Recipe::where('is_private', '=', '1')
+			->orderByDesc('created_at')
+			->take(3)
+			->get();
+	}
+	return view('home')
+		->with('latestRecipes', $latestRecipes)
+		->with('draftRecipes', $draftRecipes);
 });
 
 Route::get('/sitemap.xml', function () {
@@ -40,7 +56,10 @@ Route::middleware('auth')->group(function () {
 	Route::put('profile', [ProfileController::class, 'update']);
 
 	Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+	Route::resource('categories', CategoryController::class)->except(['index', 'show']);
 	Route::resource('recipes', RecipeController::class)->except(['index', 'show']);
 });
 
+Route::get('/search', [SearchController::class, 'show']);
+Route::get('/categories/{slug}', [CategoryController::class, 'show']);
 Route::get('/recipes/{slug}', [RecipeController::class, 'show']);

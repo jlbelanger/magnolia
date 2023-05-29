@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +19,7 @@ class Recipe extends Model
 		'title',
 		'slug',
 		'filename',
+		'category_id',
 		'summary',
 		'content',
 		'notes',
@@ -67,6 +69,7 @@ class Recipe extends Model
 	];
 
 	protected $casts = [
+		'category_id' => 'integer',
 		'calories' => 'integer',
 		'fat' => 'float',
 		'saturated_fat' => 'float',
@@ -149,6 +152,11 @@ class Recipe extends Model
 	{
 		$content = str_replace('<a href', '<a target="_blank" href', $content);
 		return $content;
+	}
+
+	public function editUrl() : string
+	{
+		return '/recipes/' . $this->id . '/edit';
 	}
 
 	protected function highlightAmounts(string $summary) : string
@@ -238,6 +246,15 @@ class Recipe extends Model
 		return $content;
 	}
 
+	protected static function booted()
+	{
+		static::addGlobalScope('ancient', function (Builder $builder) {
+			if (!Auth::user()) {
+				$builder->where('is_private', '=', '0');
+			}
+		});
+	}
+
 	public function createThumbnail(string $filename) : void
 	{
 		$lgPath = public_path('uploads/' . $filename);
@@ -272,6 +289,7 @@ class Recipe extends Model
 		return [
 			'title' => [$required, 'max:255', 'unique:recipes,title' . $unique],
 			'slug' => [$required, 'max:255', 'alpha_dash', 'unique:recipes,slug' . $unique],
+			'category_id' => [$required, 'integer'],
 			'content' => [$required],
 			'is_private' => ['boolean'],
 			'serving_size' => ['nullable', 'max:255'],
@@ -332,17 +350,13 @@ class Recipe extends Model
 		return $summary;
 	}
 
+	public function type() : string
+	{
+		return 'Recipe';
+	}
+
 	public function url() : string
 	{
 		return '/recipes/' . $this->slug;
-	}
-
-	public static function visible() : Collection
-	{
-		$rows = self::orderBy('slug');
-		if (!Auth::user()) {
-			$rows = $rows->where('is_private', '=', '0');
-		}
-		return $rows->get();
 	}
 }

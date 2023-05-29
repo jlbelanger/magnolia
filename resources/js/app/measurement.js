@@ -254,7 +254,6 @@ function initMeasurement() {
 	};
 
 	const $fractionContainer = document.createElement('fieldset');
-	document.getElementById('recipe-header').appendChild($fractionContainer);
 
 	const fractionOptions = [
 		{ label: '1/2', value: 0.5, disabled: false },
@@ -287,7 +286,6 @@ function initMeasurement() {
 	}
 
 	const $unitContainer = document.createElement('fieldset');
-	document.getElementById('recipe-header').appendChild($unitContainer);
 
 	const unitOptions = ['oz', 'g'];
 	unitOptions.forEach((unit) => {
@@ -305,6 +303,10 @@ function initMeasurement() {
 		});
 		$unitContainer.appendChild($button);
 	});
+
+	const $sidebar = document.getElementById('recipe-side');
+	$sidebar.prepend($unitContainer);
+	$sidebar.prepend($fractionContainer);
 }
 
 initMeasurement();

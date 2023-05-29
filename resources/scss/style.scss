@@ -1,9 +1,12 @@
 @import '../../node_modules/normalize.css/normalize';
 @import 'utilities/variables';
+@import 'layout/main';
+@import 'layout/admin';
 @import 'layout/header';
+@import 'layout/content';
+@import 'layout/footer';
 @import 'layout/nav';
 @import 'components/alert';
-@import 'components/auth';
 @import 'components/button';
 @import 'components/checkbox';
 @import 'components/details';
@@ -11,6 +14,7 @@
 @import 'components/error';
 @import 'components/focus';
 @import 'components/heading';
+@import 'components/hr';
 @import 'components/input';
 @import 'components/img-list';
 @import 'components/label';
@@ -19,65 +23,17 @@
 @import 'components/notes';
 @import 'components/nutrition';
 @import 'components/paragraph';
-@import 'components/recipe';
+@import 'components/postfix';
 @import 'components/skip';
 @import 'components/spinner';
+@import 'components/sticky';
 @import 'components/timer';
 @import 'components/toast';
+@import 'pages/auth';
+@import 'pages/home';
+@import 'pages/recipe';
 @import 'utilities/print';
-
-* {
-	box-sizing: border-box;
-}
-
-body {
-	background: $blue;
-	font-family: sans-serif;
-	font-size: $font-size;
-}
 
 #delete-form {
 	display: inline-block;
-}
-
-#article {
-	margin: 0 auto;
-	padding: $padding;
-	width: 100%;
-
-	@media (min-width: #{$breakpoint}) {
-		#side + & {
-			margin-left: $sidebar-width;
-			width: calc(100% - #{$sidebar-width});
-		}
-	}
-}
-
-#article-inner {
-	@media (min-width: #{$breakpoint}) {
-		margin: 0 auto;
-		max-width: $content-width;
-		width: 100%;
-
-		.article--home & {
-			max-width: none;
-		}
-	}
-}
-
-fieldset {
-	border-color: $darker-blue;
-	border-style: solid;
-	border-width: 1px;
-	display: inline-block;
-	padding: 0;
-	white-space: nowrap;
-
-	button + button {
-		margin-left: 1px;
-	}
-
-	button:focus {
-		position: relative;
-	}
 }

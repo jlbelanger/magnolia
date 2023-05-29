@@ -1,14 +1,17 @@
 input,
+select,
 textarea {
 	-webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
+	background: $white;
 	border: $input-border-width solid $gray;
-	border-radius: 0;
+	border-radius: $border-radius;
 	font-size: $font-size;
 	line-height: $input-line-height;
 	padding: $input-padding;
 }
 
 input:not([size]),
+select,
 textarea {
 	width: 100%;
 }
@@ -44,6 +47,28 @@ input[type='checkbox'] {
 	}
 }
 
+.select-container {
+	display: block;
+	position: relative;
+
+	&::after {
+		background-image: url('/assets/img/caret.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: $select-icon-size;
+		content: '';
+		display: block;
+		height: $select-icon-size;
+		margin-top: #{$select-icon-size * -.5};
+		pointer-events: none;
+		position: absolute;
+		right: #{($button-size - $select-icon-size) * .5};
+		top: 50%;
+		width: $select-icon-size;
+		z-index: 1;
+	}
+}
+
 .textarea--large {
 	height: 50vh;
 }
@@ -54,13 +79,10 @@ input[type='checkbox'] {
 
 input.password-input {
 	border-right-color: transparent;
+	width: calc(100% - #{$password-button-width});
 
-	.article--auth & {
-		width: calc(100% - #{$password-button-width});
-
-		.no-js & {
-			width: 100%;
-		}
+	.no-js & {
+		width: 100%;
 	}
 }
 

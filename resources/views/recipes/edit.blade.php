@@ -4,8 +4,6 @@
 	<div id="recipe-header">
 		<h1>Edit {{ $row->title }} Recipe</h1>
 
-		<a class="button button--secondary" href="{{ $row->url() }}">View</a>
-
 		<form action="/recipes/{{ $row->id }}" id="delete-form" method="post">
 			@csrf
 			@method('DELETE')
