@@ -11,7 +11,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	position: relative;
 
 	@media (max-width: #{$max-width}) {
-		border-bottom: 8px solid $darkest-blue;
+		border-bottom: $border-width solid $darkest-blue;
 	}
 
 	@media (min-width: #{$breakpoint-large}) {
@@ -23,36 +23,57 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	display: none;
 }
 
-#recipe {
-	position: relative;
+#recipe-image-container + #recipe #recipe-header {
+	padding-top: $margin;
 }
 
 #recipe-main {
-	padding-right: $margin;
-	width: calc(100% - #{$sidebar-width});
-
-	#recipe-image-container + #recipe & {
-		padding-top: $margin;
+	@media (min-width: #{$breakpoint-large}) {
+		padding-right: $margin;
+		width: calc(100% - #{$sidebar-width});
 	}
 }
 
 #recipe-side {
 	background: scale-color($blue, $lightness: 15%);
-	border-color: $light-blue $darkish-blue $light-blue $light-blue;
+	border-color: $light-blue $darkish-blue $darkish-blue $light-blue;
 	border-style: solid;
-	border-width: 0 1px;
-	bottom: -$padding;
+	border-width: 1px;
 	color: $darkest-blue;
+	margin-left: -$padding;
 	margin-right: -$padding;
+	margin-top: -8px;
 	padding: $padding;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: $sidebar-width;
+
+	h2 {
+		font-size: 28px;
+	}
+
+	& > :first-child {
+		margin-top: 0;
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		border-width: 0 1px;
+		bottom: -$padding;
+		display: block;
+		margin-right: -$padding;
+		margin-top: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: $sidebar-width;
+	}
 
 	@media (min-width: #{$breakpoint-large}) {
 		bottom: -$top-padding;
 	}
+}
+
+#recipe-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
 }
 
 #recipe {
@@ -99,6 +120,10 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 			margin-left: #{($checkbox-size * -.5) - $checkbox-margin-right};
 			margin-top: $sublist-padding;
 		}
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		position: relative;
 	}
 }
 

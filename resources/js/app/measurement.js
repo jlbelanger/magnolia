@@ -304,9 +304,15 @@ function initMeasurement() {
 		$unitContainer.appendChild($button);
 	});
 
+	const $container = document.createElement('div');
+	$container.setAttribute('id', 'recipe-buttons');
+	$container.appendChild($fractionContainer);
+	$container.appendChild($unitContainer);
+
 	const $sidebar = document.getElementById('recipe-side');
-	$sidebar.prepend($unitContainer);
-	$sidebar.prepend($fractionContainer);
+	if ($sidebar) {
+		$sidebar.prepend($container);
+	}
 }
 
 initMeasurement();

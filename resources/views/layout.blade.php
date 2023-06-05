@@ -40,7 +40,27 @@
 		<main id="main">
 			<header id="header">
 				<div class="contain" id="header-inner">
+					<button
+						data-toggleable="#nav,#admin"
+						data-toggleable-body-class="show-nav"
+						data-toggleable-show="Show Menu"
+						data-toggleable-hide="Hide Menu"
+						id="nav-toggle"
+						type="button"
+					>
+						Show Menu
+					</button>
 					<a href="/" id="site-title">{{ config('app.name') }} Recipes</a>
+					<button
+						data-toggleable="#search"
+						data-toggleable-body-class="show-search"
+						data-toggleable-show="Show Search"
+						data-toggleable-hide="Hide Search"
+						id="search-toggle"
+						type="button"
+					>
+						Show Search
+					</button>
 					<nav id="nav">
 						<ul id="nav-list">
 							<li class="nav-list__item">
@@ -89,25 +109,24 @@
 						<input aria-label="Search recipes" autocomplete="off" class="prefix" id="search-input" name="q" type="text" value="{{ request()->query('q') }}">
 						<button class="postfix" id="search-submit" type="submit">Search</button>
 					</form>
-					<button data-toggleable="#nav" id="menu-button" type="button">Menu</button>
 				</div>
 				@if (Auth::user())
 					<section class="contain" id="admin">
-						<a class="button" href="/recipes/create">Add Recipe</a>
-						<a class="button" href="/categories/create">Add Category</a>
+						<a class="button admin__button{{ Request::is('recipes/create') ? ' admin__button--active' : '' }}" href="/recipes/create">Add Recipe</a>
+						<a class="button admin__button{{ Request::is('categories/create') ? ' admin__button--active' : '' }}" href="/categories/create">Add Category</a>
 						@if (!empty($row) && (Request::is('recipes/*') || Request::is('categories/*')))
 							@if (Request::is('*/edit'))
-								<a class="button" href="{{ $row->url() }}">
+								<a class="button admin__button" href="{{ $row->url() }}">
 									View {{ $row->type() }}
 								</a>
 							@else
-								<a class="button" href="{{ $row->editUrl() }}">
+								<a class="button admin__button" href="{{ $row->editUrl() }}">
 									Edit {{ $row->type() }}
 								</a>
 							@endif
 						@endif
 						<div class="flex-grow"></div>
-						<a class="button" href="/profile">Profile</a>
+						<a class="button admin__button{{ Request::is('profile') ? ' admin__button--active' : '' }}" href="/profile">Profile</a>
 						<form action="/logout" method="post">
 							@csrf
 							<button data-confirmable="Are you sure you want to log out?" type="button">Logout</button>
@@ -120,7 +139,7 @@
 					@yield('content')
 				</div>
 			</article>
-			<footer class="{{ Request::is('/') ? 'show' : '' }}" id="footer">
+			<footer id="footer">
 				<div class="contain" id="footer-inner">
 					@if (!Auth::user())
 						<a class="link" href="/login">Login</a>

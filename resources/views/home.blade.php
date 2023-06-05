@@ -4,14 +4,14 @@
 
 @section('content')
 	@if ($draftRecipes->isNotEmpty())
-		<h2>Drafts</h2>
+		<h1>Drafts</h1>
 		@include('shared.list', ['recipes' => $draftRecipes])
 		<hr>
 	@endif
-	<h2>
+	<h1>
 		Latest Recipes
 		<a href="/feed.xml" id="rss">RSS feed</a>
-	</h2>
+	</h1>
 	@if ($latestRecipes->isNotEmpty())
 		@include('shared.list', ['recipes' => $latestRecipes])
 	@else

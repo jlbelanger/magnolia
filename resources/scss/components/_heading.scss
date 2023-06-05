@@ -8,16 +8,24 @@ h4 {
 }
 
 h1 {
-	font-size: 36px;
+	font-size: 28px;
 	margin: 0;
+
+	@media (min-width: #{$breakpoint}) {
+		font-size: 36px;
+	}
 }
 
 h2 {
-	font-size: 32px;
+	font-size: 24px;
 	margin: $margin 0 0;
 
 	#article > &:first-child {
 		margin-top: 0;
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		font-size: 32px;
 	}
 }
 

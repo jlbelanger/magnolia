@@ -10,8 +10,7 @@ use Illuminate\View\View;
 class SearchController extends Controller
 {
 	/**
-	 * Displays the specified resource.
-	 *
+	 * @param  Request $request
 	 * @return View
 	 */
 	public function show(Request $request) : View

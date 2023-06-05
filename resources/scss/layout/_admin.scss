@@ -1,15 +1,69 @@
 #admin {
 	background: $darker-blue;
-	display: flex;
+	display: none;
+	flex-direction: row;
+	flex-wrap: wrap;
 
 	button,
 	.button {
 		border-bottom-width: 0;
-		border-radius: $border-radius $border-radius 0 0;
-		margin: 0 2px;
+		text-align: center;
+		width: 50%;
+	}
+
+	form {
+		width: 50%;
+
+		button {
+			width: 100%;
+		}
+	}
+
+	&.show {
+		display: flex;
+	}
+
+	@media (min-width: #{$breakpoint}) {
+		display: flex;
+
+		button,
+		.button {
+			border-radius: $border-radius $border-radius 0 0;
+			margin: 0 2px;
+			width: auto;
+		}
+
+		form {
+			width: auto;
+		}
 	}
 }
 
 .flex-grow {
-	flex: 1 1 auto;
+	@media (min-width: #{$breakpoint}) {
+		flex: 1 1 auto;
+	}
+}
+
+.admin__button--active {
+	background-color: $blue;
+	color: $darkest-blue;
+	position: relative;
+
+	&::after {
+		background-color: $blue;
+		content: '';
+		height: #{$border-width + 1px};
+		left: 1px;
+		margin-top: -1px;
+		position: absolute;
+		right: 1px;
+		top: 100%;
+	}
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: $blue;
+	}
 }

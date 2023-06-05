@@ -29,9 +29,10 @@ $dark-green: #063;
 $pink: plum;
 
 $border-radius: 6px;
+$border-width: 8px;
 $font-size: 18px;
 $line-height: 1.3;
-$margin: 20px;
+$margin: 16px;
 $padding: 16px;
 $top-padding: 24px;
 $shadow: 4px 4px 8px rgba($black, .2);
@@ -51,8 +52,6 @@ $focus-width: 4px;
 
 $icon-size: 20px;
 
-$image-height: 80px;
-
 $input-border-width: 1px;
 $input-line-height: 1;
 $input-padding: 12px;
@@ -67,33 +66,40 @@ $select-icon-size: 12px;
 
 $sidebar-width: 280px;
 
-$spinner-color-alternate: transparent !default;
-$spinner-color: $darkest-blue !default;
-$spinner-size: 50px !default;
-$spinner-thickness: 10px !default;
+$spinner-color-alternate: transparent;
+$spinner-color: $darkest-blue;
+$spinner-size: 50px;
+$spinner-thickness: 10px;
 
 $sublist-padding: 8px;
 
-$toast-background-color: $darker-blue !default;
-$toast-close-font-size: 18px !default;
-$toast-close-icon: '\00d7' !default; // &times;
-$toast-close-margin-left: 8px !default;
-$toast-close-size: 32px !default;
-$toast-margin: 16px !default;
-$toast-padding: 16px !default;
-$toast-text-color: $white !default;
-$toast-zindex: 999 !default;
+$toast-background-color: $darker-blue;
+$toast-close-font-size: 18px;
+$toast-close-icon: '\00d7'; // &times;
+$toast-close-margin-left: 8px;
+$toast-close-size: 32px;
+$toast-margin: 16px;
+$toast-padding: 16px;
+$toast-text-color: $white;
 
-$toast-error-background-color: $light-red !default;
-$toast-error-text-color: $dark-red !default;
+$toast-error-background-color: $light-red;
+$toast-error-text-color: $dark-red;
 
-$toast-success-background-color: $light-green !default;
-$toast-success-text-color: $dark-green !default;
+$toast-success-background-color: $light-green;
+$toast-success-text-color: $dark-green;
 
 $button-height: (($input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
-$header-top-padding: 12px;
+$header-top-padding: 8px;
 $header-height: $button-size + ($header-top-padding * 2);
 $search-height: (($padding + $input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
 
 $breakpoint: $content-width + $sidebar-width;
 $breakpoint-large: $max-width + $padding;
+
+$header-zindex: 993;
+$sticky-zindex: 994;
+$skip-zindex: 995;
+$notes-zindex: 996;
+$timer-zindex: 997;
+$toast-zindex: 998;
+$spinner-zindex: 999;

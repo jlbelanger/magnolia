@@ -1,11 +1,32 @@
+$img-list-gap: 12px;
+$img-list-item-width: 320px;
+$img-list-breakpoint-1: 480px;
+$img-list-breakpoint-2: (($img-list-item-width + $img-list-gap) * 2) + $img-list-gap;
+
 #img-list {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 24px 12px;
-	justify-content: space-between;
+	gap: 24px $img-list-gap;
+	justify-content: center;
 	list-style: none;
 	margin: 8px 0 0;
 	padding: 0;
+
+	@media (min-width: #{$img-list-breakpoint-1}) {
+		justify-content: space-between;
+	}
+}
+
+.img-list__item {
+	width: auto;
+
+	@media (min-width: #{$img-list-breakpoint-1}) {
+		width: calc(50% - #{$img-list-gap});
+	}
+
+	@media (min-width: #{$img-list-breakpoint-2}) {
+		width: calc(33.333% - #{$img-list-gap});
+	}
 }
 
 .img-list__link {
@@ -15,27 +36,10 @@
 }
 
 .img-list__img {
+	background-color: $light-blue;
 	border-radius: $border-radius;
 	display: block;
 	height: auto;
 	margin-bottom: 6px;
 	max-width: 100%;
-}
-
-.img-list__img--placeholder {
-	background-color: $light-blue;
-	height: 180px;
-	width: 320px;
-
-	&::after {
-		background-image: url('/favicon.svg');
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: auto 70%;
-		content: '';
-		display: block;
-		height: 100%;
-		opacity: .25;
-		width: 100%;
-	}
 }

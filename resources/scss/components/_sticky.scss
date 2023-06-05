@@ -1,7 +1,13 @@
+.sticky-container {
+	margin-top: $margin;
+	position: relative;
+	text-align: right;
+}
+
 .sticky {
 	position: sticky;
 	top: $padding;
-	z-index: 998;
+	z-index: $sticky-zindex;
 }
 
 .floating-button {

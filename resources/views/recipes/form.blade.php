@@ -71,6 +71,14 @@
 </p>
 
 <p>
+	<label for="sources">Sources</label> <small>(supports Markdown)</small>
+	<textarea id="sources" name="sources" rows="5">{{ old('sources', !empty($row) ? $row->sources : '') }}</textarea>
+	@error('sources')
+		<span class="error">{{ $message }}</span>
+	@enderror
+</p>
+
+<p>
 	<label class="required" for="content">Content</label> <small>(supports Markdown)</small>
 	<textarea class="textarea--large" id="content" name="content" required>{{ old('content', !empty($row) ? $row->content : '') }}</textarea>
 	@error('content')

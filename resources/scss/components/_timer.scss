@@ -28,7 +28,7 @@
 	right: 20px;
 	user-select: none;
 	white-space: nowrap;
-	z-index: 999;
+	z-index: $timer-zindex;
 }
 
 .timer__text {

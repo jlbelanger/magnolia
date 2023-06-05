@@ -21,6 +21,7 @@ class Recipe extends Model
 		'filename',
 		'category_id',
 		'summary',
+		'sources',
 		'content',
 		'notes',
 		'is_private',
@@ -336,6 +337,18 @@ class Recipe extends Model
 		];
 	}
 
+	public function sources() : string
+	{
+		if (!$this->sources) {
+			return '';
+		}
+		$sources = $this->sources;
+		$sources = $this->hideNotes($sources);
+		$sources = (new Parsedown())->setBreaksEnabled(true)->text($sources);
+		$sources = $this->addLinkTarget($sources);
+		return $sources;
+	}
+
 	public function summary() : string
 	{
 		if (!$this->summary) {
@@ -344,7 +357,6 @@ class Recipe extends Model
 		$summary = $this->summary;
 		$summary = $this->hideNotes($summary);
 		$summary = (new Parsedown())->setBreaksEnabled(true)->text($summary);
-		$summary = $this->addLinkTarget($summary);
 		$summary = $this->highlightAmounts($summary);
 		$summary = $this->addMeasurements($summary);
 		return $summary;
