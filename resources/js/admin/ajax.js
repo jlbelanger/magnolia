@@ -25,7 +25,7 @@ function Ajax($form) {
 			})
 			.catch(() => {
 				Spinner.hide($spinner);
-				Toast.show('There was an error saving your notes.', { class: 'toast--error' });
+				Toast.show('There was an error saving your notes.', { class: 'toast--danger' });
 			});
 	});
 }

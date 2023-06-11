@@ -3,13 +3,13 @@ button,
 	background-color: $darkest-blue;
 	border: 1px solid $darkest-blue;
 	border-radius: $border-radius;
-	box-shadow: inset 1px 1px 0 $dark-blue, inset -1px -1px 0 $darker-blue;
+	box-shadow: inset 1px 1px 0 $medium-blue, inset -1px -1px 0 $darker-blue;
 	color: $white;
 	cursor: pointer;
 	display: inline-block;
 	font-size: $font-size;
 	line-height: $input-line-height;
-	padding: #{$input-padding + 1px} $input-padding #{$input-padding - 1px};
+	padding: $input-padding $input-padding #{$input-padding - 1px};
 	text-decoration: none;
 
 	&:hover,
@@ -26,12 +26,21 @@ button,
 		color: $dark-blue;
 		cursor: default;
 		pointer-events: none;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: inherit;
+			border-color: inherit;
+			text-decoration: none;
+		}
 	}
 }
 
 .button--danger {
 	background-color: $red;
 	border-color: $red;
+	box-shadow: inset 1px 1px 0 $light-red, inset -1px -1px 0 scale-color($red, $lightness: -30%);
 	color: $white;
 
 	&:hover,

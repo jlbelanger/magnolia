@@ -1,32 +1,31 @@
-$saturation: 10%;
+$dark-blue: #4b7c9b;
+$medium-blue: #739fbb;
+$blue: #c9eaff;
+$light-blue: #e3f4ff;
+$darker-blue: scale-color($medium-blue, $lightness: -35%);
+$darkest-blue: scale-color($medium-blue, $lightness: -60%);
+$darkish-blue: scale-color($blue, $lightness: -5%, $saturation: -50%);
+$blue-border: scale-color($light-blue, $lightness: -10%, $saturation: -20%);
 
-$dark-blue: scale-color(#7b9db3, $saturation: $saturation);
-$blue: scale-color(#c9eaff, $saturation: $saturation);
-$light-blue: scale-color(#e3f4ff, $saturation: $saturation);
-$darker-blue: scale-color($dark-blue, $lightness: -25%);
-$darkest-blue: scale-color($dark-blue, $lightness: -50%);
-$lighter-blue: scale-color($light-blue, $lightness: 50%);
-$darkish-blue: scale-color($blue, $lightness: -8%, $saturation: -50%);
-$gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
-$dark-gray: scale-color($gray, $lightness: -50%, $saturation: -30%);
-
-$off-black: scale-color(#1c2a33, $saturation: $saturation);
 $black: #000;
+$gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
 $white: #fff;
 
 $link-color: #264ce0;
 
 $red: #c00;
 $light-red: #faa;
-$lighter-red: scale-color($light-red, $lightness: 50%);
 $dark-red: #600;
+$red-border: scale-color($light-red, $lightness: -10%, $saturation: -20%);
 
 $green: #093;
 $light-green: #7d9;
-$lighter-green: scale-color($light-green, $lightness: 50%);
 $dark-green: #063;
+$green-border: scale-color($light-green, $lightness: -10%, $saturation: -20%);
 
 $pink: plum;
+
+$serif: georgia, sans-serif;
 
 $border-radius: 6px;
 $border-width: 8px;
@@ -82,19 +81,15 @@ $toast-margin: 16px;
 $toast-padding: 16px;
 $toast-text-color: $white;
 
-$toast-error-background-color: $light-red;
-$toast-error-text-color: $dark-red;
+$toast-danger-background-color: $light-red;
+$toast-danger-border-color: $red-border;
+$toast-danger-text-color: $dark-red;
 
 $toast-success-background-color: $light-green;
+$toast-success-border-color: $green-border;
 $toast-success-text-color: $dark-green;
 
-$button-height: (($input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
-$header-top-padding: 8px;
-$header-height: $button-size + ($header-top-padding * 2);
-$search-height: (($padding + $input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
-
-$breakpoint: $content-width + $sidebar-width;
-$breakpoint-large: $max-width + $padding;
+$breakpoint-tablet-landscape: $max-width;
 
 $header-zindex: 993;
 $sticky-zindex: 994;

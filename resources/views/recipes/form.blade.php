@@ -116,7 +116,7 @@
 	<div id="nutrition-facts">
 		<p>
 			<label for="serving_size">Serving Size</label>
-			<input id="serving_size" name="serving_size" type="text" value="{{ old('serving_size', !empty($row) ? $row->serving_size : '') }}">
+			<input id="serving_size" name="serving_size" size="18" type="text" value="{{ old('serving_size', !empty($row) ? $row->serving_size : '') }}">
 			@error('serving_size')
 				<span class="error">{{ $message }}</span>
 			@enderror

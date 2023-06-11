@@ -3,7 +3,7 @@ h2,
 h3,
 h4 {
 	color: $darkest-blue;
-	font-family: georgia, sans-serif;
+	font-family: $serif;
 	font-weight: normal;
 }
 
@@ -11,7 +11,7 @@ h1 {
 	font-size: 28px;
 	margin: 0;
 
-	@media (min-width: #{$breakpoint}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		font-size: 36px;
 	}
 }
@@ -24,9 +24,14 @@ h2 {
 		margin-top: 0;
 	}
 
-	@media (min-width: #{$breakpoint}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		font-size: 32px;
 	}
+}
+
+ol + h2,
+p + h2 {
+	margin-top: #{$margin * 2};
 }
 
 h3 {

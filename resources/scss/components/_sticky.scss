@@ -1,6 +1,5 @@
 .sticky-container {
-	margin-top: $margin;
-	position: relative;
+	margin-top: $padding;
 	text-align: right;
 }
 
@@ -14,7 +13,7 @@
 	border-radius: 100px;
 	box-shadow: $shadow;
 	height: $button-size;
-	margin-right: $button-margin;
+	margin-left: $button-margin;
 	width: $button-size;
 
 	&:focus {

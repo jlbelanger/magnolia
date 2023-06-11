@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	<h2>Search results{{ $q ? ': ' . $q : '' }}</h2>
+	<h1>Search results{{ $q ? ': ' . $q : '' }}</h1>
 	@if (!$q)
 		<p>Please enter a search term.</p>
 	@elseif ($recipes->isNotEmpty())

@@ -23,13 +23,15 @@ class CreateCategoriesTable extends Migration
 		});
 
 		Schema::table('recipes', function (Blueprint $table) {
-			$table->foreignId('category_id')->after('slug');
+			$table->unsignedBigInteger('category_id')->nullable()->after('slug');
 		});
 
-		Category::firstOrCreate(['title' => 'Other', 'slug' => 'other']);
-		DB::table('recipes')->where('category_id', '=', 0)->update(['category_id' => 1]);
+		$category = Category::firstOrCreate(['title' => 'Other', 'slug' => 'other']);
+		DB::table('recipes')->whereNull('category_id')->update(['category_id' => $category->getKey()]);
 
-		DB::statement('alter table `recipes` add constraint `recipes_category_id_foreign` foreign key (`category_id`) references `categories` (`id`) on delete restrict');
+		Schema::table('recipes', function (Blueprint $table) {
+			$table->foreign('category_id')->references('id')->on('categories')->constrained()->onDelete('restrict');
+		});
 	}
 
 	/**

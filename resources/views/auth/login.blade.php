@@ -19,7 +19,15 @@
 			<label class="required" for="password">Password</label>
 			<span class="password-container">
 				<input autocomplete="current-password" autocorrect="off" class="password-input prefix" id="password" name="password" required type="password" />
-				<button class="button--secondary password-button postfix" data-toggle-password type="button">Show</button>
+				<button
+					aria-controls="password"
+					aria-label="Show Password"
+					class="button--secondary password-button postfix"
+					data-toggle-password
+					type="button"
+				>
+					Show
+				</button>
 			</span>
 		</p>
 

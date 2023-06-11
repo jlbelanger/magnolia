@@ -216,7 +216,7 @@ function initMeasurement() {
 			unit = units;
 		}
 
-		return `${value} ${maybePluralize(unit, num.toString())}`;
+		return `${value.toLocaleString()} ${maybePluralize(unit, num.toString())}`;
 	};
 
 	const updateMeasurements = ({ multiplier, units }) => {
@@ -253,15 +253,22 @@ function initMeasurement() {
 		}
 	};
 
-	const $fractionContainer = document.createElement('fieldset');
+	const $fractionFieldset = document.createElement('fieldset');
+	$fractionFieldset.setAttribute('id', 'fraction-fieldset');
+	const $fractionLegend = document.createElement('legend');
+	$fractionLegend.innerText = 'Multiplier';
+	$fractionFieldset.appendChild($fractionLegend);
+	const $fractionContainer = document.createElement('div');
+	$fractionFieldset.appendChild($fractionContainer);
 
 	const fractionOptions = [
-		{ label: '1/2', value: 0.5, disabled: false },
-		{ label: '1x', value: 1, disabled: true },
-		{ label: '2x', value: 2, disabled: false },
+		{ label: '1/2', value: 0.5, disabled: false, aria: 'Half recipe' },
+		{ label: '1x', value: 1, disabled: true, aria: 'Normal recipe' },
+		{ label: '2x', value: 2, disabled: false, aria: 'Double recipe' },
 	];
 	fractionOptions.forEach((option) => {
 		const $button = document.createElement('button');
+		$button.setAttribute('aria-label', option.aria);
 		$button.setAttribute('data-multiplier', option.value);
 		if (option.disabled) {
 			$button.setAttribute('disabled', true);
@@ -285,18 +292,28 @@ function initMeasurement() {
 		return;
 	}
 
-	const $unitContainer = document.createElement('fieldset');
+	const $unitFieldset = document.createElement('fieldset');
+	$unitFieldset.setAttribute('id', 'unit-fieldset');
+	const $unitLegend = document.createElement('legend');
+	$unitLegend.innerText = 'Units';
+	$unitFieldset.appendChild($unitLegend);
+	const $unitContainer = document.createElement('div');
+	$unitFieldset.appendChild($unitContainer);
 
-	const unitOptions = ['oz', 'g'];
-	unitOptions.forEach((unit) => {
+	const unitOptions = [
+		{ unit: 'oz', aria: 'ounces' },
+		{ unit: 'g', aria: 'grams' },
+	];
+	unitOptions.forEach((option) => {
 		const $button = document.createElement('button');
-		$button.setAttribute('data-units', unit);
-		if (unit === currentUnit) {
+		$button.setAttribute('data-units', option.unit);
+		$button.setAttribute('aria-label', option.aria);
+		if (option.unit === currentUnit) {
 			$button.setAttribute('disabled', true);
 		}
 		$button.setAttribute('class', 'button--secondary');
 		$button.setAttribute('type', 'button');
-		$button.innerText = unit;
+		$button.innerText = option.unit;
 		$button.addEventListener('click', (e) => {
 			selectButton(e.target, 'data-units');
 			updateMeasurements({ units: e.target.getAttribute('data-units') });
@@ -306,8 +323,8 @@ function initMeasurement() {
 
 	const $container = document.createElement('div');
 	$container.setAttribute('id', 'recipe-buttons');
-	$container.appendChild($fractionContainer);
-	$container.appendChild($unitContainer);
+	$container.appendChild($fractionFieldset);
+	$container.appendChild($unitFieldset);
 
 	const $sidebar = document.getElementById('recipe-side');
 	if ($sidebar) {

@@ -1,23 +1,23 @@
 #header {
 	background: $darker-blue;
 	border-bottom: $border-width solid $darkest-blue;
-	box-shadow: inset 0 -1px 0 $dark-blue;
+	box-shadow: inset 0 -1px 0 $medium-blue;
 }
 
 #header-inner {
+	padding: 4px $padding;
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+#header-mini {
 	align-items: center;
 	display: flex;
-	height: $header-height;
 	justify-content: space-between;
-	padding: $header-top-padding $padding;
-	position: relative;
-	text-align: center;
-
-	.show-nav &,
-	.show-search & {
-		flex-wrap: wrap;
-		height: auto;
-	}
 }
 
 #site-title {
@@ -28,5 +28,6 @@
 	color: $white;
 	font-size: 0;
 	height: 32px;
+	margin-top: 2px;
 	width: 122px;
 }

@@ -3,6 +3,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 #recipe-image-container {
 	background-position: center;
 	background-size: cover;
+	border-bottom: $border-width solid $darkest-blue;
 	height: 40vh;
 	margin-left: -$padding;
 	margin-right: -$padding;
@@ -10,12 +11,12 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	overflow: hidden;
 	position: relative;
 
-	@media (max-width: #{$max-width}) {
-		border-bottom: $border-width solid $darkest-blue;
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		margin-top: -$top-padding;
 	}
 
-	@media (min-width: #{$breakpoint-large}) {
-		margin-top: -$top-padding;
+	@media (min-width: #{$breakpoint-tablet-landscape + 1px}) {
+		border: 0;
 	}
 }
 
@@ -28,45 +29,42 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 #recipe-main {
-	@media (min-width: #{$breakpoint-large}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		padding-right: $margin;
 		width: calc(100% - #{$sidebar-width});
 	}
 }
 
 #recipe-side {
-	background: scale-color($blue, $lightness: 15%);
-	border-color: $light-blue $darkish-blue $darkish-blue $light-blue;
-	border-style: solid;
-	border-width: 1px;
 	color: $darkest-blue;
-	margin-left: -$padding;
-	margin-right: -$padding;
-	margin-top: -8px;
-	padding: $padding;
+	display: inline;
 
 	h2 {
 		font-size: 28px;
 	}
 
-	& > :first-child {
+	& > .sticky-container:first-child {
 		margin-top: 0;
 	}
 
-	@media (min-width: #{$breakpoint}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		background: scale-color($blue, $lightness: 15%);
+		border-color: $light-blue $darkish-blue $darkish-blue $light-blue;
+		border-style: solid;
 		border-width: 0 1px;
-		bottom: -$padding;
+		bottom: -$top-padding;
 		display: block;
 		margin-right: -$padding;
 		margin-top: 0;
+		padding: $padding;
 		position: absolute;
 		right: 0;
 		top: 0;
 		width: $sidebar-width;
-	}
 
-	@media (min-width: #{$breakpoint-large}) {
-		bottom: -$top-padding;
+		& > :first-child {
+			margin-top: 8px;
+		}
 	}
 }
 
@@ -122,7 +120,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 		}
 	}
 
-	@media (min-width: #{$breakpoint}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		position: relative;
 	}
 }
@@ -167,6 +165,10 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	}
 }
 
+#recipe-footer {
+	color: $darkest-blue;
+}
+
 #filename-preview {
 	border-radius: $border-radius;
 	height: 180px;
@@ -176,11 +178,9 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 fieldset {
-	border-color: $darkish-blue;
-	border-radius: $border-radius;
-	border-style: solid;
-	border-width: 1px;
+	border: 0;
 	display: inline-block;
+	margin: 0;
 	padding: 0;
 	white-space: nowrap;
 
@@ -198,5 +198,25 @@ fieldset {
 
 	button:focus {
 		position: relative;
+	}
+
+	div {
+		border-color: $darkish-blue;
+		border-radius: $border-radius;
+		border-style: solid;
+		border-width: 1px;
+	}
+}
+
+legend {
+	color: $darkest-blue;
+	font-family: $serif;
+	margin-bottom: 2px;
+}
+
+#unit-fieldset {
+	legend {
+		display: block;
+		margin-left: auto;
 	}
 }

@@ -13,7 +13,7 @@ $img-list-breakpoint-2: (($img-list-item-width + $img-list-gap) * 2) + $img-list
 	padding: 0;
 
 	@media (min-width: #{$img-list-breakpoint-1}) {
-		justify-content: space-between;
+		justify-content: flex-start;
 	}
 }
 

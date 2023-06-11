@@ -19,58 +19,58 @@
 			</h1>
 		</header>
 
-		@if ($row->summary)
-			<aside id="recipe-side">
-				{!! $row->summary() !!}
-			</aside>
-		@endif
+		<aside id="recipe-side">
+			{!! $row->summary() !!}
 
-		<div class="sticky-container" data-sticky data-sticky-top-margin="12">
-			<button
-				aria-label="Stopwatch"
-				class="floating-button button--icon"
-				data-timer="0"
-				id="stopwatch-button"
-				type="button"
-			>
-				⏱️
-			</button>
-			@if (Auth::user())
+			<div class="sticky-container" data-sticky data-sticky-top-margin="16">
 				<button
-					aria-label="Add Note"
+					aria-label="Stopwatch"
 					class="floating-button button--icon"
-					data-toggleable="#note-form"
-					data-toggleable-body-class="show-note"
-					id="add-note-button"
+					data-timer="0"
+					id="stopwatch-button"
 					type="button"
 				>
-					🗒️
+					⏱️
 				</button>
-				<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
-					@csrf
-					@method('PUT')
-					<div class="contain">
-						<textarea aria-label="Notes" class="prefix" id="notes" name="notes" placeholder="Enter notes" rows="5">{{ $row->notes }}</textarea>
-						@if (!empty($row->is_private))
-							<input
-								checked
-								id="is_private"
-								name="is_private"
-								type="hidden"
-								value="1"
-							/>
-						@endif
-						<button class="postfix" type="submit">Save</button>
-					</div>
-				</form>
-			@endif
-		</div>
+				@if (Auth::user())
+					<button
+						aria-label="Add Note"
+						class="floating-button button--icon"
+						data-toggleable="#note-form"
+						data-toggleable-body-class="show-note"
+						id="add-note-button"
+						type="button"
+					>
+						🗒️
+					</button>
+					<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
+						@csrf
+						@method('PUT')
+						<div class="contain">
+							<textarea aria-label="Notes" class="prefix" id="notes" name="notes" placeholder="Enter notes" rows="5">{{ $row->notes }}</textarea>
+							@if (!empty($row->is_private))
+								<input
+									checked
+									id="is_private"
+									name="is_private"
+									type="hidden"
+									value="1"
+								/>
+							@endif
+							<button class="postfix" type="submit">Save</button>
+						</div>
+					</form>
+				@endif
+			</div>
+		</aside>
 
 		<section id="recipe-main">
 			{!! $row->content() !!}
 
 			@if ($row->sources || $row->serving_size)
 				<footer id="recipe-footer">
+					<hr>
+
 					@if ($row->sources)
 						{!! $row->sources() !!}
 					@endif
@@ -86,49 +86,49 @@
 							@endif
 							<div class="double">
 								@if ($row->fat)
-									<div class="line"><dt>Fat</dt><dd>{{ $row->fat }} <span>g</span></dd></div>
+									<div class="line"><dt>Fat</dt><dd>{{ $row->fat }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->saturated_fat)
-									<div class="line indent"><dt>Saturated</dt><dd>{{ $row->saturated_fat }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Saturated</dt><dd>{{ $row->saturated_fat }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->trans_fat)
-									<div class="line indent"><dt>+ Trans</dt><dd>{{ $row->trans_fat }} <span>g</span></dd></div>
+									<div class="line indent"><dt>+ Trans</dt><dd>{{ $row->trans_fat }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->polyunsaturated_fat)
-									<div class="line indent"><dt>Polyunsaturated</dt><dd>{{ $row->polyunsaturated_fat }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Polyunsaturated</dt><dd>{{ $row->polyunsaturated_fat }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->omega_6)
-									<div class="line indent"><dt>Omega-6</dt><dd>{{ $row->omega_6 }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Omega-6</dt><dd>{{ $row->omega_6 }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->omega_3)
-									<div class="line indent"><dt>Omega-3</dt><dd>{{ $row->omega_3 }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Omega-3</dt><dd>{{ $row->omega_3 }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->monounsaturated_fat)
-									<div class="line indent"><dt>Monounsaturated</dt><dd>{{ $row->monounsaturated_fat }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Monounsaturated</dt><dd>{{ $row->monounsaturated_fat }} <span aria-label="grams">g</span></dd></div>
 								@endif
 							</div>
 							@if ($row->cholesterol)
-								<div class="line"><dt>Cholesterol</dt><dd>{{ $row->cholesterol }} <span>mg</span></dd></div>
+								<div class="line"><dt>Cholesterol</dt><dd>{{ $row->cholesterol }} <span aria-label="milligrams">mg</span></dd></div>
 							@endif
 							@if ($row->sodium)
-								<div class="line"><dt>Sodium</dt><dd>{{ $row->sodium }} <span>mg</span></dd></div>
+								<div class="line"><dt>Sodium</dt><dd>{{ $row->sodium }} <span aria-label="milligrams">mg</span></dd></div>
 							@endif
 							@if ($row->potassium)
-								<div class="line"><dt>Potassium</dt><dd>{{ $row->potassium }} <span>mg</span></dd></div>
+								<div class="line"><dt>Potassium</dt><dd>{{ $row->potassium }} <span aria-label="milligrams">mg</span></dd></div>
 							@endif
 							<div class="double">
 								@if ($row->carbohydrate)
-									<div class="line"><dt>Carbohydrate</dt><dd>{{ $row->carbohydrate }} <span>g</span></dd></div>
+									<div class="line"><dt>Carbohydrate</dt><dd>{{ $row->carbohydrate }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->fibre)
-									<div class="line indent"><dt>Fibre</dt><dd>{{ $row->fibre }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Fibre</dt><dd>{{ $row->fibre }} <span aria-label="grams">g</span></dd></div>
 								@endif
 								@if ($row->sugars)
-									<div class="line indent"><dt>Sugars</dt><dd>{{ $row->sugars }} <span>g</span></dd></div>
+									<div class="line indent"><dt>Sugars</dt><dd>{{ $row->sugars }} <span aria-label="grams">g</span></dd></div>
 								@endif
 							</div>
 							@if ($row->protein)
-								<div class="line"><dt>Protein</dt><dd>{{ $row->protein }} <span>g</span></dd></div>
+								<div class="line"><dt>Protein</dt><dd>{{ $row->protein }} <span aria-label="grams">g</span></dd></div>
 							@endif
 							<div class="double">
 								@if ($row->vitamin_a)

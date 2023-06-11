@@ -13,10 +13,13 @@
 	animation-fill-mode: forwards;
 	animation-name: slide-in-out;
 	background-color: $toast-background-color;
+	border-radius: $border-radius;
+	border-style: solid;
+	border-width: 1px;
 	box-shadow: $shadow;
 	color: $toast-text-color;
 	display: flex;
-	margin: $toast-margin;
+	margin: 0 $toast-margin $toast-margin;
 	max-width: 90vw;
 }
 
@@ -54,14 +57,16 @@
 	}
 }
 
-.toast--success {
-	background-color: $toast-success-background-color;
-	color: $toast-success-text-color;
+.toast--danger {
+	background-color: $toast-danger-background-color;
+	border-color: $toast-danger-border-color;
+	color: $toast-danger-text-color;
 }
 
-.toast--error {
-	background-color: $toast-error-background-color;
-	color: $toast-error-text-color;
+.toast--success {
+	background-color: $toast-success-background-color;
+	border-color: $toast-success-border-color;
+	color: $toast-success-text-color;
 }
 
 @keyframes slide-in-out {

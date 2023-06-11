@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -274,13 +273,10 @@ class Recipe extends Model
 		imagedestroy($dst);
 	}
 
-	public static function public() : Collection
+	public static function public() : Builder
 	{
 		return self::where('is_private', '=', '0')
-			->whereNotNull('published_at')
-			->orderBy('published_at', 'desc')
-			->take(10)
-			->get();
+			->whereNotNull('published_at');
 	}
 
 	public function rules(string $id = '') : array

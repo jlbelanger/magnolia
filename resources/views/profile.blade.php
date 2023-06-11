@@ -55,7 +55,15 @@
 					required
 					type="password"
 				/>
-				<button class="button--secondary password-button postfix" data-toggle-password type="button">Show</button>
+				<button
+					aria-controls="password"
+					aria-label="Show Password"
+					class="button--secondary password-button postfix"
+					data-toggle-password
+					type="button"
+				>
+					Show
+				</button>
 			</span>
 			@error('password')
 				<span class="error">{{ $message }}</span>

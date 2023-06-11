@@ -50,17 +50,19 @@
 				padding: 12px 10px 10px;
 			}
 			input {
+				border-color: #b4d3e6;
 				border-radius: 6px 0 0 6px;
-				border-width: 0;
+				border-width: 1px 0 1px 1px;
 			}
 			input:focus {
 				position: relative;
 				z-index: 1;
 			}
 			button {
-				background: #325165;
+				background: #4b7c9b;
+				border-color: #4b7c9b;
 				border-radius: 0 6px 6px 0;
-				border-width: 0;
+				box-shadow: inset 1px 1px 0 #c5ddec,inset -1px -1px 0 #406a84;
 				color: #fff;
 				cursor: pointer;
 			}

@@ -8,29 +8,18 @@ function Toggleable($button) {
 		}
 
 		Array.from($elements).forEach(($element) => {
+			let text;
 			if ($element.classList.contains('show')) {
+				text = $button.getAttribute('data-toggleable-show');
 				$button.setAttribute('aria-expanded', 'false');
-				$button.innerText = $button.getAttribute('data-toggleable-show');
-
-				let transitionDuration = getComputedStyle($element).transitionDuration;
-				if (transitionDuration.indexOf('ms') > -1) {
-					transitionDuration = parseFloat(transitionDuration.replace('ms', ''));
-				} else if (transitionDuration.indexOf('s') > -1) {
-					transitionDuration = parseFloat(transitionDuration.replace('s', '')) * 1000;
-				}
-
-				$element.classList.remove('animate');
-				setTimeout(() => {
-					$element.classList.remove('show');
-				}, transitionDuration);
+				$element.classList.remove('show');
 			} else {
+				text = $button.getAttribute('data-toggleable-hide');
 				$button.setAttribute('aria-expanded', 'true');
-				$button.innerText = $button.getAttribute('data-toggleable-hide');
-
 				$element.classList.add('show');
-				setTimeout(() => {
-					$element.classList.add('animate');
-				}, 10);
+			}
+			if (text) {
+				$button.innerText = text;
 			}
 		});
 	};

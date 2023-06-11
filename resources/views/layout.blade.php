@@ -40,27 +40,29 @@
 		<main id="main">
 			<header id="header">
 				<div class="contain" id="header-inner">
-					<button
-						data-toggleable="#nav,#admin"
-						data-toggleable-body-class="show-nav"
-						data-toggleable-show="Show Menu"
-						data-toggleable-hide="Hide Menu"
-						id="nav-toggle"
-						type="button"
-					>
-						Show Menu
-					</button>
-					<a href="/" id="site-title">{{ config('app.name') }} Recipes</a>
-					<button
-						data-toggleable="#search"
-						data-toggleable-body-class="show-search"
-						data-toggleable-show="Show Search"
-						data-toggleable-hide="Hide Search"
-						id="search-toggle"
-						type="button"
-					>
-						Show Search
-					</button>
+					<div id="header-mini">
+						<button
+							data-toggleable="#nav,#admin"
+							data-toggleable-body-class="show-nav"
+							data-toggleable-show="Show Menu"
+							data-toggleable-hide="Hide Menu"
+							id="nav-toggle"
+							type="button"
+						>
+							Show Menu
+						</button>
+						<a href="/" id="site-title">{{ config('app.name') }} Recipes</a>
+						<button
+							data-toggleable="#search"
+							data-toggleable-body-class="show-search"
+							data-toggleable-show="Show Search"
+							data-toggleable-hide="Hide Search"
+							id="search-toggle"
+							type="button"
+						>
+							Show Search
+						</button>
+					</div>
 					<nav id="nav">
 						<ul id="nav-list">
 							<li class="nav-list__item">

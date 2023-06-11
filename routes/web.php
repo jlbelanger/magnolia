@@ -30,13 +30,13 @@ Route::get('/', function () {
 
 Route::get('/sitemap.xml', function () {
 	return response()
-		->view('sitemap', ['recipes' => Recipe::public()])
+		->view('sitemap', ['recipes' => Recipe::public()->orderBy('slug')->get()])
 		->header('Content-Type', 'text/xml');
 });
 
 Route::get('/feed.xml', function () {
 	return response()
-		->view('feed', ['recipes' => Recipe::public()])
+		->view('feed', ['recipes' => Recipe::public()->orderBy('published_at', 'desc')->take(10)->get()])
 		->header('Content-Type', 'text/xml');
 });
 

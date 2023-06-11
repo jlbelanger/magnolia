@@ -31,11 +31,11 @@
 	}
 
 	.show-nav & {
+		opacity: .25;
 		pointer-events: none;
-		visibility: hidden;
 	}
 
-	@media (min-width: #{$breakpoint}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		display: none;
 	}
 }
@@ -43,6 +43,7 @@
 #search {
 	background-color: $darker-blue;
 	display: none;
+	padding: 4px 0;
 	width: 100%;
 
 	&.show {
@@ -53,8 +54,9 @@
 		position: relative;
 	}
 
-	@media (min-width: #{$breakpoint}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		display: flex;
+		padding: 0;
 		width: auto;
 	}
 }
@@ -75,7 +77,9 @@
 	background-size: $icon-size;
 	border: 0;
 	box-shadow: none;
+	color: #767676;
 	font-size: 0;
+	min-width: $button-size;
 	width: $button-size;
 
 	&:focus {

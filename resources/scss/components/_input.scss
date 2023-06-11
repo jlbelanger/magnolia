@@ -82,6 +82,8 @@ input.password-input {
 	width: calc(100% - #{$password-button-width});
 
 	.no-js & {
+		border-radius: $border-radius;
+		border-right-color: $gray;
 		width: 100%;
 	}
 }

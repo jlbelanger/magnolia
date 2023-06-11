@@ -1,7 +1,9 @@
 .alert {
 	background: $light-blue;
-	border: 1px solid $lighter-blue;
+	border-color: $blue-border;
 	border-radius: $border-radius;
+	border-style: solid;
+	border-width: 1px;
 	box-shadow: 2px 2px $darkish-blue;
 	margin: 12px -16px 0;
 	padding: 16px;
@@ -9,12 +11,12 @@
 
 .alert--danger {
 	background: $light-red;
-	border-color: $lighter-red;
+	border-color: $red-border;
 	color: $dark-red;
 }
 
 .alert--success {
 	background: $light-green;
-	border-color: $lighter-green;
+	border-color: $green-border;
 	color: $dark-green;
 }

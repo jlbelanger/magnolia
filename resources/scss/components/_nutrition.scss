@@ -5,8 +5,8 @@
 
 	p {
 		font-size: 0;
-		min-width: 50%;
 		text-align: right;
+		width: 320px;
 	}
 
 	input,
@@ -29,7 +29,7 @@
 		border-color: $gray;
 		border-style: solid;
 		border-width: $input-border-width $input-border-width $input-border-width 0;
-		color: $dark-gray;
+		color: $darker-blue;
 		padding: 12px 12px 12px 0;
 	}
 }
