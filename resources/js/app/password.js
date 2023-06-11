@@ -1,6 +1,6 @@
 function Passwordable($button) {
 	const onClick = (e) => {
-		const $input = e.target.closest('.password-container').querySelector('.password-input');
+		const $input = document.getElementById(e.target.getAttribute('aria-controls'));
 		if ($input.getAttribute('type') === 'password') {
 			$input.setAttribute('type', 'text');
 			$input.setAttribute('aria-label', 'Hide Password');
@@ -12,8 +12,19 @@ function Passwordable($button) {
 		}
 	};
 
+	const onSubmit = () => {
+		const $elements = document.querySelectorAll('[data-toggle-password]');
+		$elements.forEach(($element) => {
+			const $input = document.getElementById($element.getAttribute('aria-controls'));
+			$input.setAttribute('type', 'password');
+		});
+	};
+
 	const init = () => {
 		$button.addEventListener('click', onClick);
+
+		const $form = $button.closest('form');
+		$form.addEventListener('submit', onSubmit);
 	};
 
 	init();

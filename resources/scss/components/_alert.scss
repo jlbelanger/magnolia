@@ -1,15 +1,22 @@
 .alert {
 	background: $light-blue;
-	margin: $margin #{$padding * -1} 0;
-	padding: $padding;
+	border-color: $blue-border;
+	border-radius: $border-radius;
+	border-style: solid;
+	border-width: 1px;
+	box-shadow: 2px 2px $darkish-blue;
+	margin: 12px -16px 0;
+	padding: 16px;
 }
 
 .alert--danger {
-	background: $red;
-	color: $white;
+	background: $light-red;
+	border-color: $red-border;
+	color: $dark-red;
 }
 
 .alert--success {
-	background: $green;
-	color: $white;
+	background: $light-green;
+	border-color: $green-border;
+	color: $dark-green;
 }

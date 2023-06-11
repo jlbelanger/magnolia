@@ -1,28 +1,20 @@
 @extends('layout')
 
-@php ($articleClass = 'article--home')
 @php ($ogImage = url('/uploads/cinnamon-rolls.jpg'))
 
 @section('content')
-	@if ($recipes->isNotEmpty())
-		<ul id="img-list">
-			@foreach ($recipes as $recipe)
-				@if ($recipe->filename)
-					<li class="img-list__item">
-						<a class="img-list__link" href="{{ $recipe->url() }}">
-							<img
-								alt=""
-								class="img-list__img"
-								height="180"
-								loading="lazy"
-								src="/uploads/thumbnails/{{ $recipe->filename }}"
-								width="320"
-							/>
-							{{ $recipe->title . ($recipe->is_private ? ' *' : '') }}
-						</a>
-					</li>
-				@endif
-			@endforeach
-		</ul>
+	@if ($draftRecipes->isNotEmpty())
+		<h1>Drafts</h1>
+		@include('shared.list', ['recipes' => $draftRecipes])
+		<hr>
+	@endif
+	<h1>
+		Latest Recipes
+		<a href="/feed.xml" id="rss">RSS feed</a>
+	</h1>
+	@if ($latestRecipes->isNotEmpty())
+		@include('shared.list', ['recipes' => $latestRecipes])
+	@else
+		<p>No recipes found.</p>
 	@endif
 @stop

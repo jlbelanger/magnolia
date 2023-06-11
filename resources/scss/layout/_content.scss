@@ -1,0 +1,12 @@
+#article-outer {
+	background: $blue;
+	flex: 1 1 auto;
+}
+
+#article {
+	padding: $padding;
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		padding: $top-padding $padding;
+	}
+}

@@ -23,7 +23,12 @@ const config = {
 	js: {
 		bundles: [
 			{
-				src: ['resources/js/*.js', 'resources/js/**/*.js'],
+				src: ['resources/js/admin/*.js', '!resources/js/admin/*.test.js'],
+				dest_folder: 'public/assets/js',
+				dest_file: 'admin.min.js',
+			},
+			{
+				src: ['resources/js/app/*.js', '!resources/js/app/*.test.js'],
 				dest_folder: 'public/assets/js',
 				dest_file: 'functions.min.js',
 			},

@@ -3,10 +3,6 @@
 @php ($articleClass = 'article--auth')
 
 @section('content')
-	<header id="header">
-		<a href="/" id="site-title">Magnolia</a>
-	</header>
-
 	<h1>Forgot your password?</h1>
 
 	@include('shared.errors', ['errors' => $errors])
@@ -16,7 +12,7 @@
 
 		<p>
 			<label class="required" for="email">Email</label>
-			<input autocomplete="email" autofocus id="email" name="email" required type="email" value="{{ old('email') }}" />
+			<input autocomplete="email" id="email" name="email" required type="email" value="{{ old('email') }}" />
 		</p>
 
 		<p>

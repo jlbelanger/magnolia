@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<atom:link href="{{ url('/feed.xml') }}" rel="self" type="application/rss+xml" />
-		<title>Magnolia</title>
+		<title>{{ config('app.name') }}</title>
 		<description>Recipes.</description>
 		<link>{{ url('/') }}</link>
 		@foreach ($recipes as $recipe)

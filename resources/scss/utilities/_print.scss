@@ -8,58 +8,86 @@
 	}
 
 	body,
-	.article--recipe label {
+	#recipe label,
+	.timer-link {
 		font-size: 16px !important;
 	}
 
-	#side {
-		background: transparent;
-		border: 0;
-		width: 100%;
-
-		&:not(.show) {
-			display: none;
-		}
+	#recipe-side + #recipe-main {
+		border-top: 1px solid $black;
+		margin-top: $margin;
 	}
 
 	#header {
+		border: 0;
+		box-shadow: none;
 		height: auto;
 	}
 
-	#img,
-	#auth,
-	#search,
-	.admin,
-	.checkbox {
+	#header,
+	#admin,
+	#footer,
+	.checkbox,
+	.sticky-container,
+	#recipe-buttons {
 		display: none;
 	}
 
-	#site-title {
-		background: transparent;
-		color: $black;
-		font-size: 32px;
+	#recipe-image-container {
+		background: none !important;
+		border: 0;
+		float: right;
 		height: auto;
-		text-decoration: none;
-		width: auto;
+		margin: 0 0 $margin $margin;
+		z-index: 1;
 	}
 
-	.nav-list__link {
-		border: 0;
-		color: $black;
+	#recipe-image {
+		display: block;
+		height: auto;
+		max-width: 40vw;
 	}
 
 	button,
-	.button {
+	.button,
+	select,
+	details,
+	.postfix {
 		background: transparent !important;
 		border-color: $black !important;
+		box-shadow: none !important;
 		color: $black !important;
 	}
 
-	a {
+	.postfix {
+		border-left-width: 0;
+	}
+
+	hr {
+		border-color: $black !important;
+		border-style: solid !important;
+		margin: $margin 0;
+	}
+
+	#recipe-side,
+	#recipe-footer,
+	a,
+	h1,
+	h2,
+	h3,
+	h4 {
 		color: $black !important;
 	}
 
-	details,
+	#recipe-image-container + #recipe #recipe-header {
+		padding-top: 0 !important;
+	}
+
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+
 	input,
 	textarea {
 		border-color: $black !important;
@@ -93,23 +121,7 @@
 		}
 	}
 
-	#recipe-image {
-		float: right;
-		max-width: 40vw;
-	}
-
-	details {
-		border-width: 1px 0;
-		clear: both;
-		font-size: 16px;
-		padding: 8px 0;
-	}
-
-	summary {
-		display: block;
-	}
-
-	.article--recipe {
+	#recipe {
 		label {
 			padding: 0;
 		}
@@ -138,18 +150,22 @@
 		}
 	}
 
-	.article--recipe #article-inner > ol > li {
+	#recipe-main > ol > li {
 		border-color: $black !important;
 		padding: 8px 0 !important;
-	}
-
-	h2,
-	h3 {
-		page-break-after: avoid;
 	}
 
 	.timer-link {
 		border: 0;
 		color: $black;
+		margin: 0;
+		padding: 0;
+	}
+
+	a[href] {
+		&::after {
+			content: '\00a0(' attr(href) ')';
+			display: inline;
+		}
 	}
 }

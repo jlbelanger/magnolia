@@ -8,6 +8,7 @@
 	position: fixed;
 	right: 0;
 	top: 0;
+	z-index: $spinner-zindex;
 
 	&::after {
 		animation: spin 2s infinite linear;

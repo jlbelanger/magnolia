@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +19,6 @@ class ProfileController extends Controller
 		$row = Auth::user();
 		return view('profile')
 			->with('metaTitle', 'Profile')
-			->with('recipes', Recipe::visible())
 			->with('row', $row);
 	}
 

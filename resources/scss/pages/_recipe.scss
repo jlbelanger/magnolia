@@ -1,0 +1,222 @@
+$li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-height)) * .5);
+
+#recipe-image-container {
+	background-position: center;
+	background-size: cover;
+	border-bottom: $border-width solid $darkest-blue;
+	height: 40vh;
+	margin-left: -$padding;
+	margin-right: -$padding;
+	margin-top: -$padding;
+	overflow: hidden;
+	position: relative;
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		margin-top: -$top-padding;
+	}
+
+	@media (min-width: #{$breakpoint-tablet-landscape + 1px}) {
+		border: 0;
+	}
+}
+
+#recipe-image {
+	display: none;
+}
+
+#recipe-image-container + #recipe #recipe-header {
+	padding-top: $margin;
+}
+
+#recipe-main {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		padding-right: $margin;
+		width: calc(100% - #{$sidebar-width});
+	}
+}
+
+#recipe-side {
+	color: $darkest-blue;
+	display: inline;
+
+	h2 {
+		font-size: 28px;
+	}
+
+	& > .sticky-container:first-child {
+		margin-top: 0;
+	}
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		background: scale-color($blue, $lightness: 15%);
+		border-color: $light-blue $darkish-blue $darkish-blue $light-blue;
+		border-style: solid;
+		border-width: 0 1px;
+		bottom: -$top-padding;
+		display: block;
+		margin-right: -$padding;
+		margin-top: 0;
+		padding: $padding;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: $sidebar-width;
+
+		& > :first-child {
+			margin-top: 8px;
+		}
+	}
+}
+
+#recipe-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
+}
+
+#recipe {
+	input[type='checkbox'] {
+		margin: 0 8px 0 0;
+	}
+
+	label {
+		font-size: $font-size;
+		line-height: $line-height;
+		padding: 8px 0;
+	}
+
+	li {
+		padding: $list-padding 0;
+		padding-left: #{$checkbox-size + $checkbox-margin-right};
+		padding-top: #{$list-padding + (($checkbox-size - ($font-size * $line-height)) * .5)};
+		position: relative;
+
+		& > input {
+			left: 0;
+			position: absolute;
+			top: $list-padding;
+		}
+
+		li {
+			padding-bottom: $sublist-padding;
+			padding-top: $li-padding-top;
+
+			& > input {
+				top: $sublist-padding;
+			}
+		}
+	}
+
+	ol,
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		ol,
+		ul {
+			margin-left: #{($checkbox-size * -.5) - $checkbox-margin-right};
+			margin-top: $sublist-padding;
+		}
+	}
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		position: relative;
+	}
+}
+
+#recipe-header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+
+	h1 {
+		flex: 1 1 auto;
+	}
+}
+
+#recipe-main > ol {
+	margin-top: #{$margin - $li-padding-top};
+
+	& > li {
+		border-top: 1px solid $gray;
+		counter-increment: step;
+		min-height: #{$checkbox-size + ($list-padding * 2)};
+
+		&:first-of-type {
+			border-top: 0;
+		}
+
+		& > label {
+			&::before {
+				content: counter(step) '. ';
+			}
+		}
+	}
+
+	ol > li {
+		counter-increment: substep;
+
+		& > label {
+			&::before {
+				content: counter(substep) '. ';
+			}
+		}
+	}
+}
+
+#recipe-footer {
+	color: $darkest-blue;
+}
+
+#filename-preview {
+	border-radius: $border-radius;
+	height: 180px;
+	margin-top: 8px;
+	vertical-align: bottom;
+	width: 320px;
+}
+
+fieldset {
+	border: 0;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+
+	button {
+		border-radius: 0;
+	}
+
+	button:first-of-type {
+		border-radius: $border-radius 0 0 $border-radius;
+	}
+
+	button:last-of-type {
+		border-radius: 0 $border-radius $border-radius 0;
+	}
+
+	button:focus {
+		position: relative;
+	}
+
+	div {
+		border-color: $darkish-blue;
+		border-radius: $border-radius;
+		border-style: solid;
+		border-width: 1px;
+	}
+}
+
+legend {
+	color: $darkest-blue;
+	font-family: $serif;
+	margin-bottom: 2px;
+}
+
+#unit-fieldset {
+	legend {
+		display: block;
+		margin-left: auto;
+	}
+}

@@ -1,61 +1,27 @@
-.sticky-container {
-	display: inline-block;
-	white-space: nowrap;
-	width: #{($button-size * 2) + $button-margin};
-}
-
-.sticky {
-	display: inline-block;
-	top: $padding;
-	z-index: 998;
-}
-
-.floating-button {
-	background: $darker-blue;
-	border-color: $darker-blue;
-	border-radius: 100px;
-	box-shadow: 4px 4px 8px rgba($black, .2);
-	height: $button-size;
-	margin-right: $button-margin;
-	width: $button-size;
-
-	&:focus {
-		box-shadow: 0 0 0 $focus-width $focus-color, 4px 4px 8px rgba($black, .2);
-	}
-
-	.no-js & {
-		display: none;
-	}
-}
-
-#add-note-button {
-	margin-right: 0;
-}
-
 #note-form {
 	background: $light-blue;
 	border-color: $darkish-blue;
 	border-style: solid;
 	border-width: 1px 0 0;
 	bottom: 0;
-	box-shadow: 4px 4px 8px rgba($black, .2);
+	box-shadow: $shadow;
 	display: none;
 	left: 0;
 	padding: 8px;
 	position: fixed;
 	right: 0;
-	z-index: 998;
+	z-index: $notes-zindex;
 
 	button {
 		width: 100px;
 	}
 
 	&.show {
-		display: flex;
-	}
+		display: block;
 
-	@media (min-width: #{$breakpoint}) {
-		left: $sidebar-width;
+		& > div {
+			display: flex;
+		}
 	}
 }
 

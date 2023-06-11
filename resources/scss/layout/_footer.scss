@@ -1,0 +1,36 @@
+#footer {
+	background: $darkest-blue;
+	text-align: right;
+
+	a {
+		color: $white;
+	}
+
+	button {
+		background: transparent;
+		border-color: transparent;
+		border-radius: 0;
+		box-shadow: none;
+		text-decoration: underline;
+
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: none;
+		}
+	}
+
+	a,
+	button {
+		&:hover,
+		&:active,
+		&:focus {
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+	form {
+		display: inline-block;
+	}
+}

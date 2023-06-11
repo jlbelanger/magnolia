@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Recipe;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +21,7 @@ class RecipeController extends Controller
 	{
 		return view('recipes/create')
 			->with('metaTitle', 'Add Recipe')
-			->with('recipes', Recipe::visible());
+			->with('categories', Category::orderBy('title')->get());
 	}
 
 	/**
@@ -61,7 +62,6 @@ class RecipeController extends Controller
 		$row = $row->firstOrFail();
 		return view('recipes/show')
 			->with('metaTitle', $row->title . ' Recipe')
-			->with('recipes', Recipe::visible())
 			->with('row', $row);
 	}
 
@@ -76,8 +76,8 @@ class RecipeController extends Controller
 		$row = Recipe::findOrFail($id);
 		return view('recipes/edit')
 			->with('metaTitle', 'Edit ' . $row->title . ' Recipe')
-			->with('recipes', Recipe::visible())
-			->with('row', $row);
+			->with('row', $row)
+			->with('categories', Category::orderBy('title')->get());
 	}
 
 	/**

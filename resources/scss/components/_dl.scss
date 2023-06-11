@@ -1,20 +1,40 @@
 dl {
-	margin: 0;
-
-	div {
-		display: inline-block;
-	}
+	background: $white;
+	border: 1px solid $black;
+	color: $black;
+	margin-bottom: 0;
+	max-width: 260px;
+	padding: 2px 4px 0;
 }
 
 dt {
 	display: inline-block;
 	font-weight: bold;
-	margin-top: #{$margin * .5};
 }
 
 dd {
 	display: inline-block;
-	margin-left: 4px;
-	margin-right: 16px;
-	margin-top: #{$margin * .5};
+}
+
+.double {
+	border-top: 4px solid $black;
+}
+
+.line {
+	display: flex;
+	justify-content: space-between;
+	padding: 4px;
+}
+
+.line + .line,
+.double + .line {
+	border-top: 1px solid $black;
+}
+
+.indent {
+	padding-left: 1rem;
+
+	dt {
+		font-weight: normal;
+	}
 }

@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
-		<title>403 Forbidden | Magnolia</title>
+		<title>403 Forbidden | Magnolia Recipes</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-		<link rel="icon" href="/favicon.png">
+		<link rel="icon" href="/favicon.svg">
 		<style>
 			body {
 				background: #c9eaff;
@@ -19,7 +19,10 @@
 				margin: 0;
 			}
 			h1 {
-				font-size: 24px;
+				color: #325165;
+				font-family: georgia, sans-serif;
+				font-weight: normal;
+				font-size: 36px;
 				margin: 0;
 				text-align: center;
 			}
@@ -28,10 +31,60 @@
 				margin: 24px 0 0;
 				text-align: center;
 			}
+			a {
+				color: #264ce0;
+			}
+			a:hover,
+			a:active,
+			a:focus {
+				text-decoration: none;
+			}
+			button,
+			input {
+				border-color: #000;
+				border-style: solid;
+				border-width: 1px;
+				font-family: sans-serif;
+				font-size: 18px;
+				margin: 0;
+				padding: 12px 10px 10px;
+			}
+			input {
+				border-color: #b4d3e6;
+				border-radius: 6px 0 0 6px;
+				border-width: 1px 0 1px 1px;
+			}
+			input:focus {
+				position: relative;
+				z-index: 1;
+			}
+			button {
+				background: #4b7c9b;
+				border-color: #4b7c9b;
+				border-radius: 0 6px 6px 0;
+				box-shadow: inset 1px 1px 0 #c5ddec,inset -1px -1px 0 #406a84;
+				color: #fff;
+				cursor: pointer;
+			}
+			button:hover,
+			button:active,
+			button:focus {
+				text-decoration: underline;
+			}
+			:focus {
+				box-shadow: 0 0 0 4px plum;
+				outline: none !important;
+			}
 		</style>
 	</head>
 	<body>
 		<h1>Forbidden</h1>
 		<p>You don't have permission to access this folder.</p>
+		<form action="/search" method="get" role="search">
+			<p>
+				<input aria-label="Search" name="q" type="text"><button type="submit">Search</button>
+			</p>
+		</form>
+		<p><a href="/">Magnolia Recipes</a></p>
 	</body>
 </html>

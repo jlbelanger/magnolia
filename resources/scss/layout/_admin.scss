@@ -1,0 +1,105 @@
+$admin-breakpoint-1: 430px;
+$admin-breakpoint-2: 720px;
+$admin-padding-bottom: 6px;
+
+#admin {
+	display: none;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0 4px;
+
+	.button {
+		border-bottom-width: 0;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	form,
+	.button {
+		margin: 2px;
+		max-width: calc(50% - 4px);
+		width: 100%;
+	}
+
+	form {
+		width: 100%;
+
+		button {
+			max-width: none;
+			width: 100%;
+		}
+	}
+
+	&.show {
+		display: flex;
+	}
+
+	@media (min-width: #{$admin-breakpoint-1}) {
+		form,
+		.button {
+			max-width: calc(33.333% - 4px);
+		}
+	}
+
+	@media (min-width: #{$admin-breakpoint-2}) {
+		justify-content: space-between;
+
+		form,
+		.button {
+			margin: 0 2px;
+			max-width: none;
+			width: auto;
+		}
+
+		button,
+		.button {
+			border-bottom-width: 0;
+			border-radius: $border-radius $border-radius 0 0;
+		}
+	}
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		display: flex;
+		padding: 0 $padding;
+	}
+}
+
+.flex-grow {
+	display: none;
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		display: block;
+		flex: 1 1 auto;
+	}
+}
+
+.admin__button--active {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $light-blue;
+	position: relative;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: $blue;
+	}
+
+	@media (min-width: #{$admin-breakpoint-2}) {
+		background-color: $blue;
+		border-radius: $border-radius $border-radius 0 0;
+		color: $darkest-blue;
+
+		&::after {
+			background-color: $blue;
+			content: '';
+			height: #{$border-width + 1px};
+			left: -1px;
+			margin-top: -1px;
+			position: absolute;
+			right: -1px;
+			top: 100%;
+		}
+	}
+}

@@ -1,23 +1,40 @@
-$dark-blue: #7b9db3;
+$dark-blue: #4b7c9b;
+$medium-blue: #739fbb;
 $blue: #c9eaff;
 $light-blue: #e3f4ff;
-$darker-blue: scale-color($dark-blue, $lightness: -25%);
-$darkest-blue: scale-color($dark-blue, $lightness: -50%);
-$lighter-blue: scale-color($light-blue, $lightness: 50%);
-$darkish-blue: scale-color($blue, $lightness: -8%, $saturation: -50%);
-$gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
-$dark-gray: scale-color($gray, $lightness: -50%, $saturation: -30%);
+$darker-blue: scale-color($medium-blue, $lightness: -35%);
+$darkest-blue: scale-color($medium-blue, $lightness: -60%);
+$darkish-blue: scale-color($blue, $lightness: -5%, $saturation: -50%);
+$blue-border: scale-color($light-blue, $lightness: -10%, $saturation: -20%);
 
 $black: #000;
+$gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
 $white: #fff;
 
-$red: #c00;
-$green: #093;
+$link-color: #264ce0;
 
+$red: #c00;
+$light-red: #faa;
+$dark-red: #600;
+$red-border: scale-color($light-red, $lightness: -10%, $saturation: -20%);
+
+$green: #093;
+$light-green: #7d9;
+$dark-green: #063;
+$green-border: scale-color($light-green, $lightness: -10%, $saturation: -20%);
+
+$pink: plum;
+
+$serif: georgia, sans-serif;
+
+$border-radius: 6px;
+$border-width: 8px;
 $font-size: 18px;
 $line-height: 1.3;
-$margin: 20px;
-$padding: 12px;
+$margin: 16px;
+$padding: 16px;
+$top-padding: 24px;
+$shadow: 4px 4px 8px rgba($black, .2);
 
 $button-size: 44px;
 $button-margin: 5px;
@@ -25,14 +42,14 @@ $button-margin: 5px;
 $checkbox-size: 32px;
 $checkbox-margin-right: 8px;
 
+$max-width: 1024px;
 $content-width: 720px;
+$sidebar-width: $max-width - $content-width;
 
-$focus-color: plum;
+$focus-color: $pink;
 $focus-width: 4px;
 
 $icon-size: 20px;
-
-$image-height: 80px;
 
 $input-border-width: 1px;
 $input-line-height: 1;
@@ -44,33 +61,40 @@ $note-form-height: 133px;
 
 $password-button-width: 70px;
 
+$select-icon-size: 12px;
+
 $sidebar-width: 280px;
 
-$spinner-color-alternate: transparent !default;
-$spinner-color: $darkest-blue !default;
-$spinner-size: 50px !default;
-$spinner-thickness: 10px !default;
+$spinner-color-alternate: transparent;
+$spinner-color: $darkest-blue;
+$spinner-size: 50px;
+$spinner-thickness: 10px;
 
 $sublist-padding: 8px;
 
-$toast-background-color: $darker-blue !default;
-$toast-close-font-size: 18px !default;
-$toast-close-icon: '\00d7' !default; // &times;
-$toast-close-margin-left: 8px !default;
-$toast-close-size: 32px !default;
-$toast-margin: 16px !default;
-$toast-padding: 16px !default;
-$toast-text-color: $white !default;
-$toast-zindex: 999 !default;
+$toast-background-color: $darker-blue;
+$toast-close-font-size: 18px;
+$toast-close-icon: '\00d7'; // &times;
+$toast-close-margin-left: 8px;
+$toast-close-size: 32px;
+$toast-margin: 16px;
+$toast-padding: 16px;
+$toast-text-color: $white;
 
-$toast-error-background-color: $red !default;
-$toast-error-text-color: $white !default;
+$toast-danger-background-color: $light-red;
+$toast-danger-border-color: $red-border;
+$toast-danger-text-color: $dark-red;
 
-$toast-success-background-color: $green !default;
-$toast-success-text-color: $white !default;
+$toast-success-background-color: $light-green;
+$toast-success-border-color: $green-border;
+$toast-success-text-color: $dark-green;
 
-$button-height: (($input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
-$header-height: $image-height + ($padding * 2);
-$search-height: (($padding + $input-border-width + $input-padding) * 2) + ($font-size * $input-line-height);
+$breakpoint-tablet-landscape: $max-width;
 
-$breakpoint: $content-width + $sidebar-width;
+$header-zindex: 993;
+$sticky-zindex: 994;
+$skip-zindex: 995;
+$notes-zindex: 996;
+$timer-zindex: 997;
+$toast-zindex: 998;
+$spinner-zindex: 999;

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,7 +18,9 @@ class Recipe extends Model
 		'title',
 		'slug',
 		'filename',
+		'category_id',
 		'summary',
+		'sources',
 		'content',
 		'notes',
 		'is_private',
@@ -67,6 +69,7 @@ class Recipe extends Model
 	];
 
 	protected $casts = [
+		'category_id' => 'integer',
 		'calories' => 'integer',
 		'fat' => 'float',
 		'saturated_fat' => 'float',
@@ -118,6 +121,8 @@ class Recipe extends Model
 		$content = $this->addTimers($content);
 		$content = $this->addLinkTarget($content);
 		$content = $this->addHeadingAnchors($content);
+		$content = $this->highlightAmounts($content);
+		$content = $this->addMeasurements($content);
 		return $content;
 	}
 
@@ -146,6 +151,44 @@ class Recipe extends Model
 	protected function addLinkTarget(string $content) : string
 	{
 		$content = str_replace('<a href', '<a target="_blank" href', $content);
+		return $content;
+	}
+
+	public function editUrl() : string
+	{
+		return '/recipes/' . $this->id . '/edit';
+	}
+
+	protected function highlightAmounts(string $summary) : string
+	{
+		return preg_replace('/\[(\d+)\]/', '<span data-amount="$1">$1</span>', $summary);
+	}
+
+	protected function addMeasurements(string $content) : string
+	{
+		$hasMatches = preg_match_all('/\[((?:\d+ )?[0-9\.\/-]+) ?([^\]]+)\]/', $content, $matches);
+		if (!$hasMatches) {
+			return $content;
+		}
+
+		$replaced = [];
+		$singularValues = ['1', '1/2', '1/3', '1/4', '1/8', '1/16'];
+
+		foreach ($matches[0] as $i => $m) {
+			if (in_array($m, $replaced)) {
+				continue;
+			}
+
+			$replaced[] = $m;
+			$num = $matches[1][$i];
+			$unit = $matches[2][$i];
+			$plural = in_array($unit, ['tsp', 'tbsp', 'oz', 'ml', 'g']) ? $unit : Str::plural($unit);
+			$text = $num . ' ' . (in_array($num, $singularValues) ? $unit : $plural);
+
+			$new = '<span data-num="' . $num . '" data-unit="' . $unit . '">' . $text . '</span>';
+			$content = str_replace($m, $new, $content);
+		}
+
 		return $content;
 	}
 
@@ -193,14 +236,23 @@ class Recipe extends Model
 			} elseif ($matches[3][$i] === 'hour') {
 				$num *= 60 * 60;
 			}
-			$content = str_replace(
-				$m,
-				' <button class="timer-link" data-timer="' . $num . '" type="button">' . trim($m) . '</button>',
+			$content = preg_replace(
+				'/' . $m . '(\b)/',
+				' <button class="timer-link" data-timer="' . $num . '" type="button">' . trim($m) . '</button>$1',
 				$content
 			);
 			$done[] = $m;
 		}
 		return $content;
+	}
+
+	protected static function booted()
+	{
+		static::addGlobalScope('ancient', function (Builder $builder) {
+			if (!Auth::user()) {
+				$builder->where('is_private', '=', '0');
+			}
+		});
 	}
 
 	public function createThumbnail(string $filename) : void
@@ -221,13 +273,10 @@ class Recipe extends Model
 		imagedestroy($dst);
 	}
 
-	public static function public() : Collection
+	public static function public() : Builder
 	{
 		return self::where('is_private', '=', '0')
-			->whereNotNull('published_at')
-			->orderBy('published_at', 'desc')
-			->take(10)
-			->get();
+			->whereNotNull('published_at');
 	}
 
 	public function rules(string $id = '') : array
@@ -237,6 +286,7 @@ class Recipe extends Model
 		return [
 			'title' => [$required, 'max:255', 'unique:recipes,title' . $unique],
 			'slug' => [$required, 'max:255', 'alpha_dash', 'unique:recipes,slug' . $unique],
+			'category_id' => [$required, 'integer'],
 			'content' => [$required],
 			'is_private' => ['boolean'],
 			'serving_size' => ['nullable', 'max:255'],
@@ -283,6 +333,18 @@ class Recipe extends Model
 		];
 	}
 
+	public function sources() : string
+	{
+		if (!$this->sources) {
+			return '';
+		}
+		$sources = $this->sources;
+		$sources = $this->hideNotes($sources);
+		$sources = (new Parsedown())->setBreaksEnabled(true)->text($sources);
+		$sources = $this->addLinkTarget($sources);
+		return $sources;
+	}
+
 	public function summary() : string
 	{
 		if (!$this->summary) {
@@ -291,21 +353,18 @@ class Recipe extends Model
 		$summary = $this->summary;
 		$summary = $this->hideNotes($summary);
 		$summary = (new Parsedown())->setBreaksEnabled(true)->text($summary);
-		$summary = $this->addLinkTarget($summary);
+		$summary = $this->highlightAmounts($summary);
+		$summary = $this->addMeasurements($summary);
 		return $summary;
+	}
+
+	public function type() : string
+	{
+		return 'Recipe';
 	}
 
 	public function url() : string
 	{
 		return '/recipes/' . $this->slug;
-	}
-
-	public static function visible() : Collection
-	{
-		$rows = self::orderBy('slug');
-		if (!Auth::user()) {
-			$rows = $rows->where('is_private', '=', '0');
-		}
-		return $rows->get();
 	}
 }
