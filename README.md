@@ -61,7 +61,7 @@ yarn lint
 ### Generate splash screens
 
 ``` bash
-npx pwa-asset-generator public/icon.png ./public/assets/img/splash --background "#7b9db3" --splash-only --type png --portrait-only --padding "20%"
+npx pwa-asset-generator public/icon.png ./public/assets/img/splash --background "#4b7c9b" --splash-only --type png --portrait-only --padding "20%"
 ```
 
 ## Deployment
