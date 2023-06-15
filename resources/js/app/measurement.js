@@ -283,6 +283,15 @@ function initMeasurement() {
 		$fractionContainer.appendChild($button);
 	});
 
+	const $container = document.createElement('div');
+	$container.setAttribute('id', 'recipe-buttons');
+	$container.appendChild($fractionFieldset);
+
+	const $sidebar = document.getElementById('recipe-side');
+	if ($sidebar) {
+		$sidebar.prepend($container);
+	}
+
 	let currentUnit;
 	if (document.querySelector('[data-unit="oz"]')) {
 		currentUnit = 'oz';
@@ -321,15 +330,7 @@ function initMeasurement() {
 		$unitContainer.appendChild($button);
 	});
 
-	const $container = document.createElement('div');
-	$container.setAttribute('id', 'recipe-buttons');
-	$container.appendChild($fractionFieldset);
 	$container.appendChild($unitFieldset);
-
-	const $sidebar = document.getElementById('recipe-side');
-	if ($sidebar) {
-		$sidebar.prepend($container);
-	}
 }
 
 initMeasurement();
