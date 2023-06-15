@@ -1,10 +1,15 @@
 .sticky-container {
+	height: $button-size;
 	margin-top: $padding;
+}
+
+.sticky-inner {
+	margin-left: auto;
 	text-align: right;
 }
 
 .sticky {
-	position: sticky;
+	position: fixed;
 	top: $padding;
 	z-index: $sticky-zindex;
 }
@@ -13,7 +18,7 @@
 	border-radius: 100px;
 	box-shadow: $shadow;
 	height: $button-size;
-	margin-left: $button-margin;
+	margin-right: $button-margin;
 	width: $button-size;
 
 	&:focus {

@@ -22,45 +22,47 @@
 		<aside id="recipe-side">
 			{!! $row->summary() !!}
 
-			<div class="sticky-container" data-sticky data-sticky-top-margin="16">
-				<button
-					aria-label="Stopwatch"
-					class="floating-button button--icon"
-					data-timer="0"
-					id="stopwatch-button"
-					type="button"
-				>
-					⏱️
-				</button>
-				@if (Auth::user())
+			<div class="sticky-container">
+				<div class="sticky-inner" data-sticky data-sticky-top-margin="16">
 					<button
-						aria-label="Add Note"
+						aria-label="Stopwatch"
 						class="floating-button button--icon"
-						data-toggleable="#note-form"
-						data-toggleable-body-class="show-note"
-						id="add-note-button"
+						data-timer="0"
+						id="stopwatch-button"
 						type="button"
 					>
-						🗒️
+						⏱️
 					</button>
-					<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
-						@csrf
-						@method('PUT')
-						<div class="contain">
-							<textarea aria-label="Notes" class="prefix" id="notes" name="notes" placeholder="Enter notes" rows="5">{{ $row->notes }}</textarea>
-							@if (!empty($row->is_private))
-								<input
-									checked
-									id="is_private"
-									name="is_private"
-									type="hidden"
-									value="1"
-								/>
-							@endif
-							<button class="postfix" type="submit">Save</button>
-						</div>
-					</form>
-				@endif
+					@if (Auth::user())
+						<button
+							aria-label="Add Note"
+							class="floating-button button--icon"
+							data-toggleable="#note-form"
+							data-toggleable-body-class="show-note"
+							id="add-note-button"
+							type="button"
+						>
+							🗒️
+						</button>
+						<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
+							@csrf
+							@method('PUT')
+							<div class="contain">
+								<textarea aria-label="Notes" class="prefix" id="notes" name="notes" placeholder="Enter notes" rows="5">{{ $row->notes }}</textarea>
+								@if (!empty($row->is_private))
+									<input
+										checked
+										id="is_private"
+										name="is_private"
+										type="hidden"
+										value="1"
+									/>
+								@endif
+								<button class="postfix" type="submit">Save</button>
+							</div>
+						</form>
+					@endif
+				</div>
 			</div>
 		</aside>
 

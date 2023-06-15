@@ -8,16 +8,20 @@ function initSticky() {
 		const elementTop = $element.getAttribute('data-sticky-offset-top');
 		const margin = $element.getAttribute('data-sticky-top-margin');
 		const threshold = elementTop - parseInt(margin, 10);
-		if (window.pageYOffset >= threshold) {
+		if (window.scrollY >= threshold) {
 			$element.classList.add('sticky');
+			$element.style.right = `${$element.getAttribute('data-sticky-offset-right')}px`;
 		} else {
 			$element.classList.remove('sticky');
+			$element.style.right = null;
 		}
 	};
 
 	const onResize = () => {
 		$element.classList.remove('sticky');
-		$element.setAttribute('data-sticky-offset-top', $element.getBoundingClientRect().top);
+		const rect = $element.getBoundingClientRect();
+		$element.setAttribute('data-sticky-offset-top', window.scrollY + rect.top);
+		$element.setAttribute('data-sticky-offset-right', window.innerWidth - rect.right);
 		onScroll();
 	};
 
