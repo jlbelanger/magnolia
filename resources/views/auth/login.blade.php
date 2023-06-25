@@ -9,16 +9,33 @@
 
 	<form action="/login" method="post">
 		@csrf
+		<input name="redirect" type="hidden" value="{{ request()->query('redirect') }}" />
 
 		<p>
 			<label class="required" for="username">Username</label>
-			<input autocapitalize="none" autocomplete="username" id="username" name="username" required type="text" value="{{ old('username') }}" />
+			<input
+				autocapitalize="none"
+				autocomplete="username"
+				id="username"
+				name="username"
+				required
+				type="text"
+				value="{{ old('username') }}"
+			/>
 		</p>
 
 		<p>
 			<label class="required" for="password">Password</label>
 			<span class="password-container">
-				<input autocomplete="current-password" autocorrect="off" class="password-input prefix" id="password" name="password" required type="password" />
+				<input
+					autocomplete="current-password"
+					autocorrect="off"
+					class="password-input prefix"
+					id="password"
+					name="password"
+					required
+					type="password"
+				/>
 				<button
 					aria-controls="password"
 					aria-label="Show Password"
