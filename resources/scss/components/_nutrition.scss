@@ -19,12 +19,12 @@
 		border-right-width: 0;
 		margin-left: 8px;
 
-		&:focus + span {
+		&:focus + .postfix {
 			box-shadow: $focus-width #{-1 * $focus-width} 0 0 $focus-color, $focus-width $focus-width 0 0 $focus-color;
 		}
 	}
 
-	span {
+	.postfix {
 		background: $white;
 		border-color: $gray;
 		border-style: solid;
