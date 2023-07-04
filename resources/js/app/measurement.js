@@ -34,8 +34,14 @@ function initMeasurement() {
 		if (['h', 'o'].includes(lastLetter)) {
 			return singular.replace(/(.)$/, '$1es');
 		}
+		if (['f'].includes(lastLetter)) {
+			return singular.replace(/f$/, 'ves');
+		}
 		if (['y'].includes(lastLetter)) {
 			return singular.replace(/y$/, 'ies');
+		}
+		if (singular === 'foot') {
+			return 'feet';
 		}
 		return `${singular}s`;
 	};
