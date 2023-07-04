@@ -34,7 +34,24 @@ class Handler extends ExceptionHandler
 	 */
 	public function register()
 	{
-		$this->reportable(function (Throwable $e) {
+		$this->renderable(function (Throwable $e) {
+			$code = $e->getCode() ? $e->getCode() : 500;
+			if (request()->expectsJson()) {
+				$error = ['title' => 'There was an error connecting to the server.', 'status' => (string) $code];
+				if (config('app.debug')) {
+					$error['detail'] = $e->getMessage();
+					$error['meta'] = [
+						'exception' => get_class($e),
+						'file' => $e->getFile(),
+						'line' => $e->getLine(),
+						'trace' => $e->getTrace(),
+					];
+				}
+				return response()->json(['errors' => [$error]], $code);
+			}
+			if (!config('app.debug')) {
+				return response()->view('errors.500', [], $code);
+			}
 		});
 	}
 }
