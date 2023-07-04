@@ -23,7 +23,7 @@
 		"test:js": "node_modules/.bin/jest",
 		"test:php": "./vendor/bin/phpunit",
 		"test:watch": "node_modules/.bin/jest --watch",
-		"watch": "gulp"
+		"watch": "npx browserslist@latest --update-db && gulp"
 	},
 	"dependencies": {
 		"normalize.css": "^8.0.1"
