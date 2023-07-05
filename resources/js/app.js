@@ -4,4 +4,3 @@ import './app/password';
 import './app/print';
 import './app/sticky';
 import './app/timer';
-import './app/toggleable';

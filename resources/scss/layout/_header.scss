@@ -5,19 +5,15 @@
 }
 
 #header-inner {
-	padding: 4px $padding;
+	padding: 8px $padding;
+	position: relative;
 
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
+		margin-bottom: $button-size;
 	}
-}
-
-#header-mini {
-	align-items: center;
-	display: flex;
-	justify-content: space-between;
 }
 
 #site-title {
@@ -26,8 +22,13 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 	color: $white;
+	display: block;
 	font-size: 0;
 	height: 32px;
-	margin-top: 2px;
+	margin: 2px auto 0;
 	width: 122px;
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		margin: 2px 0 0;
+	}
 }

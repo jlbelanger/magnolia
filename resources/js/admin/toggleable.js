@@ -1,4 +1,20 @@
 function Toggleable($button) {
+	const showElement = ($element) => {
+		const controls = $button.getAttribute('aria-controls');
+		$button.setAttribute('aria-expanded', 'true');
+		$element.classList.add('show');
+		document.body.classList.add(`show-${controls}`);
+		return $button.getAttribute('data-toggleable-hide');
+	};
+
+	const hideElement = ($element) => {
+		const controls = $button.getAttribute('aria-controls');
+		$button.setAttribute('aria-expanded', 'false');
+		$element.classList.remove('show');
+		document.body.classList.remove(`show-${controls}`);
+		return $button.getAttribute('data-toggleable-show');
+	};
+
 	const onClick = () => {
 		const selector = $button.getAttribute('data-toggleable');
 		const $elements = document.querySelectorAll(selector);
@@ -9,17 +25,15 @@ function Toggleable($button) {
 
 		Array.from($elements).forEach(($element) => {
 			let text;
+
 			if ($element.classList.contains('show')) {
-				text = $button.getAttribute('data-toggleable-show');
-				$button.setAttribute('aria-expanded', 'false');
-				$element.classList.remove('show');
+				text = hideElement($element);
 			} else {
-				text = $button.getAttribute('data-toggleable-hide');
-				$button.setAttribute('aria-expanded', 'true');
-				$element.classList.add('show');
+				text = showElement($element);
 			}
+
 			if (text) {
-				$button.innerText = text;
+				$button.setAttribute('title', text);
 			}
 		});
 	};

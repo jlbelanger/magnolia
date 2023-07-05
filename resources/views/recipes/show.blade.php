@@ -26,20 +26,26 @@
 				<div class="sticky-inner" data-sticky data-sticky-top-margin="16">
 					<button
 						aria-label="Stopwatch"
-						class="floating-button button--icon"
+						class="floating-button"
 						data-timer="0"
 						id="stopwatch-button"
+						title="Stopwatch"
 						type="button"
 					>
 						⏱️
 					</button>
 					@if (Auth::user())
 						<button
+							aria-controls="note-form"
+							aria-expanded="false"
 							aria-label="Add Note"
-							class="floating-button button--icon"
+							class="floating-button"
 							data-toggleable="#note-form"
-							data-toggleable-body-class="show-note"
+							data-toggleable-body-class="show-note-form"
+							data-toggleable-hide="Close Notes"
+							data-toggleable-show="Add Note"
 							id="add-note-button"
+							title="Add Note"
 							type="button"
 						>
 							🗒️

@@ -1,12 +1,7 @@
-$admin-breakpoint-1: 430px;
-$admin-breakpoint-2: 720px;
-$admin-padding-bottom: 6px;
-
 #admin {
-	display: none;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding: 0 4px;
+	display: flex;
+	flex-direction: column;
+	padding: 0 $padding;
 
 	.button {
 		border-bottom-width: 0;
@@ -14,53 +9,33 @@ $admin-padding-bottom: 6px;
 		white-space: nowrap;
 	}
 
+	button,
 	form,
 	.button {
-		margin: 2px;
-		max-width: calc(50% - 4px);
 		width: 100%;
-	}
-
-	form {
-		width: 100%;
-
-		button {
-			max-width: none;
-			width: 100%;
-		}
-	}
-
-	&.show {
-		display: flex;
-	}
-
-	@media (min-width: #{$admin-breakpoint-1}) {
-		form,
-		.button {
-			max-width: calc(33.333% - 4px);
-		}
-	}
-
-	@media (min-width: #{$admin-breakpoint-2}) {
-		justify-content: space-between;
-
-		form,
-		.button {
-			margin: 0 2px;
-			max-width: none;
-			width: auto;
-		}
-
-		button,
-		.button {
-			border-bottom-width: 0;
-			border-radius: $border-radius $border-radius 0 0;
-		}
 	}
 
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
-		display: flex;
-		padding: 0 $padding;
+		flex-direction: row;
+		justify-content: space-between;
+		left: 0;
+		margin-top: 2px;
+		position: absolute;
+		right: 0;
+		top: 100%;
+		width: auto;
+
+		.button {
+			margin-right: 4px;
+		}
+
+		button,
+		form,
+		.button {
+			border-bottom-width: 0;
+			border-radius: $border-radius $border-radius 0 0;
+			width: auto;
+		}
 	}
 }
 
@@ -70,6 +45,14 @@ $admin-padding-bottom: 6px;
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		display: block;
 		flex: 1 1 auto;
+	}
+}
+
+.admin__button {
+	margin-bottom: #{$padding * .5};
+
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
+		margin-bottom: 0;
 	}
 }
 
@@ -83,13 +66,21 @@ $admin-padding-bottom: 6px;
 	&:hover,
 	&:active,
 	&:focus {
-		background-color: $blue;
+		background-color: transparent;
+		color: $light-blue;
 	}
 
-	@media (min-width: #{$admin-breakpoint-2}) {
+	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		background-color: $blue;
 		border-radius: $border-radius $border-radius 0 0;
 		color: $darkest-blue;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: $blue;
+			color: $darkest-blue;
+		}
 
 		&::after {
 			background-color: $blue;

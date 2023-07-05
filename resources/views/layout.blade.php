@@ -40,101 +40,93 @@
 		<main id="main">
 			<header id="header">
 				<div class="contain" id="header-inner">
-					<div id="header-mini">
-						<button
-							data-toggleable="#nav,#admin"
-							data-toggleable-body-class="show-nav"
-							data-toggleable-show="Show Menu"
-							data-toggleable-hide="Hide Menu"
-							id="nav-toggle"
-							type="button"
-						>
-							Show Menu
-						</button>
-						<a href="/" id="site-title">{{ config('app.name') }} Recipes</a>
-						<button
-							data-toggleable="#search"
-							data-toggleable-body-class="show-search"
-							data-toggleable-show="Show Search"
-							data-toggleable-hide="Hide Search"
-							id="search-toggle"
-							type="button"
-						>
-							Show Search
-						</button>
-					</div>
-					<nav id="nav">
-						<ul id="nav-list">
-							<li class="nav-list__item">
-								<a
-									class="nav-list__link{{ Request::is('categories/cakes') ? ' nav-list__link--active' : '' }}"
-									href="/categories/cakes"
-								>
-									Cakes
-								</a>
-							</li>
-							<li class="nav-list__item">
-								<a
-									class="nav-list__link{{ Request::is('categories/cookies') ? ' nav-list__link--active' : '' }}"
-									href="/categories/cookies"
-								>
-									Cookies
-								</a>
-							</li>
-							<li class="nav-list__item">
-								<a
-									class="nav-list__link{{ Request::is('categories/desserts') ? ' nav-list__link--active' : '' }}"
-									href="/categories/desserts"
-								>
-									Desserts
-								</a>
-							</li>
-							<li class="nav-list__item">
-								<a
-									class="nav-list__link{{ Request::is('categories/toppings') ? ' nav-list__link--active' : '' }}"
-									href="/categories/toppings"
-								>
-									Toppings
-								</a>
-							</li>
-							<li class="nav-list__item">
-								<a
-									class="nav-list__link{{ Request::is('categories/other') ? ' nav-list__link--active' : '' }}"
-									href="/categories/other"
-								>
-									Other
-								</a>
-							</li>
-						</ul>
-					</nav>
-					<form action="/search" id="search" method="get">
-						<input aria-label="Search recipes" autocomplete="off" class="prefix" id="search-input" name="q" type="text" value="{{ request()->query('q') }}">
-						<button class="postfix" id="search-submit" type="submit">Search</button>
-					</form>
-				</div>
-				@if (Auth::user())
-					<section class="contain" id="admin">
-						<a class="button admin__button{{ Request::is('recipes/create') ? ' admin__button--active' : '' }}" href="/recipes/create">Add Recipe</a>
-						<a class="button admin__button{{ Request::is('categories/create') ? ' admin__button--active' : '' }}" href="/categories/create">Add Category</a>
-						@if (!empty($row) && (Request::is('recipes/*') || Request::is('categories/*')))
-							@if (Request::is('*/edit'))
-								<a class="button admin__button" href="{{ $row->url() }}">
-									View {{ $row->type() }}
-								</a>
-							@else
-								<a class="button admin__button" href="{{ $row->editUrl() }}">
-									Edit {{ $row->type() }}
-								</a>
-							@endif
+					<a href="/" id="site-title">{{ config('app.name') }} Recipes</a>
+					<button
+						aria-controls="menu"
+						aria-expanded="false"
+						class="button--icon"
+						id="nav-show"
+						title="Show Menu"
+						type="button"
+					>
+						Show Menu
+					</button>
+					<div id="menu">
+						<div id="menu-top">
+							<nav id="nav">
+								<ul id="nav-list">
+									<li class="nav-list__item">
+										<a
+											class="nav-list__link{{ Request::is('categories/cakes') ? ' nav-list__link--active' : '' }}"
+											href="/categories/cakes"
+										>
+											Cakes
+										</a>
+									</li>
+									<li class="nav-list__item">
+										<a
+											class="nav-list__link{{ Request::is('categories/cookies') ? ' nav-list__link--active' : '' }}"
+											href="/categories/cookies"
+										>
+											Cookies
+										</a>
+									</li>
+									<li class="nav-list__item">
+										<a
+											class="nav-list__link{{ Request::is('categories/desserts') ? ' nav-list__link--active' : '' }}"
+											href="/categories/desserts"
+										>
+											Desserts
+										</a>
+									</li>
+									<li class="nav-list__item">
+										<a
+											class="nav-list__link{{ Request::is('categories/toppings') ? ' nav-list__link--active' : '' }}"
+											href="/categories/toppings"
+										>
+											Toppings
+										</a>
+									</li>
+									<li class="nav-list__item">
+										<a
+											class="nav-list__link{{ Request::is('categories/other') ? ' nav-list__link--active' : '' }}"
+											href="/categories/other"
+										>
+											Other
+										</a>
+									</li>
+								</ul>
+							</nav>
+							<form action="/search" id="search" method="get">
+								<input aria-label="Search recipes" autocomplete="off" class="prefix" id="search-input" name="q" type="text" value="{{ request()->query('q') }}">
+								<button class="postfix" id="search-submit" type="submit">Search</button>
+							</form>
+						</div>
+						@if (Auth::user())
+							<section id="admin">
+								<a class="button admin__button{{ Request::is('recipes/create') ? ' admin__button--active' : '' }}" href="/recipes/create">Add Recipe</a>
+								<a class="button admin__button{{ Request::is('categories/create') ? ' admin__button--active' : '' }}" href="/categories/create">Add Category</a>
+								@if (!empty($row) && (Request::is('recipes/*') || Request::is('categories/*')))
+									@if (Request::is('*/edit'))
+										<a class="button admin__button" href="{{ $row->url() }}">
+											View {{ $row->type() }}
+										</a>
+									@else
+										<a class="button admin__button" href="{{ $row->editUrl() }}">
+											Edit {{ $row->type() }}
+										</a>
+									@endif
+								@endif
+								<div class="flex-grow"></div>
+								<a class="button admin__button{{ Request::is('profile') ? ' admin__button--active' : '' }}" href="/profile">Profile</a>
+								<form action="/logout" method="post">
+									@csrf
+									<button data-confirmable="Are you sure you want to log out?" type="button">Logout</button>
+								</form>
+							</section>
 						@endif
-						<div class="flex-grow"></div>
-						<a class="button admin__button{{ Request::is('profile') ? ' admin__button--active' : '' }}" href="/profile">Profile</a>
-						<form action="/logout" method="post">
-							@csrf
-							<button data-confirmable="Are you sure you want to log out?" type="button">Logout</button>
-						</form>
-					</section>
-				@endif
+					</div>
+				</div>
 			</header>
 			<article class="{{ !empty($articleClass) ? $articleClass : '' }}" id="article-outer">
 				<div class="contain" id="article">
@@ -150,9 +142,9 @@
 				</div>
 			</footer>
 		</main>
-		<script src="/assets/js/functions.min.js?20230614"></script>
+		<script src="/assets/js/functions.min.js?20230626"></script>
 		@if (Auth::user())
-			<script src="/assets/js/admin.min.js?20230614"></script>
+			<script src="/assets/js/admin.min.js?20230626"></script>
 		@endif
 	</body>
 </html>

@@ -28,6 +28,12 @@
 	.no-js & {
 		display: none;
 	}
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
 }
 
 #add-note-button {

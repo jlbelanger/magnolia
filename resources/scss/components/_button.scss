@@ -61,11 +61,3 @@ button,
 		background-color: scale-color($dark-blue, $lightness: 5%);
 	}
 }
-
-.button--icon {
-	&:hover,
-	&:active,
-	&:focus {
-		text-decoration: none;
-	}
-}
