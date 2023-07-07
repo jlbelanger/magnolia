@@ -35,7 +35,7 @@
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
 		<script>document.documentElement.classList.remove('no-js');</script>
 	</head>
-	<body>
+	<body class="{{ Auth::user() ? 'auth' : '' }}">
 		<a class="button" href="#article" id="skip">Skip to content</a>
 		<main id="main">
 			<header id="header">

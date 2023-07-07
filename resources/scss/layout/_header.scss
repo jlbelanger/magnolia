@@ -7,12 +7,16 @@
 #header-inner {
 	padding: 8px $padding;
 	position: relative;
+	z-index: 1;
 
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: $button-size;
+
+		.auth & {
+			margin-bottom: $button-size;
+		}
 	}
 }
 
