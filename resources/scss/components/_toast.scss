@@ -53,7 +53,7 @@
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 $focus-width $focus-color;
+		box-shadow: $focus;
 	}
 }
 

@@ -26,6 +26,7 @@ $green-border: scale-color($light-green, $lightness: -10%, $saturation: -20%);
 $pink: plum;
 
 $serif: georgia, sans-serif;
+$sans-serif: sans-serif;
 
 $border-radius: 6px;
 $border-width: 8px;
@@ -49,6 +50,7 @@ $sidebar-width: $max-width - $content-width;
 
 $focus-color: $pink;
 $focus-width: 4px;
+$focus: 0 0 0 $focus-width $focus-color;
 
 $icon-size: 20px;
 

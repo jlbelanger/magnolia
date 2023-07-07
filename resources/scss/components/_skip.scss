@@ -1,24 +1,29 @@
+$skip-width: 200px;
+
 #skip {
 	background: $focus-color;
 	border: 0;
 	border-radius: 0;
 	color: $black;
+	font-size: 20px;
+	font-weight: bold;
 	height: $button-size;
 	left: 50%;
 	line-height: $button-size;
-	margin-left: -75px;
+	margin-left: #{$skip-width * -.5};
 	opacity: 0;
 	padding: 0;
 	position: absolute;
 	text-align: center;
 	text-decoration: none;
+
 	top: -$button-size;
-	width: 150px;
+	width: $skip-width;
 	z-index: $skip-zindex;
 
 	&:active,
 	&:focus {
-		box-shadow: 0 4px 32px rgba($black, .3);
+		box-shadow: 0 0 10px 5px rgba($black, .3), $focus;
 		opacity: 1;
 		top: 0;
 	}
