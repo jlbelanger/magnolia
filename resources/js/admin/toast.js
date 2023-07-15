@@ -1,7 +1,7 @@
 class Toast { // eslint-disable-line no-unused-vars
 	static show(message, args = {}) {
 		args.class = args.class || '';
-		args.closeButtonClass = args.closeButtonText || '';
+		args.closeButtonClass = args.closeButtonClass || '';
 		args.closeButtonText = args.closeButtonText || 'Close';
 		args.duration = args.duration || 5000;
 
@@ -14,6 +14,7 @@ class Toast { // eslint-disable-line no-unused-vars
 
 		const id = `toast-${new Date().getTime()}`;
 		const $div = document.createElement('div');
+		$div.setAttribute('aria-live', 'polite');
 		$div.setAttribute('class', `toast ${args.class}`.trim());
 		$div.setAttribute('id', id);
 		$div.setAttribute('role', 'alert');
@@ -31,6 +32,7 @@ class Toast { // eslint-disable-line no-unused-vars
 			};
 
 			const $closeButton = document.createElement('button');
+			$closeButton.setAttribute('aria-label', args.closeButtonText);
 			$closeButton.setAttribute('class', `toast-close ${args.closeButtonClass}`.trim());
 			$closeButton.setAttribute('type', 'button');
 			if (args.closeButtonAttributes) {
@@ -38,7 +40,6 @@ class Toast { // eslint-disable-line no-unused-vars
 					$closeButton.setAttribute(property, args.closeButtonAttributes[property]);
 				});
 			}
-			$closeButton.innerText = args.closeButtonText;
 			$closeButton.addEventListener('click', callback);
 			$div.appendChild($closeButton);
 		}

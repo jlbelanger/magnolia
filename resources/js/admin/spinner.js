@@ -4,7 +4,7 @@ class Spinner { // eslint-disable-line no-unused-vars
 		if (!$spinner) {
 			$spinner = document.createElement('div');
 			$spinner.setAttribute('class', 'spinner');
-			$spinner.setAttribute('role', 'alert');
+			$spinner.setAttribute('role', 'status');
 			$spinner.innerText = 'Loading...';
 			document.body.appendChild($spinner);
 		}
