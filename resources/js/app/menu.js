@@ -7,11 +7,6 @@ function Menu() {
 		if (window.innerWidth >= 1024) {
 			hideElement();
 			onTransitionEnd();
-		} else {
-			const rect = $button.getBoundingClientRect();
-			const $closeButton = document.getElementById(`${controls}-close`);
-			$closeButton.style.top = `${rect.top}px`;
-			$closeButton.style.right = `${window.innerWidth - rect.right}px`;
 		}
 	};
 
@@ -45,7 +40,6 @@ function Menu() {
 	};
 
 	const showElement = () => {
-		const rect = $button.getBoundingClientRect();
 		$button.setAttribute('aria-expanded', 'true');
 
 		const $dialog = document.createElement('dialog');
@@ -64,8 +58,6 @@ function Menu() {
 		$closeButton.addEventListener('click', (e) => {
 			hideElement(e.target.closest('dialog'));
 		});
-		$closeButton.style.top = `${rect.top}px`;
-		$closeButton.style.right = `${window.innerWidth - rect.right}px`;
 		$dialog.appendChild($closeButton);
 
 		document.body.classList.add(`show-${controls}`);

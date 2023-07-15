@@ -42,6 +42,19 @@
 		transform: translateX(0);
 	}
 
+	@media (max-width: #{$breakpoint-tablet-landscape - 1px}) {
+		.no-js & {
+			background: transparent;
+			box-shadow: none;
+			display: block;
+			max-width: none;
+			overflow: unset;
+			position: static;
+			transform: none;
+			transition: none;
+		}
+	}
+
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		align-items: center;
 		background: transparent;
@@ -79,6 +92,13 @@
 	list-style: none;
 	margin: 0;
 	padding: 0;
+
+	@media (max-width: #{$breakpoint-tablet-landscape - 1px}) {
+		.no-js & {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
 
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		display: flex;
@@ -150,7 +170,7 @@
 		visibility: hidden;
 	}
 
-	@media screen and (max-width: #{$breakpoint-tablet-landscape - 1}) {
+	@media (max-width: #{$breakpoint-tablet-landscape - 1px}) {
 		.no-js & {
 			display: none;
 		}
@@ -164,6 +184,8 @@
 #menu-close {
 	background-image: url('/assets/img/x.svg');
 	position: fixed;
+	right: 8px;
+	top: 2px;
 
 	&:hover,
 	&:active,
@@ -179,9 +201,13 @@
 .show-menu.animate-menu {
 	height: 100vh;
 	overflow-y: hidden;
+	position: fixed;
+	width: 100%;
 
 	@media (min-width: #{$breakpoint-tablet-landscape}) {
 		height: auto;
 		overflow-y: unset;
+		position: static;
+		width: auto;
 	}
 }
