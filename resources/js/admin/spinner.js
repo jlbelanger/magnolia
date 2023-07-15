@@ -8,12 +8,12 @@ class Spinner { // eslint-disable-line no-unused-vars
 			$spinner.innerText = 'Loading...';
 			document.body.appendChild($spinner);
 		}
-		$spinner.style.display = '';
+		$spinner.classList.remove('hide');
 
 		return $spinner;
 	}
 
 	static hide($spinner) {
-		$spinner.style.display = 'none';
+		$spinner.classList.add('hide');
 	}
 }
