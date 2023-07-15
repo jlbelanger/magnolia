@@ -1,3 +1,13 @@
+import {
+	fractionToDecimal,
+	getMeasurement,
+	gramsToOunces,
+	measuringCups,
+	ouncesToGrams,
+	pluralize,
+	tools,
+} from './measurement';
+
 describe('pluralize', () => {
 	[
 		{ value: 'berry', expected: 'berries' },
@@ -91,7 +101,7 @@ describe('measuringCups', () => {
 		{ unit: 'cup', value: 1.75, expected: '1 3/4 cups' },
 	].forEach((row) => {
 		it(`converts ${row.value} ${row.unit} to ${row.expected}`, () => {
-			expect(measuringCups(row.value, row.unit)).toEqual(row.expected);
+			expect(measuringCups(tools, row.value, row.unit)).toEqual(row.expected);
 		});
 	});
 });

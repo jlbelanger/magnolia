@@ -1,3 +1,6 @@
+import Spinner from './spinner';
+import Toast from './toast';
+
 function Ajax($form) {
 	$form.addEventListener('submit', (e) => {
 		e.preventDefault();

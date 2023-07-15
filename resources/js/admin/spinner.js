@@ -1,4 +1,4 @@
-class Spinner { // eslint-disable-line no-unused-vars
+export default class Spinner {
 	static show() {
 		let $spinner = document.querySelector('.spinner');
 		if (!$spinner) {

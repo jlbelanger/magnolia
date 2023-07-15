@@ -30,7 +30,7 @@
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 		<link rel="icon" href="/favicon.svg">
-		<link rel="stylesheet" href="/assets/css/style.min.css?20230705">
+		<link rel="stylesheet" href="{{ mix('/assets/css/style.min.css') }}">
 		<link rel="manifest" href="/manifest.json">
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
 		<script>document.documentElement.classList.remove('no-js');</script>
@@ -142,9 +142,9 @@
 				</div>
 			</footer>
 		</main>
-		<script src="/assets/js/functions.min.js?20230705"></script>
+		<script src="{{ mix('/assets/js/functions.min.js') }}"></script>
 		@if (Auth::user())
-			<script src="/assets/js/admin.min.js?20230705"></script>
+			<script src="{{ mix('/assets/js/admin.min.js') }}"></script>
 		@endif
 	</body>
 </html>

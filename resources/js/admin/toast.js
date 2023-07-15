@@ -1,4 +1,4 @@
-class Toast { // eslint-disable-line no-unused-vars
+export default class Toast {
 	static show(message, args = {}) {
 		args.class = args.class || '';
 		args.closeButtonClass = args.closeButtonClass || '';

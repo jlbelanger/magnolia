@@ -1,4 +1,4 @@
-function Modal(args) { // eslint-disable-line no-unused-vars
+export default function Modal(args) {
 	const show = () => {
 		document.body.classList.add('modal-open');
 

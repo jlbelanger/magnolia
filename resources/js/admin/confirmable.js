@@ -1,3 +1,5 @@
+import Modal from './modal';
+
 function Confirmable($button) {
 	const onClick = (e) => {
 		const message = e.target.getAttribute('data-confirmable');
