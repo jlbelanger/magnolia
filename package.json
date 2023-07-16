@@ -21,7 +21,7 @@
 		"test:js": "node --experimental-vm-modules node_modules/.bin/jest",
 		"test:php": "./vendor/bin/phpunit",
 		"test:watch": "node_modules/.bin/jest --watch",
-		"watch": "npx browserslist@latest --update-db && node_modules/.bin/webpack --watch --mode=development"
+		"watch": "npx browserslist@latest --update-db && node_modules/.bin/webpack --watch --mode=production"
 	},
 	"dependencies": {
 		"@babel/plugin-transform-modules-commonjs": "^7.22.5",
