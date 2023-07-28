@@ -7,11 +7,11 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 require('dotenv').config();
 
 module.exports = {
+	mode: 'production',
 	devtool: false,
 	entry: {
 		admin: './resources/js/admin.js',
-		functions: './resources/js/app.js',
-		style: './resources/scss/style.scss',
+		app: './resources/js/app.js',
 	},
 	output: {
 		filename: 'assets/js/[name].min.js?[contenthash]',
@@ -31,10 +31,21 @@ module.exports = {
 		}),
 		new BrowserSyncPlugin({
 			proxy: process.env.APP_URL,
+			port: 3000,
 			files: [
-				'public/assets/js/*.js',
-				'public/assets/css/*.css',
+				'public/assets/js/**/*',
+				'public/assets/css/**/*',
+				'resources/views/**/*',
 			],
+			snippetOptions: {
+				rule: {
+					match: /<body[^>]*>/i,
+					fn: (snippet, match) => (
+						// Allow Browsersync to work with Content-Security-Policy without script-src 'unsafe-inline'.
+						`${match}${snippet.replace('id=', 'nonce="browser-sync" id=')}`
+					),
+				},
+			},
 		}, {
 			reload: false,
 		}),
@@ -78,5 +89,21 @@ module.exports = {
 				extractComments: false,
 			}),
 		],
+		splitChunks: {
+			cacheGroups: {
+				style: {
+					name: 'style',
+					type: 'css/mini-extract',
+					chunks: (chunk) => (chunk.name === 'app'),
+					enforce: true,
+				},
+				admin: {
+					name: 'admin',
+					type: 'css/mini-extract',
+					chunks: (chunk) => (chunk.name === 'admin'),
+					enforce: true,
+				},
+			},
+		},
 	},
 };

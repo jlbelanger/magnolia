@@ -41,51 +41,6 @@ function Timer($button) {
 		e.target.parentNode.remove();
 	};
 
-	const tick = () => {
-		const $timers = document.querySelectorAll('.timer--on');
-		if ($timers.length <= 0) {
-			clearInterval(window.TICK_INTERVAL);
-			window.TICK_INTERVAL = null;
-
-			window.DRAG_ELEMENT = null;
-			window.DRAG_START_X = 0;
-			window.DRAG_START_Y = 0;
-
-			document.removeEventListener('mousemove', onMouseMove);
-			document.removeEventListener('keydown', onKeyDown);
-			document.removeEventListener('touchstart', touchHandler, true);
-			document.removeEventListener('touchend', touchHandler, true);
-			document.removeEventListener('touchcancel', touchHandler, true);
-			document.removeEventListener('touchmove', onTouchMove, { passive: false });
-			return;
-		}
-
-		$timers.forEach(($timer) => {
-			const dateSince = $timer.getAttribute('data-since');
-			if (dateSince) {
-				const seconds = secondsSince(Date.parse(dateSince));
-				$timer.querySelector('.timer__text').innerText = seconds;
-				return;
-			}
-
-			const seconds = secondsUntil(Date.parse($timer.getAttribute('data-until')));
-			if (seconds === '') {
-				$timer.classList.remove('timer--on');
-
-				const $text = $timer.querySelector('.timer__text');
-				$text.removeEventListener('mousedown', onMouseDown);
-				$text.removeEventListener('mouseup', onMouseUp);
-				$text.addEventListener('click', onClickStop);
-				$text.innerText = 'Stop';
-
-				$timer.querySelector('audio').play();
-
-				return;
-			}
-			$timer.querySelector('.timer__text').innerText = seconds;
-		});
-	};
-
 	const onKeyDown = (e) => {
 		if (e.key === 'Escape') {
 			window.DRAG_ELEMENT = null;
@@ -226,7 +181,7 @@ function Timer($button) {
 			return;
 		}
 
-		window.TICK_INTERVAL = setInterval(tick, 500);
+		window.TICK_INTERVAL = setInterval(tick, 500); // eslint-disable-line no-use-before-define
 
 		window.DRAG_ELEMENT = null;
 		window.DRAG_START_X = 0;
@@ -237,6 +192,51 @@ function Timer($button) {
 		document.addEventListener('touchend', touchHandler, true);
 		document.addEventListener('touchcancel', touchHandler, true);
 		document.addEventListener('touchmove', onTouchMove, { passive: false });
+	};
+
+	const tick = () => {
+		const $timers = document.querySelectorAll('.timer--on');
+		if ($timers.length <= 0) {
+			clearInterval(window.TICK_INTERVAL);
+			window.TICK_INTERVAL = null;
+
+			window.DRAG_ELEMENT = null;
+			window.DRAG_START_X = 0;
+			window.DRAG_START_Y = 0;
+
+			document.removeEventListener('mousemove', onMouseMove);
+			document.removeEventListener('keydown', onKeyDown);
+			document.removeEventListener('touchstart', touchHandler, true);
+			document.removeEventListener('touchend', touchHandler, true);
+			document.removeEventListener('touchcancel', touchHandler, true);
+			document.removeEventListener('touchmove', onTouchMove, { passive: false });
+			return;
+		}
+
+		$timers.forEach(($timer) => {
+			const dateSince = $timer.getAttribute('data-since');
+			if (dateSince) {
+				const seconds = secondsSince(Date.parse(dateSince));
+				$timer.querySelector('.timer__text').innerText = seconds;
+				return;
+			}
+
+			const seconds = secondsUntil(Date.parse($timer.getAttribute('data-until')));
+			if (seconds === '') {
+				$timer.classList.remove('timer--on');
+
+				const $text = $timer.querySelector('.timer__text');
+				$text.removeEventListener('mousedown', onMouseDown);
+				$text.removeEventListener('mouseup', onMouseUp);
+				$text.addEventListener('click', onClickStop);
+				$text.innerText = 'Stop';
+
+				$timer.querySelector('audio').play();
+
+				return;
+			}
+			$timer.querySelector('.timer__text').innerText = seconds;
+		});
 	};
 
 	const init = () => {

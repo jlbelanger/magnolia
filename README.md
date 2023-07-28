@@ -42,7 +42,7 @@ php artisan reset-auth
 ### Run
 
 ``` bash
-yarn watch
+yarn start
 ```
 
 ### Lint

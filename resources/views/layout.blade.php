@@ -31,9 +31,12 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 		<link rel="icon" href="/favicon.svg">
 		<link rel="stylesheet" href="{{ mix('/assets/css/style.min.css') }}">
+		@if (Auth::user())
+			<link rel="stylesheet" href="{{ mix('/assets/css/admin.min.css') }}">
+		@endif
 		<link rel="manifest" href="/manifest.json">
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
-		<script>document.documentElement.classList.remove('no-js');</script>
+		<script integrity="sha256-tuKyZn/3ycw/MNMDii/kvSPrelo6SCsJSecqb1n2neg=">document.documentElement.classList.remove('no-js');</script>
 	</head>
 	<body class="{{ Auth::user() ? 'auth' : '' }}">
 		<a class="button" href="#article" id="skip">Skip to content</a>
@@ -142,7 +145,7 @@
 				</div>
 			</footer>
 		</main>
-		<script src="{{ mix('/assets/js/functions.min.js') }}"></script>
+		<script src="{{ mix('/assets/js/app.min.js') }}"></script>
 		@if (Auth::user())
 			<script src="{{ mix('/assets/js/admin.min.js') }}"></script>
 		@endif

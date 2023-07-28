@@ -1,14 +1,8 @@
 function Menu() {
+	const maxWidth = 1024;
 	const $button = document.getElementById('nav-show');
 	const controls = $button.getAttribute('aria-controls');
 	const $element = document.getElementById(controls);
-
-	const onResize = () => {
-		if (window.innerWidth >= 1024) {
-			hideElement();
-			onTransitionEnd();
-		}
-	};
 
 	const onTransitionEnd = () => {
 		const $dialog = $element.closest('dialog');
@@ -22,10 +16,17 @@ function Menu() {
 	};
 
 	const hideElement = () => {
-		window.removeEventListener('resize', onResize);
+		window.removeEventListener('resize', onResize); // eslint-disable-line no-use-before-define
 		$button.setAttribute('aria-expanded', 'false');
 		document.body.classList.remove(`animate-${controls}`);
 		$element.addEventListener('transitionend', onTransitionEnd);
+	};
+
+	const onResize = () => {
+		if (window.innerWidth >= maxWidth) {
+			hideElement();
+			onTransitionEnd();
+		}
 	};
 
 	const onCancelDialog = (e) => {
@@ -40,6 +41,10 @@ function Menu() {
 	};
 
 	const showElement = () => {
+		if (window.innerWidth >= maxWidth) {
+			return;
+		}
+
 		$button.setAttribute('aria-expanded', 'true');
 
 		const $dialog = document.createElement('dialog');
