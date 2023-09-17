@@ -2,7 +2,8 @@
 
 @media print {
 	body,
-	#header {
+	#header,
+	#article-outer {
 		background: transparent;
 	}
 
@@ -15,6 +16,11 @@
 	#recipe-side + #recipe-main {
 		border-top: 1px solid $black;
 		margin-top: $margin;
+	}
+
+	#recipe-side {
+		background: transparent;
+		border: 0;
 	}
 
 	#header {
