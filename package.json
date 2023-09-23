@@ -21,7 +21,7 @@
 		"test:js": "node --experimental-vm-modules node_modules/.bin/jest",
 		"test:php": "./vendor/bin/phpunit",
 		"test:watch": "node_modules/.bin/jest --watch",
-		"start": "npx browserslist@latest --update-db && node_modules/.bin/webpack --watch"
+		"start": "npx update-browserslist-db@latest && node_modules/.bin/webpack --watch"
 	},
 	"dependencies": {
 		"normalize.css": "^8.0.1"
