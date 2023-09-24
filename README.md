@@ -1,6 +1,6 @@
 # Magnolia Recipes
 
-View the app at https://magnolia.jennybelanger.com/
+Magnolia is a recipe website. [View the site](https://magnolia.jennybelanger.com/).
 
 ## Development
 
@@ -44,6 +44,8 @@ php artisan reset-auth
 ``` bash
 yarn start
 ```
+
+Your browser should automatically open https://localhost:3000/
 
 ### Lint
 
