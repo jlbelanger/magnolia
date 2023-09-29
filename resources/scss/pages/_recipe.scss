@@ -1,8 +1,6 @@
 $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-height)) * .5);
 
 #recipe-image-container {
-	background-position: center;
-	background-size: cover;
 	border-bottom: $border-width solid $darkest-blue;
 	height: 40vh;
 	margin-left: -$padding;
@@ -21,7 +19,10 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 #recipe-image {
-	display: none;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
 }
 
 #recipe-image-container + #recipe #recipe-header {

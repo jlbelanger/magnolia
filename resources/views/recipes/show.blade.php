@@ -4,7 +4,7 @@
 
 @section('content')
 	@if ($row->filename)
-		<div id="recipe-image-container" style="background-image:url('/uploads/{{ $row->filename }}')">
+		<div id="recipe-image-container">
 			<img alt="" height="562" id="recipe-image" src="/uploads/{{ $row->filename }}" width="1024" />
 		</div>
 	@endif
