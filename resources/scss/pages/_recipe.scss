@@ -9,11 +9,11 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	overflow: hidden;
 	position: relative;
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		margin-top: -$top-padding;
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape + 1px}) {
+	@media (min-width: #{$screen-width-tablet-landscape + 1px}) {
 		border: 0;
 	}
 }
@@ -30,7 +30,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 #recipe-main {
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		padding-right: $margin;
 		width: calc(100% - #{$sidebar-width});
 	}
@@ -48,7 +48,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 		margin-top: 0;
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		background: scale-color($blue, $lightness: 15%);
 		border-color: $light-blue $darkish-blue $darkish-blue $light-blue;
 		border-style: solid;
@@ -121,7 +121,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 		}
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		position: relative;
 	}
 }

@@ -15,7 +15,7 @@
 		width: 100%;
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		flex-direction: row;
 		justify-content: space-between;
 		left: 0;
@@ -42,7 +42,7 @@
 .flex-grow {
 	display: none;
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		display: block;
 		flex: 1 1 auto;
 	}
@@ -51,7 +51,7 @@
 .admin__button {
 	margin-bottom: #{$padding * .5};
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		margin-bottom: 0;
 	}
 }
@@ -70,7 +70,7 @@
 		color: $light-blue;
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		background-color: $blue;
 		border-radius: $border-radius $border-radius 0 0;
 		color: $darkest-blue;

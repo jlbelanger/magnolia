@@ -42,7 +42,7 @@
 		transform: translateX(0);
 	}
 
-	@media (max-width: #{$breakpoint-tablet-landscape - 1px}) {
+	@media (max-width: #{$screen-width-tablet-landscape - 1px}) {
 		.no-js & {
 			background: transparent;
 			box-shadow: none;
@@ -55,7 +55,7 @@
 		}
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		align-items: center;
 		background: transparent;
 		box-shadow: none;
@@ -73,7 +73,7 @@
 	display: flex;
 	flex-direction: column;
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		align-items: center;
 		flex-direction: row;
 	}
@@ -83,7 +83,7 @@
 	font-family: $serif;
 	font-size: 22px;
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		margin-right: 48px;
 	}
 }
@@ -93,14 +93,14 @@
 	margin: 0;
 	padding: 0;
 
-	@media (max-width: #{$breakpoint-tablet-landscape - 1px}) {
+	@media (max-width: #{$screen-width-tablet-landscape - 1px}) {
 		.no-js & {
 			display: flex;
 			flex-wrap: wrap;
 		}
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		display: flex;
 		flex-wrap: wrap;
 	}
@@ -119,7 +119,7 @@
 		color: $darkest-blue;
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		border-radius: $border-radius;
 	}
 }
@@ -170,13 +170,13 @@
 		visibility: hidden;
 	}
 
-	@media (max-width: #{$breakpoint-tablet-landscape - 1px}) {
+	@media (max-width: #{$screen-width-tablet-landscape - 1px}) {
 		.no-js & {
 			display: none;
 		}
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		display: none;
 	}
 }
@@ -193,7 +193,7 @@
 		background-color: transparent;
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		display: none;
 	}
 }
@@ -204,7 +204,7 @@
 	position: fixed;
 	width: 100%;
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		height: auto;
 		overflow-y: unset;
 		position: static;

@@ -1,3 +1,5 @@
+// Colors
+
 $dark-blue: #4b7c9b;
 $medium-blue: #739fbb;
 $blue: #c9eaff;
@@ -25,8 +27,12 @@ $green-border: scale-color($light-green, $lightness: -10%, $saturation: -20%);
 
 $pink: plum;
 
+// Fonts
+
 $serif: georgia, sans-serif;
 $sans-serif: sans-serif;
+
+// Sizes
 
 $border-radius: 6px;
 $border-width: 8px;
@@ -92,8 +98,6 @@ $toast-success-background-color: $light-green;
 $toast-success-border-color: $green-border;
 $toast-success-text-color: $dark-green;
 
-$breakpoint-tablet-landscape: $max-width;
-
 $header-zindex: 993;
 $sticky-zindex: 994;
 $skip-zindex: 995;
@@ -101,3 +105,9 @@ $notes-zindex: 996;
 $timer-zindex: 997;
 $toast-zindex: 998;
 $spinner-zindex: 999;
+
+// Breakpoints
+
+$screen-width-tablet-landscape: $max-width;
+
+$tablet-landscape-up: '(min-width: #{$screen-width-tablet-landscape})';

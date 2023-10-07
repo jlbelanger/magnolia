@@ -70,7 +70,7 @@
 		}
 	}
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		font-size: 40px;
 		min-width: 150px;
 	}

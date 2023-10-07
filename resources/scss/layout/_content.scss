@@ -6,7 +6,7 @@
 #article {
 	padding: $padding;
 
-	@media (min-width: #{$breakpoint-tablet-landscape}) {
+	@media ($tablet-landscape-up) {
 		padding: $top-padding $padding;
 	}
 }
