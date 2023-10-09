@@ -36,7 +36,7 @@ class Handler extends ExceptionHandler
 	 *
 	 * @return void
 	 */
-	public function register()
+	public function register() // phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
 	{
 		// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
 		$this->renderable(function (InvalidSignatureException $e) {
@@ -60,9 +60,9 @@ class Handler extends ExceptionHandler
 			return response()->view('errors.404', [], 404);
 		});
 
-		$this->renderable(function (NotFoundHttpException $e) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+		$this->renderable(function (NotFoundHttpException $e) {
 			if (request()->expectsJson()) {
-				return response()->json(['errors' => [['title' => 'URL does not exist.', 'status' => '404']]], 404);
+				return response()->json(['errors' => [['title' => $e->getMessage() ?? 'URL does not exist.', 'status' => '404']]], 404);
 			}
 			return response()->view('errors.404', [], 404);
 		});
