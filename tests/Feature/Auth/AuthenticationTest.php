@@ -29,17 +29,38 @@ class AuthenticationTest extends TestCase
 
 		$this->assertAuthenticated();
 		$response->assertRedirect(RouteServiceProvider::HOME);
+		$response->assertSessionHasNoErrors();
+		$response->assertSessionMissing('message');
+		$response->assertSessionMissing('status');
 	}
 
-	public function testUsersCanNotAuthenticateWithInvalidPassword()
+	public function testUsersCannotAuthenticateWithInvalidPassword()
 	{
 		$user = User::factory()->create();
 
-		$this->post('/login', [
+		$response = $this->post('/login', [
 			'username' => $user->username,
 			'password' => 'wrong-password',
 		]);
 
 		$this->assertGuest();
+		$response->assertRedirect();
+		$response->assertSessionHasErrors(['username' => 'Username or password is incorrect.']);
+		$response->assertSessionMissing('message');
+		$response->assertSessionMissing('status');
+	}
+
+	public function testUsersCannotAuthenticateWithInvalidUsername()
+	{
+		$response = $this->post('/login', [
+			'username' => 'does-not-exist',
+			'password' => 'password',
+		]);
+
+		$this->assertGuest();
+		$response->assertRedirect();
+		$response->assertSessionHasErrors(['username' => 'Username or password is incorrect.']);
+		$response->assertSessionMissing('message');
+		$response->assertSessionMissing('status');
 	}
 }

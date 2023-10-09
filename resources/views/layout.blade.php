@@ -138,7 +138,7 @@
 			</article>
 			<footer id="footer">
 				<div class="contain" id="footer-inner">
-					@if (!Auth::user())
+					@if (!Auth::user() && !Request::is('login'))
 						<a class="link" href="/login">Login</a>
 					@endif
 					<a class="link" href="https://github.com/jlbelanger/magnolia/">GitHub</a>

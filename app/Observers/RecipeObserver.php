@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Recipe;
+use Illuminate\Support\Carbon;
 
 class RecipeObserver
 {
@@ -12,7 +13,7 @@ class RecipeObserver
 	 */
 	public function deleted(Recipe $recipe)
 	{
-		$recipe->slug = 'deleted-' . strtotime('now') . '-' . $recipe->slug;
+		$recipe->slug = 'deleted-' . Carbon::now() . '-' . $recipe->slug;
 		$recipe->save();
 	}
 }

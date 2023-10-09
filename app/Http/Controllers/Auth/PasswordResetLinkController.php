@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -33,9 +34,15 @@ class PasswordResetLinkController extends Controller
 			'email' => ['required', 'email'],
 		]);
 
-		Password::sendResetLink($request->only('email'));
+		try {
+			Password::sendResetLink($request->only('email'));
+		} catch (Exception $e) {
+			return redirect('/forgot-password')
+				->with('message', __('passwords.send_error'))
+				->with('status', 'danger');
+		}
 
-		return redirect('/login')
+		return redirect('/forgot-password')
 			->with('message', __(Password::RESET_LINK_SENT))
 			->with('status', 'success');
 	}
