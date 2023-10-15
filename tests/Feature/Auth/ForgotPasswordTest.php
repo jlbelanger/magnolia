@@ -12,14 +12,14 @@ class ForgotPasswordTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testForgotPasswordScreenCanBeRendered()
+	public function testForgotPasswordScreenCanBeRendered() : void
 	{
 		$response = $this->get('/forgot-password');
 
 		$response->assertStatus(200);
 	}
 
-	public function testPasswordResetLinkCanBeRequestedForValidUser()
+	public function testPasswordResetLinkCanBeRequestedForValidUser() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -34,7 +34,7 @@ class ForgotPasswordTest extends TestCase
 		Notification::assertSentTo($user, ResetPassword::class);
 	}
 
-	public function testPasswordResetLinkCanBeRequestedForInvalidUser()
+	public function testPasswordResetLinkCanBeRequestedForInvalidUser() : void
 	{
 		Notification::fake();
 

@@ -9,7 +9,7 @@ class HomeTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testHome()
+	public function testHome() : void
 	{
 		$response = $this->get('/');
 

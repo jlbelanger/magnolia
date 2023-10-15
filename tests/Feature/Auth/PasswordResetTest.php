@@ -14,7 +14,7 @@ class PasswordResetTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testResetPasswordScreenCanBeRendered()
+	public function testResetPasswordScreenCanBeRendered() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -41,7 +41,7 @@ class PasswordResetTest extends TestCase
 		});
 	}
 
-	public function testResetPasswordScreenCannotBeRenderedWithExpiredToken()
+	public function testResetPasswordScreenCannotBeRenderedWithExpiredToken() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -68,7 +68,7 @@ class PasswordResetTest extends TestCase
 		});
 	}
 
-	public function testPasswordCanBeResetWithValidToken()
+	public function testPasswordCanBeResetWithValidToken() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -99,7 +99,7 @@ class PasswordResetTest extends TestCase
 		});
 	}
 
-	public function testPasswordCannotBeResetTwiceWithSameToken()
+	public function testPasswordCannotBeResetTwiceWithSameToken() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -142,7 +142,7 @@ class PasswordResetTest extends TestCase
 		});
 	}
 
-	public function testPasswordCannotBeResetWithWrongEmail()
+	public function testPasswordCannotBeResetWithWrongEmail() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -173,7 +173,7 @@ class PasswordResetTest extends TestCase
 		});
 	}
 
-	public function testPasswordCannotBeResetWithExpiredToken()
+	public function testPasswordCannotBeResetWithExpiredToken() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();
@@ -204,7 +204,7 @@ class PasswordResetTest extends TestCase
 		});
 	}
 
-	public function testPasswordCannotBeResetWithInvalidToken()
+	public function testPasswordCannotBeResetWithInvalidToken() : void
 	{
 		Notification::fake();
 		$user = User::factory()->create();

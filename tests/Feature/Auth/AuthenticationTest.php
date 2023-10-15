@@ -11,14 +11,14 @@ class AuthenticationTest extends TestCase
 {
 	use RefreshDatabase;
 
-	public function testLoginScreenCanBeRendered()
+	public function testLoginScreenCanBeRendered() : void
 	{
 		$response = $this->get('/login');
 
 		$response->assertStatus(200);
 	}
 
-	public function testUsersCanAuthenticateUsingTheLoginScreen()
+	public function testUsersCanAuthenticateUsingTheLoginScreen() : void
 	{
 		$user = User::factory()->create();
 
@@ -34,7 +34,7 @@ class AuthenticationTest extends TestCase
 		$response->assertSessionMissing('status');
 	}
 
-	public function testUsersCannotAuthenticateWithInvalidPassword()
+	public function testUsersCannotAuthenticateWithInvalidPassword() : void
 	{
 		$user = User::factory()->create();
 
@@ -50,7 +50,7 @@ class AuthenticationTest extends TestCase
 		$response->assertSessionMissing('status');
 	}
 
-	public function testUsersCannotAuthenticateWithInvalidUsername()
+	public function testUsersCannotAuthenticateWithInvalidUsername() : void
 	{
 		$response = $this->post('/login', [
 			'username' => 'does-not-exist',
