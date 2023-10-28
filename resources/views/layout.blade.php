@@ -138,6 +138,7 @@
 			</article>
 			<footer id="footer">
 				<div class="contain" id="footer-inner">
+					<a class="link" href="/search">Search</a>
 					@if (!Auth::user() && !Request::is('login'))
 						<a class="link" href="/login">Login</a>
 					@endif

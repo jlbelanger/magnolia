@@ -23,7 +23,7 @@ function Menu() {
 	};
 
 	const onResize = () => {
-		if (window.innerWidth > maxWidth) {
+		if (window.innerWidth >= maxWidth) {
 			hideElement();
 			onTransitionEnd();
 		}
@@ -41,7 +41,7 @@ function Menu() {
 	};
 
 	const showElement = () => {
-		if (window.innerWidth > maxWidth) {
+		if (window.innerWidth >= maxWidth) {
 			return;
 		}
 
