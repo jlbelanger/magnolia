@@ -3,11 +3,14 @@ function Menu() {
 	const $button = document.getElementById('nav-show');
 	const controls = $button.getAttribute('aria-controls');
 	const $element = document.getElementById(controls);
+	const supportsDialog = typeof HTMLDialogElement === 'function';
 
 	const onTransitionEnd = () => {
-		const $dialog = $element.closest('dialog');
+		const $dialog = document.getElementById(`${controls}-dialog`);
 		document.body.classList.remove(`show-${controls}`);
-		$dialog.close();
+		if (supportsDialog) {
+			$dialog.close();
+		}
 
 		$dialog.parentNode.appendChild($element);
 		$dialog.remove();
@@ -47,10 +50,12 @@ function Menu() {
 
 		$button.setAttribute('aria-expanded', 'true');
 
-		const $dialog = document.createElement('dialog');
+		const $dialog = document.createElement(supportsDialog ? 'dialog' : 'div');
 		$dialog.setAttribute('id', `${controls}-dialog`);
-		$dialog.addEventListener('cancel', onCancelDialog);
-		$dialog.addEventListener('click', onClickDialog);
+		if (supportsDialog) {
+			$dialog.addEventListener('cancel', onCancelDialog);
+			$dialog.addEventListener('click', onClickDialog);
+		}
 
 		const $closeButton = document.createElement('button');
 		$closeButton.setAttribute('aria-controls', controls);
@@ -60,8 +65,8 @@ function Menu() {
 		$closeButton.setAttribute('title', 'Close Menu');
 		$closeButton.setAttribute('type', 'button');
 		$closeButton.innerText = 'Close Menu';
-		$closeButton.addEventListener('click', (e) => {
-			hideElement(e.target.closest('dialog'));
+		$closeButton.addEventListener('click', () => {
+			hideElement(document.getElementById(`${controls}-dialog`));
 		});
 		$dialog.appendChild($closeButton);
 
@@ -72,7 +77,9 @@ function Menu() {
 
 		$dialog.appendChild($element);
 		$container.appendChild($dialog);
-		$dialog.showModal();
+		if (supportsDialog) {
+			$dialog.showModal();
+		}
 		window.addEventListener('resize', onResize);
 
 		setTimeout(() => {
