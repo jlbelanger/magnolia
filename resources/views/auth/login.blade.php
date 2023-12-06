@@ -29,11 +29,11 @@
 			<span class="password-container">
 				<input
 					autocomplete="current-password"
-					autocorrect="off"
 					class="password-input prefix"
 					id="password"
 					name="password"
 					required
+					spellcheck="false"
 					type="password"
 				/>
 				<button

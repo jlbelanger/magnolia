@@ -158,7 +158,7 @@ class PasswordResetTest extends TestCase
 			);
 
 			$response = $this->post($url, [
-				'email' => 'wrong-email@example.com',
+				'email' => 'wrongemail@example.com',
 				'new_password' => 'password2',
 				'new_password_confirmation' => 'password2',
 			]);

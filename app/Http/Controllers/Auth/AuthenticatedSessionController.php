@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -10,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class AuthenticatedSessionController extends Controller
+class AuthenticatedSessionController extends AuthController
 {
 	/**
 	 * Displays the login view.
@@ -30,7 +29,12 @@ class AuthenticatedSessionController extends Controller
 	 */
 	public function store(LoginRequest $request) : RedirectResponse
 	{
-		$request->authenticate();
+		try {
+			$request->authenticate();
+		} catch (\Exception $e) {
+			self::logWarning(['action' => 'login', 'username' => $request->input('username')]);
+			throw $e;
+		}
 
 		$request->session()->regenerate();
 
@@ -38,6 +42,8 @@ class AuthenticatedSessionController extends Controller
 		if (!$redirect || $redirect[0] !== '/') {
 			$redirect = RouteServiceProvider::HOME;
 		}
+
+		self::log(['action' => 'login', 'email' => $request->user()->email]);
 
 		return redirect($redirect);
 	}
@@ -55,6 +61,8 @@ class AuthenticatedSessionController extends Controller
 		$request->session()->invalidate();
 
 		$request->session()->regenerateToken();
+
+		self::log(['action' => 'logout', 'email' => $request->user()->email]);
 
 		return redirect(RouteServiceProvider::HOME);
 	}

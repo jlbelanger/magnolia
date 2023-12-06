@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
 
-class PasswordResetLinkController extends Controller
+class PasswordResetLinkController extends AuthController
 {
 	/**
 	 * Displays the password reset link request view.
@@ -34,14 +33,22 @@ class PasswordResetLinkController extends Controller
 			'email' => ['required', 'email'],
 		]);
 
+		$email = $request->only('email');
 		try {
-			Password::sendResetLink($request->only('email'));
+			$status = Password::sendResetLink(['email' => $email]);
 		} catch (Exception $e) {
+			self::logWarning(['action' => 'forgotPassword', 'email' => $email]);
 			return redirect('/forgot-password')
 				->with('message', __('passwords.send_error'))
 				->with('status', 'danger');
 		}
 
+		$success = $status === Password::RESET_LINK_SENT;
+		if ($status === Password::RESET_LINK_SENT) {
+			self::log(['action' => 'forgotPassword', 'email' => $email]);
+		} else {
+			self::logWarning(['action' => 'forgotPassword', 'email' => $email, 'info' => $status]);
+		}
 		return redirect('/forgot-password')
 			->with('message', __(Password::RESET_LINK_SENT))
 			->with('status', 'success');
