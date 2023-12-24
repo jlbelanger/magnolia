@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
 	 *
 	 * @return void
 	 */
-	public function register()
+	public function register() : void
 	{
 		\Laravel\Sanctum\Sanctum::ignoreMigrations();
 	}
@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
 	 * @param  Kernel $kernel
 	 * @return void
 	 */
-	public function boot(Kernel $kernel) // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+	// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundInExtendedClass
+	public function boot(Kernel $kernel) : void
 	{
 		if (config('app.debug')) {
 			if (!config('app.debugbar')) {

@@ -17,7 +17,8 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists($maintenance = __DIR__ . '/../storage/framework/maintenance.php')) { // phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
+// phpcs:ignore Squiz.PHP.DisallowMultipleAssignments.FoundInControlStructure
+if (file_exists($maintenance = __DIR__ . '/../storage/framework/maintenance.php')) {
 	include $maintenance;
 }
 

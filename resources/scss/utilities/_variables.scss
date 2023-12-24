@@ -110,4 +110,4 @@ $spinner-zindex: 999;
 
 $screen-width-tablet-landscape: $max-width;
 
-$tablet-landscape-up: 'min-width: #{$screen-width-tablet-landscape}';
+$tablet-landscape-up: 'width >= #{$screen-width-tablet-landscape}';

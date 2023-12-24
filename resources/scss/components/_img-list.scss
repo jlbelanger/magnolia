@@ -12,7 +12,7 @@ $img-list-breakpoint-2: (($img-list-item-width + $img-list-gap) * 2) + $img-list
 	margin: 8px #{$img-list-gap * -.5} #{$img-list-bottom-gap * -1};
 	padding: 0;
 
-	@media (min-width: $img-list-breakpoint-1) {
+	@media (width >= $img-list-breakpoint-1) {
 		justify-content: flex-start;
 	}
 }
@@ -21,11 +21,11 @@ $img-list-breakpoint-2: (($img-list-item-width + $img-list-gap) * 2) + $img-list
 	margin: 0 #{$img-list-gap * .5} $img-list-bottom-gap;
 	width: auto;
 
-	@media (min-width: $img-list-breakpoint-1) {
+	@media (width >= $img-list-breakpoint-1) {
 		width: calc(50% - #{$img-list-gap});
 	}
 
-	@media (min-width: $img-list-breakpoint-2) {
+	@media (width >= $img-list-breakpoint-2) {
 		width: calc(33.333% - #{$img-list-gap});
 	}
 }

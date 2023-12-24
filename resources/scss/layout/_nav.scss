@@ -21,16 +21,13 @@
 
 #menu {
 	background: $dark-blue;
-	bottom: 0;
 	box-shadow: 0 20px 20px rgba($black, .5);
 	display: none;
 	font-size: 0;
-	left: 0;
+	inset: 0;
 	max-width: 240px;
 	overflow: auto;
 	position: fixed;
-	right: 0;
-	top: 0;
 	transform: translateX(-100%);
 	transition: transform .3s ease-in-out;
 	z-index: 9999;
@@ -43,7 +40,7 @@
 		transform: translateX(0);
 	}
 
-	@media (max-width: #{$screen-width-tablet-landscape - 1px}) {
+	@media (width < $screen-width-tablet-landscape) {
 		.no-js & {
 			background: transparent;
 			box-shadow: none;
@@ -94,7 +91,7 @@
 	margin: 0;
 	padding: 0;
 
-	@media (max-width: #{$screen-width-tablet-landscape - 1px}) {
+	@media (width < $screen-width-tablet-landscape) {
 		.no-js & {
 			display: flex;
 			flex-wrap: wrap;
@@ -171,7 +168,7 @@
 		visibility: hidden;
 	}
 
-	@media (max-width: #{$screen-width-tablet-landscape - 1px}) {
+	@media (width < $screen-width-tablet-landscape) {
 		.no-js & {
 			display: none;
 		}

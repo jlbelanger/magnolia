@@ -13,7 +13,7 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 		margin-top: -$top-padding;
 	}
 
-	@media (min-width: #{$screen-width-tablet-landscape + 1px}) {
+	@media (width > $screen-width-tablet-landscape) {
 		border: 0;
 	}
 }
