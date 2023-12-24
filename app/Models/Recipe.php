@@ -279,7 +279,7 @@ class Recipe extends Model
 			->whereNotNull('published_at');
 	}
 
-	public function rules(string $id = '') : array
+	public static function rules(string $id = '') : array
 	{
 		$unique = $id ? ',' . $id : '';
 		$required = $id ? 'filled' : 'required';

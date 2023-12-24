@@ -26,7 +26,7 @@ class Category extends Model
 		return $this->hasMany(Recipe::class)->orderBy('slug');
 	}
 
-	public function rules(string $id = '') : array
+	public static function rules(string $id = '') : array
 	{
 		$unique = $id ? ',' . $id : '';
 		$required = $id ? 'filled' : 'required';

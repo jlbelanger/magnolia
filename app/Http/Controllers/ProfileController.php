@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +32,7 @@ class ProfileController extends Controller
 	public function update(Request $request)
 	{
 		$row = Auth::user();
-		$request->validate($row->rules());
+		$request->validate(User::rules($row->id));
 		$row->update($request->except('password'));
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Profile updated successfully.']);

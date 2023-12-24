@@ -32,12 +32,14 @@ class User extends Authenticatable
 		'remember_token',
 	];
 
-	public function rules() : array
+	public static function rules(string $id = '') : array
 	{
+		$unique = $id ? ',' . $id : '';
+		$required = $id ? 'filled' : 'required';
 		return [
-			'username' => ['required', 'max:255', 'unique:users,username,' . $this->id],
-			'email' => ['required', 'max:255', 'unique:users,email,' . $this->id],
-			'password' => ['required', 'current_password'],
+			'username' => [$required, 'max:255', 'unique:users,username' . $unique],
+			'email' => [$required, 'max:255', 'unique:users,email' . $unique],
+			'password' => [$required, 'current_password'],
 		];
 	}
 }
