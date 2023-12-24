@@ -56,13 +56,14 @@ class AuthenticatedSessionController extends AuthController
 	 */
 	public function destroy(Request $request) : RedirectResponse
 	{
+		$email = $request->user()->email;
 		Auth::guard('web')->logout();
 
 		$request->session()->invalidate();
 
 		$request->session()->regenerateToken();
 
-		self::log(['action' => 'logout', 'email' => $request->user()->email]);
+		self::log(['action' => 'logout', $email]);
 
 		return redirect(RouteServiceProvider::HOME);
 	}
