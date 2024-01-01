@@ -44,7 +44,7 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
 	Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
 
-	Route::group(['middleware' => ['throttle:' . config('auth.throttle_max_attempts') . ',1']], function () {
+	Route::group(['middleware' => ['throttle:auth']], function () {
 		Route::post('login', [AuthenticatedSessionController::class, 'store']);
 		Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
 		Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
@@ -52,7 +52,7 @@ Route::group(['middleware' => ['guest']], function () {
 	});
 });
 
-Route::middleware('auth')->group(function () {
+Route::group(['middleware' => ['auth']], function () {
 	Route::get('profile', [ProfileController::class, 'show']);
 	Route::put('profile', [ProfileController::class, 'update']);
 
@@ -61,6 +61,8 @@ Route::middleware('auth')->group(function () {
 	Route::resource('recipes', RecipeController::class)->except(['index', 'show']);
 });
 
-Route::get('/search', [SearchController::class, 'show']);
-Route::get('/categories/{slug}', [CategoryController::class, 'show']);
-Route::get('/recipes/{slug}', [RecipeController::class, 'show']);
+Route::group(['middleware' => ['throttle:web']], function () {
+	Route::get('/search', [SearchController::class, 'show']);
+	Route::get('/categories/{slug}', [CategoryController::class, 'show']);
+	Route::get('/recipes/{slug}', [RecipeController::class, 'show']);
+});

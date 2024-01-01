@@ -43,8 +43,20 @@ class RouteServiceProvider extends ServiceProvider
 	 */
 	protected function configureRateLimiting()
 	{
-		RateLimiter::for('api', function (Request $request) {
-			return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+		RateLimiter::for('auth', function (Request $request) {
+			return Limit::perMinute(config('auth.throttle_max_attempts_auth'))->by($request->ip());
+		});
+
+		RateLimiter::for('web', function (Request $request) {
+			if (empty($_SERVER['HTTP_USER_AGENT'])) {
+				$isBot = true;
+			} elseif (config('auth.throttle_allow_regex')) {
+				$isBot = preg_match(config('auth.throttle_allow_regex'), strtolower($_SERVER['HTTP_USER_AGENT'])) === false;
+			} else {
+				$isBot = false;
+			}
+			$limit = $isBot ? config('auth.throttle_max_attempts_bot') : config('auth.throttle_max_attempts_web');
+			return Limit::perMinute($limit)->by($request->ip());
 		});
 	}
 }

@@ -111,6 +111,9 @@ return [
 
 	'password_timeout' => 10800,
 
-	'throttle_max_attempts' => env('THROTTLE_MAX_ATTEMPTS', 6),
+	'throttle_allow_regex' => env('THROTTLE_ALLOW_REGEX', null),
+	'throttle_max_attempts_auth' => env('THROTTLE_MAX_ATTEMPTS_AUTH', 5),
+	'throttle_max_attempts_bot' => env('THROTTLE_MAX_ATTEMPTS_BOT', 12),
+	'throttle_max_attempts_web' => env('THROTTLE_MAX_ATTEMPTS_WEB', 30),
 
 ];
