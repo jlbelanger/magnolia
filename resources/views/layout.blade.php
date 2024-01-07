@@ -38,7 +38,7 @@
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml">
 		<script integrity="sha256-tuKyZn/3ycw/MNMDii/kvSPrelo6SCsJSecqb1n2neg=">document.documentElement.classList.remove('no-js');</script>
 	</head>
-	<body class="{{ Auth::user() ? 'auth' : '' }}">
+	<body class="{{ Auth::user() ? 'auth show-note-form' : '' }}">
 		<a class="button" href="#article" id="skip">Skip to content</a>
 		<main id="main">
 			<header id="header">

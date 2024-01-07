@@ -37,7 +37,7 @@
 					@if (Auth::user())
 						<button
 							aria-controls="note-form"
-							aria-expanded="false"
+							aria-expanded="true"
 							aria-label="Add Note"
 							class="floating-button"
 							data-toggleable="#note-form"
@@ -50,7 +50,7 @@
 						>
 							🗒️
 						</button>
-						<form action="/recipes/{{ $row->id }}" data-ajax id="note-form" method="post">
+						<form action="/recipes/{{ $row->id }}" class="show" data-ajax id="note-form" method="post">
 							@csrf
 							@method('PUT')
 							<div class="contain">
