@@ -50,7 +50,7 @@
 						>
 							🗒️
 						</button>
-						<form action="/recipes/{{ $row->id }}" class="show" data-ajax id="note-form" method="post">
+						<form action="/recipes/{{ $row->id }}" class="show" data-ajax data-form id="note-form" method="post">
 							@csrf
 							@method('PUT')
 							<div class="contain">

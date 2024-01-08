@@ -4,15 +4,21 @@ function onBeforeUnload(e) {
 }
 
 function addUnloadListener() {
-	window.addEventListener('beforeunload', onBeforeUnload, { capture: true });
+	if (!window.HAS_UNSAVED_CHANGES) {
+		window.HAS_UNSAVED_CHANGES = true;
+		window.addEventListener('beforeunload', onBeforeUnload, { capture: true });
+		document.title = `* ${document.title}`;
+	}
 }
 
 function removeUnloadListener() {
+	window.HAS_UNSAVED_CHANGES = false;
 	window.removeEventListener('beforeunload', onBeforeUnload, { capture: true });
+	document.title = document.title.replace(/^\* /, '');
 }
 
 function initBeforeUnload() {
-	const $form = document.getElementById('form');
+	const $form = document.querySelector('[data-form]');
 	if ($form) {
 		const $inputs = $form.querySelectorAll('input,select,textarea');
 		$inputs.forEach(($input) => {

@@ -5,7 +5,7 @@
 
 	@include('shared.errors', ['errors' => $errors])
 
-	<form action="/profile" method="post">
+	<form action="/profile" data-form method="post">
 		@method('PUT')
 		@csrf
 
