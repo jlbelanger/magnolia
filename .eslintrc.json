@@ -13,6 +13,7 @@
 			"functions": "never"
 		}],
 		"import/order": 0,
+		"import/prefer-default-export": 0,
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"max-len": ["error", { "code": 150 }],
 		"no-param-reassign": 0,

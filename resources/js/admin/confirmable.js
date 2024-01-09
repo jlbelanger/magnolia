@@ -1,4 +1,5 @@
 import Modal from './modal';
+import { removeUnloadListener } from './beforeunload';
 
 function Confirmable($button) {
 	const onClick = (e) => {
@@ -15,7 +16,11 @@ function Confirmable($button) {
 					label: e.target.innerText,
 					class: e.target.getAttribute('class'),
 					onClick: () => {
-						$button.closest('form').submit();
+						const $form = $button.closest('form');
+						if ($form.getAttribute('data-ignore-unsaved') !== undefined) {
+							removeUnloadListener();
+						}
+						$form.submit();
 					},
 				},
 			],

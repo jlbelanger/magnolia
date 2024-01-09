@@ -11,11 +11,11 @@ function addUnloadListener() {
 	}
 }
 
-function removeUnloadListener() {
+export const removeUnloadListener = () => {
 	window.HAS_UNSAVED_CHANGES = false;
 	window.removeEventListener('beforeunload', onBeforeUnload, { capture: true });
 	document.title = document.title.replace(/^\* /, '');
-}
+};
 
 function initBeforeUnload() {
 	const $form = document.querySelector('[data-form]');
