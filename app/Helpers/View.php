@@ -10,7 +10,7 @@ class View
 		if (auth()->user()) {
 			$output[] = 'auth';
 		}
-		if (request()->is('recipes/*')) {
+		if (request()->is('recipes/*') && !request()->is('recipes/*/edit')) {
 			$output[] = 'show-note-form';
 		}
 		return implode(' ', $output);
