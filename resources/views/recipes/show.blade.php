@@ -6,6 +6,7 @@
 	@if ($row->filename)
 		<div id="recipe-image-container">
 			<img alt="" height="562" id="recipe-image" src="/uploads/{{ $row->filename }}" width="1024" />
+			<a class="button button--icon" href="/uploads/{{ $row->filename }}" id="recipe-image-link">View Large Image</a>
 		</div>
 	@endif
 

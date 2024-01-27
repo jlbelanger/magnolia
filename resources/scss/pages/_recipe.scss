@@ -18,6 +18,17 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	}
 }
 
+#recipe-image-link {
+	background-color: $dark-blue;
+	background-image: url('/assets/img/zoom.svg');
+	bottom: $button-margin;
+	font-size: 0;
+	height: $button-size;
+	position: absolute;
+	right: $button-margin;
+	width: $button-size;
+}
+
 #recipe-image {
 	height: 100%;
 	object-fit: cover;
