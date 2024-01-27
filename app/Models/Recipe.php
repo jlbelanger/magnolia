@@ -123,6 +123,8 @@ class Recipe extends Model
 		$content = $this->addHeadingAnchors($content);
 		$content = $this->highlightAmounts($content);
 		$content = $this->addMeasurements($content);
+		$content = str_replace('° F', '°&nbsp;F', $content);
+		$content = str_replace('° C', '°&nbsp;C', $content);
 		return $content;
 	}
 
