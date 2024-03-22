@@ -24,6 +24,8 @@
 			<aside id="recipe-side">
 				{!! $row->summary() !!}
 
+				{!! $row->sources() !!}
+
 				<div class="sticky-container">
 					<div class="sticky-inner" data-sticky data-sticky-top-margin="16">
 						<button
@@ -77,13 +79,9 @@
 			<section id="recipe-main">
 				{!! $row->content() !!}
 
-				@if ($row->sources || $row->serving_size)
+				@if ($row->serving_size)
 					<footer id="recipe-footer">
 						<hr>
-
-						@if ($row->sources)
-							{!! $row->sources() !!}
-						@endif
 
 						@if ($row->serving_size)
 							<h2>Nutrition facts</h2>
