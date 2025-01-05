@@ -1,12 +1,14 @@
+@use '../utilities/variables';
+
 .timer-link {
 	appearance: none;
 	background-color: transparent;
-	border-color: $link-color;
+	border-color: variables.$link-color;
 	border-radius: 0;
 	border-style: solid;
 	border-width: 0 0 4px;
 	box-shadow: none;
-	color: $link-color;
+	color: variables.$link-color;
 	margin: -4px 0 0;
 	padding: 4px 0 0;
 
@@ -18,7 +20,7 @@
 	}
 
 	&:focus {
-		box-shadow: $focus;
+		box-shadow: variables.$focus;
 	}
 
 	.no-js & {
@@ -36,15 +38,15 @@
 	right: 20px;
 	user-select: none;
 	white-space: nowrap;
-	z-index: $timer-zindex;
+	z-index: variables.$timer-zindex;
 }
 
 .timer__text {
-	background-color: $white;
-	border: 1px solid $gray;
+	background-color: variables.$white;
+	border: 1px solid variables.$gray;
 	border-radius: 100px;
-	box-shadow: $shadow;
-	color: $black;
+	box-shadow: variables.$shadow;
+	color: variables.$black;
 	font-size: 24px;
 	min-width: 100px;
 	padding: 16px 16px 12px;
@@ -54,23 +56,23 @@
 	&:hover,
 	&:active,
 	&:focus {
-		background-color: $white;
+		background-color: variables.$white;
 		text-decoration: none;
 	}
 
 	[data-since] & {
-		background-color: $darkest-blue;
+		background-color: variables.$darkest-blue;
 		border-color: transparent;
-		color: $white;
+		color: variables.$white;
 
 		&:hover,
 		&:active,
 		&:focus {
-			background-color: $darkest-blue;
+			background-color: variables.$darkest-blue;
 		}
 	}
 
-	@media ($tablet-landscape-up) {
+	@media (width >= variables.$screen-width-tablet-landscape) {
 		font-size: 40px;
 		min-width: 150px;
 	}
@@ -78,10 +80,10 @@
 
 .timer__stop {
 	border-radius: 100px;
-	box-shadow: $shadow;
-	height: $button-size;
-	margin-left: $button-margin;
-	width: $button-size;
+	box-shadow: variables.$shadow;
+	height: variables.$button-size;
+	margin-left: variables.$button-margin;
+	width: variables.$button-size;
 
 	&:hover,
 	&:active,

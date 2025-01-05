@@ -1,7 +1,9 @@
+@use '../utilities/variables';
+
 dl {
-	background: $white;
-	border: 1px solid $black;
-	color: $black;
+	background: variables.$white;
+	border: 1px solid variables.$black;
+	color: variables.$black;
 	margin-bottom: 0;
 	max-width: 260px;
 	padding: 2px 4px 0;
@@ -17,7 +19,7 @@ dd {
 }
 
 .double {
-	border-top: 4px solid $black;
+	border-top: 4px solid variables.$black;
 }
 
 .line {
@@ -28,7 +30,7 @@ dd {
 
 .line + .line,
 .double + .line {
-	border-top: 1px solid $black;
+	border-top: 1px solid variables.$black;
 }
 
 .indent {

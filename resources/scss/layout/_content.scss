@@ -1,12 +1,14 @@
+@use '../utilities/variables';
+
 #article-outer {
-	background: $blue;
+	background: variables.$blue;
 	flex: 1 1 auto;
 }
 
 #article {
-	padding: $padding;
+	padding: variables.$padding;
 
-	@media ($tablet-landscape-up) {
-		padding: $top-padding $padding;
+	@media (width >= variables.$screen-width-tablet-landscape) {
+		padding: variables.$top-padding variables.$padding;
 	}
 }

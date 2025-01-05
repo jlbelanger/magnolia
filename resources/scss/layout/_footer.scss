@@ -1,9 +1,11 @@
+@use '../utilities/variables';
+
 #footer {
-	background: $darkest-blue;
+	background: variables.$darkest-blue;
 	text-align: right;
 
 	a {
-		color: $white;
+		color: variables.$white;
 	}
 
 	button {

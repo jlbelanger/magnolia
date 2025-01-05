@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Recipe;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -146,7 +145,7 @@ class RecipeController extends Controller
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Recipe deleted successfully.']);
 		}
-		return redirect(RouteServiceProvider::HOME)
+		return redirect('/')
 			->with('message', 'Recipe deleted successfully.')
 			->with('status', 'success');
 	}

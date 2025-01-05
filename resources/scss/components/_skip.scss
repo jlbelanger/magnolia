@@ -1,28 +1,30 @@
+@use '../utilities/variables';
+
 $skip-width: 200px;
 
 #skip {
-	background: $focus-color;
+	background: variables.$focus-color;
 	border: 0;
 	border-radius: 0;
-	color: $black;
+	color: variables.$black;
 	font-size: 20px;
 	font-weight: bold;
-	height: $button-size;
+	height: variables.$button-size;
 	left: 50%;
-	line-height: $button-size;
-	margin-left: #{$skip-width * -.5};
+	line-height: variables.$button-size;
+	margin-left: calc($skip-width * -.5);
 	opacity: 0;
 	padding: 0;
 	position: absolute;
 	text-align: center;
 	text-decoration: none;
-	top: -$button-size;
+	top: calc(variables.$button-size * -1);
 	width: $skip-width;
-	z-index: $skip-zindex;
+	z-index: variables.$skip-zindex;
 
 	&:active,
 	&:focus {
-		box-shadow: 0 0 10px 5px rgba($black, .3), $focus;
+		box-shadow: 0 0 10px 5px rgba(variables.$black, .3), variables.$focus;
 		opacity: 1;
 		top: 0;
 	}

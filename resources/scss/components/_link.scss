@@ -1,5 +1,7 @@
+@use '../utilities/variables';
+
 a {
-	color: $link-color;
+	color: variables.$link-color;
 
 	&:hover,
 	&:active,
@@ -10,5 +12,5 @@ a {
 
 .link {
 	display: inline-block;
-	padding: $input-padding 10px;
+	padding: variables.$input-padding 10px;
 }

@@ -1,10 +1,12 @@
+@use '../utilities/variables';
+
 .modal {
 	border: 0;
 	padding: 24px;
 }
 
 .modal::backdrop {
-	background: rgba($black, .5);
+	background: rgba(variables.$black, .5);
 }
 
 .modal__box {

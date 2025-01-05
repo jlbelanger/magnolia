@@ -1,32 +1,35 @@
-$li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-height)) * .5);
+@use 'sass:color';
+@use '../utilities/variables';
+
+$li-padding-top: variables.$sublist-padding + ((variables.$checkbox-size - (variables.$font-size * variables.$line-height)) * .5);
 
 #recipe-image-container {
-	border-bottom: $border-width solid $darkest-blue;
+	border-bottom: variables.$border-width solid variables.$darkest-blue;
 	height: 40vh;
-	margin-left: -$padding;
-	margin-right: -$padding;
-	margin-top: -$padding;
+	margin-left: calc(variables.$padding * -1);
+	margin-right: calc(variables.$padding * -1);
+	margin-top: calc(variables.$padding * -1);
 	overflow: hidden;
 	position: relative;
 
-	@media ($tablet-landscape-up) {
-		margin-top: -$top-padding;
+	@media (width >= variables.$screen-width-tablet-landscape) {
+		margin-top: calc(variables.$top-padding * -1);
 	}
 
-	@media (width > $screen-width-tablet-landscape) {
+	@media (width > variables.$screen-width-tablet-landscape) {
 		border: 0;
 	}
 }
 
 #recipe-image-link {
-	background-color: $dark-blue;
+	background-color: variables.$dark-blue;
 	background-image: url('/assets/img/zoom.svg');
-	bottom: $button-margin;
+	bottom: variables.$button-margin;
 	font-size: 0;
-	height: $button-size;
+	height: variables.$button-size;
 	position: absolute;
-	right: $button-margin;
-	width: $button-size;
+	right: variables.$button-margin;
+	width: variables.$button-size;
 }
 
 #recipe-image {
@@ -37,18 +40,18 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 #recipe-image-container + #recipe #recipe-header {
-	padding-top: $margin;
+	padding-top: variables.$margin;
 }
 
 #recipe-main {
-	@media ($tablet-landscape-up) {
-		padding-right: $margin;
-		width: calc(100% - #{$sidebar-width});
+	@media (width >= variables.$screen-width-tablet-landscape) {
+		padding-right: variables.$margin;
+		width: calc(100% - #{variables.$sidebar-width});
 	}
 }
 
 #recipe-side {
-	color: $darkest-blue;
+	color: variables.$darkest-blue;
 	display: inline;
 
 	h2 {
@@ -59,20 +62,20 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 		margin-top: 0;
 	}
 
-	@media ($tablet-landscape-up) {
-		background: scale-color($blue, $lightness: 15%);
-		border-color: $light-blue $darkish-blue $darkish-blue $light-blue;
+	@media (width >= variables.$screen-width-tablet-landscape) {
+		background: color.scale(variables.$blue, $lightness: 15%);
+		border-color: variables.$light-blue variables.$darkish-blue variables.$darkish-blue variables.$light-blue;
 		border-style: solid;
 		border-width: 0 1px;
-		bottom: -$top-padding;
+		bottom: calc(variables.$top-padding * -1);
 		display: block;
-		margin-right: -$padding;
+		margin-right: calc(variables.$padding * -1);
 		margin-top: 0;
-		padding: $padding;
+		padding: variables.$padding;
 		position: absolute;
 		right: 0;
 		top: 0;
-		width: $sidebar-width;
+		width: variables.$sidebar-width;
 
 		& > :first-child {
 			margin-top: 8px;
@@ -92,29 +95,29 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 	}
 
 	label {
-		font-size: $font-size;
-		line-height: $line-height;
+		font-size: variables.$font-size;
+		line-height: variables.$line-height;
 		padding: 8px 0;
 	}
 
 	li {
-		padding: $list-padding 0;
-		padding-left: #{$checkbox-size + $checkbox-margin-right};
-		padding-top: #{$list-padding + (($checkbox-size - ($font-size * $line-height)) * .5)};
+		padding: variables.$list-padding 0;
+		padding-left: calc(variables.$checkbox-size + variables.$checkbox-margin-right);
+		padding-top: calc(variables.$list-padding + ((variables.$checkbox-size - (variables.$font-size * variables.$line-height)) * .5));
 		position: relative;
 
 		& > input {
 			left: 0;
 			position: absolute;
-			top: $list-padding;
+			top: variables.$list-padding;
 		}
 
 		li {
-			padding-bottom: $sublist-padding;
+			padding-bottom: variables.$sublist-padding;
 			padding-top: $li-padding-top;
 
 			& > input {
-				top: $sublist-padding;
+				top: variables.$sublist-padding;
 			}
 		}
 	}
@@ -127,12 +130,12 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 
 		ol,
 		ul {
-			margin-left: #{($checkbox-size * -.5) - $checkbox-margin-right};
-			margin-top: $sublist-padding;
+			margin-left: calc((variables.$checkbox-size * -.5) - variables.$checkbox-margin-right);
+			margin-top: variables.$sublist-padding;
 		}
 	}
 
-	@media ($tablet-landscape-up) {
+	@media (width >= variables.$screen-width-tablet-landscape) {
 		position: relative;
 	}
 }
@@ -148,12 +151,12 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 #recipe-main > ol {
-	margin-top: #{$margin - $li-padding-top};
+	margin-top: calc(variables.$margin - $li-padding-top);
 
 	& > li {
-		border-top: 1px solid $gray;
+		border-top: 1px solid variables.$gray;
 		counter-increment: step;
-		min-height: #{$checkbox-size + ($list-padding * 2)};
+		min-height: calc(variables.$checkbox-size + (variables.$list-padding * 2));
 
 		&:first-of-type {
 			border-top: 0;
@@ -178,11 +181,11 @@ $li-padding-top: $sublist-padding + (($checkbox-size - ($font-size * $line-heigh
 }
 
 #recipe-footer {
-	color: $darkest-blue;
+	color: variables.$darkest-blue;
 }
 
 #filename-preview {
-	border-radius: $border-radius;
+	border-radius: variables.$border-radius;
 	height: 180px;
 	margin-top: 8px;
 	vertical-align: bottom;
@@ -201,11 +204,11 @@ fieldset {
 	}
 
 	button:first-of-type {
-		border-radius: $border-radius 0 0 $border-radius;
+		border-radius: variables.$border-radius 0 0 variables.$border-radius;
 	}
 
 	button:last-of-type {
-		border-radius: 0 $border-radius $border-radius 0;
+		border-radius: 0 variables.$border-radius variables.$border-radius 0;
 	}
 
 	button:focus {
@@ -213,16 +216,16 @@ fieldset {
 	}
 
 	div {
-		border-color: $darkish-blue;
-		border-radius: $border-radius;
+		border-color: variables.$darkish-blue;
+		border-radius: variables.$border-radius;
 		border-style: solid;
 		border-width: 1px;
 	}
 }
 
 legend {
-	color: $darkest-blue;
-	font-family: $serif;
+	color: variables.$darkest-blue;
+	font-family: variables.$serif;
 	margin-bottom: 2px;
 }
 

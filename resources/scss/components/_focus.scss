@@ -1,4 +1,6 @@
+@use '../utilities/variables';
+
 :focus {
-	box-shadow: $focus;
-	outline: none !important; // stylelint-disable-line declaration-no-important
+	box-shadow: variables.$focus;
+	outline: none !important; /* stylelint-disable-line declaration-no-important */
 }

@@ -1,6 +1,8 @@
+@use '../utilities/variables';
+
 details {
-	border: 1px solid $medium-blue;
-	margin-top: $margin;
+	border: 1px solid variables.$medium-blue;
+	margin-top: variables.$margin;
 	padding: 12px;
 }
 

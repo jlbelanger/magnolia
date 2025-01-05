@@ -1,6 +1,8 @@
+@use '../utilities/variables';
+
 .sticky-container {
-	height: $button-size;
-	margin-top: $padding;
+	height: variables.$button-size;
+	margin-top: variables.$padding;
 }
 
 .sticky-inner {
@@ -10,19 +12,19 @@
 
 .sticky {
 	position: fixed;
-	top: $padding;
-	z-index: $sticky-zindex;
+	top: variables.$padding;
+	z-index: variables.$sticky-zindex;
 }
 
 .floating-button {
 	border-radius: 100px;
-	box-shadow: $shadow;
-	height: $button-size;
-	margin-right: $button-margin;
-	width: $button-size;
+	box-shadow: variables.$shadow;
+	height: variables.$button-size;
+	margin-right: variables.$button-margin;
+	width: variables.$button-size;
 
 	&:focus {
-		box-shadow: $shadow, $focus;
+		box-shadow: variables.$shadow, variables.$focus;
 	}
 
 	.no-js & {

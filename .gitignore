@@ -3,7 +3,8 @@
 .eslintcache
 .phpunit.result.cache
 *.log
+/bootstrap/cache/*.php
+/public/uploads
 /vendor
 node_modules
-public/uploads
 TODO.md

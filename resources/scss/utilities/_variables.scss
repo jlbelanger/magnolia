@@ -1,16 +1,18 @@
-// Colors
+@use 'sass:color';
+
+/* Colors. */
 
 $dark-blue: #4b7c9b;
 $medium-blue: #739fbb;
 $blue: #c9eaff;
 $light-blue: #e3f4ff;
-$darker-blue: scale-color($medium-blue, $lightness: -35%);
-$darkest-blue: scale-color($medium-blue, $lightness: -60%);
-$darkish-blue: scale-color($blue, $lightness: -5%, $saturation: -50%);
-$blue-border: scale-color($light-blue, $lightness: -10%, $saturation: -20%);
+$darker-blue: color.scale($medium-blue, $lightness: -35%);
+$darkest-blue: color.scale($medium-blue, $lightness: -60%);
+$darkish-blue: color.scale($blue, $lightness: -5%, $saturation: -50%);
+$blue-border: color.scale($light-blue, $lightness: -10%, $saturation: -20%);
 
 $black: #000;
-$gray: scale-color($blue, $lightness: -10%, $saturation: -50%);
+$gray: color.scale($blue, $lightness: -10%, $saturation: -50%);
 $white: #fff;
 
 $link-color: #264ce0;
@@ -18,21 +20,21 @@ $link-color: #264ce0;
 $red: #c00;
 $light-red: #faa;
 $dark-red: #600;
-$red-border: scale-color($light-red, $lightness: -10%, $saturation: -20%);
+$red-border: color.scale($light-red, $lightness: -10%, $saturation: -20%);
 
 $green: #093;
 $light-green: #7d9;
 $dark-green: #063;
-$green-border: scale-color($light-green, $lightness: -10%, $saturation: -20%);
+$green-border: color.scale($light-green, $lightness: -10%, $saturation: -20%);
 
 $pink: plum;
 
-// Fonts
+/* Fonts. */
 
 $serif: georgia, sans-serif;
 $sans-serif: sans-serif;
 
-// Sizes
+/* Sizes. */
 
 $border-radius: 6px;
 $border-width: 8px;
@@ -83,7 +85,7 @@ $sublist-padding: 8px;
 
 $toast-background-color: $darker-blue;
 $toast-close-font-size: 18px;
-$toast-close-icon: '\00d7'; // &times;
+$toast-close-icon: '\00d7'; /* &times; */
 $toast-close-margin-left: 8px;
 $toast-close-size: 32px;
 $toast-margin: 16px;
@@ -106,8 +108,6 @@ $timer-zindex: 997;
 $toast-zindex: 998;
 $spinner-zindex: 999;
 
-// Breakpoints
+/* Breakpoints. */
 
-$screen-width-tablet-landscape: $max-width;
-
-$tablet-landscape-up: 'width >= #{$screen-width-tablet-landscape}';
+$screen-width-tablet-landscape: 1024px

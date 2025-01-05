@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -107,7 +106,7 @@ class CategoryController extends Controller
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Category deleted successfully.']);
 		}
-		return redirect(RouteServiceProvider::HOME)
+		return redirect('/')
 			->with('message', 'Category deleted successfully.')
 			->with('status', 'success');
 	}

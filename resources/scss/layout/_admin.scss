@@ -1,7 +1,9 @@
+@use '../utilities/variables';
+
 #admin {
 	display: flex;
 	flex-direction: column;
-	padding: 0 $padding;
+	padding: 0 variables.$padding;
 
 	.button {
 		border-bottom-width: 0;
@@ -15,7 +17,7 @@
 		width: 100%;
 	}
 
-	@media ($tablet-landscape-up) {
+	@media (width >= variables.$screen-width-tablet-landscape) {
 		flex-direction: row;
 		justify-content: space-between;
 		left: 0;
@@ -33,7 +35,7 @@
 		form,
 		.button {
 			border-bottom-width: 0;
-			border-radius: $border-radius $border-radius 0 0;
+			border-radius: variables.$border-radius variables.$border-radius 0 0;
 			width: auto;
 		}
 	}
@@ -42,16 +44,16 @@
 .flex-grow {
 	display: none;
 
-	@media ($tablet-landscape-up) {
+	@media (width >= variables.$screen-width-tablet-landscape) {
 		display: block;
 		flex: 1 1 auto;
 	}
 }
 
 .admin__button {
-	margin-bottom: #{$padding * .5};
+	margin-bottom: calc(variables.$padding * .5);
 
-	@media ($tablet-landscape-up) {
+	@media (width >= variables.$screen-width-tablet-landscape) {
 		margin-bottom: 0;
 	}
 }
@@ -60,32 +62,32 @@
 	background-color: transparent;
 	border-color: transparent;
 	box-shadow: none;
-	color: $light-blue;
+	color: variables.$light-blue;
 	position: relative;
 
 	&:hover,
 	&:active,
 	&:focus {
 		background-color: transparent;
-		color: $light-blue;
+		color: variables.$light-blue;
 	}
 
-	@media ($tablet-landscape-up) {
-		background-color: $blue;
-		border-radius: $border-radius $border-radius 0 0;
-		color: $darkest-blue;
+	@media (width >= variables.$screen-width-tablet-landscape) {
+		background-color: variables.$blue;
+		border-radius: variables.$border-radius variables.$border-radius 0 0;
+		color: variables.$darkest-blue;
 
 		&:hover,
 		&:active,
 		&:focus {
-			background-color: $blue;
-			color: $darkest-blue;
+			background-color: variables.$blue;
+			color: variables.$darkest-blue;
 		}
 
 		&::after {
-			background-color: $blue;
+			background-color: variables.$blue;
 			content: '';
-			height: #{$border-width + 1px};
+			height: calc(variables.$border-width + 1px);
 			left: -1px;
 			margin-top: -1px;
 			position: absolute;

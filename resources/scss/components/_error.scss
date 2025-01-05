@@ -1,5 +1,7 @@
+@use '../utilities/variables';
+
 .error {
-	color: $red;
+	color: variables.$red;
 	display: block;
 	margin-top: 4px;
 

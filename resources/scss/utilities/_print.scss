@@ -1,4 +1,6 @@
-// stylelint-disable declaration-no-important
+@use 'variables';
+
+/* stylelint-disable declaration-no-important */
 
 @media print {
 	body,
@@ -14,8 +16,8 @@
 	}
 
 	#recipe-side + #recipe-main {
-		border-top: 1px solid $black;
-		margin-top: $margin;
+		border-top: 1px solid variables.$black;
+		margin-top: variables.$margin;
 	}
 
 	#recipe-side {
@@ -42,7 +44,7 @@
 		border: 0;
 		float: right;
 		height: auto;
-		margin: 0 0 $margin $margin;
+		margin: 0 0 variables.$margin variables.$margin;
 		z-index: 1;
 	}
 
@@ -57,9 +59,9 @@
 	details,
 	.postfix {
 		background: transparent !important;
-		border-color: $black !important;
+		border-color: variables.$black !important;
 		box-shadow: none !important;
-		color: $black !important;
+		color: variables.$black !important;
 	}
 
 	.postfix {
@@ -67,9 +69,9 @@
 	}
 
 	hr {
-		border-color: $black !important;
+		border-color: variables.$black !important;
 		border-style: solid !important;
-		margin: $margin 0;
+		margin: variables.$margin 0;
 	}
 
 	#recipe-side,
@@ -79,7 +81,7 @@
 	h2,
 	h3,
 	h4 {
-		color: $black !important;
+		color: variables.$black !important;
 	}
 
 	#recipe-image-container + #recipe #recipe-header {
@@ -93,7 +95,7 @@
 
 	input,
 	textarea {
-		border-color: $black !important;
+		border-color: variables.$black !important;
 	}
 
 	.checkbox {
@@ -154,20 +156,20 @@
 	}
 
 	#recipe-main > ol > li {
-		border-color: $black !important;
+		border-color: variables.$black !important;
 		padding: 8px 0 !important;
 	}
 
 	.timer-link {
 		border: 0;
-		color: $black;
+		color: variables.$black;
 		margin: 0;
 		padding: 0;
 	}
 
 	a[href] {
 		&::after {
-			content: '\00a0(' attr(href) ')';
+			content: '\00a0(' attr(href) ')'; /* &nbsp; */
 			display: inline;
 		}
 	}

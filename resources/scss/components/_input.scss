@@ -1,13 +1,15 @@
+@use '../utilities/variables';
+
 input,
 select,
 textarea {
-	-webkit-appearance: none; // stylelint-disable-line property-no-vendor-prefix
-	background: $white;
-	border: $input-border-width solid $gray;
-	border-radius: $border-radius;
-	font-size: $font-size;
-	line-height: $input-line-height;
-	padding: $input-padding;
+	-webkit-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
+	background: variables.$white;
+	border: variables.$input-border-width solid variables.$gray;
+	border-radius: variables.$border-radius;
+	font-size: variables.$font-size;
+	line-height: variables.$input-line-height;
+	padding: variables.$input-padding;
 }
 
 input:not([size]),
@@ -17,32 +19,32 @@ textarea {
 }
 
 input[type='file'] {
-	background: $white;
+	background: variables.$white;
 	cursor: pointer;
 }
 
 input[type='checkbox'] {
 	appearance: none;
-	background: $white;
-	border: 1px solid $gray;
+	background: variables.$white;
+	border: 1px solid variables.$gray;
 	border-radius: 0;
 	cursor: pointer;
-	height: $checkbox-size;
+	height: variables.$checkbox-size;
 	vertical-align: middle;
-	width: $checkbox-size;
+	width: variables.$checkbox-size;
 
 	&:checked {
 		&::after {
 			background-image: url('/assets/img/check.svg');
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: $icon-size;
+			background-size: variables.$icon-size;
 			content: '';
 			display: block;
-			height: $checkbox-size;
-			line-height: $checkbox-size;
+			height: variables.$checkbox-size;
+			line-height: variables.$checkbox-size;
 			text-align: center;
-			width: $checkbox-size;
+			width: variables.$checkbox-size;
 		}
 	}
 }
@@ -55,16 +57,16 @@ input[type='checkbox'] {
 		background-image: url('/assets/img/caret.svg');
 		background-position: center;
 		background-repeat: no-repeat;
-		background-size: $select-icon-size;
+		background-size: variables.$select-icon-size;
 		content: '';
 		display: block;
-		height: $select-icon-size;
-		margin-top: #{$select-icon-size * -.5};
+		height: variables.$select-icon-size;
+		margin-top: calc(variables.$select-icon-size * -.5);
 		pointer-events: none;
 		position: absolute;
-		right: #{($button-size - $select-icon-size) * .5};
+		right: calc((variables.$button-size - variables.$select-icon-size) * .5);
 		top: 50%;
-		width: $select-icon-size;
+		width: variables.$select-icon-size;
 		z-index: 1;
 	}
 }
@@ -79,17 +81,17 @@ input[type='checkbox'] {
 
 input.password-input {
 	border-right-color: transparent;
-	width: calc(100% - #{$password-button-width});
+	width: calc(100% - #{variables.$password-button-width});
 
 	.no-js & {
-		border-radius: $border-radius;
-		border-right-color: $gray;
+		border-radius: variables.$border-radius;
+		border-right-color: variables.$gray;
 		width: 100%;
 	}
 }
 
 .password-button {
-	width: $password-button-width;
+	width: variables.$password-button-width;
 
 	.no-js & {
 		display: none;

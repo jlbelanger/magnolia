@@ -1,3 +1,5 @@
+@use '../utilities/variables';
+
 #nutrition-facts {
 	display: flex;
 	flex-wrap: wrap;
@@ -12,7 +14,7 @@
 	input,
 	label,
 	span {
-		font-size: $font-size;
+		font-size: variables.$font-size;
 	}
 
 	input {
@@ -20,16 +22,18 @@
 		margin-left: 8px;
 
 		&:focus + .postfix {
-			box-shadow: $focus-width #{-1 * $focus-width} 0 0 $focus-color, $focus-width $focus-width 0 0 $focus-color;
+			box-shadow:
+				variables.$focus-width calc(variables.$focus-width * -1) 0 0 variables.$focus-color,
+				variables.$focus-width variables.$focus-width 0 0 variables.$focus-color;
 		}
 	}
 
 	.postfix {
-		background: $white;
-		border-color: $gray;
+		background: variables.$white;
+		border-color: variables.$gray;
 		border-style: solid;
-		border-width: $input-border-width $input-border-width $input-border-width 0;
-		color: $darker-blue;
+		border-width: variables.$input-border-width variables.$input-border-width variables.$input-border-width 0;
+		color: variables.$darker-blue;
 		padding: 12px 12px 12px 0;
 	}
 }

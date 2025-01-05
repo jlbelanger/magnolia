@@ -4,6 +4,7 @@
 		"browser": true,
 		"jest": true
 	},
+	"ignorePatterns": ["public/assets/js/*.min.js", "vendor/**/*"],
 	"rules": {
 		"comma-dangle": ["error", {
 			"arrays": "always-multiline",

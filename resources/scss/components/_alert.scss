@@ -1,33 +1,35 @@
+@use '../utilities/variables';
+
 .alert {
-	background: $light-blue;
-	border-color: $blue-border;
+	background: variables.$light-blue;
+	border-color: variables.$blue-border;
 	border-style: solid;
 	border-width: 1px 0;
-	box-shadow: 2px 2px $darkish-blue;
+	box-shadow: 2px 2px variables.$darkish-blue;
 	margin: 12px -16px 0;
 	padding: 16px;
 
-	@media (width > $auth-width) {
+	@media (width > variables.$auth-width) {
 		.article--auth & {
-			border-radius: $border-radius;
+			border-radius: variables.$border-radius;
 			border-width: 1px;
 		}
 	}
 
-	@media (width > $max-width) {
-		border-radius: $border-radius;
+	@media (width > variables.$max-width) {
+		border-radius: variables.$border-radius;
 		border-width: 1px;
 	}
 }
 
 .alert--danger {
-	background: $light-red;
-	border-color: $red-border;
-	color: $dark-red;
+	background: variables.$light-red;
+	border-color: variables.$red-border;
+	color: variables.$dark-red;
 }
 
 .alert--success {
-	background: $light-green;
-	border-color: $green-border;
-	color: $dark-green;
+	background: variables.$light-green;
+	border-color: variables.$green-border;
+	color: variables.$dark-green;
 }

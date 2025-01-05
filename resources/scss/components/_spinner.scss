@@ -1,3 +1,5 @@
+@use '../utilities/variables';
+
 .spinner {
 	align-items: center;
 	display: flex;
@@ -5,7 +7,7 @@
 	inset: 0;
 	justify-content: center;
 	position: fixed;
-	z-index: $spinner-zindex;
+	z-index: variables.$spinner-zindex;
 
 	&.hide {
 		display: none;
@@ -13,14 +15,14 @@
 
 	&::after {
 		animation: spin 2s infinite linear;
-		border-color: $spinner-color $spinner-color $spinner-color $spinner-color-alternate;
+		border-color: variables.$spinner-color variables.$spinner-color variables.$spinner-color variables.$spinner-color-alternate;
 		border-radius: 1000px;
 		border-style: solid;
-		border-width: $spinner-thickness;
+		border-width: variables.$spinner-thickness;
 		content: '';
 		display: block;
-		height: $spinner-size;
-		width: $spinner-size;
+		height: variables.$spinner-size;
+		width: variables.$spinner-size;
 	}
 }
 

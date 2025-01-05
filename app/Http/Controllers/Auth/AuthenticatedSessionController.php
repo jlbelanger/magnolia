@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +39,7 @@ class AuthenticatedSessionController extends AuthController
 
 		$redirect = $request->input('redirect');
 		if (!$redirect || $redirect[0] !== '/') {
-			$redirect = RouteServiceProvider::HOME;
+			$redirect = '/';
 		}
 
 		self::log(['action' => 'login', 'email' => $request->user()->email]);
@@ -65,6 +64,6 @@ class AuthenticatedSessionController extends AuthController
 
 		self::log(['action' => 'logout', $email]);
 
-		return redirect(RouteServiceProvider::HOME);
+		return redirect('/');
 	}
 }

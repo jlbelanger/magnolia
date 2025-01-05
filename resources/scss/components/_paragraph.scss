@@ -1,4 +1,6 @@
+@use '../utilities/variables';
+
 p {
-	line-height: $line-height;
-	margin: $margin 0 0;
+	line-height: variables.$line-height;
+	margin: variables.$margin 0 0;
 }

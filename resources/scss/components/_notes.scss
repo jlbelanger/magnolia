@@ -1,16 +1,18 @@
+@use '../utilities/variables';
+
 #note-form {
-	background: $light-blue;
-	border-color: $darkish-blue;
+	background: variables.$light-blue;
+	border-color: variables.$darkish-blue;
 	border-style: solid;
 	border-width: 1px 0 0;
 	bottom: 0;
-	box-shadow: $shadow;
+	box-shadow: variables.$shadow;
 	display: none;
 	left: 0;
 	padding: 8px;
 	position: fixed;
 	right: 0;
-	z-index: $notes-zindex;
+	z-index: variables.$notes-zindex;
 
 	button {
 		width: 100px;
@@ -26,5 +28,5 @@
 }
 
 .show-note-form {
-	margin-bottom: $note-form-height;
+	margin-bottom: variables.$note-form-height;
 }

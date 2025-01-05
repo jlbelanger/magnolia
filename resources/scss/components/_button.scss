@@ -1,29 +1,32 @@
+@use 'sass:color';
+@use '../utilities/variables';
+
 button,
 .button {
-	background-color: $darkest-blue;
-	border: 1px solid $darkest-blue;
-	border-radius: $border-radius;
-	box-shadow: inset 1px 1px 0 $medium-blue, inset -1px -1px 0 $darker-blue;
-	color: $white;
+	background-color: variables.$darkest-blue;
+	border: 1px solid variables.$darkest-blue;
+	border-radius: variables.$border-radius;
+	box-shadow: inset 1px 1px 0 variables.$medium-blue, inset -1px -1px 0 variables.$darker-blue;
+	color: variables.$white;
 	cursor: pointer;
 	display: inline-block;
-	font-size: $font-size;
-	line-height: $input-line-height;
-	padding: $input-padding $input-padding #{$input-padding - 1px};
+	font-size: variables.$font-size;
+	line-height: variables.$input-line-height;
+	padding: variables.$input-padding variables.$input-padding calc(variables.$input-padding - 1px);
 	text-decoration: none;
 
 	&:hover,
 	&:active,
 	&:focus {
-		background-color: scale-color($darkest-blue, $lightness: 5%);
+		background-color: color.scale(variables.$darkest-blue, $lightness: 5%);
 		text-decoration: underline;
 	}
 
 	&[disabled] {
-		background-color: $light-blue;
-		border-color: $light-blue;
-		box-shadow: inset 1px 1px 0 $blue, inset -1px -1px 0 $blue;
-		color: $dark-blue;
+		background-color: variables.$light-blue;
+		border-color: variables.$light-blue;
+		box-shadow: inset 1px 1px 0 variables.$blue, inset -1px -1px 0 variables.$blue;
+		color: variables.$dark-blue;
 		cursor: default;
 		pointer-events: none;
 
@@ -38,26 +41,26 @@ button,
 }
 
 .button--danger {
-	background-color: $red;
-	border-color: $red;
-	box-shadow: inset 1px 1px 0 $light-red, inset -1px -1px 0 scale-color($red, $lightness: -30%);
-	color: $white;
+	background-color: variables.$red;
+	border-color: variables.$red;
+	box-shadow: inset 1px 1px 0 variables.$light-red, inset -1px -1px 0 color.scale(variables.$red, $lightness: -30%);
+	color: variables.$white;
 
 	&:hover,
 	&:active,
 	&:focus {
-		background-color: scale-color($red, $lightness: 5%);
+		background-color: color.scale(variables.$red, $lightness: 5%);
 	}
 }
 
 .button--secondary {
-	background-color: $dark-blue;
-	border-color: $dark-blue;
-	box-shadow: inset 1px 1px 0 $darkish-blue, inset -1px -1px 0 $darker-blue;
+	background-color: variables.$dark-blue;
+	border-color: variables.$dark-blue;
+	box-shadow: inset 1px 1px 0 variables.$darkish-blue, inset -1px -1px 0 variables.$darker-blue;
 
 	&:hover,
 	&:active,
 	&:focus {
-		background-color: scale-color($dark-blue, $lightness: 5%);
+		background-color: color.scale(variables.$dark-blue, $lightness: 5%);
 	}
 }

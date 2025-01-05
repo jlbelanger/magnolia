@@ -1,11 +1,13 @@
+@use '../utilities/variables';
+
 * {
 	box-sizing: border-box;
 }
 
 body {
-	background: $darker-blue;
-	font-family: $sans-serif;
-	font-size: $font-size;
+	background: variables.$darker-blue;
+	font-family: variables.$sans-serif;
+	font-size: variables.$font-size;
 }
 
 #main {
