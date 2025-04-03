@@ -20,7 +20,8 @@ class Time extends Model
 		'order_num' => 'integer',
 	];
 
-	public static function formatTime(int $minutes) : string {
+	public static function formatTime(int $minutes) : string
+	{
 		if ($minutes < 60) {
 			return $minutes . ' minute' . ($minutes !== 1 ? 's' : '');
 		}
@@ -28,7 +29,8 @@ class Time extends Model
 		return $hours . ' hour' . ($hours !== 1.0 ? 's' : '');
 	}
 
-	public function formattedTime() : string {
+	public function formattedTime() : string
+	{
 		return self::formatTime($this->minutes);
 	}
 }

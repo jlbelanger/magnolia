@@ -22,7 +22,7 @@ td {
 	text-align: center;
 }
 
-[data-action="add-time"] {
+[data-action='add-time'] {
 	margin-top: #{variables.$margin * .5};
 
 	.hide + & {
