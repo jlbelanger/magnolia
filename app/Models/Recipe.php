@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Parsedown;
@@ -136,6 +138,12 @@ class Recipe extends Model
 			$content = preg_replace('/\s?\*[^\*]+\*/', '', $content);
 		}
 		return $content;
+	}
+
+	public function activeTime() : string
+	{
+		$minutes = $this->times->where('is_active')->pluck('minutes')->sum();
+		return Time::formatTime($minutes);
 	}
 
 	protected function addCheckboxes(string $content) : string
@@ -332,6 +340,14 @@ class Recipe extends Model
 			'chromium' => ['nullable', 'integer'],
 			'molybdenum' => ['nullable', 'integer'],
 			'chloride' => ['nullable', 'integer'],
+			'times.*.order_num' => ['required_with:times.*.minutes,times.*.title', 'integer'],
+			'times.*.minutes' => ['required_with:times.*.order_num,times.*.title', 'integer'],
+			'times.*.title' => ['required_with:times.*.order_num,times.*.minutes', 'max:255'],
+			'times.*.is_active' => ['in:0,1'],
+			'new_times.*.order_num' => ['required_with:new_times.*.minutes,new_times.*.title', 'integer'],
+			'new_times.*.minutes' => ['required_with:new_times.*.order_num,new_times.*.title', 'integer'],
+			'new_times.*.title' => ['required_with:new_times.*.order_num,new_times.*.minutes', 'max:255'],
+			'new_times.*.is_active' => ['in:0,1'],
 		];
 	}
 
@@ -360,9 +376,50 @@ class Recipe extends Model
 		return $summary;
 	}
 
+	public function times() : HasMany
+	{
+		return $this->hasMany(Time::class)->orderBy('order_num');
+	}
+
+	public function totalTime() : string
+	{
+		$minutes = $this->times->pluck('minutes')->sum();
+		return Time::formatTime($minutes);
+	}
+
 	public function type() : string
 	{
 		return 'Recipe';
+	}
+
+	public function updateTimes(Request $request) : void
+	{
+		if ($request->has('times')) {
+			// Delete removed times.
+			$times = $this->times->keyBy('id');
+			$allIds = $times->keys();
+			$keepIds = array_keys($request->input('times'));
+			$removeIds = $allIds->diff($keepIds);
+			if ($removeIds) {
+				Time::whereIn('id', $removeIds)->delete();
+			}
+
+			// Update existing times.
+			foreach ($times as $time) {
+				if ($request->has('times.' . $time->getKey())) {
+					$input = $request->input('times.' . $time->getKey());
+					if (empty($input['is_active'])) {
+						$input['is_active'] = false;
+					}
+					$time->update($input);
+				}
+			}
+		}
+
+		if ($request->has('new_times')) {
+			// Add new times.
+			$this->times()->createMany($request->input('new_times'));
+		}
 	}
 
 	public function url() : string

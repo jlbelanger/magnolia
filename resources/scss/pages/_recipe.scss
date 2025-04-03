@@ -135,6 +135,15 @@ $li-padding-top: variables.$sublist-padding + ((variables.$checkbox-size - (vari
 		}
 	}
 
+	.times {
+		list-style: disc;
+		margin-left: 16px;
+
+		li {
+			padding: 0;
+		}
+	}
+
 	@media (width >= variables.$screen-width-tablet-landscape) {
 		position: relative;
 	}

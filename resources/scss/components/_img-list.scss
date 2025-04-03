@@ -46,3 +46,10 @@ $img-list-breakpoint-2: (($img-list-item-width + $img-list-gap) * 2) + $img-list
 	margin-bottom: 6px;
 	max-width: 100%;
 }
+
+.img-list__note {
+	color: variables.$darker-blue;
+	font-size: 14px;
+	margin-top: 2px;
+	text-align: center;
+}

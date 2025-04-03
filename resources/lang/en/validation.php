@@ -158,6 +158,15 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'times.*.order_num' => '#',
+		'times.*.minutes' => 'minutes',
+		'times.*.title' => 'label',
+		'times.*.is_active' => 'active',
+		'new_times.*.order_num' => '#',
+		'new_times.*.minutes' => 'minutes',
+		'new_times.*.title' => 'label',
+		'new_times.*.is_active' => 'active',
+	],
 
 ];

@@ -24,6 +24,16 @@
 			<aside id="recipe-side">
 				{!! $row->summary() !!}
 
+				@if ($row->times->isNotEmpty())
+					<p>{{ $row->totalTime() }} &middot; ({{ $row->activeTime() }} active)</p>
+
+					<ul class="times">
+						@foreach ($row->times as $time)
+							<li>{{ $time->formattedTime() }} {{ $time->title }}</li>
+						@endforeach
+					</ul>
+				@endif
+
 				{!! $row->sources() !!}
 
 				<div class="sticky-container">

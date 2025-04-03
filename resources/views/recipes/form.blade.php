@@ -62,6 +62,33 @@
 	@endif
 </p>
 
+<table class="{{ empty(old('new_times', [])) && (empty($row) || $row->times->isEmpty()) ? 'hide' : '' }}">
+	<caption>Time</caption>
+	<thead>
+		<tr>
+			<th id="header-order_num">#</th>
+			<th id="header-minutes">Minutes</th>
+			<th id="header-title">Label</th>
+			<th id="header-active">Active?</th>
+			<th id="header-action">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (!empty($row))
+			@foreach ($row->times as $time)
+				@include('shared.time', ['time' => $time, 'key' => $time->getKey(), 'prefix' => ''])
+			@endforeach
+		@endif
+	</tbody>
+	<tfoot>
+		@foreach (old('new_times', []) as $i => $time)
+			@include('shared.time', ['time' => null, 'key' => $i, 'prefix' => 'new_'])
+		@endforeach
+	</tfoot>
+</table>
+
+<button data-action="add-time" type="button">Add time</button>
+
 <p>
 	<label for="summary">Summary</label> <small>(supports Markdown)</small>
 	<textarea id="summary" name="summary" rows="5">{{ old('summary', !empty($row) ? $row->summary : '') }}</textarea>

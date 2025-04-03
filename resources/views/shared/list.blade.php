@@ -21,6 +21,11 @@
 					<span aria-label="Private">*</span>
 				@endif
 			</a>
+			@if ($recipe->times->isNotEmpty())
+				<div class="img-list__note">
+					{{ $recipe->totalTime() }} &middot; ({{ $recipe->activeTime() }} active)
+				</div>
+			@endif
 		</li>
 	@endforeach
 </ul>

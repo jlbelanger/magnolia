@@ -1,0 +1,51 @@
+@use '../utilities/variables';
+
+table {
+	border-spacing: 0;
+	margin-top: variables.$margin;
+
+	&.hide {
+		display: none;
+	}
+}
+
+caption {
+	font-weight: bold;
+}
+
+th {
+	font-weight: normal;
+	padding-top: 4px;
+}
+
+td {
+	text-align: center;
+}
+
+[data-action="add-time"] {
+	margin-top: #{variables.$margin * .5};
+
+	.hide + & {
+		margin-top: variables.$margin;
+	}
+}
+
+#header-order_num {
+	width: 5%;
+}
+
+#header-minutes {
+	width: 10%;
+}
+
+#header-title {
+	width: 70%;
+}
+
+#header-active {
+	width: 5%;
+}
+
+#header-action {
+	width: 10%;
+}

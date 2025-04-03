@@ -38,6 +38,7 @@ class RecipeController extends Controller
 			$input['published_at'] = date('Y-m-d H:i:s');
 		}
 		$row = Recipe::create($input);
+		$row->updateTimes($request);
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Recipe added successfully.']);
 		}
@@ -121,6 +122,7 @@ class RecipeController extends Controller
 			}
 		}
 
+		$row->updateTimes($request);
 		$row->update($input);
 		if ($request->wantsJson()) {
 			return response()->json(['message' => 'Recipe updated successfully.']);
