@@ -33,7 +33,10 @@ function Times() {
 
 		const $tr = document.createElement('tr');
 
-		$tr.appendChild(addTd('order_num', i));
+		const $tdOrderNum = addTd('order_num', i);
+		$tr.appendChild($tdOrderNum);
+		$tdOrderNum.querySelector('input').value = i + 1;
+
 		$tr.appendChild(addTd('minutes', i));
 		$tr.appendChild(addTd('title', i));
 		$tr.appendChild(addTd('is_active', i, 'checkbox'));
