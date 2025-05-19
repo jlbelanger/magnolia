@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
 		$this->configureRateLimiting();
 
 		if (config('app.debug')) {
-			if (!config('app.debugbar')) {
+			if (!config('app.debugbar') && class_exists('Debugbar')) {
 				\Debugbar::disable();
 			}
 
