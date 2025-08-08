@@ -6,6 +6,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class AuthenticatedSessionController extends AuthController
@@ -30,7 +31,7 @@ class AuthenticatedSessionController extends AuthController
 	{
 		try {
 			$request->authenticate();
-		} catch (\Exception $e) {
+		} catch (\ValidationException $e) {
 			self::logWarning(['action' => 'login', 'username' => $request->input('username')]);
 			throw $e;
 		}
@@ -62,7 +63,7 @@ class AuthenticatedSessionController extends AuthController
 
 		$request->session()->regenerateToken();
 
-		self::log(['action' => 'logout', $email]);
+		self::log(['action' => 'logout', 'email' => $email]);
 
 		return redirect('/');
 	}

@@ -5,6 +5,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Illuminate\Routing\Exceptions\InvalidSignatureException;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Jlbelanger\Tapioca\Exceptions\JsonApiException;
@@ -56,6 +57,12 @@ return Application::configure(basePath: dirname(__DIR__))
 		$exceptions->render(function (ThrottleRequestsException $e) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 			if (request()->expectsJson()) {
 				return response()->json(['errors' => [['title' => 'Please wait before retrying.', 'status' => '429']]], 429);
+			}
+		});
+
+		$exceptions->render(function (ValidationException $e) {
+			if (!request()->expectsJson()) {
+				return back()->withErrors($e->validator)->withInput();
 			}
 		});
 
