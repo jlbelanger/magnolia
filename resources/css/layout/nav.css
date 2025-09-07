@@ -1,7 +1,7 @@
 #menu-dialog {
 	background: none;
 	border: 0;
-	box-shadow: 0 0 0 100vh rgba(var(--black), 0);
+	box-shadow: 0 0 0 100vh hsl(from var(--black) h s l / 0%);
 	padding: 0;
 	transition: box-shadow .3s ease-in-out;
 
@@ -10,7 +10,7 @@
 	}
 
 	.show-menu.animate-menu & {
-		box-shadow: 0 0 0 100vh rgba(var(--black), .4);
+		box-shadow: 0 0 0 100vh hsl(from var(--black) h s l / 40%);
 		display: block;
 	}
 }
@@ -21,7 +21,7 @@
 
 #menu {
 	background: var(--dark-blue);
-	box-shadow: 0 20px 20px rgba(var(--black), .5);
+	box-shadow: 0 20px 20px hsl(from var(--black) h s l / 50%);
 	display: none;
 	font-size: 0;
 	inset: 0;

@@ -23,7 +23,7 @@
 
 	&:active,
 	&:focus {
-		box-shadow: 0 0 10px 5px rgba(var(--black), .3), var(--focus);
+		box-shadow: 0 0 10px 5px hsl(from var(--black) h s l / 30%), var(--focus);
 		opacity: 1;
 		top: 0;
 	}
