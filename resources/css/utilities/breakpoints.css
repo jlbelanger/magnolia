@@ -1,0 +1,11 @@
+@custom-media --small (width < 1024px);
+@custom-media --tablet-landscape-up (width >= 1024px);
+@custom-media --large (width > 1024px);
+
+@custom-media --img-list-breakpoint-1 (width >= 480px);
+
+/* ((var(--img-list-item-width) + var(--img-list-gap)) * 2) + var(--img-list-gap) */
+@custom-media --img-list-breakpoint-2 (width >= 676px);
+
+/* var(--auth-width) */
+@custom-media --auth-breakpoint (width > 420px);

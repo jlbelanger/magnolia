@@ -1,4 +1,4 @@
-import '../scss/style.scss';
+import '../css/style.css';
 import './app/accessibility';
 import './app/menu';
 import './app/password';

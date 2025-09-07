@@ -1,0 +1,14 @@
+a {
+	color: var(--link-color);
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+.link {
+	display: inline-block;
+	padding: var(--input-padding) 10px;
+}

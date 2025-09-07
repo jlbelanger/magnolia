@@ -1,0 +1,40 @@
+dl {
+	background: var(--white);
+	border: 1px solid var(--black);
+	color: var(--black);
+	margin-bottom: 0;
+	max-width: 260px;
+	padding: 2px 4px 0;
+}
+
+dt {
+	display: inline-block;
+	font-weight: bold;
+}
+
+dd {
+	display: inline-block;
+}
+
+.double {
+	border-top: 4px solid var(--black);
+}
+
+.line {
+	display: flex;
+	justify-content: space-between;
+	padding: 4px;
+}
+
+.line + .line,
+.double + .line {
+	border-top: 1px solid var(--black);
+}
+
+.indent {
+	padding-left: 1rem;
+
+	dt {
+		font-weight: normal;
+	}
+}

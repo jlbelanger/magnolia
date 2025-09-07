@@ -1,0 +1,35 @@
+.spinner {
+	align-items: center;
+	display: flex;
+	font-size: 0;
+	inset: 0;
+	justify-content: center;
+	position: fixed;
+	z-index: var(--spinner-zindex);
+
+	&.hide {
+		display: none;
+	}
+
+	&::after {
+		animation: spin 2s infinite linear;
+		border-color: var(--spinner-color) var(--spinner-color) var(--spinner-color) var(--spinner-color-alternate);
+		border-radius: 1000px;
+		border-style: solid;
+		border-width: var(--spinner-thickness);
+		content: '';
+		display: block;
+		height: var(--spinner-size);
+		width: var(--spinner-size);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(359deg);
+	}
+}

@@ -1,0 +1,241 @@
+#recipe-image-container {
+	border-bottom: var(--border-width) solid var(--darkest-blue);
+	height: 40vh;
+	margin-left: calc(var(--padding) * -1);
+	margin-right: calc(var(--padding) * -1);
+	margin-top: calc(var(--padding) * -1);
+	overflow: hidden;
+	position: relative;
+
+	@media (--tablet-landscape-up) {
+		margin-top: calc(var(--top-padding) * -1);
+	}
+
+	@media (--large) {
+		border: 0;
+	}
+}
+
+#recipe-image-link {
+	background-color: var(--dark-blue);
+	background-image: url('/assets/img/zoom.svg');
+	bottom: var(--button-margin);
+	font-size: 0;
+	height: var(--button-size);
+	position: absolute;
+	right: var(--button-margin);
+	width: var(--button-size);
+}
+
+#recipe-image {
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+}
+
+#recipe-image-container + #recipe #recipe-header {
+	padding-top: var(--margin);
+}
+
+#recipe-main {
+	@media (--tablet-landscape-up) {
+		padding-right: var(--margin);
+		width: calc(100% - var(--sidebar-width));
+	}
+}
+
+#recipe-side {
+	color: var(--darkest-blue);
+	display: inline;
+
+	h2 {
+		font-size: 28px;
+	}
+
+	& > .sticky-container:first-child {
+		margin-top: 0;
+	}
+
+	@media (--tablet-landscape-up) {
+		background: var(--lighter-blue);
+		border-color: var(--light-blue) var(--gray-blue) var(--gray-blue) var(--light-blue);
+		border-style: solid;
+		border-width: 0 1px;
+		bottom: calc(var(--top-padding) * -1);
+		display: block;
+		margin-right: calc(var(--padding) * -1);
+		margin-top: 0;
+		padding: var(--padding);
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: var(--sidebar-width);
+
+		& > :first-child {
+			margin-top: 8px;
+		}
+	}
+}
+
+#recipe-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
+}
+
+#recipe {
+	input[type='checkbox'] {
+		margin: 0 8px 0 0;
+	}
+
+	label {
+		font-size: var(--font-size);
+		line-height: var(--line-height);
+		padding: 8px 0;
+	}
+
+	li {
+		padding: var(--list-padding) 0;
+		padding-left: calc(var(--checkbox-size) + var(--checkbox-margin-right));
+		padding-top: calc(var(--list-padding) + ((var(--checkbox-size) - (var(--font-size) * var(--line-height))) * .5));
+		position: relative;
+
+		& > input {
+			left: 0;
+			position: absolute;
+			top: var(--list-padding);
+		}
+
+		li {
+			padding-bottom: var(--sublist-padding);
+			padding-top: var(--li-padding-top);
+
+			& > input {
+				top: var(--sublist-padding);
+			}
+		}
+	}
+
+	ol,
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		ol,
+		ul {
+			margin-left: calc((var(--checkbox-size) * -.5) - var(--checkbox-margin-right));
+			margin-top: var(--sublist-padding);
+		}
+	}
+
+	.times {
+		list-style: disc;
+		margin-left: 16px;
+
+		li {
+			padding: 0;
+		}
+	}
+
+	@media (--tablet-landscape-up) {
+		position: relative;
+	}
+}
+
+#recipe-header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+
+	h1 {
+		flex: 1 1 auto;
+	}
+}
+
+#recipe-main > ol {
+	margin-top: calc(var(--margin) - var(--li-padding-top));
+
+	& > li {
+		border-top: 1px solid var(--gray);
+		counter-increment: step;
+		min-height: calc(var(--checkbox-size) + (var(--list-padding) * 2));
+
+		&:first-of-type {
+			border-top: 0;
+		}
+
+		& > label {
+			&::before {
+				content: counter(step) '. ';
+			}
+		}
+	}
+
+	ol > li {
+		counter-increment: substep;
+
+		& > label {
+			&::before {
+				content: counter(substep) '. ';
+			}
+		}
+	}
+}
+
+#recipe-footer {
+	color: var(--darkest-blue);
+}
+
+#filename-preview {
+	border-radius: var(--border-radius);
+	height: 180px;
+	margin-top: 8px;
+	vertical-align: bottom;
+	width: 320px;
+}
+
+fieldset {
+	border: 0;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+
+	button {
+		border-radius: 0;
+	}
+
+	button:first-of-type {
+		border-radius: var(--border-radius) 0 0 var(--border-radius);
+	}
+
+	button:last-of-type {
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+	}
+
+	button:focus {
+		position: relative;
+	}
+
+	div {
+		border-color: var(--gray-blue);
+		border-radius: var(--border-radius);
+		border-style: solid;
+		border-width: 1px;
+	}
+}
+
+legend {
+	color: var(--darkest-blue);
+	font-family: var(--serif);
+	margin-bottom: 2px;
+}
+
+#unit-fieldset {
+	legend {
+		display: block;
+		margin-left: auto;
+	}
+}

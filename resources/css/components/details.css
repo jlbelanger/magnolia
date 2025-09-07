@@ -1,0 +1,10 @@
+details {
+	border: 1px solid var(--medium-blue);
+	margin-top: var(--margin);
+	padding: 12px;
+}
+
+summary {
+	cursor: pointer;
+	font-weight: bold;
+}

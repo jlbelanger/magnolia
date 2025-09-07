@@ -1,0 +1,6 @@
+hr {
+	border-color: var(--dark-blue);
+	border-style: dotted;
+	border-width: 1px 0 0;
+	margin: 40px 0;
+}

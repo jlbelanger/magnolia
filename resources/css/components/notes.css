@@ -1,0 +1,30 @@
+#note-form {
+	background: var(--light-blue);
+	border-color: var(--gray-blue);
+	border-style: solid;
+	border-width: 1px 0 0;
+	bottom: 0;
+	box-shadow: var(--shadow);
+	display: none;
+	left: 0;
+	padding: 8px;
+	position: fixed;
+	right: 0;
+	z-index: var(--notes-zindex);
+
+	button {
+		width: 100px;
+	}
+
+	&.show {
+		display: block;
+
+		& > div {
+			display: flex;
+		}
+	}
+}
+
+.show-note-form {
+	margin-bottom: var(--note-form-height);
+}

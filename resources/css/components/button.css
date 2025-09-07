@@ -1,0 +1,78 @@
+button,
+.button {
+	background-color: var(--darkest-blue);
+	border: 1px solid var(--darkest-blue);
+	border-radius: var(--border-radius);
+	box-shadow: inset 1px 1px 0 var(--medium-blue), inset -1px -1px 0 var(--darker-blue);
+	color: var(--white);
+	cursor: pointer;
+	display: inline-block;
+	font-size: var(--font-size);
+	line-height: var(--input-line-height);
+	padding: var(--input-padding) var(--input-padding) calc(var(--input-padding) - 1px);
+	text-decoration: none;
+
+	&[disabled] {
+		background-color: var(--light-blue);
+		border-color: var(--light-blue);
+		box-shadow: inset 1px 1px 0 var(--blue), inset -1px -1px 0 var(--blue);
+		color: var(--dark-blue);
+		cursor: default;
+		pointer-events: none;
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: inherit;
+			border-color: inherit;
+			text-decoration: none;
+		}
+	}
+}
+
+/*
+ * When including these rules in button,.button{}, postcss-preset-env adds button:not(does-not-exist),
+ * which overrides other styles, like for .timer-link, so they are included separately here.
+ */
+button {
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: var(--darkish-blue);
+		text-decoration: underline;
+	}
+}
+
+.button {
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: var(--darkish-blue);
+		text-decoration: underline;
+	}
+}
+
+.button--danger {
+	background-color: var(--red);
+	border-color: var(--red);
+	box-shadow: inset 1px 1px 0 var(--light-red), inset -1px -1px 0 var(--darkest-red);
+	color: var(--white);
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: var(--lightish-red);
+	}
+}
+
+.button--secondary {
+	background-color: var(--dark-blue);
+	border-color: var(--dark-blue);
+	box-shadow: inset 1px 1px 0 var(--gray-blue), inset -1px -1px 0 var(--darker-blue);
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: var(--lightish-blue);
+	}
+}

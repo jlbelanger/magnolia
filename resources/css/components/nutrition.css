@@ -1,0 +1,37 @@
+#nutrition-facts {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	p {
+		font-size: 0;
+		text-align: right;
+		width: 320px;
+	}
+
+	input,
+	label,
+	span {
+		font-size: var(--font-size);
+	}
+
+	input {
+		border-right-width: 0;
+		margin-left: 8px;
+
+		&:focus + .postfix {
+			box-shadow:
+				var(--focus-width) calc(var(--focus-width) * -1) 0 0 var(--focus-color),
+				var(--focus-width) var(--focus-width) 0 0 var(--focus-color);
+		}
+	}
+
+	.postfix {
+		background: var(--white);
+		border-color: var(--gray);
+		border-style: solid;
+		border-width: var(--input-border-width) var(--input-border-width) var(--input-border-width) 0;
+		color: var(--darker-blue);
+		padding: 12px 12px 12px 0;
+	}
+}

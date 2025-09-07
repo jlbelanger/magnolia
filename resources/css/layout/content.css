@@ -1,0 +1,12 @@
+#article-outer {
+	background: var(--blue);
+	flex: 1 1 auto;
+}
+
+#article {
+	padding: var(--padding);
+
+	@media (--tablet-landscape-up) {
+		padding: var(--top-padding) var(--padding);
+	}
+}

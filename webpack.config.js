@@ -1,5 +1,6 @@
 const path = require('path');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
@@ -58,12 +59,13 @@ module.exports = {
 				use: ['babel-loader'],
 			},
 			{
-				test: /\.scss$/,
+				test: /\.css$/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					{
 						loader: 'css-loader',
 						options: {
+							importLoaders: 1,
 							url: false,
 						},
 					},
@@ -72,14 +74,19 @@ module.exports = {
 						options: {
 							postcssOptions: {
 								plugins: [
-									'autoprefixer',
-									'cssnano',
+									[
+										'@csstools/postcss-global-data',
+										{
+											files: [
+												'./resources/css/utilities/breakpoints.css',
+											],
+										},
+									],
 									'postcss-preset-env',
 								],
 							},
 						},
 					},
-					'sass-loader',
 				],
 			},
 		],
@@ -88,6 +95,13 @@ module.exports = {
 		minimizer: [
 			new TerserPlugin({
 				extractComments: false,
+			}),
+			new CssMinimizerPlugin({
+				minimizerOptions: {
+					// Disable postcss-calc to avoid warnings about calc() inside hsl().
+					// https://github.com/postcss/postcss-calc/issues/216
+					preset: ['default', { calc: false }],
+				},
 			}),
 		],
 		splitChunks: {

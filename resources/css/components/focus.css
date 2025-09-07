@@ -1,0 +1,4 @@
+:focus {
+	box-shadow: var(--focus);
+	outline: none !important; /* stylelint-disable-line declaration-no-important */
+}

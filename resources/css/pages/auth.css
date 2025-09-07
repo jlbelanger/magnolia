@@ -1,0 +1,9 @@
+.article--auth {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.contain {
+		max-width: var(--auth-width);
+	}
+}

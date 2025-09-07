@@ -1,0 +1,9 @@
+.error {
+	color: var(--red);
+	display: block;
+	margin-top: 4px;
+
+	&::before {
+		content: 'Error: ';
+	}
+}

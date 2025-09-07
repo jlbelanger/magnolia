@@ -1,0 +1,100 @@
+#admin {
+	display: flex;
+	flex-direction: column;
+	padding: 0 var(--padding);
+
+	.button {
+		border-bottom-width: 0;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	button,
+	form,
+	.button {
+		width: 100%;
+	}
+
+	@media (--tablet-landscape-up) {
+		flex-direction: row;
+		justify-content: space-between;
+		left: 0;
+		margin-top: 2px;
+		position: absolute;
+		right: 0;
+		top: 100%;
+		width: auto;
+
+		.button {
+			margin-right: 4px;
+		}
+
+		button,
+		form,
+		.button {
+			border-bottom-width: 0;
+			border-radius: var(--border-radius) var(--border-radius) 0 0;
+			width: auto;
+		}
+	}
+}
+
+.flex-grow {
+	display: none;
+
+	@media (--tablet-landscape-up) {
+		display: block;
+		flex: 1 1 auto;
+	}
+}
+
+.admin__button {
+	margin-bottom: calc(var(--padding) * .5);
+
+	@media (--tablet-landscape-up) {
+		margin-bottom: 0;
+	}
+}
+
+.admin__button--active {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: var(--light-blue);
+	position: relative;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: transparent;
+		color: var(--light-blue);
+	}
+
+	@media (--tablet-landscape-up) {
+		background-color: var(--blue);
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+		color: var(--darkest-blue);
+
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: var(--blue);
+			color: var(--darkest-blue);
+		}
+
+		&::after {
+			background-color: var(--blue);
+			content: '';
+			height: calc(var(--border-width) + 1px);
+			left: -1px;
+			margin-top: -1px;
+			position: absolute;
+			right: -1px;
+			top: 100%;
+		}
+	}
+}
+
+#delete-form {
+	display: inline-block;
+}

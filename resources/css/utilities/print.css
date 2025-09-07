@@ -1,0 +1,174 @@
+/* stylelint-disable declaration-no-important */
+
+@media print {
+	body,
+	#header,
+	#article-outer {
+		background: transparent;
+	}
+
+	body,
+	#recipe label,
+	.timer-link {
+		font-size: 16px !important;
+	}
+
+	#recipe-side + #recipe-main {
+		border-top: 1px solid var(--black);
+		margin-top: var(--margin);
+	}
+
+	#recipe-side {
+		background: transparent;
+		border: 0;
+	}
+
+	#header {
+		border: 0;
+		box-shadow: none;
+		height: auto;
+	}
+
+	#header,
+	#admin,
+	#footer,
+	.checkbox,
+	.sticky-container,
+	#recipe-buttons {
+		display: none;
+	}
+
+	#recipe-image-container {
+		border: 0;
+		float: right;
+		height: auto;
+		margin: 0 0 var(--margin) var(--margin);
+		z-index: 1;
+	}
+
+	#recipe-image {
+		height: auto;
+		max-width: 40vw;
+	}
+
+	button,
+	.button,
+	select,
+	details,
+	.postfix {
+		background: transparent !important;
+		border-color: var(--black) !important;
+		box-shadow: none !important;
+		color: var(--black) !important;
+	}
+
+	.postfix {
+		border-left-width: 0;
+	}
+
+	hr {
+		border-color: var(--black) !important;
+		border-style: solid !important;
+		margin: var(--margin) 0;
+	}
+
+	#recipe-side,
+	#recipe-footer,
+	a,
+	h1,
+	h2,
+	h3,
+	h4 {
+		color: var(--black) !important;
+	}
+
+	#recipe-image-container + #recipe #recipe-header {
+		padding-top: 0 !important;
+	}
+
+	h2,
+	h3 {
+		page-break-after: avoid;
+	}
+
+	input,
+	textarea {
+		border-color: var(--black) !important;
+	}
+
+	.checkbox {
+		&:checked {
+			opacity: 1;
+
+			& + label {
+				opacity: 1;
+				text-decoration: none;
+
+				.timer-link {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	input[type='checkbox']:checked::after {
+		background-image: none;
+	}
+
+	#article {
+		max-width: none;
+		padding: 0;
+
+		#side + & {
+			margin-left: 0;
+		}
+	}
+
+	#recipe {
+		label {
+			padding: 0;
+		}
+
+		li {
+			min-height: 0 !important;
+			padding: 0 !important;
+		}
+
+		& > div & > ol & > li {
+			page-break-inside: avoid;
+		}
+
+		ol,
+		ul {
+			ol,
+			ul {
+				margin-left: 32px;
+				margin-top: 0;
+			}
+		}
+
+		& > ol > li {
+			border: 0;
+			padding: 8px 0 !important;
+		}
+	}
+
+	#recipe-main > ol > li {
+		border-color: var(--black) !important;
+		padding: 8px 0 !important;
+	}
+
+	.timer-link {
+		border: 0;
+		color: var(--black);
+		margin: 0;
+		padding: 0;
+	}
+
+	a[href] {
+		&::after {
+			content: '\00a0(' attr(href) ')'; /* &nbsp; */
+			display: inline;
+		}
+	}
+}

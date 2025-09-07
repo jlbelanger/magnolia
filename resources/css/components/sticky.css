@@ -1,0 +1,41 @@
+.sticky-container {
+	height: var(--button-size);
+	margin-top: var(--padding);
+}
+
+.sticky-inner {
+	margin-left: auto;
+	text-align: right;
+}
+
+.sticky {
+	position: fixed;
+	top: var(--padding);
+	z-index: var(--sticky-zindex);
+}
+
+.floating-button {
+	border-radius: 100px;
+	box-shadow: var(--shadow);
+	height: var(--button-size);
+	margin-right: var(--button-margin);
+	width: var(--button-size);
+
+	&:focus {
+		box-shadow: var(--shadow), var(--focus);
+	}
+
+	.no-js & {
+		display: none;
+	}
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: none;
+	}
+}
+
+#add-note-button {
+	margin-right: 0;
+}

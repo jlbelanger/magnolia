@@ -1,9 +1,0 @@
-@use '../utilities/variables';
-
-.postfix {
-	border-radius: 0 variables.$border-radius variables.$border-radius 0;
-}
-
-.prefix {
-	border-radius: variables.$border-radius 0 0 variables.$border-radius;
-}

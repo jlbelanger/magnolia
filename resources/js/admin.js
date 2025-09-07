@@ -1,4 +1,4 @@
-import '../scss/admin.scss';
+import '../css/admin.css';
 import './admin/ajax';
 import './admin/beforeunload';
 import './admin/confirmable';
