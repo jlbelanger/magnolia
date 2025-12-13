@@ -29,7 +29,7 @@ function Times() {
 	};
 
 	const addTimeRow = () => {
-		const i = $tfoot.children.length;
+		const i = $tbody.children.length + $tfoot.children.length;
 
 		const $tr = document.createElement('tr');
 
@@ -37,7 +37,8 @@ function Times() {
 		$tr.appendChild($tdOrderNum);
 		$tdOrderNum.querySelector('input').value = i + 1;
 
-		$tr.appendChild(addTd('minutes', i));
+		const $minutes = addTd('minutes', i);
+		$tr.appendChild($minutes);
 		$tr.appendChild(addTd('title', i));
 		$tr.appendChild(addTd('is_active', i, 'checkbox'));
 
@@ -53,6 +54,8 @@ function Times() {
 		$tfoot.appendChild($tr);
 
 		$table.classList.remove('hide');
+
+		$minutes.querySelector('input').focus();
 	};
 
 	const init = () => {

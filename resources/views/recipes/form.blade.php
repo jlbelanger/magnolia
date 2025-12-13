@@ -62,6 +62,10 @@
 	@endif
 </p>
 
+<p>
+	<button data-action="add-time" type="button">Add time</button>
+</p>
+
 <table class="{{ empty(old('new_times', [])) && (empty($row) || $row->times->isEmpty()) ? 'hide' : '' }}">
 	<caption>Time</caption>
 	<thead>
@@ -86,8 +90,6 @@
 		@endforeach
 	</tfoot>
 </table>
-
-<button data-action="add-time" type="button">Add time</button>
 
 <p>
 	<label for="summary">Summary</label> <small>(supports Markdown)</small>

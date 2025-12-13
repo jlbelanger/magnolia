@@ -20,14 +20,6 @@ td {
 	text-align: center;
 }
 
-[data-action='add-time'] {
-	margin-top: calc(var(--margin) * .5);
-
-	.hide + & {
-		margin-top: var(--margin);
-	}
-}
-
 #header-order_num {
 	width: 5%;
 }
