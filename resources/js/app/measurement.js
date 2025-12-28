@@ -67,7 +67,9 @@ function findBestSolution(target, availableTools) {
 	if (currentTool.name.match(/^\d+ cups?$/)) {
 		resultWithCurrent = findBestSolution(target - currentValue, availableTools);
 		if (resultWithCurrent) {
-			const numCups = resultWithCurrent.filter((t) => (t.name.match(/^\d+ cups?$/))).map((t) => t.value).reduce((sum, a) => (sum + a), 0);
+			const numCups = resultWithCurrent.filter((t) => (t.name.match(/^\d+ cups?$/)))
+				.map((t) => t.value)
+				.reduce((sum, a) => (sum + a), 0);
 			if (numCups > 0) {
 				resultWithCurrent = resultWithCurrent.filter((t) => (!t.name.match(/^\d+ cups?$/)));
 				currentTool = { value: numCups + currentTool.value, name: `${numCups + currentTool.value} cups` };

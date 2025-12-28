@@ -1,6 +1,6 @@
 function onBeforeUnload(e) {
 	e.preventDefault();
-	return e.returnValue = 'You have unsaved changes. Are you sure you want to leave the page?'; // eslint-disable-line no-return-assign
+	return 'You have unsaved changes. Are you sure you want to leave the page?';
 }
 
 function addUnloadListener() {
@@ -17,7 +17,7 @@ export const removeUnloadListener = () => {
 	document.title = document.title.replace(/^\* /, '');
 };
 
-function initBeforeUnload() {
+export const initBeforeUnload = () => {
 	const $form = document.querySelector('[data-form]');
 	if ($form) {
 		const $inputs = $form.querySelectorAll('input,select,textarea');
@@ -28,6 +28,4 @@ function initBeforeUnload() {
 
 		$form.addEventListener('submit', removeUnloadListener);
 	}
-}
-
-initBeforeUnload();
+};

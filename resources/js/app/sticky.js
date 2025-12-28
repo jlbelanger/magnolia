@@ -1,4 +1,4 @@
-function initSticky() {
+export const initSticky = () => {
 	const $element = document.querySelector('[data-sticky]');
 	if (!$element) {
 		return;
@@ -25,9 +25,11 @@ function initSticky() {
 		onScroll();
 	};
 
-	window.addEventListener('scroll', onScroll);
-	window.addEventListener('resize', onResize);
-	onResize();
-}
+	const init = () => {
+		window.addEventListener('scroll', onScroll);
+		window.addEventListener('resize', onResize);
+		onResize();
+	};
 
-initSticky();
+	init();
+};

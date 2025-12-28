@@ -1,4 +1,9 @@
-function Times() {
+export const initTimes = () => {
+	const $addTime = document.querySelector('[data-action="add-time"]');
+	if (!$addTime) {
+		return;
+	}
+
 	const $table = document.querySelector('table');
 	const $tbody = document.querySelector('tbody');
 	const $tfoot = document.querySelector('tfoot');
@@ -9,10 +14,10 @@ function Times() {
 		const $input = document.createElement('input');
 		$input.setAttribute('aria-labelledby', `header-${name}`);
 		$input.setAttribute('name', `new_times[${i}][${name}]`);
-		if (type !== 'checkbox') {
-			$input.setAttribute('required', 'required');
-		} else {
+		if (type === 'checkbox') {
 			$input.setAttribute('value', '1');
+		} else {
+			$input.setAttribute('required', 'required');
 		}
 		$input.setAttribute('type', type);
 		$td.appendChild($input);
@@ -59,19 +64,13 @@ function Times() {
 	};
 
 	const init = () => {
-		const $addTime = document.querySelector('[data-action="add-time"]');
-		if (!$addTime) {
-			return;
-		}
-
 		$addTime.addEventListener('click', addTimeRow);
 
-		Array.from(document.querySelectorAll('[data-action="remove-time"]')).forEach(($button) => {
+		const $buttons = document.querySelectorAll('[data-action="remove-time"]');
+		$buttons.forEach(($button) => {
 			$button.addEventListener('click', removeTimeRow);
 		});
 	};
 
 	init();
-}
-
-Times();
+};

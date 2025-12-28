@@ -279,8 +279,6 @@ class Recipe extends Model
 		$dst = imagecreatetruecolor($smWidth, $smHeight);
 		imagecopyresampled($dst, $src, 0, 0, 0, 0, $smWidth, $smHeight, $lgWidth, $lgHeight);
 		imagejpeg($dst, $smPath);
-		imagedestroy($src);
-		imagedestroy($dst);
 	}
 
 	public static function public() : Builder

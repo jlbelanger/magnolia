@@ -1,5 +1,9 @@
-export default function Modal(args) {
-	const show = () => {
+export default class Modal {
+	constructor(args) {
+		this.args = args;
+	}
+
+	show() {
 		document.body.classList.add('modal-open');
 
 		const $dialog = document.createElement('dialog');
@@ -11,20 +15,20 @@ export default function Modal(args) {
 		$dialog.appendChild($box);
 
 		const $p = document.createElement('p');
-		$p.innerText = args.message;
+		$p.innerText = this.args.message;
 		$box.appendChild($p);
 
 		const $options = document.createElement('p');
 		$options.setAttribute('class', 'modal__options');
 		$box.appendChild($options);
 
-		args.buttons.forEach((data) => {
+		this.args.buttons.forEach((data) => {
 			const $button = document.createElement('button');
 			$button.setAttribute('class', `button ${data.class}`.trim());
 			$button.setAttribute('type', 'button');
 			$button.innerText = data.label;
 			$button.addEventListener('click', () => {
-				if (Object.prototype.hasOwnProperty.call(data, 'onClick')) {
+				if (Object.hasOwn(data, 'onClick')) {
 					data.onClick();
 				}
 				$dialog.close();
@@ -42,7 +46,5 @@ export default function Modal(args) {
 
 		$dialog.showModal();
 		$dialog.focus();
-	};
-
-	show();
+	}
 }

@@ -6,7 +6,7 @@ import {
 	ouncesToGrams,
 	pluralize,
 	tools,
-} from './measurement';
+} from './measurement.js';
 
 describe('pluralize', () => {
 	[

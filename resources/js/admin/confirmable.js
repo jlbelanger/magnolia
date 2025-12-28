@@ -1,44 +1,36 @@
-import Modal from './modal';
-import { removeUnloadListener } from './beforeunload';
+import Modal from './modal.js';
+import { removeUnloadListener } from './beforeunload.js';
 
-function Confirmable($button) {
-	const onClick = (e) => {
-		const message = e.target.getAttribute('data-confirmable');
+function onClick(e) {
+	const $button = e.target;
+	const message = $button.getAttribute('data-confirmable');
 
-		Modal({
-			message,
-			buttons: [
-				{
-					label: 'Cancel',
-					class: 'button--secondary',
+	const modal = new Modal({
+		message,
+		buttons: [
+			{
+				label: 'Cancel',
+				class: 'button--secondary',
+			},
+			{
+				label: $button.innerText,
+				class: $button.getAttribute('class'),
+				onClick: () => {
+					const $form = $button.closest('form');
+					if ($form.getAttribute('data-ignore-unsaved') !== undefined) {
+						removeUnloadListener();
+					}
+					$form.submit();
 				},
-				{
-					label: e.target.innerText,
-					class: e.target.getAttribute('class'),
-					onClick: () => {
-						const $form = $button.closest('form');
-						if ($form.getAttribute('data-ignore-unsaved') !== undefined) {
-							removeUnloadListener();
-						}
-						$form.submit();
-					},
-				},
-			],
-		});
-	};
-
-	const init = () => {
-		$button.addEventListener('click', onClick, true);
-	};
-
-	init();
-}
-
-function initConfirmable() {
-	const $elements = document.querySelectorAll('[data-confirmable]');
-	$elements.forEach(($element) => {
-		Confirmable($element);
+			},
+		],
 	});
+	modal.show();
 }
 
-initConfirmable();
+export const initConfirmable = () => {
+	const $buttons = document.querySelectorAll('[data-confirmable]');
+	$buttons.forEach(($button) => {
+		$button.addEventListener('click', onClick, true);
+	});
+};

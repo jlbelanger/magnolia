@@ -88,7 +88,7 @@
 
 	h2,
 	h3 {
-		page-break-after: avoid;
+		break-after: avoid;
 	}
 
 	input,
@@ -135,7 +135,7 @@
 		}
 
 		& > div & > ol & > li {
-			page-break-inside: avoid;
+			break-inside: avoid;
 		}
 
 		ol,

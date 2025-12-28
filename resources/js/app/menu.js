@@ -1,4 +1,4 @@
-function Menu() {
+export const initMenu = () => {
 	const maxWidth = 1024;
 	const $button = document.getElementById('nav-show');
 	const controls = $button.getAttribute('aria-controls');
@@ -19,7 +19,7 @@ function Menu() {
 	};
 
 	const hideElement = () => {
-		window.removeEventListener('resize', onResize); // eslint-disable-line no-use-before-define
+		window.removeEventListener('resize', onResize);
 		$button.setAttribute('aria-expanded', 'false');
 		document.body.classList.remove(`animate-${controls}`);
 		$element.addEventListener('transitionend', onTransitionEnd);
@@ -92,6 +92,4 @@ function Menu() {
 	};
 
 	init();
-}
-
-Menu();
+};

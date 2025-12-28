@@ -1,10 +1,16 @@
 import '../css/style.css';
-import './app/accessibility';
-import './app/menu';
-import './app/password';
-import './app/print';
-import './app/sticky';
-import './app/timer';
-import { initMeasurement } from './app/measurement';
+import { initAccessibility } from './app/accessibility.js';
+import { initMeasurement } from './app/measurement.js';
+import { initMenu } from './app/menu.js';
+import { initPasswordable } from './app/password.js';
+import { initPrint } from './app/print.js';
+import { initSticky } from './app/sticky.js';
+import { initTimer } from './app/timer.js';
 
+initAccessibility();
 initMeasurement();
+initMenu();
+initPasswordable();
+initPrint();
+initSticky();
+initTimer();

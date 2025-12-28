@@ -1,13 +1,15 @@
-const path = require('path');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
+import postcssCustomProperties from 'postcss-custom-properties';
+import postcssRelativeColorSyntax from '@csstools/postcss-relative-color-syntax';
+import TerserPlugin from 'terser-webpack-plugin';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 
-require('dotenv').config();
+process.loadEnvFile();
 
-module.exports = {
+export default {
 	mode: 'production',
 	devtool: false,
 	entry: {
@@ -16,7 +18,7 @@ module.exports = {
 	},
 	output: {
 		filename: 'assets/js/[name].min.js?[contenthash]',
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(process.cwd(), 'public'),
 		publicPath: '/',
 	},
 	plugins: [
@@ -79,9 +81,17 @@ module.exports = {
 										{
 											files: [
 												'./resources/css/utilities/breakpoints.css',
+												'./resources/css/utilities/colors.css',
 											],
 										},
 									],
+
+									// Relative color syntax is not supported by iOS 12.
+									// postcss-relative-color-syntax has a polyfill, but it cannot dynamically resolve var in relative color syntax,
+									// so replace vars with static values first using postcss-custom-properties.
+									postcssCustomProperties(),
+									postcssRelativeColorSyntax(),
+
 									'postcss-preset-env',
 								],
 							},
