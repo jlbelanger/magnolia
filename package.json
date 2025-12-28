@@ -19,7 +19,7 @@
 		"lint:css": "node_modules/.bin/stylelint 'resources/css/**/*.css'",
 		"lint:js": "node_modules/.bin/eslint .",
 		"lint:php": "./vendor/bin/phpcs",
-		"test:js": "node --experimental-vm-modules node_modules/.bin/jest",
+		"test:js": "node_modules/.bin/jest",
 		"test:php": "./vendor/bin/phpunit",
 		"test:watch": "node_modules/.bin/jest --watch",
 		"start": "node_modules/.bin/update-browserslist-db && node_modules/.bin/webpack --watch"
