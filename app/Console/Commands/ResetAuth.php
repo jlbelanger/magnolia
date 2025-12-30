@@ -35,7 +35,7 @@ class ResetAuth extends Command
 		}
 
 		echo "Resetting password...\n";
-		$user = User::where('username', '!=', 'demo')->first();
+		$user = User::where('username', '!=', 'demo')->orderBy('id')->first();
 		$data = [
 			'password' => Hash::make('password'),
 		];
