@@ -14,15 +14,15 @@
 		"url": "https://github.com/jlbelanger/magnolia.git"
 	},
 	"scripts": {
-		"build": "node_modules/.bin/webpack --mode=production",
-		"lint": "yarn lint:css && yarn lint:js",
-		"lint:css": "node_modules/.bin/stylelint 'resources/css/**/*.css'",
-		"lint:js": "node_modules/.bin/eslint .",
+		"build": "npx webpack --mode=production",
+		"lint": "npm run lint:css && npm run lint:js",
+		"lint:css": "npx stylelint 'resources/css/**/*.css'",
+		"lint:js": "npx eslint .",
 		"lint:php": "./vendor/bin/phpcs",
-		"test:js": "node_modules/.bin/jest",
+		"test:js": "npx jest",
 		"test:php": "./vendor/bin/phpunit",
-		"test:watch": "node_modules/.bin/jest --watch",
-		"start": "node_modules/.bin/update-browserslist-db && node_modules/.bin/webpack --watch"
+		"test:watch": "npx jest --watch",
+		"start": "npx update-browserslist-db && npx webpack --watch"
 	},
 	"dependencies": {
 		"@csstools/postcss-relative-color-syntax": "^3.0.12",
