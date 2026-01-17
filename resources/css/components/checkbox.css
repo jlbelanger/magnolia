@@ -1,9 +1,9 @@
 .checkbox {
 	&:checked {
-		opacity: .6;
+		opacity: 0.6;
 
 		& + label {
-			opacity: .6;
+			opacity: 0.6;
 			text-decoration: line-through;
 
 			.timer-link {

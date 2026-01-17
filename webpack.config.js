@@ -32,26 +32,24 @@ export default {
 			},
 			fileName: 'mix-manifest.json',
 		}),
-		new BrowserSyncPlugin({
-			proxy: process.env.APP_URL,
-			port: 3000,
-			files: [
-				'public/assets/js/**/*',
-				'public/assets/css/**/*',
-				'resources/views/**/*',
-			],
-			snippetOptions: {
-				rule: {
-					match: /<body[^>]*>/i,
-					fn: (snippet, match) => (
-						// Allow Browsersync to work with Content-Security-Policy without script-src 'unsafe-inline'.
-						`${match}${snippet.replace('id=', 'nonce="browser-sync" id=')}`
-					),
+		new BrowserSyncPlugin(
+			{
+				proxy: process.env.APP_URL,
+				port: 3000,
+				files: ['public/assets/js/**/*', 'public/assets/css/**/*', 'resources/views/**/*'],
+				snippetOptions: {
+					rule: {
+						match: /<body[^>]*>/i,
+						fn: (snippet, match) =>
+							// Allow Browsersync to work with Content-Security-Policy without script-src 'unsafe-inline'.
+							`${match}${snippet.replace('id=', 'nonce="browser-sync" id=')}`,
+					},
 				},
 			},
-		}, {
-			reload: false,
-		}),
+			{
+				reload: false,
+			},
+		),
 	],
 	module: {
 		rules: [
@@ -79,10 +77,7 @@ export default {
 									[
 										'@csstools/postcss-global-data',
 										{
-											files: [
-												'./resources/css/utilities/breakpoints.css',
-												'./resources/css/utilities/colors.css',
-											],
+											files: ['./resources/css/utilities/breakpoints.css', './resources/css/utilities/colors.css'],
 										},
 									],
 
@@ -119,13 +114,13 @@ export default {
 				style: {
 					name: 'style',
 					type: 'css/mini-extract',
-					chunks: (chunk) => (chunk.name === 'app'),
+					chunks: (chunk) => chunk.name === 'app',
 					enforce: true,
 				},
 				admin: {
 					name: 'admin',
 					type: 'css/mini-extract',
-					chunks: (chunk) => (chunk.name === 'admin'),
+					chunks: (chunk) => chunk.name === 'admin',
 					enforce: true,
 				},
 			},

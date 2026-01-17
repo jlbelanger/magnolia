@@ -5,13 +5,13 @@ jobs:
     name: PHP
     runs-on: ubuntu-latest
     steps:
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.5'
-    - uses: actions/checkout@v3
-    - run: composer install
-    - run: cp .env.example .env
-    - run: php artisan key:generate
-    - run: ./vendor/bin/phpcs
-    - run: ./vendor/bin/phpunit --coverage-text
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+      - uses: actions/checkout@v3
+      - run: composer install
+      - run: cp .env.example .env
+      - run: php artisan key:generate
+      - run: ./vendor/bin/phpcs
+      - run: ./vendor/bin/phpunit --coverage-text

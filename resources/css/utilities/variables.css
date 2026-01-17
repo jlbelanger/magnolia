@@ -56,7 +56,7 @@
 	--timer-zindex: 997;
 	--toast-zindex: 998;
 	--spinner-zindex: 999;
-	--li-padding-top: calc(var(--sublist-padding) + ((var(--checkbox-size) - (var(--font-size) * var(--line-height))) * .5));
+	--li-padding-top: calc(var(--sublist-padding) + ((var(--checkbox-size) - (var(--font-size) * var(--line-height))) * 0.5));
 	--img-list-gap: 12px;
 	--img-list-bottom-gap: 24px;
 	--img-list-item-width: 320px;

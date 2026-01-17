@@ -5,10 +5,10 @@ jobs:
     name: JS
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '24'
-    - uses: actions/checkout@v3
-    - run: npm install
-    - run: npm run lint
-    - run: npm run test:js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '24'
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test:js

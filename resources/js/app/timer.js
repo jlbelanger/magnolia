@@ -15,7 +15,8 @@ function prettyTime(milliseconds) {
 		// XX:XX:XX
 		start = 11;
 	}
-	return date.toISOString()
+	return date
+		.toISOString()
 		.substring(start)
 		.replace(/\.\d+Z$/, '');
 }
@@ -111,7 +112,7 @@ function simulateEvent(e) {
 		false,
 		false,
 		0,
-		null
+		null,
 	);
 	return simulatedEvent;
 }

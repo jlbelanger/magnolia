@@ -3,7 +3,9 @@ button,
 	background-color: var(--darkest-blue);
 	border: 1px solid var(--darkest-blue);
 	border-radius: var(--border-radius);
-	box-shadow: inset 1px 1px 0 var(--medium-blue), inset -1px -1px 0 var(--darker-blue);
+	box-shadow:
+		inset 1px 1px 0 var(--medium-blue),
+		inset -1px -1px 0 var(--darker-blue);
 	color: var(--white);
 	cursor: pointer;
 	display: inline-block;
@@ -15,7 +17,9 @@ button,
 	&[disabled] {
 		background-color: var(--light-blue);
 		border-color: var(--light-blue);
-		box-shadow: inset 1px 1px 0 var(--blue), inset -1px -1px 0 var(--blue);
+		box-shadow:
+			inset 1px 1px 0 var(--blue),
+			inset -1px -1px 0 var(--blue);
 		color: var(--dark-blue);
 		cursor: default;
 		pointer-events: none;
@@ -55,7 +59,9 @@ button {
 .button--danger {
 	background-color: var(--red);
 	border-color: var(--red);
-	box-shadow: inset 1px 1px 0 var(--light-red), inset -1px -1px 0 var(--darkest-red);
+	box-shadow:
+		inset 1px 1px 0 var(--light-red),
+		inset -1px -1px 0 var(--darkest-red);
 	color: var(--white);
 
 	&:hover,
@@ -68,7 +74,9 @@ button {
 .button--secondary {
 	background-color: var(--dark-blue);
 	border-color: var(--dark-blue);
-	box-shadow: inset 1px 1px 0 var(--gray-blue), inset -1px -1px 0 var(--darker-blue);
+	box-shadow:
+		inset 1px 1px 0 var(--gray-blue),
+		inset -1px -1px 0 var(--darker-blue);
 
 	&:hover,
 	&:active,

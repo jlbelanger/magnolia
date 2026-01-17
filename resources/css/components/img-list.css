@@ -3,7 +3,7 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	list-style: none;
-	margin: 8px calc(var(--img-list-gap) * -.5) calc(var(--img-list-bottom-gap) * -1);
+	margin: 8px calc(var(--img-list-gap) * -0.5) calc(var(--img-list-bottom-gap) * -1);
 	padding: 0;
 
 	@media (--img-list-breakpoint-1) {
@@ -12,7 +12,7 @@
 }
 
 .img-list__item {
-	margin: 0 calc(var(--img-list-gap) * .5) var(--img-list-bottom-gap);
+	margin: 0 calc(var(--img-list-gap) * 0.5) var(--img-list-bottom-gap);
 	width: auto;
 
 	@media (--img-list-breakpoint-1) {

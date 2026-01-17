@@ -78,18 +78,18 @@ describe('measuringCups', () => {
 		{ unit: 'cup', value: 0.00130208333333, expected: '1/16 tsp' },
 
 		// Combined fractions.
-		{ unit: 'cup', value: ((3 / 4) + (1 / 3)), expected: '3/4 cups + 1/3 cup' },
-		{ unit: 'cup', value: ((3 / 4) + (1 / 8)), expected: '3/4 cups + 1/8 cup' },
-		{ unit: 'cup', value: ((2 / 3) + (1 / 8)), expected: '2/3 cups + 1/8 cup' },
-		{ unit: 'cup', value: ((1 / 2) + (1 / 3)), expected: '1/2 cup + 1/3 cup' },
-		{ unit: 'cup', value: ((1 / 2) + (1 / 8)), expected: '1/2 cup + 1/8 cup' },
-		{ unit: 'cup', value: ((1 / 2) + (1 / 16)), expected: '1/2 cup + 1 tbsp' },
-		{ unit: 'cup', value: ((1 / 3) + (1 / 4)), expected: '1/3 cup + 1/4 cup' },
-		{ unit: 'cup', value: ((1 / 3) + (1 / 8)), expected: '1/3 cup + 1/8 cup' },
-		{ unit: 'cup', value: ((1 / 3) + (1 / 16)), expected: '1/3 cup + 1 tbsp' },
-		{ unit: 'cup', value: ((1 / 4) + (1 / 8)), expected: '1/4 cup + 1/8 cup' },
-		{ unit: 'cup', value: ((1 / 4) + (1 / 16)), expected: '1/4 cup + 1 tbsp' },
-		{ unit: 'cup', value: ((1 / 8) + (1 / 16)), expected: '1/8 cup + 1 tbsp' },
+		{ unit: 'cup', value: (3 / 4) + (1 / 3), expected: '3/4 cups + 1/3 cup' },
+		{ unit: 'cup', value: (3 / 4) + (1 / 8), expected: '3/4 cups + 1/8 cup' },
+		{ unit: 'cup', value: (2 / 3) + (1 / 8), expected: '2/3 cups + 1/8 cup' },
+		{ unit: 'cup', value: (1 / 2) + (1 / 3), expected: '1/2 cup + 1/3 cup' },
+		{ unit: 'cup', value: (1 / 2) + (1 / 8), expected: '1/2 cup + 1/8 cup' },
+		{ unit: 'cup', value: (1 / 2) + (1 / 16), expected: '1/2 cup + 1 tbsp' },
+		{ unit: 'cup', value: (1 / 3) + (1 / 4), expected: '1/3 cup + 1/4 cup' },
+		{ unit: 'cup', value: (1 / 3) + (1 / 8), expected: '1/3 cup + 1/8 cup' },
+		{ unit: 'cup', value: (1 / 3) + (1 / 16), expected: '1/3 cup + 1 tbsp' },
+		{ unit: 'cup', value: (1 / 4) + (1 / 8), expected: '1/4 cup + 1/8 cup' },
+		{ unit: 'cup', value: (1 / 4) + (1 / 16), expected: '1/4 cup + 1 tbsp' },
+		{ unit: 'cup', value: (1 / 8) + (1 / 16), expected: '1/8 cup + 1 tbsp' },
 
 		// Whole numbers and fractions.
 		{ unit: 'cup', value: 1.0625, expected: '1 cup + 1 tbsp' },
@@ -279,8 +279,7 @@ describe('getMeasurement', () => {
 		{ num: 0.9, unit: 'cup', multiplier: 0.5, units: 'g', expected: '0.45 cups' },
 	].forEach((row) => {
 		it(`converts ${row.num} ${row.unit} x ${row.multiplier} to '${row.expected}'`, () => {
-			expect(getMeasurement(row.num, row.unit, row.multiplier, row.units))
-				.toEqual(row.expected);
+			expect(getMeasurement(row.num, row.unit, row.multiplier, row.units)).toEqual(row.expected);
 		});
 	});
 });

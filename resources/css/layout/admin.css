@@ -49,7 +49,7 @@
 }
 
 .admin__button {
-	margin-bottom: calc(var(--padding) * .5);
+	margin-bottom: calc(var(--padding) * 0.5);
 
 	@media (--tablet-landscape-up) {
 		margin-bottom: 0;

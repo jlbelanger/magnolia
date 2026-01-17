@@ -44,9 +44,9 @@ const maybePluralize = (unit, num) => {
 	return singularValues.includes(num) ? unit : pluralize(unit);
 };
 
-export const ouncesToGrams = (n) => (Math.round(n * 28.34952));
+export const ouncesToGrams = (n) => Math.round(n * 28.34952);
 
-export const gramsToOunces = (n) => (parseFloat((n / 28.34952).toFixed(1)));
+export const gramsToOunces = (n) => parseFloat((n / 28.34952).toFixed(1));
 
 function findBestSolution(target, availableTools) {
 	if (Math.abs(target) <= 0.00000000000001) {
@@ -67,11 +67,12 @@ function findBestSolution(target, availableTools) {
 	if (currentTool.name.match(/^\d+ cups?$/)) {
 		resultWithCurrent = findBestSolution(target - currentValue, availableTools);
 		if (resultWithCurrent) {
-			const numCups = resultWithCurrent.filter((t) => (t.name.match(/^\d+ cups?$/)))
+			const numCups = resultWithCurrent
+				.filter((t) => t.name.match(/^\d+ cups?$/))
 				.map((t) => t.value)
-				.reduce((sum, a) => (sum + a), 0);
+				.reduce((sum, a) => sum + a, 0);
 			if (numCups > 0) {
-				resultWithCurrent = resultWithCurrent.filter((t) => (!t.name.match(/^\d+ cups?$/)));
+				resultWithCurrent = resultWithCurrent.filter((t) => !t.name.match(/^\d+ cups?$/));
 				currentTool = { value: numCups + currentTool.value, name: `${numCups + currentTool.value} cups` };
 			}
 		}
@@ -101,7 +102,7 @@ function findBestSolution(target, availableTools) {
 	}
 	if (withoutLength === withLength) {
 		// If the number of measurements are the same, prefer the solution that doesn't use 2 tsp.
-		if (resultWithCurrent.map((t) => (t.name)).includes('2 tsp')) {
+		if (resultWithCurrent.map((t) => t.name).includes('2 tsp')) {
 			return resultWithoutCurrent;
 		}
 	}
@@ -122,7 +123,7 @@ export const measuringCups = (allTools, target, unit) => {
 	}
 
 	// Eliminate all tools that are too large.
-	const availableTools = allTools.filter((t) => (t.value <= target));
+	const availableTools = allTools.filter((t) => t.value <= target);
 	if (availableTools.length <= 0) {
 		return 'pinch';
 	}
@@ -186,7 +187,7 @@ export const fractionToDecimal = (num) => {
 	}
 	if (num.includes('/')) {
 		const fraction = num.split('/');
-		num = whole + (parseInt(fraction[0], 10) / parseInt(fraction[1], 10));
+		num = whole + (parseInt(fraction[0], 10) / parseInt(fraction[1], 10)); /* prettier-ignore */
 	}
 	return parseFloat(num);
 };

@@ -1,4 +1,3 @@
-
 #skip {
 	--skip-width: 200px;
 
@@ -11,7 +10,7 @@
 	height: var(--button-size);
 	left: 50%;
 	line-height: var(--button-size);
-	margin-left: calc(var(--skip-width) * -.5);
+	margin-left: calc(var(--skip-width) * -0.5);
 	opacity: 0;
 	padding: 0;
 	position: absolute;
@@ -23,7 +22,9 @@
 
 	&:active,
 	&:focus {
-		box-shadow: 0 0 10px 5px hsl(from var(--black) h s l / 30%), var(--focus);
+		box-shadow:
+			0 0 10px 5px hsl(from var(--black) h s l / 30%),
+			var(--focus);
 		opacity: 1;
 		top: 0;
 	}

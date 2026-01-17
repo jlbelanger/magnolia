@@ -59,10 +59,10 @@ input[type='checkbox'] {
 		content: '';
 		display: block;
 		height: var(--select-icon-size);
-		margin-top: calc(var(--select-icon-size) * -.5);
+		margin-top: calc(var(--select-icon-size) * -0.5);
 		pointer-events: none;
 		position: absolute;
-		right: calc((var(--button-size) - var(--select-icon-size)) * .5);
+		right: calc((var(--button-size) - var(--select-icon-size)) * 0.5);
 		top: 50%;
 		width: var(--select-icon-size);
 		z-index: 1;

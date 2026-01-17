@@ -98,7 +98,7 @@
 	li {
 		padding: var(--list-padding) 0;
 		padding-left: calc(var(--checkbox-size) + var(--checkbox-margin-right));
-		padding-top: calc(var(--list-padding) + ((var(--checkbox-size) - (var(--font-size) * var(--line-height))) * .5));
+		padding-top: calc(var(--list-padding) + ((var(--checkbox-size) - (var(--font-size) * var(--line-height))) * 0.5));
 		position: relative;
 
 		& > input {
@@ -125,7 +125,7 @@
 
 		ol,
 		ul {
-			margin-left: calc((var(--checkbox-size) * -.5) - var(--checkbox-margin-right));
+			margin-left: calc((var(--checkbox-size) * -0.5) - var(--checkbox-margin-right));
 			margin-top: var(--sublist-padding);
 		}
 	}

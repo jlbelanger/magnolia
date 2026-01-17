@@ -1,0 +1,4 @@
+**/*.min.*
+public/mix-manifest.json
+resources/js/app/measurement.test.js
+storage
