@@ -13,7 +13,7 @@
 	],
 	"require": {
 		"php": "^8.4",
-		"erusev/parsedown": "^1.7.4",
+		"erusev/parsedown": "^1.8.0",
 		"guzzlehttp/guzzle": "^7.10.0",
 		"laravel/framework": "^12.43.1",
 		"laravel/sanctum": "^4.2.1",
