@@ -34,12 +34,12 @@ export const initMenu = () => {
 
 	const onCancelDialog = (e) => {
 		e.preventDefault();
-		hideElement(e.target);
+		hideElement();
 	};
 
 	const onClickDialog = (e) => {
 		if (e.target.tagName === 'DIALOG') {
-			hideElement(e.target);
+			hideElement();
 		}
 	};
 
@@ -66,7 +66,7 @@ export const initMenu = () => {
 		$closeButton.setAttribute('type', 'button');
 		$closeButton.innerText = 'Close Menu';
 		$closeButton.addEventListener('click', () => {
-			hideElement(document.getElementById(`${controls}-dialog`));
+			hideElement();
 		});
 		$dialog.appendChild($closeButton);
 
