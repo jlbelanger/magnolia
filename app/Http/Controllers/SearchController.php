@@ -9,10 +9,6 @@ use Illuminate\View\View;
 
 class SearchController extends Controller
 {
-	/**
-	 * @param  Request $request
-	 * @return View
-	 */
 	public function show(Request $request) : View
 	{
 		$q = $request->query('q');

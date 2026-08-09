@@ -9,14 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RedirectIfAuthenticated
 {
-	/**
-	 * Handles an incoming request.
-	 *
-	 * @param  Request     $request
-	 * @param  Closure     $next
-	 * @param  string|null ...$guards
-	 * @return Response
-	 */
 	public function handle(Request $request, Closure $next, string ...$guards) : Response
 	{
 		$guards = empty($guards) ? [null] : $guards;

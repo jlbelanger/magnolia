@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Recipe;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,11 +12,6 @@ use Illuminate\View\View;
 
 class RecipeController extends Controller
 {
-	/**
-	 * Shows the form for creating a new resource.
-	 *
-	 * @return View
-	 */
 	public function create() : View
 	{
 		return view('recipes/create')
@@ -27,9 +23,9 @@ class RecipeController extends Controller
 	 * Stores a newly created resource in storage.
 	 *
 	 * @param  Request $request
-	 * @return RedirectResponse
+	 * @return JsonResponse|RedirectResponse
 	 */
-	public function store(Request $request) : RedirectResponse
+	public function store(Request $request)
 	{
 		$request->validate(Recipe::rules());
 		$input = $request->input();
@@ -47,12 +43,6 @@ class RecipeController extends Controller
 			->with('status', 'success');
 	}
 
-	/**
-	 * Displays the specified resource.
-	 *
-	 * @param  string $slug
-	 * @return View
-	 */
 	public function show(string $slug) : View
 	{
 		$row = Recipe::where('slug', '=', $slug);
@@ -65,12 +55,6 @@ class RecipeController extends Controller
 			->with('row', $row);
 	}
 
-	/**
-	 * Shows the form for editing the specified resource.
-	 *
-	 * @param  string $id
-	 * @return View
-	 */
 	public function edit(string $id) : View
 	{
 		$row = Recipe::findOrFail($id);
@@ -138,7 +122,7 @@ class RecipeController extends Controller
 	 *
 	 * @param  Request $request
 	 * @param  string  $id
-	 * @return View
+	 * @return JsonResponse|RedirectResponse
 	 */
 	public function destroy(Request $request, string $id) : RedirectResponse
 	{

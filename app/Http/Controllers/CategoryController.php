@@ -11,11 +11,6 @@ use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
-	/**
-	 * Shows the form for creating a new resource.
-	 *
-	 * @return View
-	 */
 	public function create() : View
 	{
 		return view('categories/create')
@@ -26,9 +21,9 @@ class CategoryController extends Controller
 	 * Stores a newly created resource in storage.
 	 *
 	 * @param  Request $request
-	 * @return RedirectResponse
+	 * @return JsonResponse|RedirectResponse
 	 */
-	public function store(Request $request) : RedirectResponse
+	public function store(Request $request)
 	{
 		$request->validate(Category::rules());
 		$input = $request->input();
@@ -41,12 +36,6 @@ class CategoryController extends Controller
 			->with('status', 'success');
 	}
 
-	/**
-	 * Displays the specified resource.
-	 *
-	 * @param  string $slug
-	 * @return View
-	 */
 	public function show(string $slug) : View
 	{
 		$row = Category::where('slug', '=', $slug)->firstOrFail();
@@ -56,12 +45,6 @@ class CategoryController extends Controller
 			->with('recipes', $row->recipes);
 	}
 
-	/**
-	 * Shows the form for editing the specified resource.
-	 *
-	 * @param  string $id
-	 * @return View
-	 */
 	public function edit(string $id) : View
 	{
 		$row = Category::findOrFail($id);
@@ -97,7 +80,7 @@ class CategoryController extends Controller
 	 *
 	 * @param  Request $request
 	 * @param  string  $id
-	 * @return View
+	 * @return JsonResponse|RedirectResponse
 	 */
 	public function destroy(Request $request, string $id) : RedirectResponse
 	{

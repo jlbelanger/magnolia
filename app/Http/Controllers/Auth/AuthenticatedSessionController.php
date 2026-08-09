@@ -11,22 +11,11 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends AuthController
 {
-	/**
-	 * Displays the login view.
-	 *
-	 * @return View
-	 */
 	public function create() : View
 	{
 		return view('auth.login')->with('metaTitle', 'Login');
 	}
 
-	/**
-	 * Handles an incoming authentication request.
-	 *
-	 * @param  LoginRequest $request
-	 * @return RedirectResponse
-	 */
 	public function store(LoginRequest $request) : RedirectResponse
 	{
 		try {
@@ -48,12 +37,6 @@ class AuthenticatedSessionController extends AuthController
 		return redirect($redirect);
 	}
 
-	/**
-	 * Destroys an authenticated session.
-	 *
-	 * @param  Request $request
-	 * @return RedirectResponse
-	 */
 	public function destroy(Request $request) : RedirectResponse
 	{
 		$email = $request->user()->email;

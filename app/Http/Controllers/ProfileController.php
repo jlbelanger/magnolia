@@ -10,11 +10,6 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-	/**
-	 * Displays the specified resource.
-	 *
-	 * @return View
-	 */
 	public function show() : View
 	{
 		$row = Auth::user();

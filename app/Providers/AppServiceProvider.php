@@ -18,11 +18,6 @@ use Log;
 
 class AppServiceProvider extends ServiceProvider
 {
-	/**
-	 * Bootstraps any application services.
-	 *
-	 * @return void
-	 */
 	public function boot() : void
 	{
 		$this->configureAuth();
@@ -56,11 +51,6 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\Recipe::observe(\App\Observers\RecipeObserver::class);
 	}
 
-	/**
-	 * Registers any authentication / authorization services.
-	 *
-	 * @return void
-	 */
 	public function configureAuth() : void
 	{
 		// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundBeforeLastUsed
@@ -106,12 +96,7 @@ class AppServiceProvider extends ServiceProvider
 		});
 	}
 
-	/**
-	 * Configures the rate limiters for the application.
-	 *
-	 * @return void
-	 */
-	protected function configureRateLimiting()
+	protected function configureRateLimiting() : void
 	{
 		RateLimiter::for('auth', function (Request $request) {
 			if (app()->isLocal()) {

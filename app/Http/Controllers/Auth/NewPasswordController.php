@@ -32,13 +32,6 @@ class NewPasswordController extends AuthController
 			->with('metaTitle', 'Reset Password');
 	}
 
-	/**
-	 * Handles an incoming new password request.
-	 *
-	 * @param  Request $request
-	 * @param  string  $token
-	 * @return RedirectResponse
-	 */
 	public function store(Request $request, string $token) : RedirectResponse
 	{
 		$request->validate([

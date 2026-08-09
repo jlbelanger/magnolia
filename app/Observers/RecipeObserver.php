@@ -7,11 +7,7 @@ use Illuminate\Support\Carbon;
 
 class RecipeObserver
 {
-	/**
-	 * @param  Recipe $recipe
-	 * @return void
-	 */
-	public function deleted(Recipe $recipe)
+	public function deleted(Recipe $recipe) : void
 	{
 		$recipe->slug = 'deleted-' . Carbon::now() . '-' . $recipe->slug;
 		$recipe->save();
