@@ -32,7 +32,6 @@ class PasswordResetLinkController extends AuthController
 				->with('status', 'danger');
 		}
 
-		$success = $status === Password::RESET_LINK_SENT;
 		if ($status === Password::RESET_LINK_SENT) {
 			self::log(['action' => 'forgotPassword', 'email' => $email]);
 		} else {
